@@ -81,3 +81,7 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+img {
+  padding: 5px;
+}

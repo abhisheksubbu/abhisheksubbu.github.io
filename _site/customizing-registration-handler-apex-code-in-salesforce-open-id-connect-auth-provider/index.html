@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/vs.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Customizing Registration Handler Apex Code in Salesforce Open ID Connect Auth Provider | AbhishekSubbu</title>
+  </head>
+  <body>
+    <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/blog">Blog</a>
+    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
+    <a class="p-2 text-dark" href="/about">About</a>
+  </nav>
+</div>
+
+    <div class="container">
+      <h1>Customizing Registration Handler Apex Code in Salesforce Open ID Connect Auth Provider</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    December 30, 2019
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">Salesforce</a>
+  
+</p>
+<p>When you play with Salesforce Single Sign-On, it is most probable that you will come across something called the “Registration Handler” class. In this blog, we will take a deep dive into understanding what a RegistrationHandler class is, how to create it, how to customize it and finally use it for production.</p>
+
+<h2 id="what-is-a-registration-handler">What is a Registration Handler?</h2>
+
+<p>A <strong>Registration Handler</strong> is nothing but a normal apex class that implements <strong>Auth.RegistrationHandler interface</strong>.</p>
+
+<h2 id="why-is-registration-handler-needed">Why is Registration Handler needed?</h2>
+
+<p>It is needed for <strong>running the authorization code</strong> after authentication happens. For example: When you do single sign-on with Google, the authentication is done by Google Identity server and the results of the authentication (which is user data, tokens, etc) are passed back into the Relying Party (which is your application) to do further actions of registering/logging in the user. The code at the Relying Party (which is your application) that receives the user data/tokens from Identity Servers is called Registration Handler. Using the Registration Handler apex code, you can check if the user is really authorized to use the application and you either register the user or log him in.</p>
+
+<h2 id="when-is-a-registration-handler-used">When is a Registration Handler used?</h2>
+
+<p>When you are designing a single sign-on feature (using Auth Providers) in Salesforce, a Registration Handler apex class is used.</p>
+
+<h2 id="what-is-the-need-of-implementing-authregistrationhandler-interface-in-the-registration-handler-apex-class">What is the need of implementing Auth.RegistrationHandler interface in the Registration Handler apex class?</h2>
+
+<p>Any apex class that implements the Auth.RegistrationHandler interface makes the Force.com platform aware that this apex class is a Registration Handler and not just a simple functional apex class. The Force.com platform knows when information is received from authentication providers, it needs to use specific methods in this Registration Handler class for creating &amp; updating user data as appropriate.</p>
+
+<h2 id="what-are-the-specific-methods-in-the-registration-handler-that-must-be-defined">What are the specific methods in the Registration Handler that must be defined?</h2>
+
+<ol>
+  <li><strong>global User createUser(ID portalId, Auth.UserData userData)</strong> – The Force.com platform routes the control flow into this method of your Registration Handler class when it gets the user information from the IDP (Identity Provider). This new user data would be most probably not there in the User table or sometimes it may also represent an existing user record in the database. It is very important to check for user existence in this method and do necessary actions accordingly. The use of this method is usually referred to as “User Creation/Linking” flow.</li>
+  <li><strong>global void updateUser(ID userId, ID portalId, Authe.UserData userData)</strong> – The Force.com platform routes the control flow into this method of your Registration Handler class when it gets an already registered user information from the IDP (Identity provider). You can use this method to update user record in Salesforce with latest information obtained from the IDP. The use of this method is usually referred to as the “<strong>Existing User Linking</strong>” flow.</li>
+</ol>
+
+<h2 id="what-are-the-possible-information-that-i-can-get-from-the-idp">What are the possible information that I can get from the IDP?</h2>
+
+<p>The Auth.UserData object can provide you with the following information.</p>
+
+<ol>
+  <li><strong>ID</strong> – An identifier from the third party for the authenticated user, such as the Facebook user number or the Salesforce user ID</li>
+  <li><strong>First Name</strong> – The first name of the authenticated user, according to the third party.</li>
+  <li><strong>Last Name</strong> – The last name of the authenticated user, according to the third party.</li>
+  <li><strong>Full Name</strong> – The full name of the authenticated user, according to the third party.</li>
+  <li><strong>Email</strong> – The email address of the authenticated user, according to the third party.</li>
+  <li><strong>Link</strong> – A stable link for the authenticated user such as https://www.facebook.com/MyUsername.</li>
+  <li><strong>Username</strong> – The username of the authenticated user in the third party.</li>
+  <li><strong>Locale</strong> – The standard locale string for the authenticated user.</li>
+  <li><strong>Site Login URL</strong> – The site login page URL passed in if used with a site; null otherwise.</li>
+  <li><strong>Attribute Map</strong> – A map of data from the third party, in case the handler has to access non-standard values. For example, when using Janrain as a provider, the fields Janrain returns in its accessCredentials dictionary are placed into the These fields vary by provider.</li>
+</ol>
+
+<h2 id="what-you-should-not-do-with-user-data-received-from-idp">What you should not do with user data received from IDP?</h2>
+
+<p>The Auth.UserData argument that you receive in the createUser/updateUser method should not be stored anywhere in your Salesforce account. It violates the Data Privacy rules and standards (as outlined by GDPR [General Data Protection Regulation]). This data should be used in real-time in your Registration Handler code for creating a user record or updating a user record only. A working implementation of a Registration Handler can be found in the Social Sign-On blog for you to try out and understand the flow.</p>
+
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views of opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Speaking</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking/Videos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

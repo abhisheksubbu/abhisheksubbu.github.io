@@ -1,0 +1,160 @@
+I"�<p>Enterprises having greatly embraced SOA (Service Oriented Architecture) which helps to decouple different subsystems in such a way that we can expose &amp; reuse these without having to break &amp; build existing systems. In this context, securing an API is an absolute must for enterprises.</p>
+
+<p>In this blog, I would like to share few things that I learnt in my quest to secure an API from an enterprise perspective.</p>
+
+<p>OWASP (Open Web Application Security Project) is a worldwide not-for-profit charitable organization focused on improving the security of software. This organization was setup in 2001. OWASP provide lots of materials on Application Security under Free and Open Software License.</p>
+
+<p><strong>OWASP sets forth few guidelines for REST API Security.</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Secure REST services must only provide HTTPS endpoints.</strong> This protects authentication credentials in transit, for example passwords, API keys or JSON Web Tokens. It also allows clients to authenticate the service and guarantees integrity of the transmitted data.</p>
+  </li>
+  <li>
+    <p><strong>Non-public REST services must perform access control at each API endpoint.</strong> Web services in monolithic applications implement this by means of user authentication, authorisation logic and session management.</p>
+  </li>
+  <li>
+    <p><strong>Ensure JWTs (JSON Web Tokens) are integrity protected by either a signature or a MAC.</strong> Do not allow the unsecured JWTs: {“alg”:”none”}. In general, signatures should be preferred over MACs for integrity protection of JWTs.</p>
+  </li>
+  <li>
+    <p><strong>API keys needs to be used in Public REST services</strong> to avoid the risk of being farmed leading to excessive bills for bandwidth or compute cycles. API keys can reduce the impact of denial-of-service attacks.</p>
+
+    <ol>
+      <li>Require API keys for every request to the protected endpoint.</li>
+      <li>Always pass API Keys in the Request Header &amp; not in the payload. This helps to use API Keys for other REST endpoints consuming different payloads.</li>
+      <li>Return 429 “Too Many Requests” HTTP response code if requests are coming in too quickly.</li>
+      <li>Revoke the API key if the client violates the usage agreement.</li>
+      <li>Do not rely exclusively on API keys to protect sensitive, critical or high-value resources.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>A REST request or response body should match the intended content type in the header.</strong> Otherwise this could cause misinterpretation at the consumer/producer side and lead to code injection/execution.</p>
+  </li>
+  <li>
+    <p><strong>Avoid exposing management endpoints via Internet.</strong> If management endpoints must be accessible via the Internet, make sure that users must use a strong authentication mechanism, e.g. multi-factor.</p>
+  </li>
+  <li>
+    <p><strong>Respond with generic error messages – avoid revealing details of the failure unnecessarily.</strong> Do not pass technical details (e.g. call stacks or other internal hints) to the client</p>
+  </li>
+  <li>
+    <p><strong>Passwords, security tokens, and API keys should not appear in the URL</strong>, as this can be captured in web server logs, which makes them intrinsically valuable.</p>
+
+    <ul>
+      <li>https://example.com/controller/<id>/action?apiKey=a53f435643de32 – NOT GOOD</id></li>
+      <li>https://example.com/resourceCollection/<id>/action – GOOD</id></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Write audit logs before and after security related events.</strong> Consider logging token validation errors in order to detect attacks. Take care of log injection attacks by sanitizing log data beforehand.</p>
+  </li>
+  <li>
+    <p><strong>When designing REST API, don’t just use 200 for success or 404 for error.</strong> Here is a selection of security related REST API status codes. Use it to ensure you return the correct code.</p>
+  </li>
+</ol>
+
+<table><tbody><tr><td>
+  <strong>Status code</strong>
+  </td><td>
+  <strong>Message</strong>
+  </td><td>
+  <strong>Description</strong>
+  </td></tr><tr><td>
+  200
+  </td><td>
+  OK
+  </td><td>
+  Response
+  to a successful REST API action. The HTTP method can be GET, POST, PUT, PATCH
+  or DELETE
+  </td></tr><tr><td>
+  201
+  </td><td>
+  Created
+  </td><td>
+  The
+  request has been fulfilled and resource created. A URI for the created
+  resource is returned in the Location header
+  </td></tr><tr><td>
+  202
+  </td><td>
+  Accepted
+  </td><td>
+  The
+  request has been accepted for processing, but processing is not yet complete
+  </td></tr><tr><td>
+  400
+  </td><td>
+  Bad Request
+  </td><td>
+  The
+  request is malformed, such as message body format error
+  </td></tr><tr><td>
+  401
+  </td><td>
+  Unauthorized
+  </td><td>
+  Wrong
+  or no authentication ID/password provided
+  </td></tr><tr><td>
+  403
+  </td><td>
+  Forbidden
+  </td><td>
+  It’s
+  used when the authentication succeeded but authenticated user doesn’t have
+  permission to the request resource
+  </td></tr><tr><td>
+  404
+  </td><td>
+  Not
+  Found
+  </td><td>
+  When a
+  non-existent resource is requested
+  </td></tr><tr><td>
+  406
+  </td><td>
+  Unacceptable
+  </td><td>
+  The
+  client presented a content type in the Accept header which is not supported
+  by the server API
+  </td></tr><tr><td>
+  405
+  </td><td>
+  Method
+  Not Allowed
+  </td><td>
+  The
+  error for an unexpected HTTP method. For example, the REST API is expecting
+  HTTP GET, but HTTP PUT is used
+  </td></tr><tr><td>
+  413
+  </td><td>
+  Payload
+  too large
+  </td><td>
+  Use it
+  to signal that the request size exceeded the given limit e.g. regarding file
+  uploads
+  </td></tr><tr><td>
+  415
+  </td><td>
+  Unsupported
+  Media Type
+  </td><td>
+  The
+  requested content type is not supported by the REST service
+  </td></tr><tr><td>
+  429
+  </td><td>
+  Too
+  Many Requests
+  </td><td>
+  The
+  error is used when there may be DOS attack detected or the request is
+  rejected due to rate limiting
+  </td></tr></tbody></table>
+
+<p>Hope this helps. Enjoy !!</p>
+:ET

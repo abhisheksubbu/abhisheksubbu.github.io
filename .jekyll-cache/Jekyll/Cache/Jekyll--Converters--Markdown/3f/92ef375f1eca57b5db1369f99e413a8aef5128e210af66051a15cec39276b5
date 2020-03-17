@@ -1,0 +1,172 @@
+I"<p>When it comes to Data Structures &amp; Algorithms, there are 2 main factors that need to be analyzed every time.</p>
+
+<ol>
+  <li>Time taken by the algorithm to finish <strong>[Time Complexity]</strong></li>
+  <li>Space needed by the algorithm for running the computation <strong>[Space Complexity]</strong></li>
+</ol>
+
+<p>If your algorithm takes infinite amount of time to complete running, then your algorithm is of no use. Similarly, if your algorithm takes all the space in the internet for it to do its computation, then also your algorithm is of no use.</p>
+
+<p>Therefore, a standardized way of calculating complexity is required. This standardized way is called “<strong>Big-O Notation</strong>“.</p>
+
+<blockquote>
+  <p>Big-O Notation gives an upper bound of the complexity in the <strong>worst case</strong>, helping to quantity performance as the input size becomes <strong>arbitrarily large</strong>.</p>
+</blockquote>
+
+<p>In Big-O, we refer to the size of the input given to the algorithm as “n”. The following are the Big-O complexities ordered from smallest to largest.</p>
+
+<ul>
+  <li>Constant Time : O(1)</li>
+  <li>Logarithmic Time : O(log(n))</li>
+  <li>Linear Time : O(n)</li>
+  <li>Linearithmic Time : O(nlog(n))</li>
+  <li>Quadric Time : O(n<sup>2</sup>)</li>
+  <li>Cubic Time : O(n<sup>3</sup>)</li>
+  <li>Exponential Time : O(b<sup>n</sup>), where b&gt;1</li>
+  <li>Factorial Time : O(n!)</li>
+</ul>
+
+<p>For example, if your algorithm takes constant time to finish, we say that your algorithm’s Time Complexity is O(1) [pronounced – Big O of 1].</p>
+
+<h2 id="big-o-properties">Big-O Properties</h2>
+
+<p>As we mentioned earlier, Big-O only cares about the worst case. So, we don’t care when “n” is small. We only care out “n” becoming large.</p>
+
+<p><strong>Property 1: We can safely ignore constants while calculating the complexity</strong></p>
+
+<p>So, <strong>O(n + c) = O(n)</strong> where c is some constant.</p>
+
+<p>Similarly, <strong>O(cn) = O(n)</strong> where c is some constant &gt; 0</p>
+
+<p>Suppose f(n) = 8log(n)<sup>3</sup> + 12n<sup>2</sup> + 7n<sup>3</sup> + 5, we can say the O(f(n)) = <strong>O(n<sup>3</sup>)</strong> because when n grows, the most dominant factor that grows in this expression is n<sup>3</sup>.</p>
+
+<h2 id="examples-of-big-o-analysis">Examples of Big-O Analysis</h2>
+
+<h4 id="constant-time-complexity">CONSTANT TIME COMPLEXITY</h4>
+
+<p>Suppose we have an algorithm as shown below:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 1
+b = 2
+c = a + 4*b
+</code></pre></div></div>
+
+<p>We can easily say that the Big-O of this algorithm is O(1). The time complexity is constant because the input variables are just 2 variables (which is a &amp; b) and the c is calculated only based on a &amp; b. Here, the concept of “n” itself doesn’t occur due to which the algorithm runs in constant time.</p>
+
+<h4 id="linear-time-complexity">LINEAR TIME COMPLEXITY</h4>
+
+<p>Suppose we have an algorithm as shown below:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i = 0
+while i &lt; n
+    i = i + 1
+</code></pre></div></div>
+
+<p>Since the while loop runs for “i” until it reaches “n”, we can say that the algorithm takes O(n) to complete its computation.</p>
+
+<h4 id="quadric-time-complexity">QUADRIC TIME COMPLEXITY</h4>
+
+<p>Suppose we have an algorithm as shown below:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for (i = 0; i &lt; n; i = i + 1)
+    for (j = 0; j &lt; n; j = j + 1)
+</code></pre></div></div>
+
+<p>Here, we can see that two loops execute “n” times each within itself. That means when i = 0 in the first loop, the inner loop of j executes “n” times. Similarly, when “i” becomes 1, “j” loop executes “n” times and so on. Therefore, the time complexity of this algorithm is O(n<sup>2</sup>).</p>
+
+<p>Let’s make a small twist to the previous algorithm as shown below: <strong>[we replaced j = 0 in the inner loop to j = 1]</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for (i = 0; i &lt; n; i = i + 1)
+    for (j = i; j &lt; n; j = j + 1)
+</code></pre></div></div>
+
+<p>Here, we will see that the algorithm executes for different values of i &amp; j as described below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>value of i</th>
+      <th>number of times j loop executes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>n</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>n-1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>n-2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>n-3</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td>n-3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>n-2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>n-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>n</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Therefore, the total number of looping done when i changes its value from 0 to n = (n) + (n-1) + (n-2) + (n-3) + … + 3 + 2 + 1
+This is a familiar sequence in mathematics and equates to n(n+1)/2
+So, the time complexity of this algorithm is O(n(n+1)/2) = O(n<sup>2</sup>/2 + n/2) = <strong>O(n<sup>2</sup>)</strong></p>
+
+<h4 id="logarithmic-time-complexity">LOGARITHMIC TIME COMPLEXITY</h4>
+
+<p>Suppose we have an algorithm as shown below:</p>
+
+<ul>
+  <li>the “array” is in sorted form</li>
+  <li>“low” represents the index of the first item in the array</li>
+  <li>“high” represents the index of the last item in the array</li>
+  <li>“mid” represents the index of the middle item in the array</li>
+  <li>“value” represents a value that we want to find in this array</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>low = 0
+high = n-1
+while low &lt;= high
+    mid = (low + high) / 2
+    if array[mid] == value
+        return mid
+    else if array[mid] &lt; value
+        low = mid + 1
+    else if array[mid] &gt; value
+        high = mid - 1
+</code></pre></div></div>
+
+<p>This algorithm (popularly known as Binary Search) divides the array into 2 halves (low to mid &amp; mid to high) and checks if the value to search is less than or greater than mid. If the value is less than mid, the search is done on the left side portion (low to mid). If the value is greater than mid, the search is done only on the right side portion (mid to high). This strategy of divide &amp; conquer reduces the search complexity to logarithmic level. Therefore, the time complexity of this algorithm becomes <strong>O(log(n))</strong>.</p>
+
+<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/binary-search.png" alt="Binary Search" /></p>
+
+<p>Likewise (for your knowledge),</p>
+
+<ul>
+  <li><strong>Finding all subsets of a set takes O(2<sup>n</sup>)</strong></li>
+  <li><strong>Finding all permutations of a string takes O(n!)</strong></li>
+  <li><strong>Sorting using mergesort takes O(nlog(n))</strong></li>
+  <li><strong>Iterating over all the cells in a matrix of size m*n takes O(mn)</strong></li>
+</ul>
+:ET

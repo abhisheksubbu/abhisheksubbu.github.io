@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/vs.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Understanding Microservices Architecture Part 2 | AbhishekSubbu</title>
+  </head>
+  <body>
+    <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/blog">Blog</a>
+    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
+    <a class="p-2 text-dark" href="/about">About</a>
+  </nav>
+</div>
+
+    <div class="container">
+      <h1>Understanding Microservices Architecture Part 2</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    December 11, 2019
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">Architecture</a>
+  
+</p>
+<p>In the previous blog of “<a href="/understanding-microservices-architecture/">Understanding Microservices Architecture – Part 1</a>“, we did a detailed study about monolithic v/s microservices architecture, the benefits and drawbacks of each architecture and the solution approaches to it. I highly recommend you to read the “<a href="/understanding-microservices-architecture/">Understanding Microservices Architecture – Part 1</a>” blog before diving into this blog as it would help you connect to the context of what we are going to learn here. Well, we understood that Microservices Architecture is the way forward. Now, here comes a lots of questions in our mind.</p>
+
+<ul>
+  <li>How to design &amp; deploy these services?</li>
+  <li>How should the services communicate?</li>
+  <li>How do the client applications communicate with all these services?</li>
+  <li>How do we correctly partition the monolithic application into services?</li>
+  <li>How do we deal with distributed data management problems?</li>
+</ul>
+
+<p>The solution here is to <strong>adopt EVENT BASED approach</strong> into microservices to solve the interaction issues. With respect to data management, we can either choose “<strong>Shared Database</strong>” approach or “<strong>Database per service</strong>” approach. With “Shared Database” approach, you have 1 single database with many tables in it. Different services might talk to one of more tables. This is pretty simple to achieve and ACID principles help maintain data consistency. But the biggest problem with this approach is that individual services have tight coupling with the database. This means that if we design a set of microservices, then every microservices would have to talk to this single database. If a team working on order service decides to update the database schema, then they have to go and talk to other service team and figure out if this schema update will break their service or not. Thus, things slow down and team start losing their autonomy/independent nature. As autonomy degrades, sticking to agile model becomes painful. The recommended approach in Microservices is for each service to have its own database. Therefore, each service gets it own private database which has all the information for that service to operate. For example, Order Service has an Order Database, Customer Service has a Customer Database and so on. This ensures <strong>Loose Coupling</strong>. But it’s more complex to get this working from a TRANSACTIONAL scope. Right? Now, we get confused on how a TRANSACTION is defined in Microservices Architecture because different services with their own database have to communicate and co-ordinate for completing a business transaction. The solution to this TRANSACTIONAL confusion is to <strong>adopt EVENT DRIVEN ARCHITECTURE</strong>. This means that when something significant happens in a service, that service has to raise an event. This event can be observed by other services and act upon that. With this, you can achieve eventual consistency in a transaction. For example, when a customer places an order, the following actions takes place.</p>
+
+<ol>
+  <li>Order Service creates an Order in PENDING state and emits an event “Order Created”</li>
+  <li>The Customer Service listens to the “Order Created” event and performs the credit check. If the credit check is successful, the customer service emits a “Credit Reserved” event. If the credit check failed, then it emits a “Credit Check Failed” event.</li>
+  <li>The Order Service listens to “Credit Reserved” and “Credit Check Failed” events and accordingly updates the state of the Order to COMPLETE or FAILED.</li>
+</ol>
+
+<p>Here, we have 3 ACID transactions happening on each service and finally contributes to ACID of the entire order transaction becoming consistent. When we say “EMIT AN EVENT”, the question arises</p>
+
+<ul>
+  <li>where is the event created?</li>
+  <li>is the event persisted as a record?</li>
+  <li>What if the order state got updated and event failed to fire?</li>
+</ul>
+
+<p>The way to tackle this problem is by using “<strong>EVENT SOURCING</strong>” technique. In this technique, a separate table for Event is maintained where the Id, type of event, event data are all stored. Publisher services write event records to this table. Subscriber services read the event records from this table based on Event Type and carry out their actions. A benefit of Event Sourcing is that the entire history of a transaction from start till end can be traced from this Event Table.
+<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/event-sourcing.png" alt="Event Sourcing" /></p>
+
+<p>If there is a need to replay/retry from a particular step, you can do that easily because every step/event of the entire transaction was recorded with its data. Benefits of Event Sourcing</p>
+
+<ul>
+  <li>It solves the data consistency issues in a Microservice/NoSQL based architecture.</li>
+  <li>It provides reliable event publishing mechanism. You can mine this event data and even predict what events can occur in future and raise user notifications/alerts.</li>
+  <li>It eliminates the Object Relational Mapping problem because the event is recorded with its own data.</li>
+  <li>Because each state change is represented by an event, it helps us build a reliable audit log and create temporal queries to understand what the record state was back in time.</li>
+</ul>
+
+<h2 id="drawbacks-of-event-sourcing">Drawbacks of Event Sourcing</h2>
+
+<ul>
+  <li>It requires an application rewrite to fit that into microservices architecture.</li>
+  <li>It makes breaking down of business logic into weird pieces and thus there is a learning curve to adapt to this unfamiliar style of programming.</li>
+  <li>Once an event is published, these event records stay there forever (for historical needs). Sometimes some events might have been because of your bad design decisions.</li>
+  <li>We have to handle duplicate events by detecting duplication.</li>
+  <li>As the event store grows, querying the event table can be challenging.</li>
+</ul>
+
+<p>That was a lot of learning. Isn’t it? In the Part 3, we will understand the querying complexities involved in Microservices and how we can solve this problem.</p>
+
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views of opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Speaking</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking/Videos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

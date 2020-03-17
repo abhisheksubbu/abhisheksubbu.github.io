@@ -1,0 +1,266 @@
+I"d<p><strong>Stacks</strong> are powerful data structures that can help us solve many complex programming problems. Stacks can be used in some use-cases like:</p>
+
+<ol>
+  <li>Develop UNDO functionality</li>
+  <li>Build Compilers</li>
+  <li>Evaluate Arithmetic Expressions</li>
+  <li>Develop navigation features in our application (moving forward and backward)</li>
+</ol>
+
+<h2 id="structure-of-a-stack">Structure of a Stack</h2>
+
+<p>Stacks can be visualized as a stack of books. The peculiarity of a Stack is that items can be added to the stack only on the top &amp; removed only from the top. If you want to access the bottom-most item in the stack, you have to remove the books from the top until you reach the bottom-most item. This principle is called <strong>LIFO (Last In First Out)</strong>.</p>
+
+<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/stack.png" alt="Stack" /></p>
+
+<h2 id="operations-that-can-be-performed-on-a-stack">Operations that can be performed on a Stack</h2>
+
+<ol>
+  <li>PUSH – Adds an item to the top of the stack</li>
+  <li>POP – Removes an item from the top of the stack</li>
+  <li>PEEK – Returns the item from the top of the stack without removing</li>
+  <li>ISEMPTY – Returns true if the stack is empty. Otherwise, false.</li>
+</ol>
+
+<p>All the operations can be done in O(1) complexity because these operations are done on the top of the stack. There is no need to iterate.</p>
+
+<h2 id="coding-exercise-reverse-a-string-using-stacks">Coding Exercise: Reverse a String using Stacks</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">str</span> <span class="p">=</span> <span class="s">"abcd"</span><span class="p">;</span>
+<span class="n">Stack</span> <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Stack</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="k">in</span> <span class="n">str</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">stack</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">StringBuilder</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="p">();</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">Count</span> <span class="p">!=</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">builder</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">Pop</span><span class="p">());</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">builder</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h2 id="coding-exercise-check-if-an-expression-is-balanced">Coding Exercise: Check if an expression is balanced</h2>
+
+<p><code class="highlighter-rouge">An expression is balanced if the sequence of opening brackets matches with sequence of closing brackets. For example: ((1+2)) is balanced ((1+2&gt;) is not balanced</code></p>
+
+<h4 id="solution">Solution</h4>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Expression</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">ArrayList</span> <span class="n">leftBrackets</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ArrayList</span><span class="p">()</span> <span class="p">{</span> <span class="sc">')'</span><span class="p">,</span> <span class="sc">']'</span><span class="p">,</span> <span class="sc">'&gt;'</span><span class="p">,</span> <span class="sc">'}'</span> <span class="p">};</span>
+    <span class="k">private</span> <span class="n">ArrayList</span> <span class="n">rightBrackets</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ArrayList</span><span class="p">()</span> <span class="p">{</span> <span class="sc">'('</span><span class="p">,</span> <span class="sc">'['</span><span class="p">,</span> <span class="sc">'&lt;'</span><span class="p">,</span> <span class="sc">'{'</span> <span class="p">};</span>
+    <span class="k">public</span> <span class="n">Boolean</span> <span class="nf">IsBalanced</span><span class="p">(</span><span class="kt">string</span> <span class="n">str</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Stack</span> <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Stack</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="k">in</span> <span class="n">str</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nf">isLeftBracket</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">stack</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nf">isRightBracket</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">Count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+
+                <span class="kt">var</span> <span class="n">poppedBracket</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="nf">ToChar</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">Pop</span><span class="p">());</span>
+                <span class="k">if</span> <span class="p">(!</span><span class="nf">doesBracketsMatch</span><span class="p">(</span><span class="n">poppedBracket</span><span class="p">,</span> <span class="n">ch</span><span class="p">))</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">Count</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="k">true</span> <span class="p">:</span> <span class="k">false</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="kt">bool</span> <span class="nf">doesBracketsMatch</span><span class="p">(</span><span class="kt">char</span> <span class="n">left</span><span class="p">,</span> <span class="kt">char</span> <span class="n">right</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rightBrackets</span><span class="p">.</span><span class="nf">IndexOf</span><span class="p">(</span><span class="n">right</span><span class="p">)</span> <span class="p">==</span> <span class="n">leftBrackets</span><span class="p">.</span><span class="nf">IndexOf</span><span class="p">(</span><span class="n">left</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="kt">bool</span> <span class="nf">isRightBracket</span><span class="p">(</span><span class="kt">char</span> <span class="n">ch</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">rightBrackets</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="kt">bool</span> <span class="nf">isLeftBracket</span><span class="p">(</span><span class="kt">char</span> <span class="n">ch</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">leftBrackets</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="block-of-code-in-the-main-program">Block of code in the Main program</h5>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Expression</span> <span class="n">exp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Expression</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">exp</span><span class="p">.</span><span class="nf">IsBalanced</span><span class="p">(</span><span class="s">"((1+2&gt;)"</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h2 id="implementation-of-stack">Implementation of Stack</h2>
+
+<ul>
+  <li>Stacks can be implemented using ARRAY</li>
+  <li>Stacks can be implemented using LINKED LIST</li>
+</ul>
+
+<h3 id="stack-using-arrays">Stack using Arrays</h3>
+
+<ul>
+  <li>The thumb rule here is that
+    <ul>
+      <li>PUSH – insertion of items happens at the end of the array. If the array is full, expand the size of the array.</li>
+      <li>POP – decrement the end pointer so that the array looks 1 item less from end</li>
+      <li>PEEK – return the last item in the array</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Stack</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="n">items</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">Stack</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">items</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">push</span><span class="p">(</span><span class="kt">int</span> <span class="n">number</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="n">count</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span><span class="p">[]</span> <span class="n">newItems</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">count</span> <span class="p">*</span> <span class="m">2</span><span class="p">];</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="n">newItems</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="n">items</span> <span class="p">=</span> <span class="n">newItems</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">items</span><span class="p">[</span><span class="n">count</span><span class="p">++]</span> <span class="p">=</span> <span class="n">number</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">peek</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="nf">Exception</span><span class="p">(</span><span class="s">"Nothing to Peek"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="n">count</span> <span class="p">-</span> <span class="m">1</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="nf">Exception</span><span class="p">(</span><span class="s">"Cannot Pop"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">items</span><span class="p">[--</span><span class="n">count</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">isEmpty</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">count</span> <span class="p">==</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="block-of-code-in-the-main-program-1">Block of code in the Main program</h5>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Stack</span> <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Stack</span><span class="p">();</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="m">20</span><span class="p">);</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="m">30</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">peek</span><span class="p">());</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">peek</span><span class="p">());</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h3 id="stack-using-linked-list">Stack using Linked List</h3>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Stack2</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">Node</span> <span class="n">First</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">Node</span> <span class="n">Last</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Count</span>
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">size</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Node</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Value</span><span class="p">;</span>
+        <span class="k">public</span> <span class="n">Node</span> <span class="n">Next</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">Node</span><span class="p">(</span><span class="kt">int</span> <span class="k">value</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Value</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">isEmpty</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">First</span> <span class="p">==</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">push</span><span class="p">(</span><span class="kt">int</span> <span class="n">number</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">newNode</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Node</span><span class="p">(</span><span class="n">number</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nf">isEmpty</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">First</span> <span class="p">=</span> <span class="n">Last</span> <span class="p">=</span> <span class="n">newNode</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">Last</span><span class="p">.</span><span class="n">Next</span> <span class="p">=</span> <span class="n">newNode</span><span class="p">;</span>
+            <span class="n">Last</span> <span class="p">=</span> <span class="n">Last</span><span class="p">.</span><span class="n">Next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">size</span><span class="p">++;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">peek</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nf">isEmpty</span><span class="p">())</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="nf">Exception</span><span class="p">(</span><span class="s">"Nothing to Peek"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">Last</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">First</span> <span class="p">==</span> <span class="n">Last</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">First</span> <span class="p">=</span> <span class="n">Last</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">previous</span> <span class="p">=</span> <span class="nf">GetPrevious</span><span class="p">(</span><span class="n">Last</span><span class="p">);</span>
+            <span class="n">Last</span> <span class="p">=</span> <span class="n">previous</span><span class="p">;</span>
+            <span class="n">Last</span><span class="p">.</span><span class="n">Next</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nf">isEmpty</span><span class="p">())</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="nf">Exception</span><span class="p">(</span><span class="s">"Cannot Pop"</span><span class="p">);</span>
+        <span class="n">size</span><span class="p">--;</span>
+        <span class="k">return</span> <span class="n">Last</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="n">Node</span> <span class="nf">GetPrevious</span><span class="p">(</span><span class="n">Node</span> <span class="n">node</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">currentNode</span> <span class="p">=</span> <span class="n">First</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">currentNode</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">currentNode</span><span class="p">.</span><span class="n">Next</span> <span class="p">==</span> <span class="n">node</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">currentNode</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="n">currentNode</span> <span class="p">=</span> <span class="n">currentNode</span><span class="p">.</span><span class="n">Next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="block-of-code-in-the-main-program-2">Block of code in the Main program</h5>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Stack2</span> <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Stack2</span><span class="p">();</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="m">20</span><span class="p">);</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="m">30</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">peek</span><span class="p">());</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">peek</span><span class="p">());</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">());</span>
+</code></pre></div></div>
+:ET

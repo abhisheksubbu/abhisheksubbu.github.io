@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/vs.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Array | AbhishekSubbu</title>
+  </head>
+  <body>
+    <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/blog">Blog</a>
+    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
+    <a class="p-2 text-dark" href="/about">About</a>
+  </nav>
+</div>
+
+    <div class="container">
+      <h1>Array</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    December 14, 2019
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">Fundamentals</a>
+  
+</p>
+<p><strong>Arrays</strong> are built into most programming languages and we use them to SORT a list of items sequentially. Since Arrays are a type of Linear Data Structures, they store data in the memory sequentially.</p>
+
+<p>For example, if we have a set of 5 integers [10, 20, 30, 40, 50], they would be allocated in the memory as shown below. The reason why memory address advances by 4 is because an integer takes 4 bytes of memory.</p>
+
+<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/array-allocation.png" alt="Array Allocation" /></p>
+
+<blockquote>
+  <p>Because Array elements are arranged sequentially in memory, accessing it by INDEX is super fast</p>
+</blockquote>
+
+<p>Thus, the <strong>Runtime Complexity of Accessing a Data Element in An Array by Index is O(1)</strong>.</p>
+
+<p>Why O(1)? It’s because you are telling the system to get you the value stored in a memory address (Example: Get me the value in 104 memory address. System returns 20). The system doesn’t have to do complex calculations or iterations to figure out this. It’s super-efficient.​</p>
+
+<h2 id="strength-of-arrays">Strength of Arrays</h2>
+
+<ul>
+  <li>If you have a use-case where you have to STORE items &amp; RETRIEVE items by INDEX, Arrays are the most optimal choice.</li>
+</ul>
+
+<h2 id="weakness-of-arrays">Weakness of Arrays</h2>
+
+<ul>
+  <li>Arrays are static in nature
+    <ul>
+      <li>You need to explicitly specify the size of an array when allocating it</li>
+      <li>The allocated size cannot be changed later</li>
+      <li>So, we need to know ahead of time how many items we are going to store in an array</li>
+      <li>If you don’t know, you have to make a guess</li>
+      <li>If you guess a large size, you are wasting memory</li>
+      <li>If you guess too small, you will not have space to put the data. Thus, you will have to resize the array by creating a new one with the desired size and copy all data from the old array to resized array. This process is time-consuming and takes O(n) for resize &amp; copying data.</li>
+    </ul>
+  </li>
+  <li>In cases where you don’t know the size of items to store, it’s better not to choose Arrays. Linked Lists can be a better choice for this use-case.</li>
+</ul>
+
+<h2 id="runtime-complexity-of-arrays">Runtime Complexity of Arrays</h2>
+
+<ul>
+  <li><strong>Retrieving an item by INDEX – O(1)</strong>
+    <ul>
+      <li>Justification: System simply returns the value from the memory location</li>
+    </ul>
+  </li>
+  <li><strong>Inserting an item – O(n)</strong>
+    <ul>
+      <li>Justification: In the worst case, you might be inserting an item into an array when the array is full. So, you will need to allocate a new array of larger size, iterate over all n items and copy all the n items from the old array to resized array. Thus O(n)</li>
+    </ul>
+  </li>
+  <li><strong>Deleting an item – O(n)</strong>
+    <ul>
+      <li>Justification: In the worst case, you delete an item present at the start of an array. Here, the first item has to be deleted and you have to shift all other items one step back. Due to the shifting of all other items, the deletion takes O(n).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="basic-program-of-an-array">Basic Program of an Array</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Declaration of an array</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">numbers</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">3</span><span class="p">];</span>
+<span class="c1">// Inserting an item into an array</span>
+<span class="n">numbers</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+<span class="n">numbers</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="m">20</span><span class="p">;</span>
+<span class="n">numbers</span><span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">=</span> <span class="m">30</span><span class="p">;</span>
+<span class="c1">// Printing an array</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="coding-exercise--array">Coding Exercise – Array</h2>
+
+<ul>
+  <li>Create a class “Array” that can take an initial length during initialization</li>
+  <li>Implement “print” method that prints only the items present in the array</li>
+  <li>Implement “insert” method that takes an integer and inserts to the Array object</li>
+  <li>The “insert” method should resize the array object in case of items more than the initialized length is inserted.</li>
+  <li>Implement “removeAt” method that takes an index and removes it from the array. Note that items removed should shift items in the array accordingly.</li>
+  <li>Implement “indexOf” method that takes an integer and return its index. Calling indexOf method with a non-existing value should return -1.</li>
+  <li>Do not use any existing/imported data structures. Only work on int[] and its capabilities.</li>
+</ul>
+
+<p><strong>Note</strong>: Ensure to evaluate the runtime complexity of the methods that you write. Make sure that your implementations match the runtime complexity of basic int[].</p>
+
+<p>Once the Array class is constructed, we should be able to write something like this in the main method.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Array</span> <span class="n">numbers</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Array</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="m">20</span><span class="p">);</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="m">30</span><span class="p">);</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="m">40</span><span class="p">);</span> <span class="c1">//should not fail. Instead resize</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">removeAt</span><span class="p">(</span><span class="m">3</span><span class="p">);</span> <span class="c1">//remove &amp;amp; shift items</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"====Printing Array===="</span><span class="p">);</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">print</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="m">10</span><span class="p">));</span> <span class="c1">//return 0 because this is the first index</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="m">100</span><span class="p">));</span> <span class="c1">//returns -1</span>
+</code></pre></div></div>
+
+<h2 id="push-yourself-a-bit-more-on-coding-exercise">Push yourself a bit more on Coding Exercise</h2>
+
+<ol>
+  <li>Extend the Array class and add a new method named “max” to return the largest number. The Array elements may or may not be sorted.</li>
+  <li>Extend the Array class and add a method named “intersect” to return the common items in this array and another array.</li>
+  <li>Extend the Array class and add a method named “reverse” to reverse the array. For example, if the array includes [1, 2, 3, 4], after reversing and printing it, we should see [4, 3, 2, 1].</li>
+  <li>Extend the Array class and add a new method named “indexAt” that takes an item and index and inserts that item at the given index.</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Array</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="n">items</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">count</span><span class="p">;</span> <span class="k">public</span> <span class="nf">Array</span><span class="p">(</span><span class="kt">int</span> <span class="n">length</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">items</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">length</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">print</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">newNumber</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="n">count</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span><span class="p">[]</span> <span class="n">newItems</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">count</span> <span class="p">*</span> <span class="m">2</span><span class="p">];</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="n">newItems</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="n">items</span> <span class="p">=</span> <span class="n">newItems</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">items</span><span class="p">[</span><span class="n">count</span><span class="p">++]</span> <span class="p">=</span> <span class="n">newNumber</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">removeAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="p">&lt;</span> <span class="m">0</span> <span class="p">||</span> <span class="n">index</span> <span class="p">&gt;=</span> <span class="n">count</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">index</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span> <span class="p">+</span> <span class="m">1</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">count</span><span class="p">--;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">indexOf</span><span class="p">(</span><span class="kt">int</span> <span class="n">item</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">==</span> <span class="n">item</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">max</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">Exception</span><span class="p">(</span><span class="s">"No items in the array"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">largest</span> <span class="p">=</span> <span class="n">items</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span> <span class="p">+</span> <span class="m">1</span><span class="p">]</span> <span class="p">&gt;</span> <span class="n">largest</span><span class="p">)</span> <span class="n">largest</span> <span class="p">=</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span> <span class="p">+</span> <span class="m">1</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">largest</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">valueAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">contains</span><span class="p">(</span><span class="kt">int</span> <span class="k">value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">==</span> <span class="k">value</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="n">Array</span> <span class="nf">intersect</span><span class="p">(</span><span class="n">Array</span> <span class="n">newArray</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">intersectArraySize</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">count</span> <span class="p">&gt;</span> <span class="n">newArray</span><span class="p">.</span><span class="n">count</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="n">count</span> <span class="p">:</span> <span class="n">newArray</span><span class="p">.</span><span class="n">count</span><span class="p">;</span>
+        <span class="n">Array</span> <span class="n">intersectedArray</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Array</span><span class="p">(</span><span class="n">intersectArraySize</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">j</span> <span class="p">&lt;</span> <span class="n">newArray</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="n">j</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">==</span> <span class="n">newArray</span><span class="p">.</span><span class="nf">valueAt</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="p">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">amp</span><span class="p">;</span> <span class="p">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">!</span><span class="n">intersectedArray</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                   <span class="p">{</span>
+            <span class="n">intersectedArray</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">intersectedArray</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="n">Array</span> <span class="nf">reverse</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Array</span> <span class="n">reverseArray</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Array</span><span class="p">(</span><span class="n">count</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">count</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&gt;=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">--)</span>
+        <span class="p">{</span>
+            <span class="n">reverseArray</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">reverseArray</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">insertAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">item</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="n">count</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span><span class="p">[]</span> <span class="n">newItems</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">count</span> <span class="p">*</span> <span class="m">2</span><span class="p">];</span> <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="n">newItems</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="n">items</span> <span class="p">=</span> <span class="n">newItems</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span> <span class="p">&gt;</span> <span class="n">index</span><span class="p">;</span> <span class="n">i</span><span class="p">--)</span>
+        <span class="p">{</span>
+            <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span> <span class="p">-</span> <span class="m">1</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">=</span> <span class="n">item</span><span class="p">;</span> <span class="n">count</span><span class="p">++;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views of opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Speaking</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking/Videos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

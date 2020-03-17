@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/vs.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Social Sign On with Google Enterprise in Salesforce Org | AbhishekSubbu</title>
+  </head>
+  <body>
+    <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/blog">Blog</a>
+    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
+    <a class="p-2 text-dark" href="/about">About</a>
+  </nav>
+</div>
+
+    <div class="container">
+      <h1>Social Sign On with Google Enterprise in Salesforce Org</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    December 27, 2019
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">Salesforce</a>
+  
+</p>
+<p>In this blog, we will explain the steps of enabling social sign on into salesforce enterprise org using your corporate Gmail account.</p>
+
+<h2 id="scenario">Scenario:</h2>
+
+<p>John is an employee of an enterprise called “XYZ.com”. The company uses Salesforce as their primary CRM. Just like John, there are many other employees who face issues with remembering username and password for logging into their Salesforce CRM. As per company policy, no employees are supposed to use any Password storing apps/even write down this sensitive information on their notebooks/whiteboards.</p>
+
+<h2 id="the-solution-proposed-by-the-company">The solution proposed by the company:</h2>
+
+<p>The company proposes to enable Social Sign-On capability with which every employee will be able to use their corporate Gmail login credentials to login to Salesforce CRM. With this technique, a new employee provisioned in Gmail is automatically allowed into Salesforce CRM. Any employee who leaves the organization is also denied the Salesforce CRM login.</p>
+
+<h2 id="steps-to-implement-social-sign-on-in-salesforce-crm">Steps to implement Social Sign-On in Salesforce CRM</h2>
+
+<p>For configuring this feature, we will be using the Open ID Connect protocol in conjunction with Authentication Providers in Salesforce. With this setup, Salesforce behaves like an Open ID Client.</p>
+
+<ol>
+  <li>Open <a href="https://console.developers.google.com">Google Console</a></li>
+  <li>Create an App and a Credential of type “Web application”</li>
+  <li>This will generate a Client ID &amp; Client Secret. Keep this handy as we will use this data in the upcoming step.</li>
+  <li>Login to Salesforce CRM [assuming that you are the super admin]</li>
+  <li>Go to Setup</li>
+  <li>Quick Find “My Domain” and open it</li>
+  <li>Set up a domain name, if not yet done. It might take a few minutes for the changes to be active. Be patient.</li>
+  <li>Once the domain is set up, the MyDomain screen will look like:</li>
+  <li>Now Quick Find “Auth” and open “Auth. Providers” option.</li>
+  <li>Click “New”</li>
+  <li>Select Provider Type as “Open ID Connect”</li>
+  <li>Fill up the other details as shown in the screenshot below. Use the Client ID and Client Secret that you have from Step no.3.</li>
+  <li>For Registration Handler, give the name as “GoogleEnterpriseSignOn” and allow this wizard to create the class by itself.</li>
+  <li>Save the Auth Provider. Now, you will see the “Salesforce Configuration” section in this Auth Provider populate with many URL’s.</li>
+  <li>Copy the “Callback URL” from the Auth Provider and paste it in the “Authorized redirect URIs” box of the Google app that you created in Step no. 3. Finally hit the “Save” button.</li>
+  <li>Now, open up the “GoogleEnterpriseSignOn” apex class and paste the following code here. The default code by default won’t work.</li>
+  <li>Feel free to change the code in line no.28 that checks for a username ending with “xyz.com”. These are some enterprise code checks that you can do to ensure that only your company employees are able to access Salesforce CRM and not anyone who has a Gmail account.
+    <div class="language-apex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">global</span> <span class="kt">boolean</span> <span class="kn">canCreateUser(Auth.UserData</span> <span class="k">data</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kn">if(</span><span class="k">data</span><span class="kn">.email</span><span class="o">!=</span><span class="kc">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">global</span> <span class="kn">User</span> <span class="kn">createUser(Id</span> <span class="kn">portalId</span><span class="p">,</span> <span class="kn">Auth.UserData</span> <span class="k">data</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kn">if(canCreateUser(</span><span class="k">data</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="kn">List</span> <span class="kn">users</span> <span class="o">=</span> <span class="p">[</span><span class="k">select</span> <span class="kn">Id</span> <span class="k">from</span> <span class="kn">User</span> <span class="k">where</span> <span class="kn">Google_ID__c</span><span class="o">=</span><span class="p">:</span><span class="k">data</span><span class="kn">.identifier</span><span class="p">];</span>
+        <span class="kn">if(users.size(</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kn">debug(</span><span class="s1">'</span><span class="s2">#1##'</span><span class="o">+</span><span class="kn">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+            <span class="k">return</span> <span class="kn">users</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="kn">User</span> <span class="kn">u</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">User(</span><span class="p">);</span>
+            <span class="kn">Profile</span> <span class="kn">p</span> <span class="o">=</span> <span class="p">[</span><span class="k">SELECT</span> <span class="kn">Id</span> <span class="k">FROM</span> <span class="kn">profile</span> <span class="k">WHERE</span> <span class="kn">name</span><span class="o">=</span><span class="s1">'</span><span class="s2">System Administrator'</span><span class="p">];</span>
+            <span class="kn">username</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.email.substring(</span><span class="mi">0</span><span class="p">,</span><span class="k">data</span><span class="kn">.email.indexOf(</span><span class="s1">'</span><span class="s2">@'</span><span class="p">))</span><span class="o">+</span> <span class="s1">'</span><span class="s2">@xyz.com'</span><span class="p">;</span>
+            <span class="kn">email</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.email</span><span class="p">;</span>
+            <span class="kn">lastName</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.lastName</span><span class="p">;</span>
+            <span class="kn">firstName</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.firstName</span><span class="p">;</span>
+            <span class="kn">String</span> <span class="kn">alias</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.firstName.substring(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="k">data</span><span class="kn">.lastName.substring(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+            <span class="kn">if(alias.length(</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="kn">alias</span> <span class="o">=</span> <span class="kn">alias.substring(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="kn">alias</span> <span class="o">=</span> <span class="kn">alias</span><span class="p">;</span>
+            <span class="kn">languagelocalekey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">;</span>
+            <span class="kn">localesidkey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">;</span>
+            <span class="kn">emailEncodingKey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">UTF-8'</span><span class="p">;</span>
+            <span class="kn">timeZoneSidKey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">America/Los_Angeles'</span><span class="p">;</span>
+            <span class="kn">profileId</span> <span class="o">=</span> <span class="kn">p.Id</span><span class="p">;</span>
+            <span class="kn">Google_ID__c</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.identifier</span><span class="p">;</span>
+            <span class="k">insert</span> <span class="kn">u</span><span class="p">;</span>
+            <span class="k">return</span> <span class="kn">u</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">global</span> <span class="kt">void</span> <span class="kn">updateUser(Id</span> <span class="kn">userId</span><span class="p">,</span> <span class="kn">Id</span> <span class="kn">portalId</span><span class="p">,</span> <span class="kn">Auth.UserData</span> <span class="k">data</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kn">User</span> <span class="kn">u</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">User(Id</span><span class="o">=</span><span class="kn">userId</span><span class="p">);</span>
+    <span class="c1">//u.username = data.email.substring(0,data.email.indexOf('@'))+ '@salesforce.com';</span>
+    <span class="c1">//u.Google_ID__c = data.identifier;</span>
+    <span class="k">update</span> <span class="kn">u</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Save the apex class.</li>
+  <li>Now, open a new incognito browser session and paste the Test-Only Initialization URL that you obtained from the “Auth Provider” in step no. 13</li>
+  <li>If you have done all these steps correctly, then running the Test-Only Initialization URL in a new incognito browser session should redirect you to the Google Login page. If you provide your corporate Gmail username and password, it should authorize and show you an XML as shown below.</li>
+  <li>This testing confirms that you have done all the steps correctly.</li>
+  <li>Now, switch back to Salesforce –&gt; Setup –&gt; Quick Find “My Domain” and open it</li>
+  <li>Under the “Authentication Configuration” section, click “Edit” button</li>
+  <li>Tick mark the “Google Enterprise” option. This is nothing but your newly created Auth Provider.</li>
+  <li>Save the screen.</li>
+  <li>Logout from Salesforce</li>
+  <li>On the main screen, now you will be able to see a “Google Enterprise” option for employees to click. Using this option, employees can log in to Salesforce instead of typing the salesforce username/password.</li>
+  <li>To understand how we can write a test class for the AuthProvider, let’s see the test class code written below.
+    <div class="language-apex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">@isTest</span>
+<span class="kd">private</span> <span class="kd">class</span> <span class="nc">GoogleEnterpriseSignOnTest</span>
+<span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">testMethod</span> <span class="kt">void</span> <span class="kn">testCreateAndUpdateUser(</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kn">GoogleEnterpriseSignOn</span> <span class="kn">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">GoogleEnterpriseSignOn(</span><span class="p">);</span>
+        <span class="kn">Auth.UserData</span> <span class="kn">sampleData</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">Auth.UserData(</span><span class="s1">'</span><span class="s2">testId'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testFirst'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testLast'</span><span class="p">,</span>
+        <span class="s1">'</span><span class="s2">testFirst testLast'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testuser@example.org'</span><span class="p">,</span>
+        <span class="kc">null</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testuserlong'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">google'</span><span class="p">,</span>
+        <span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="kn">Map</span><span class="o">&lt;</span><span class="kn">String</span><span class="p">,</span> <span class="kn">String</span><span class="o">&gt;</span><span class="p">{</span><span class="s1">'</span><span class="s2">language'</span> <span class="o">=&gt;</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">});</span>
+        <span class="kn">User</span> <span class="kn">u</span> <span class="o">=</span> <span class="kn">handler.createuser(</span><span class="kc">null</span><span class="p">,</span> <span class="kn">sampleData</span><span class="p">);</span>
+        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testuser@xyz.com'</span><span class="p">,</span> <span class="kn">u.userName</span><span class="p">);</span>
+        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testuser@example.org'</span><span class="p">,</span> <span class="kn">u.email</span><span class="p">);</span>
+        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testLast'</span><span class="p">,</span> <span class="kn">u.lastName</span><span class="p">);</span>
+        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testFirst'</span><span class="p">,</span> <span class="kn">u.firstName</span><span class="p">);</span>
+        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">ttest'</span><span class="p">,</span> <span class="kn">u.alias</span><span class="p">);</span>
+        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testId'</span><span class="p">,</span> <span class="kn">u.Google_ID__c</span><span class="p">);</span>
+        <span class="kn">String</span> <span class="kn">uid</span> <span class="o">=</span> <span class="kn">u.id</span><span class="p">;</span>
+        <span class="kn">sampleData</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">Auth.UserData(</span><span class="s1">'</span><span class="s2">testNewId'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testNewFirst'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testNewLast'</span><span class="p">,</span>
+        <span class="s1">'</span><span class="s2">testNewFirst testNewLast'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testnewuser@example.org'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testnewuserlong'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">facebook'</span><span class="p">,</span>
+        <span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="kn">Map</span><span class="o">&lt;</span><span class="kn">String</span><span class="p">,</span> <span class="kn">String</span><span class="o">&gt;</span><span class="p">{});</span>
+        <span class="kn">handler.updateUser(uid</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kn">sampleData</span><span class="p">);</span>
+        <span class="c1">//User updatedUser = [SELECT userName, email, firstName, lastName, alias FROM user WHERE id=:uid];</span>
+        <span class="c1">//System.assertEquals('testnewuserlong@salesforce.com', updatedUser.userName);</span>
+        <span class="c1">//System.assertEquals('testnewuser@example.org', updatedUser.email);</span>
+        <span class="c1">//System.assertEquals('testNewLast', updatedUser.lastName);</span>
+        <span class="c1">//System.assertEquals('testNewFirst', updatedUser.firstName);</span>
+        <span class="c1">//System.assertEquals('testnewu', updatedUser.alias);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Writing a test class is very simple as you just have to set the necessary properties of the Auth.UserData and feed that into the createUser &amp; updateUser method of your main AuthProvider class. I have commented a few lines of the updateUser asserts because I do not have a logic written inside the updateUser method of GoogleEnterpriseSignOn AuthProvider class. With this simple test class, I was able to achieve 87% code coverage. This test class template would help you to get started. You can refine &amp; tune the test class as per your custom logic. Hope this helps. Click here to learn more about Registration Handlers in Salesforce. I hope this blog was informative. Try it out folks and let me know if you have any questions/concerns.</p>
+
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views of opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Speaking</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking/Videos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

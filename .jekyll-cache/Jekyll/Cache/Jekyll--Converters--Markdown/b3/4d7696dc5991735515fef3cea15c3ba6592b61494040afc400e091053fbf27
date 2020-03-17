@@ -1,0 +1,44 @@
+I"W<p>Today, I had the honour of speaking at the <a href="http://bridge-global.com/TechWhizz/">TechWizz 2017</a> – a technical event on Design Patterns in Object Oriented Programming organized by <a href="http://bridge-global.com/">Bridge Global</a> at PGS Vedanta Business Hotel in Kochi, Kerala,</p>
+
+<p>The event started with an official inauguration where Mr.Krishna, CEO of Bridge Global India addressed the gathering with his thoughts on how his team took the initiative of sharing knowledge by conducting event for technologists in Kerala. It was inspiring to hear Mr.Krishna talking about how he provides freedom of innovation &amp; trust to his team on making Bridge Global a great success &amp; customer focussed organization.</p>
+
+<p>Soon, I was invited to also address the gathering. I am very much delighted to see a very good number of participants for the event &amp; the thirst everyone had to master technical skills. I spoke about how our educational system in India is still theory based &amp; marks based rather than practical &amp; real world based. The technical workforce of a country becomes bestest when they gain practical experience on their area of expertise rather than a college degree/array of certificates. Industrial Revolution has progressed from 1.0–&gt;2.0–&gt;3.0–&gt;4.0 (which now deals with AI &amp; Machine Learning) and the world has already started thinking about the 5.0 transition. Sharp skillsets is what equips techy’s to innovate &amp; bring about an upshift in technology. I thanked the entire participants &amp; the Bridge Global team to have taken a bold initiative in this direction.</p>
+
+<p>I was the main speaker of the day + a bright highly experienced engineers from Bridge Global made up the Workshop Team. I started from the basic concept of Software Designs &amp; Patterns, why Design Patterns are necessary, importance of SOLID principles in programming with which the context of this entire event was set thoroughly.</p>
+
+<p>Myself &amp; the workshop team at Bridge Global introduced &amp; explained each categories of Design Patterns namely:</p>
+
+<ol>
+  <li>Creational
+    <ul>
+      <li>Singleton</li>
+      <li>Factory Method</li>
+      <li>Abstract Factory</li>
+    </ul>
+  </li>
+  <li>Structural
+    <ul>
+      <li>Adapter</li>
+      <li>Facade</li>
+      <li>Proxy</li>
+    </ul>
+  </li>
+  <li>Behavioural
+    <ul>
+      <li>Observer</li>
+      <li>Strategy</li>
+      <li>Chain of Responsibility</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The exciting aspect was that we kept grooming the participants with more &amp; more real world enterprise class examples due to which every participant grabbed the core concept &amp; implementation strategy of the wide array of Design Patterns. How to shortlist a Design Pattern, How can we mix &amp; match Design Patterns, How do we make Design Decisions/Architectural Tactics on confusing/complex scenarios, etc made the entire team of Bridge Global, myself and the entire participants get into the mood of Design Patterns.</p>
+
+<p>At the last, we finished the session by brainstorming on a Mega Scenario in which so many patterns were to be identified &amp; plugged into. The participants grouped into teams, made mind blowing explanations in the criteria of selection of Design Patterns with precise justifications. I was very happy to see, at the end of the day, the entire participants who took part in TechWizz 2017 did achieve the goal &amp; even outperform the expectations of the event.</p>
+
+<p>I would like to thank the entire management of Bridge Global for giving me an opportunity to educate the technology community on such a critical concept like “Design Patterns”. Thank you all for the kindness, respect &amp; support provided to me throughout the event. I also would like to especially thank the Workshop Team led by Sukesh to have been instrumental in crafting beautiful, simple &amp; impactful code examples to illustrate every Design Pattern. Finally, I thank the entire participants to have been very co-operative &amp; interactive throughout the event.</p>
+
+<p>I am writing this blog with lots of satisfaction that I had today by seeing that we as a team did a great job of teaching the concept of Design Patterns in 1 day for which people take years to master.</p>
+
+<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/speaking-at-TechWizz17.png" alt="Speaking at TechWizz" /></p>
+:ET

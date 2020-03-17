@@ -1,0 +1,15 @@
+I"!<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/non-linear-data-structures.png" alt="Non Linear Data Structures" /></p>
+
+<p><strong>Non-Linear Data Structures</strong> are a classification of Non-Primitive Data Structures that organizes data in multilevel manner.</p>
+
+<h3 id="features-of-non-linear-data-structures">Features of Non-Linear Data Structures</h3>
+
+<ul>
+  <li>Data Elements are arranged in a sorted order</li>
+  <li>A Data Element has a Hierarchical Relationship to another Data Element</li>
+  <li>All Data Elements cannot be traversed in a single run/iteration</li>
+  <li>Complex to Implement</li>
+  <li>Memory Utilization is Effective since Data Elements are declared in memory dynamically as it arrives</li>
+  <li>Examples are Tree &amp; Graph</li>
+</ul>
+:ET
