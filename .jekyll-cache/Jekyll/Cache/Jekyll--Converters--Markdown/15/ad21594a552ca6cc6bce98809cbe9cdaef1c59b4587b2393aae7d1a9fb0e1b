@@ -1,0 +1,122 @@
+I"O<h1>Developer Corner</h1>
+<p>As a <strong>developer/senior developer</strong>, it is expected that you are strong in terms of Programming Fundamentals as well as have strong hands-on experience working on the technologies/platforms/languages that are you specializing on.</p>
+
+<p>You should be allocating at least 2 hours everyday for practicing hands-on programming (be it on your project or as a separate learning if you are on bench). Practice is the key to becoming a great programmer. There is no other secret other than practice. Experience is only considered valuable if you have a culture of coding practice and as years pass by, you should know more problem solving techniques (not just naive but efficient ones).</p>
+
+<hr />
+
+<h2 id="roles--responsibilities">Roles &amp; Responsibilities</h2>
+
+<p>As an architect or an aspiring architect, you need to understand who an “Architect” is, what kinds of “architects” are there in the industry, and their roles &amp; responsibilities. Some people get this itself wrong and spend so much time in their career and get stagnant. You don’t want to be making this mistake at the first place.</p>
+
+<ul>
+  <li><a href="/technical-duties-to-be-performed-by-architects/">Technical Duties to be performed by Architects</a></li>
+  <li><a href="/non-technical-duties-to-be-performed-by-architects/">Non Technical Duties to be performed by Architects</a></li>
+  <li><a href="/skills-needed-by-architects/">Skills needed by Architects</a></li>
+  <li><a href="/knowledge-needed-by-architects/">Knowledge needed by Architects</a></li>
+  <li>Kinds of Software Architects
+    <ul>
+      <li><a href="/who-is-a-technical-architect-what-do-they-do/">Technical Architect</a></li>
+      <li><a href="/who-is-a-solution-architect-what-do-they-do/">Solution Architect</a></li>
+      <li><a href="/who-is-an-enterprise-architect-what-do-they-do/">Enterprise Architect</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="fundamentals">Fundamentals</h2>
+
+<h5 id="data-structures--algorithms">Data Structures &amp; Algorithms</h5>
+
+<ul>
+  <li><a href="/what-are-linear-data-structures/">Linear Data Structures</a></li>
+  <li><a href="/what-are-non-linear-data-structures/">Non Linear Data Structures</a></li>
+  <li><a href="/big-o-analysis/">Big-O Notation</a></li>
+  <li>Sorting Algorithms</li>
+  <li>Traversal Algorithms</li>
+  <li>Dynamic Programming</li>
+</ul>
+
+<h5 id="architectural-principles">Architectural Principles</h5>
+
+<ul>
+  <li><a href="/object-oriented-programming-principles/">Object Oriented Programming Principles</a></li>
+  <li>Object Oriented Modeling &amp; Design</li>
+  <li>UML (Unified Modeling Language)</li>
+  <li><a href="/what-are-design-patterns/">Design Patterns</a></li>
+  <li>Architectural Styles</li>
+  <li>Architectural Patterns</li>
+  <li>Distributed Computing</li>
+  <li>Consideration for Design of Non Functional Requirements</li>
+</ul>
+
+<h5 id="protocols--services">Protocols &amp; Services</h5>
+
+<ul>
+  <li>OSI Model</li>
+  <li>TCP/IP Model</li>
+  <li>HTTP v/s HTTPS Protocol</li>
+  <li>SOAP v/s REST Services</li>
+  <li>OAuth Protocol</li>
+</ul>
+
+<h5 id="compliance-standards">Compliance Standards</h5>
+
+<ul>
+  <li>OWASP</li>
+  <li>Data Protection</li>
+  <li>EDI</li>
+</ul>
+
+<hr />
+
+<h2 id="productsplatforms">Products/Platforms</h2>
+
+<p>You should have enough experience working on any of the following leading products/platforms like:</p>
+
+<h5 id="crmerp">CRM/ERP</h5>
+
+<ul>
+  <li>Microsoft Dynamics CRM</li>
+  <li>Salesforce CRM</li>
+  <li>SAP ERP</li>
+  <li>Oracle Siebel CRM</li>
+  <li>Zoho CRM</li>
+</ul>
+
+<h5 id="cms">CMS</h5>
+
+<ul>
+  <li>WordPress</li>
+  <li>Joomla</li>
+  <li>Sitefinity</li>
+  <li>django</li>
+  <li>Episerver</li>
+  <li>Kentico</li>
+  <li>Sitecore</li>
+  <li>Telligent</li>
+  <li>Umbraco</li>
+  <li>DNN (DotNet Nuke)</li>
+</ul>
+
+<h5 id="bpm">BPM</h5>
+
+<ul>
+  <li>AgilePoint</li>
+  <li>BP Logix</li>
+  <li>Aura Portal</li>
+</ul>
+
+<hr />
+
+<h2 id="project-management">Project Management</h2>
+
+<ul>
+  <li>Software Development Models</li>
+  <li>Software Testing Methodologies</li>
+  <li>Project Estimation</li>
+  <li>Budgetting</li>
+  <li>Kanban &amp; Project Pipelines</li>
+</ul>
+:ET

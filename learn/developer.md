@@ -4,3 +4,96 @@ layout: default
 ---
 
 <h1>{{page.title}}</h1>
+As a **developer/senior developer**, it is expected that you are strong in terms of Programming Fundamentals as well as have strong hands-on experience working on the technologies/platforms/languages that are you specializing on.
+
+You should be allocating at least 2 hours everyday for practicing hands-on programming (be it on your project or as a separate learning if you are on bench). Practice is the key to becoming a great programmer. There is no other secret other than practice. Experience is only considered valuable if you have a culture of coding practice and as years pass by, you should know more problem solving techniques (not just naive but efficient ones).
+
+---
+
+## Fundamentals
+
+##### Data Structures & Algorithms
+
+- [Linear Data Structures](/what-are-linear-data-structures/)
+- [Non Linear Data Structures](/what-are-non-linear-data-structures/)
+- [Big-O Notation](/big-o-analysis/)
+- Sorting Algorithms
+- Traversal Algorithms
+- Dynamic Programming
+
+##### Architectural Principles
+
+- [Object Oriented Programming Principles](/object-oriented-programming-principles/)
+- Object Oriented Modeling & Design
+- UML (Unified Modeling Language)
+- [Design Patterns](/what-are-design-patterns/)
+
+##### Protocols & Services
+
+- OSI Model
+- TCP/IP Model
+- HTTP v/s HTTPS Protocol
+- SOAP v/s REST Services
+- OAuth Protocol
+
+##### Programming Languages
+
+Proficient in one or more of the following programming languages. Best thing to aim at is to be strong in at least 1 server side language and 1 client side language.
+
+- C
+- C++
+- Javascript
+- C#
+- Java
+- Apex
+- Python
+
+##### Testing
+
+- Unit Testing
+- Integration Testing
+
+---
+
+## Products/Platforms
+
+Usually, developers like to be pure coding geeks or be a platform/product specialist. If your desire is to be an expert in a product/platform, then you should have knowledge working on any of the following leading products/platforms like:
+
+##### CRM (Customer Relationship Management) /ERP (Enterprise Resource Planning)
+
+- Microsoft Dynamics CRM
+- Salesforce CRM
+- SAP ERP
+- Oracle Siebel CRM
+- Zoho CRM
+- Pega CRM
+
+##### CMS (Content Management System)
+
+- WordPress
+- Joomla
+- Sitefinity
+- django
+- Episerver
+- Kentico
+- Sitecore
+- Telligent
+- Umbraco
+- DNN (DotNet Nuke)
+
+##### BPM (Business Process Management)
+
+- AgilePoint
+- BP Logix
+- Aura Portal
+
+---
+
+## Project/Time Management
+
+- Software Development Models
+- Software Testing Methodologies
+- Time Management using Pomodoro Techniques
+- Understanding Task Breakdown Structure
+- Assessing the Project Velocity
+- Knowledge on Version Control Systems (like Git/TFS)
