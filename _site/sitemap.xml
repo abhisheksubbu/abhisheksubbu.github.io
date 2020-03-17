@@ -3,35 +3,35 @@
 
     
     <url>
-        <loc>/about.html</loc>
+        <loc>/about/</loc>
         <lastmod>2020-03-17</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>/learn/architect.html</loc>
+        <loc>/learn/architect/</loc>
         <lastmod>2020-03-17</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>/archives.html</loc>
+        <loc>/archives/</loc>
         <lastmod>2020-03-17</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>/learn/developer.html</loc>
+        <loc>/learn/developer/</loc>
         <lastmod>2020-03-17</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>/downloads.html</loc>
+        <loc>/downloads/</loc>
         <lastmod>2020-03-17</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
@@ -73,7 +73,7 @@
     </url>
     
     <url>
-        <loc>/speaking.html</loc>
+        <loc>/speaking/</loc>
         <lastmod>2020-03-17</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
