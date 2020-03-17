@@ -1,0 +1,19 @@
+I"Ð<h2 id="problem-statement">Problem Statement</h2>
+
+<p>You have an editor in which you can save the content many times. You need an Undo feature in the editor with which you can undo the changes and get the previous content.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">editor</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Editor</span><span class="p">();</span>
+        <span class="n">editor</span><span class="p">.</span><span class="nf">setContent</span><span class="p">(</span><span class="s">"First Content"</span><span class="p">);</span>
+        <span class="n">editor</span><span class="p">.</span><span class="nf">setContent</span><span class="p">(</span><span class="s">"Second Content"</span><span class="p">);</span>
+        <span class="n">editor</span><span class="p">.</span><span class="nf">setContent</span><span class="p">(</span><span class="s">"Third Content"</span><span class="p">);</span>
+        <span class="n">editor</span><span class="p">.</span><span class="nf">undo</span><span class="p">();</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">editor</span><span class="p">.</span><span class="nf">getContent</span><span class="p">());</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

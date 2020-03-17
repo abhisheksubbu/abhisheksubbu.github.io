@@ -79,6 +79,13 @@
         <priority>0.5</priority>
     </url>
     
+    <url>
+        <loc>/blog/page2/</loc>
+        <lastmod>2020-03-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
 
     
     <url>
@@ -97,6 +104,34 @@
     
     <url>
         <loc>/retries-using-polly-in-net-core/</loc>
+        <lastmod>2020-03-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>/state-of-salesforce-developers/</loc>
+        <lastmod>2020-03-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>/using-serilog-asp-net-core/</loc>
+        <lastmod>2020-03-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>/memento-pattern/</loc>
+        <lastmod>2020-03-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>/design-patterns/</loc>
         <lastmod>2020-03-17</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>

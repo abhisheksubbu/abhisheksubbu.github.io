@@ -5,7 +5,7 @@
         <title>AbhishekSubbu</title>
         <link>http://localhost:4000</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Tue, 17 Mar 2020 15:51:31 +0530</lastBuildDate>
+        <lastBuildDate>Tue, 17 Mar 2020 19:26:20 +0530</lastBuildDate>
         
         <item>
             <title>Object Oriented Programming Principles</title>
@@ -62,6 +62,75 @@
             <pubDate>Wed, 19 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
                 http://localhost:4000/retries-using-polly-in-net-core/
+            </guid>
+        </item>
+        
+        <item>
+            <title>The State of Salesforce Developers</title>
+            <link>
+                http://localhost:4000/state-of-salesforce-developers/
+            </link>
+            <description>
+                &lt;p&gt;I am writing this blog to basically put my thoughts on the state of salesforce developers. This is not to defame or criticize anyone or any company. I am just trying to share what I see, hear and feel about developers in salesforce ecosystem.&lt;/p&gt;
+
+&lt;p&gt;It is a fact that any Salesforce developer that you meet will have the following strengths and weakness. This is a consistent...
+            </description>
+            <pubDate>Tue, 18 Feb 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/state-of-salesforce-developers/
+            </guid>
+        </item>
+        
+        <item>
+            <title>Using Serilog in ASP.NET Core</title>
+            <link>
+                http://localhost:4000/using-serilog-asp-net-core/
+            </link>
+            <description>
+                &lt;p&gt;&lt;a href=&quot;https://serilog.net/&quot;&gt;Serilog&lt;/a&gt; is a logging implementation that can be plugged into ASP.NET Core. It supports structured logging API’s and receives log events from the ASP.NET Core framework class libraries. In this blog we will see how to configure Serilog in ASP.Net Core project.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Firstly, create a fresh ASP.NET Core ...
+            </description>
+            <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/using-serilog-asp-net-core/
+            </guid>
+        </item>
+        
+        <item>
+            <title>Memento Pattern</title>
+            <link>
+                http://localhost:4000/memento-pattern/
+            </link>
+            <description>
+                &lt;h2 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h2&gt;
+
+&lt;p&gt;You have an editor in which you can save the content many times. You need an Undo feature in the editor with which you can undo the changes and get the previous content.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&qu...
+            </description>
+            <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/memento-pattern/
+            </guid>
+        </item>
+        
+        <item>
+            <title>What are Design Patterns</title>
+            <link>
+                http://localhost:4000/design-patterns/
+            </link>
+            <description>
+                &lt;p&gt;Design Patterns has nothing to do with algorithms or programming constructs/concepts (like loops, big-o complexity, etc). Instead, Design Patterns guide you to structure the classes and how they should collaborate.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The goal of embracing Design Patterns is to “Design resuable and extensible object oriented software”.&lt;/p&gt;
+&lt;/blockquote&gt;...
+            </description>
+            <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/design-patterns/
             </guid>
         </item>
         

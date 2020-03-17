@@ -23,7 +23,7 @@
     />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <script src="https://use.fontawesome.com/186ff9b997.js"></script>
-    <title>Blog | AbhishekSubbu</title>
+    <title>What are Design Patterns | AbhishekSubbu</title>
   </head>
   <body>
     <div
@@ -40,117 +40,67 @@
 </div>
 
     <div class="container">
-      <div class="container">
-  <div class="blog-posts">
-    
-    <div class="blog-post spacing">
-      <h2><a href="/object-oriented-programming-principles/">Object Oriented Programming Principles</a></h2>
-      <p>
-        Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-        <span class="date">
-          February 25, 2020
-        </span>
-      </p>
-      <p>
-        
-        <a href="#" class="badge badge-secondary">Fundamentals</a>
-        
-      </p>
-      In this post, we will learn the history, advent and features/principles of Object Oriented Programming Principles (OOPS). As an aspiring developer/senior developer/architect, you need to very well understand these principles and apply it to real world problems.
-    </div>
-    <hr />
-    
-    <div class="blog-post spacing">
-      <h2><a href="/polly-retry-policies/">Polly Retry Policies</a></h2>
-      <p>
-        Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-        <span class="date">
-          February 20, 2020
-        </span>
-      </p>
-      <p>
-        
-        <a href="#" class="badge badge-secondary">.NET</a>
-        
-      </p>
-      If you have followed my blog on implementing “Retries using Polly in .NET Core”, then this blog will make more sense to you. In this blog, we will understand how many different techniques of Retry policies can be used in Polly.
-    </div>
-    <hr />
-    
-    <div class="blog-post spacing">
-      <h2><a href="/retries-using-polly-in-net-core/">Retries using Polly in .NET Core</a></h2>
-      <p>
-        Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-        <span class="date">
-          February 19, 2020
-        </span>
-      </p>
-      <p>
-        
-        <a href="#" class="badge badge-secondary">.NET</a>
-        
-      </p>
-      In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.
-    </div>
-    <hr />
-    
-    <div class="blog-post spacing">
-      <h2><a href="/state-of-salesforce-developers/">The State of Salesforce Developers</a></h2>
-      <p>
-        Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-        <span class="date">
-          February 18, 2020
-        </span>
-      </p>
-      <p>
-        
-        <a href="#" class="badge badge-secondary">Salesforce</a>
-        
-        <a href="#" class="badge badge-secondary">General</a>
-        
-      </p>
-      It is a fact that any Salesforce developer that you meet will have the following strengths and weakness. This is a consistent trend everywhere. I am writing this blog to basically put my thoughts on the state of salesforce developers. This is not to defame or criticize anyone or any company. I am just trying to share what I see, hear and feel about developers in salesforce ecosystem.
-    </div>
-    <hr />
-    
-    <div class="blog-post spacing">
-      <h2><a href="/using-serilog-asp-net-core/">Using Serilog in ASP.NET Core</a></h2>
-      <p>
-        Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-        <span class="date">
-          February 12, 2020
-        </span>
-      </p>
-      <p>
-        
-        <a href="#" class="badge badge-secondary">.NET</a>
-        
-      </p>
-      Serilog is a logging implementation that can be plugged into ASP.NET Core. It supports structured logging API’s and receives log events from the ASP.NET Core framework class libraries. In this blog we will see how to configure Serilog in ASP.Net Core project.
-    </div>
-    <hr />
-    
-  </div>
-</div>
-<!-- pagination -->
+      <h1>What are Design Patterns</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    February 12, 2020
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">Design Patterns</a>
+  
+  <a href="#" class="badge badge-secondary">Architecture</a>
+  
+</p>
+<p>Design Patterns has nothing to do with algorithms or programming constructs/concepts (like loops, big-o complexity, etc). Instead, Design Patterns guide you to structure the classes and how they should collaborate.</p>
 
-<div class="pagination">
-  
-  <span>&laquo; Prev</span>
-    
-  <span class="webjeda">1</span>
-    
-  <a
-    href="/blog/page2/"
-    >2</a
-  >
-    
-  <a
-    href="/blog/page2/"
-    >Next &raquo;</a
-  >
-  
-</div>
+<blockquote>
+  <p>The goal of embracing Design Patterns is to “Design resuable and extensible object oriented software”.</p>
+</blockquote>
+
+<p>It is mandatory that every software engineer/programmer should have mastery over Design Patterns.
+<strong>Design Patterns are solutions to a commonly occurring problem.</strong></p>
+
+<p>For example, Undo/Redo is definitely a feature that we implement in almost every application. What’s the most elegant solution to solve this in any application? Well, the answer lies in Design Patterns.</p>
+
+<p>The Design Patterns are documented in the famous book called “Elements of Resuable Object-Oriented Software” by GoF (Gang of Four). Gang of Four are the 4 authors namely Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides. The GoF divided the set of 23 design patterns into 3 categories.</p>
+
+<ol>
+  <li><strong>Creational Patterns</strong> – focus on how to create objects</li>
+  <li><strong>Structural Patterns</strong> – focus on the relationship between the objects</li>
+  <li><strong>Behavioural Patterns</strong> – focus on interaction/communication between the objects</li>
+</ol>
+
+<p>Also note that 23 design patterns are the officially documented ones or the classic ones that everybody in the programming world should know. You might come across many unofficial patterns recommended by companies for their products/platforms. So, remember that 23 is not a fixed number in terms of design patterns in the whole world.</p>
+
+<h2 id="the-biggest-advantage-of-design-patterns-are">The biggest advantage of Design Patterns are:</h2>
+
+<ul>
+  <li>It helps to communicate with other developers at a more abstract level. By just referring to the name of the Pattern, developers would understand what we are communicating to them.</li>
+  <li>You don’t have to write a lot of code to express the idea.</li>
+  <li>It makes you a better designer because you always think in terms of objects, re-usability and extensibility.</li>
+  <li>Not matter what the programming language, it helps you design solutions.</li>
+  <li>It helps you use new frameworks &amp; libraries faster because your mind knows how to understand patterns.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Creational</th>
+      <th>Structural</th>
+      <th>Behavioral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><a href="/memento-pattern/">Memento</a></td>
+    </tr>
+  </tbody>
+</table>
 
  <footer class="pt-4 my-md-5 pt-md-5 border-top">
   <div class="row">

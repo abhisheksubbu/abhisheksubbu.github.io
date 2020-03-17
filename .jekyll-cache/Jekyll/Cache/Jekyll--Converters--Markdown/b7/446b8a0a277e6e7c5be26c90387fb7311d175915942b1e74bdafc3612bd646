@@ -1,0 +1,19 @@
+I"^<p>Design Patterns has nothing to do with algorithms or programming constructs/concepts (like loops, big-o complexity, etc). Instead, Design Patterns guide you to structure the classes and how they should collaborate.</p>
+
+<blockquote>
+  <p>The goal of embracing Design Patterns is to “Design resuable and extensible object oriented software”.</p>
+</blockquote>
+
+<p>It is mandatory that every software engineer/programmer should have mastery over Design Patterns.
+<strong>Design Patterns are solutions to a commonly occurring problem.</strong></p>
+
+<p>For example, Undo/Redo is definitely a feature that we implement in almost every application. What’s the most elegant solution to solve this in any application? Well, the answer lies in Design Patterns.</p>
+
+<p>The Design Patterns are documented in the famous book called “Elements of Resuable Object-Oriented Software” by GoF (Gang of Four). Gang of Four are the 4 authors namely Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides. The GoF divided the set of 23 design patterns into 3 categories.</p>
+
+<ol>
+  <li><strong>Creational Patterns</strong> – focus on how to create objects</li>
+  <li><strong>Structural Patterns</strong> – focus on the relationship between the objects</li>
+  <li><strong>Behavioural Patterns</strong> – focus on interaction/communication between the objects</li>
+</ol>
+:ET

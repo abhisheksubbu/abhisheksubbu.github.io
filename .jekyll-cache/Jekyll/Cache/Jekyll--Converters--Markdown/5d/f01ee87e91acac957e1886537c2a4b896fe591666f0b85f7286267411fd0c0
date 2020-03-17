@@ -1,0 +1,147 @@
+I"�/<p><a href="https://serilog.net/">Serilog</a> is a logging implementation that can be plugged into ASP.NET Core. It supports structured logging API’s and receives log events from the ASP.NET Core framework class libraries. In this blog we will see how to configure Serilog in ASP.Net Core project.</p>
+
+<ol>
+  <li>Firstly, create a fresh ASP.NET Core MVC application.</li>
+  <li>Add the “<strong>Serilog.AspNetCore</strong>” Nuget package into the project.</li>
+  <li>
+    <p>If needed, you can add top-level try-catch block in Program.cs (if you intend to log top level application logs related to host)</p>
+
+    <ul>
+      <li>In the Main() method, we are creating the Serilog’s Log File
+        <ul>
+          <li>Specify the default log level [which is DEBUG in this case (line no.15)]</li>
+          <li>Override logs from certain sources to avoid noise in the generated logs [line no.15 and 16]</li>
+          <li>Enrich the log object with data from the HttpContext</li>
+          <li>Specify where the log has to be written (like Console, Seq, etc)</li>
+        </ul>
+      </li>
+      <li>In the CreateHostBuilder method, we are connecting the Serilog to the HostBuilder.</li>
+    </ul>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Serilog</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Serilog.Events</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">SerilogTest</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//CreateHostBuilder(args).Build().Run();</span>
+            <span class="n">Log</span><span class="p">.</span><span class="n">Logger</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LoggerConfiguration</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">MinimumLevel</span><span class="p">.</span><span class="nf">Debug</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">MinimumLevel</span><span class="p">.</span><span class="nf">Override</span><span class="p">(</span><span class="s">"Microsoft"</span><span class="p">,</span> <span class="n">LogEventLevel</span><span class="p">.</span><span class="n">Information</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">MinimumLevel</span><span class="p">.</span><span class="nf">Override</span><span class="p">(</span><span class="s">"Microsoft.AspNetCore"</span><span class="p">,</span> <span class="n">LogEventLevel</span><span class="p">.</span><span class="n">Warning</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">Enrich</span><span class="p">.</span><span class="nf">FromLogContext</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">WriteTo</span><span class="p">.</span><span class="nf">Console</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">WriteTo</span><span class="p">.</span><span class="nf">Seq</span><span class="p">(</span><span class="s">"http://localhost:5341"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">CreateLogger</span><span class="p">();</span>
+
+            <span class="c1">// Wrap creating and running the host in a try-catch block</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="n">Log</span><span class="p">.</span><span class="nf">Information</span><span class="p">(</span><span class="s">"Starting host"</span><span class="p">);</span>
+                <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+                <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="s">"Host terminated unexpectedly"</span><span class="p">);</span>
+                <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">finally</span>
+            <span class="p">{</span>
+                <span class="n">Log</span><span class="p">.</span><span class="nf">CloseAndFlush</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">UseSerilog</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+                <span class="p">{</span>
+                    <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+                <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>You can remove framework event noise (which you are probably not interested) by adding MinimumLevel.Override [as written in line no.16 and 17 of Program.cs]</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>In startup.cs, add the app.UseSerilogRequestLogging(); so that serilog middleware gets connected to the request pipeline.</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Configuration</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Serilog</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">SerilogTest</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">Startup</span><span class="p">(</span><span class="n">IConfiguration</span> <span class="n">configuration</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Configuration</span> <span class="p">=</span> <span class="n">configuration</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">IConfiguration</span> <span class="n">Configuration</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="c1">// This method gets called by the runtime. Use this method to add services to the container.</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">services</span><span class="p">.</span><span class="nf">AddRazorPages</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IWebHostEnvironment</span> <span class="n">env</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">app</span><span class="p">.</span><span class="nf">UseDeveloperExceptionPage</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">app</span><span class="p">.</span><span class="nf">UseExceptionHandler</span><span class="p">(</span><span class="s">"/Error"</span><span class="p">);</span>
+                <span class="c1">// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.</span>
+                <span class="n">app</span><span class="p">.</span><span class="nf">UseHsts</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseHttpsRedirection</span><span class="p">();</span>
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseStaticFiles</span><span class="p">();</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseSerilogRequestLogging</span><span class="p">();</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseRouting</span><span class="p">();</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseAuthorization</span><span class="p">();</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseEndpoints</span><span class="p">(</span><span class="n">endpoints</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">endpoints</span><span class="p">.</span><span class="nf">MapRazorPages</span><span class="p">();</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Run the application and see the logs in the Output window. The highlighted information is generated by Serilog. The information log shows the following:
+    <ol>
+      <li>Protocol</li>
+      <li>Action Verb</li>
+      <li>URL</li>
+      <li>HTTP Status Code</li>
+      <li>Time Elapsed</li>
+    </ol>
+  </li>
+</ol>
+
+<p><img src="https://www.abhisheksubbu.com/wp-content/uploads/2020/02/serilog-information.png" alt="Output Window" /></p>
+:ET

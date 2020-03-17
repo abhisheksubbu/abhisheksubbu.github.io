@@ -110,7 +110,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Circuit Breaker is a technique in which the entire operations are stopped/allowed with respect the conditions that we specify in the circuit breaker. It’s very similar to the Miniature Circuit Breaker (MCB) electrical component that we use at our homes to protect the house from power surge.
 
-![Miniature Circuit Breaker (MCB) used for home](https://www.abhisheksubbu.com/wp-content/uploads/2020/02/home-electrical-mcb-300x300.jpg)
+![Miniature Circuit Breaker (MCB) used for home](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/home-electrical-mcb.jpg)
 
 A circuit breaker (from .NET core – Polly perspective) can put the transient error handler in 4 states.
 
