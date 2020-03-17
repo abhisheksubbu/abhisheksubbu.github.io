@@ -88,5 +88,12 @@
         <priority>0.5</priority>
     </url>
     
+    <url>
+        <loc>/polly-retry-policies/</loc>
+        <lastmod>2020-03-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
 
 </urlset>

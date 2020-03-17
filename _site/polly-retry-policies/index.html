@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Polly Retry Policies | AbhishekSubbu</title>
+  </head>
+  <body>
+    <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/blog">Blog</a>
+    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
+    <a class="p-2 text-dark" href="/about">About</a>
+  </nav>
+</div>
+
+    <div class="container">
+      <h1>Polly Retry Policies</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    February 20, 2020
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">.NET</a>
+  
+</p>
+<p>If you have followed my blog on implementing “Retries using Polly in .NET Core”, then this blog will make more sense to you. In this blog, we will understand how many different techniques of Retry policies can be used in Polly.</p>
+
+<p>There are 4 different ways in which Transient Error Policy can handle faults.</p>
+
+<ol>
+  <li>Retry</li>
+  <li>Retry Forever</li>
+  <li>Wait and Retry</li>
+  <li>Wait and Retry Forever</li>
+  <li>Circuit Breaker</li>
+  <li>Advanced Circuit Breaker</li>
+  <li>Fallback</li>
+</ol>
+
+<h2 id="1-retry">1. Retry</h2>
+
+<p>Retry simply dictates the handler to retry when a transient error occurs.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">RetryAsync</span><span class="p">());</span> <span class="c1">//Retries only once</span>
+                <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">RetryAsync</span><span class="p">(</span><span class="m">3</span><span class="p">));</span> <span class="c1">//Retries only for 3 times</span>
+                <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">RetryAsync</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="n">onRetry</span><span class="p">:</span> <span class="p">(</span><span class="n">exception</span><span class="p">,</span> <span class="n">retryCount</span><span class="p">)=&gt;</span>
+                <span class="p">{</span>
+                    <span class="c1">//Add logic to be executed before each retry</span>
+                <span class="p">}));</span><span class="c1">//Retries only for 3 times but on every retry, it can execute the logic specified</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="2-retry-forever">2. Retry Forever</h2>
+
+<p>Retry Forever means that the handler keeps retrying until it succeeds. So, here there is no concept of retry count.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">RetryForeverAsync</span><span class="p">());</span> <span class="c1">//Retries until it succeeds</span>
+                <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">RetryForeverAsync</span><span class="p">(</span><span class="n">onRetry</span><span class="p">:</span> <span class="p">(</span><span class="n">exception</span><span class="p">)=&gt;</span>
+                <span class="p">{</span>
+                    <span class="c1">//Add logic to be executed before each retry</span>
+                <span class="p">}));</span><span class="c1">//Retries forever but on every retry, it can execute the logic specified</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="3-wait-and-retry">3. Wait and Retry</h2>
+
+<p>Wait and Retry means that the handler first waits for the the specified amount of time and then retries. Here, you can specify a max retry count so that the handler can give up if it doesn’t get a response in the max retries.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">WaitAndRetryAsync</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="n">_</span> <span class="p">=&gt;</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromMilliSeconds</span><span class="p">(</span><span class="m">500</span><span class="p">));</span> <span class="c1">//Wait for 5 seconds and then Retries for a maximum of 3 times</span>
+                <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">WaitAndRetryAsync</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="n">_</span> <span class="p">=&gt;</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromMilliseconds</span><span class="p">(</span><span class="m">500</span><span class="p">),</span> <span class="p">(</span><span class="n">exception</span><span class="p">,</span> <span class="n">timeSpan</span><span class="p">)</span> <span class="p">=&gt;</span>
+                <span class="p">{</span>
+                    <span class="c1">//Add logic to be executed before each retry</span>
+                <span class="p">}));</span> <span class="c1">//Wait for 5 seconds, execute some logic and then Retry for a maximum of 3 times.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="4-wait-and-retry-forever">4. Wait and Retry Forever</h2>
+
+<p>Wait and Retry Forever means that the handler first waits for the the specified amount of time and then retries until it succeeds. Here, there is no concept of retry count because it is a forever technique.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">WaitAndRetryForeverAsync</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromMilliSeconds</span><span class="p">(</span><span class="m">500</span><span class="p">));</span> <span class="c1">//Wait for 5 seconds and then Retries until it succeeds</span>
+                <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">WaitAndRetryForeverAsync</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromMilliseconds</span><span class="p">(</span><span class="m">500</span><span class="p">),</span> <span class="p">(</span><span class="n">exception</span><span class="p">,</span> <span class="n">timeSpan</span><span class="p">)</span> <span class="p">=&gt;</span>
+                <span class="p">{</span>
+                    <span class="c1">//Add logic to be executed before each retry</span>
+                <span class="p">}));</span> <span class="c1">//Wait for 5 seconds, execute some logic and then Retries until it succeeds</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="5-circuit-breaker">5. Circuit Breaker</h2>
+
+<p>Circuit Breaker is a technique in which the entire operations are stopped/allowed with respect the conditions that we specify in the circuit breaker. It’s very similar to the Miniature Circuit Breaker (MCB) electrical component that we use at our homes to protect the house from power surge.</p>
+
+<p><img src="https://www.abhisheksubbu.com/wp-content/uploads/2020/02/home-electrical-mcb-300x300.jpg" alt="Miniature Circuit Breaker (MCB) used for home" /></p>
+
+<p>A circuit breaker (from .NET core – Polly perspective) can put the transient error handler in 4 states.</p>
+
+<ul>
+  <li>Open – Normal operation. Execution of actions allowed.</li>
+  <li>Closed – The automated controller has opened the circuit. Execution of actions blocked.</li>
+  <li>HalfOpen – Recovering from open state, after the automated break duration has expired. Execution of actions permitted. Success of subsequent action/s controls onward transition to Open or Closed state.</li>
+  <li>Isloated – Circuit held manually in an open state. Execution of actions blocked.</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">CircuitBreakerAsync</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromMinutes</span><span class="p">(</span><span class="m">1</span><span class="p">)));</span> <span class="c1">//Stops the handler (Circuit State to Open) for 1 minute if exceptions are encountered for 2 consecutive times. After 1 minute, the handler starts operating normally (Circuit State to Closed).</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="6-advanced-circuit-breaker">6. Advanced Circuit Breaker</h2>
+
+<p>Advanced Circuit Breaker helps us to measure the amount of transient faults occurring in the system and break the circuit accordingly and reset back after a particular duration.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">AdvancedCircuitBreakerAsync</span><span class="p">(</span>
+                    <span class="n">failureThreshold</span><span class="p">:</span><span class="m">0.5</span><span class="p">,</span>
+                    <span class="n">samplingDuration</span><span class="p">:</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromSeconds</span><span class="p">(</span><span class="m">10</span><span class="p">),</span>
+                    <span class="n">minimumThroughput</span><span class="p">:</span> <span class="m">8</span><span class="p">,</span>
+                    <span class="n">durationOfBreak</span><span class="p">:</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromSeconds</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
+                    <span class="p">));</span>
+                <span class="c1">// Breaks the circuit for 30 seconds if 50% of above of incoming requests fails OR a minimum of 8 faults occur within a 10 second period. The circuit is reset/closed after 30 seconds.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="7-fallback">7. Fallback</h2>
+
+<p>Fallback technique helps to return a fallback value instead of exception re-throw when faults keep occurring. This helps the system to ensure that it gracefully tries to keep the system stable when it detects a fallback value coming by.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">FallbackAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Http</span><span class="p">.</span><span class="nf">HttpResponseMessage</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">RequestTimeout</span><span class="p">)));</span>
+                <span class="c1">// Returns a fallback value</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views of opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Speaking</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking/Videos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

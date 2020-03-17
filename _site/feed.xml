@@ -3,14 +3,14 @@
 
     <channel>
         <title>AbhishekSubbu</title>
-        <link>http://localhost:4000</link>
+        <link>https://abhisheksubbu.github.io/</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Tue, 17 Mar 2020 14:23:37 +0530</lastBuildDate>
+        <lastBuildDate>Tue, 17 Mar 2020 15:05:43 +0530</lastBuildDate>
         
         <item>
             <title>Object Oriented Programming Principles</title>
             <link>
-                http://localhost:4000/object-oriented-programming-principles/
+                https://abhisheksubbu.github.io//object-oriented-programming-principles/
             </link>
             <description>
                 &lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
@@ -25,7 +25,27 @@
             </description>
             <pubDate>Tue, 25 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/object-oriented-programming-principles/
+                https://abhisheksubbu.github.io//object-oriented-programming-principles/
+            </guid>
+        </item>
+        
+        <item>
+            <title>Polly Retry Policies</title>
+            <link>
+                https://abhisheksubbu.github.io//polly-retry-policies/
+            </link>
+            <description>
+                &lt;p&gt;If you have followed my blog on implementing “Retries using Polly in .NET Core”, then this blog will make more sense to you. In this blog, we will understand how many different techniques of Retry policies can be used in Polly.&lt;/p&gt;
+
+&lt;p&gt;There are 4 different ways in which Transient Error Policy can handle faults.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Retry&lt;/li&gt;
+  &lt;li&gt...
+            </description>
+            <pubDate>Thu, 20 Feb 2020 00:00:00 +0530</pubDate>
+            <guid>
+                https://abhisheksubbu.github.io//polly-retry-policies/
             </guid>
         </item>
         
