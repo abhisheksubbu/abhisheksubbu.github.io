@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/vs.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Retries using Polly in .NET Core | AbhishekSubbu</title>
+  </head>
+  <body>
+    <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/blog">Blog</a>
+    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
+    <a class="p-2 text-dark" href="/about">About</a>
+  </nav>
+</div>
+
+    <div class="container">
+      <h1>Retries using Polly in .NET Core</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    February 19, 2020
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">.NET</a>
+  
+</p>
+<p>In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.</p>
+
+<p>Polly is a library that allows developers to express resilience and transient fault handling policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback in a fluent and thread-safe manner.</p>
+
+<h3 id="pre-requisites">Pre-Requisites</h3>
+
+<ul>
+  <li>Open Visual Studio</li>
+  <li>Create a New Project of type “ASP.NET Core Web Application”</li>
+  <li>Give a good name for your project</li>
+  <li>Choose the “MVC” template</li>
+  <li>Hit “Create” button</li>
+</ul>
+
+<h3 id="what-am-i-trying-to-achieve">What am I trying to achieve?</h3>
+
+<p>The goal that I am trying to achieve is to call the <a href="https://api.github.com/users">GitHub Users</a> endpoint and retrieve the data for any user in github. I want to make sure that the solution uses memory optimally &amp; also ensures that my application retries if the API fails for some reason.</p>
+
+<p>A traditional way the developers would code is to create an HttpClient, set the properties with the Uri and invoke the endpoint (as shown below).</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Index</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">),</span>
+        <span class="n">DefaultRequestHeaders</span> <span class="p">=</span>
+        <span class="p">{</span>
+            <span class="p">{</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span> <span class="p">},</span>
+            <span class="p">{</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="n">GitHubUserModel</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GitHubUserModel</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">userData</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetStringAsync</span><span class="p">(</span><span class="s">"/users/abhisheksubbu"</span><span class="p">);</span>
+    <span class="n">viewModel</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="nf">JsonPrettify</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">viewModel</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="problems-with-this-traditional-approach">Problems with this traditional approach</h3>
+
+<ul>
+  <li>Every time you want the user data, the HttpClient is newly initialized</li>
+  <li>Everytime a new HttpClient is initialized, the HTTP Handlers for the client object is also newly instantiated.</li>
+  <li>We already know that BaseAddress and DefaultRequestHeaders are the same and do not change. So, the handlers could have been re-used but with this approach, you can’t do that.</li>
+  <li>It would slow down the execution of this logic because all these objects have to be created in memory and then executed.</li>
+</ul>
+
+<h3 id="solution-to-this-problem">Solution to this problem</h3>
+
+<p>From .NET Core 2.1 onwards, Microsoft introduced IHttpClientFactory with which we can set the handlers prior and re-use them while creating the client objects. As we all know, we can set the handlers in the Startup.cs and dependency inject it to the controller so that we can use the handlers for creating the client object.</p>
+
+<p>In Startup.cs, we can specify a named HttpClient called “GitHub”</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In HomeController.cs, we can use httpClientFactory to create the client object using the named Client that we had specified in Startup.cs</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">HomeController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IHttpClientFactory</span> <span class="n">_httpClientFactory</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">HomeController</span><span class="p">(</span><span class="n">IHttpClientFactory</span> <span class="n">httpClientFactory</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_httpClientFactory</span> <span class="p">=</span> <span class="n">httpClientFactory</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Index</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">_httpClientFactory</span><span class="p">.</span><span class="nf">CreateClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">);</span>
+        <span class="n">GitHubUserModel</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GitHubUserModel</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">userData</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetStringAsync</span><span class="p">(</span><span class="s">"/users/abhisheksubbu"</span><span class="p">);</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="nf">JsonPrettify</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">viewModel</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">JsonPrettify</span><span class="p">(</span><span class="kt">string</span> <span class="n">json</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">stringReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringReader</span><span class="p">(</span><span class="n">json</span><span class="p">))</span>
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">stringWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringWriter</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">jsonReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">JsonTextReader</span><span class="p">(</span><span class="n">stringReader</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">jsonWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">JsonTextWriter</span><span class="p">(</span><span class="n">stringWriter</span><span class="p">)</span> <span class="p">{</span> <span class="n">Formatting</span> <span class="p">=</span> <span class="n">Formatting</span><span class="p">.</span><span class="n">Indented</span> <span class="p">};</span>
+            <span class="n">jsonWriter</span><span class="p">.</span><span class="nf">WriteToken</span><span class="p">(</span><span class="n">jsonReader</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">stringWriter</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Perfect !! We now understood the optimal way to invoke API endpoints using IHttpClientFactory.</p>
+
+<p>But, there can be instances where the API endpoints can fail temporarily for a fraction of a second but is likely to disappear if we invoke the API endpoint again. These kinds of temporary errors that will disappear on retry are called as “<strong>Transient Errors</strong>“.</p>
+
+<p>Technically, Transient Errors are one of the following.</p>
+
+<ul>
+  <li>Network failures (<code class="highlighter-rouge">System.Net.Http.HttpRequestException</code>)</li>
+  <li>HTTP 5XX status codes (server errors)</li>
+  <li>HTTP 408 status code (request timeout)
+In our case, if a transient error occurred, this call would fail naturally because there is no retry mechanism built/coded.</li>
+</ul>
+
+<p>Microsoft provides an elegant solution to this problem with the NuGet package named “<strong>Microsoft.Extensions.Http.Polly</strong>“. It integrates the Polly library with IHttpClientFactory.</p>
+
+<h3 id="steps-to-implement-retry">Steps to implement Retry</h3>
+
+<p>Alright, go ahead and install the “<strong>Microsoft.Extensions.Http.Polly</strong>” NuGet package in the web application project.</p>
+
+<p>In Startup.cs, specify the Transient Error Policy as shown below</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddHttpClient</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">client</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/vnd.github.v3+json"</span><span class="p">);</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"User-Agent"</span><span class="p">,</span> <span class="s">"HttpClientFactoryExample"</span><span class="p">);</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nf">AddTransientHttpErrorPolicy</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="nf">WaitAndRetryAsync</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="n">_</span> <span class="p">=&gt;</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromMilliseconds</span><span class="p">(</span><span class="m">300</span><span class="p">)));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here, we are telling the IHttpClientFactory that in case of a transient error, the policy is to wait for 3 seconds (300 milliseconds) and retry the API endpoint for a maximum of 3 times. If we get the response before max retry times of 3, send the response back. If not, send the error as it is. Therefore, if this was really a transient error that would disappear on retry, essentially the user doesn’t even realize that a transient error just happened because the IHttpClientFactory immediately retried invoking the API endpoint and send back the response.</p>
+
+<p>I hope this blog was useful to all .NET Core Developers. This is a common pattern that we see everyday in our coding life and you can follow the techniques mentioned here to make your applications more robust.</p>
+
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views of opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Speaking</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking/Videos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

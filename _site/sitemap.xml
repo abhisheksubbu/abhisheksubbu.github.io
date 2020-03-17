@@ -95,5 +95,12 @@
         <priority>0.5</priority>
     </url>
     
+    <url>
+        <loc>/retries-using-polly-in-net-core/</loc>
+        <lastmod>2020-03-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
 
 </urlset>
