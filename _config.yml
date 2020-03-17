@@ -1,0 +1,9 @@
+title: AbhishekSubbu
+url: https://abhisheksubbu.github.io/
+description: Sharing my thoughts on the Cloud
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+baseurl:
+repository: "abhisheksubbu/abhisheksubbu.github.io"
+plugins: [jekyll-paginate]

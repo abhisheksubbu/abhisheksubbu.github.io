@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Object Oriented Programming Principles | AbhishekSubbu</title>
+  </head>
+  <body>
+    <div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/blog">Blog</a>
+    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
+    <a class="p-2 text-dark" href="/about">About</a>
+  </nav>
+</div>
+
+    <div class="container">
+      <h1>Object Oriented Programming Principles</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    February 25, 2020
+  </span>
+</p>
+<p>
+  
+  <a href="#" class="badge badge-secondary">Fundamentals</a>
+  
+</p>
+<h2 id="history">History</h2>
+
+<p>When programming languages were introduced into the industry, they were usually Procedural in nature. Procedural means line by line execution from top to bottom.</p>
+
+<p>For example, the procedure for making a phone call is:</p>
+
+<ol>
+  <li>Pick up the phone</li>
+  <li>Unlock the phone</li>
+  <li>Open the dialer app</li>
+  <li>Type the phone number</li>
+  <li>Hit the call button</li>
+</ol>
+
+<p>In the above procedure, the steps/logic needs to be run from top to bottom (line by line) manner. You cannot make a call if you skip any steps or jump between steps randomly. This is the nature of procedural programming. To point out, programming languages like “C” are procedural in nature.</p>
+
+<p>Speaking about Procedural approach, it doesn’t mean that Procedural Programming Languages are bad in any way. They are useful in terms of device programming (like the 8085/8086 Microprocessor assembly language we used to code back in college days). Just that for real world scenarios, procedural approach seems to introduce a lot of complexity.</p>
+
+<h3 id="so-what-is-the-problem-with-proceduralstructural-programming-languages">So what is the problem with Procedural/Structural Programming Languages?</h3>
+
+<ol>
+  <li><strong>Data types &amp; Variables</strong>
+Every data needs to be in its own variables and you as a programmer should know what variables are created for what purpose and use it. So, a person’s first name, last name, date of birth and many other data needed to be in its own variables. There was no way of wrapping up a set of variables as the variables of a Person entity. “C” program introduced the concepts of Structs and Unions which solved the problem of wrapping up associated variables in a unit. This could only be visualized as a user defined data type. But it failed with respect to data access. Even though structs and unions were there, the data was very much accessible all over.</li>
+  <li><strong>Data Access</strong>
+Procedural programs didn’t have the concept of modules. Everything was methods/functions. Therefore restricting the access to data in a unit was a painful task.</li>
+  <li><strong>Responsibilities were all scattered</strong>
+Because everything is procedural, there was no efficient way to separate the responsibilities of a system/program in a modularized way. The only way to separate was to have separate functions. Having separate functions didn’t necessarily separate the responsibilities in a true sense.</li>
+</ol>
+
+<h3 id="object-oriented-perspective-had-to-be-brought">Object Oriented perspective had to be brought</h3>
+
+<p>Representing a real world problem in a concise, modularized way was the need of the hour and thus Object Orientation was born. “C++” programming language brought in the first glimpse of Object Oriented Concepts and it was a huge success in the programming community.</p>
+
+<p>The community started getting into C++ really deep and new object oriented programming languages like Java and .NET started to emerge .</p>
+
+<h3 id="principlesfeatures-of-object-orientation">Principles/Features of Object Orientation</h3>
+
+<ol>
+  <li>Class</li>
+  <li>Object</li>
+  <li>Encapsulation</li>
+  <li>Abstraction</li>
+  <li>Inheritance</li>
+  <li>Polymorphism</li>
+</ol>
+
+<h4 id="class">CLASS</h4>
+
+<ul>
+  <li>Class is a user defined prototype/blueprint of a real world entity</li>
+  <li>Class constitutes of properties &amp; methods</li>
+  <li>They wrap up a single responsibility in to a unit/class</li>
+  <li>Example:
+    <ul>
+      <li>Computer can be a class that contains lots of components as its properties and can do specific methods like running an installed program, etc.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="object">OBJECT</h4>
+
+<ul>
+  <li>Object is the instance of a Class</li>
+  <li>It keeps the values of properties &amp; references to methods inside the object</li>
+  <li>Object can be managed in memory</li>
+  <li>Objects, by nature, do not share any data to another object.</li>
+  <li>Example:
+    <ul>
+      <li>An HP All-in-One PC is an Object of the Computer Class.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="encapsulation">ENCAPSULATION</h4>
+
+<ul>
+  <li>Wrapping up the data into a single unit is called as Encapsulation</li>
+  <li>Class is the encapsulated form</li>
+  <li>The encapsulated form (class) can expose/not expose data for outside access using access modifiers.</li>
+  <li>Example:
+    <ul>
+      <li>The processor, motherboard, hard disk, CD drive, ethernet adapters are all encapsulated into the All-in-One PC. It only exposes what we as users need to use.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="abstraction">ABSTRACTION</h4>
+
+<ul>
+  <li>Hiding the complexities and only exposing the necessary data/methods for outside access is called Abstraction</li>
+  <li>It is achieved by declaring private properties and exposing data with public methods.</li>
+  <li>Example:
+    <ul>
+      <li>Even though there are millions of Integrated Chips on the Network Interface Controller Board, it exposes a single NIC port to which users can plug in their ethernet cable to access internet.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="inheritance">INHERITANCE</h4>
+
+<ul>
+  <li>It is the mechanism by which classes can re-use its parent class implementations</li>
+  <li>It helps to model real world use-cases like Man is a Human. A Man gets all the characteristics of a Human.</li>
+  <li>Inheritance helps in re-usability of code</li>
+  <li>Example:
+    <ul>
+      <li>A PC is a Computer. A Laptop is a Computer. Both the PC and Laptop inherit the properties of a Computer.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="polymorphism">POLYMORPHISM</h4>
+
+<ul>
+  <li>Poly means Many. Morph means Forms. Polymorphism brings in the ability for an object to behave differently in different situations.</li>
+  <li>Example:
+    <ul>
+      <li>Certain keys in the keyboard can be configured to do different actions as per the shortcut settings set in the specific application. The “Up Arrow” key can help you scroll a word application to go upwards. The same “Up Arrow” key can also accelerate a bike in the “Road Rash” game installed in that machine.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="exercise-for-the-brain">Exercise for the Brain</h3>
+
+<ul>
+  <li>Try to identify the Object Oriented features in a
+    <ul>
+      <li>Bus Station</li>
+      <li>Web Page</li>
+      <li>Workplace</li>
+      <li>HR Department</li>
+    </ul>
+  </li>
+</ul>
+
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views of opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Speaking</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking/Videos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

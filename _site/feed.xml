@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+    <channel>
+        <title>AbhishekSubbu</title>
+        <link>http://localhost:4000</link>
+        <description>Sharing my thoughts on the Cloud</description>
+        <lastBuildDate>Tue, 17 Mar 2020 14:23:37 +0530</lastBuildDate>
+        
+        <item>
+            <title>Object Oriented Programming Principles</title>
+            <link>
+                http://localhost:4000/object-oriented-programming-principles/
+            </link>
+            <description>
+                &lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
+
+&lt;p&gt;When programming languages were introduced into the industry, they were usually Procedural in nature. Procedural means line by line execution from top to bottom.&lt;/p&gt;
+
+&lt;p&gt;For example, the procedure for making a phone call is:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Pick up the phone&lt;/li&gt;
+  &lt;li&gt;Unlock the phone&lt;/li...
+            </description>
+            <pubDate>Tue, 25 Feb 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/object-oriented-programming-principles/
+            </guid>
+        </item>
+        
+    </channel>
+</rss>
