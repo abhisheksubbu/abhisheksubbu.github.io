@@ -1,0 +1,30 @@
+I"Ö<h1>Learn &amp; Upskill</h1>
+<div style="margin-bottom:2rem;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Learn &amp; Upskill</li>
+      </ol>
+    </nav>
+  </div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Architect Corner</h5>
+        <p class="card-text">Learning Materials for technical architects</p>
+        <a href="/learn/architect" class="btn btn-primary">Explore Architect Corner</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Developer Corner</h5>
+        <p class="card-text">Learning Materials for Developers</p>
+        <a href="/learn/developer" class="btn btn-primary">Explore Developer Corner</a>
+      </div>
+    </div>
+  </div>
+</div>
+:ET

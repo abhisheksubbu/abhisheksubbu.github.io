@@ -100,6 +100,20 @@
         <priority>0.5</priority>
     </url>
     
+    <url>
+        <loc>/blog/page5/</loc>
+        <lastmod>2020-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>/blog/page6/</loc>
+        <lastmod>2020-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
 
     
     <url>

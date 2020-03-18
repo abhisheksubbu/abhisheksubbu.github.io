@@ -37,3 +37,5 @@ I would like to thank the entire management of Bridge Global for giving me an op
 I am writing this blog with lots of satisfaction that I had today by seeing that we as a team did a great job of teaching the concept of Design Patterns in 1 day for which people take years to master.
 
 ![Speaking at TechWizz](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/speaking-at-TechWizz17.png)
+
+[Link to the Design Patterns codebase](/downloads/) used in the session for learning purpose

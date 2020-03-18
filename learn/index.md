@@ -4,7 +4,14 @@ layout: default
 ---
 
 <h1>{{page.title}}</h1>
-
+  <div style="margin-bottom:2rem;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+      </ol>
+    </nav>
+  </div>
 <div class="row">
   <div class="col-sm-6">
     <div class="card">

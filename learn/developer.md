@@ -4,6 +4,15 @@ layout: default
 ---
 
 <h1>{{page.title}}</h1>
+  <div style="margin-bottom:2rem;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/learn">Learn & Upskill</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+      </ol>
+    </nav>
+  </div>
 As a **developer/senior developer**, it is expected that you are strong in terms of Programming Fundamentals as well as have strong hands-on experience working on the technologies/platforms/languages that are you specializing on.
 
 You should be allocating at least 2 hours everyday for practicing hands-on programming (be it on your project or as a separate learning if you are on bench). Practice is the key to becoming a great programmer. There is no other secret other than practice. Experience is only considered valuable if you have a culture of coding practice and as years pass by, you should know more problem solving techniques (not just naive but efficient ones).

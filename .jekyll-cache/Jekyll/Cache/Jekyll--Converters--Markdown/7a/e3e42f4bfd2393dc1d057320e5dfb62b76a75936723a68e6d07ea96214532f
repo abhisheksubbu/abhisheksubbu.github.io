@@ -1,0 +1,14 @@
+I"±<h1>Downloads</h1>
+<div style="margin-bottom:2rem;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Downloads</li>
+      </ol>
+    </nav>
+  </div>
+
+<ol>
+  <li><a href="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/DesignPatterns.Demo.zip">Design Patterns Codebase</a></li>
+</ol>
+:ET
