@@ -26,7 +26,11 @@ layout: default
       </p>
       <p>
         {% for category in post.categories%}
-        <a href="#" class="badge badge-secondary">{{category}}</a>
+        <a
+          href="/categories/#{{category | downcase }}"
+          class="badge badge-secondary"
+          >{{category}}</a
+        >
         {% endfor %}
       </p>
       {{ post.excerpt }}

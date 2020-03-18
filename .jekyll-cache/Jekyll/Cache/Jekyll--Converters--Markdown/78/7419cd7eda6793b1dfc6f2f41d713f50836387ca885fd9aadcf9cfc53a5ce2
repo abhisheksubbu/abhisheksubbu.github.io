@@ -1,16 +1,11 @@
----
-title: Home
-layout: default
----
-
-<div class="jumbotron">
+I"ï<div class="jumbotron">
 <h1>Hi, I am Abhishek Subbu</h1>
 <p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
-<hr/>
+<hr />
 <p>Follow me on social media 
-    <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+    <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></p>
 </div>
 
 <div class="row text-center">
@@ -19,7 +14,7 @@ layout: default
       <div class="card-body">
         <h5 class="card-title">Architect Corner</h5>
         <p class="card-text">Learning Materials for Technical Architects</p>
-        <a href="{{site.baseurl}}/learn/architect" class="btn btn-primary">Explore Architect Corner</a>
+        <a href="/learn/architect" class="btn btn-primary">Explore Architect Corner</a>
       </div>
     </div>
   </div>
@@ -28,7 +23,7 @@ layout: default
       <div class="card-body">
         <h5 class="card-title">Developer Corner</h5>
         <p class="card-text">Learning Materials for Developers</p>
-        <a href="{{site.baseurl}}/learn/developer" class="btn btn-primary">Explore Developer Corner</a>
+        <a href="/learn/developer" class="btn btn-primary">Explore Developer Corner</a>
       </div>
     </div>
   </div>
@@ -38,3 +33,4 @@ You can use HTML elements in Markdown, such as the comment element, and they won
 be affected by a markdown parser. However, if you create an HTML element in your
 markdown file, you cannot use markdown syntax within that element's contents.
 -->
+:ET
