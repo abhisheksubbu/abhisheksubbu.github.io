@@ -15,5 +15,6 @@ kramdown:
 highlighter: rouge
 
 permalink: /:title/
+disqus_shortname: abhisheksubbu-github-io
 
 plugins: [jekyll-paginate]

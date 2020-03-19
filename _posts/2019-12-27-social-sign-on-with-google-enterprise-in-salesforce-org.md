@@ -3,6 +3,7 @@ title: Social Sign On with Google Enterprise in Salesforce Org
 layout: blog
 category: [Salesforce]
 excerpt: In this blog, we will explain the steps of enabling social sign on into salesforce enterprise org using your corporate Gmail account. Scenario - John is an employee of an enterprise called “XYZ.com”. The company uses Salesforce as their primary CRM. Just like John, there are many other employees who face issues with remembering username and...
+comments: true
 ---
 
 In this blog, we will explain the steps of enabling social sign on into salesforce enterprise org using your corporate Gmail account.

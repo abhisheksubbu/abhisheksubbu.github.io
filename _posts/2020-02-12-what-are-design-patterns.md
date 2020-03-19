@@ -3,6 +3,7 @@ title: What are Design Patterns
 layout: blog
 category: [Design Patterns, Architecture]
 excerpt: Design Patterns has nothing to do with algorithms or programming constructs/concepts (like loops, big-o complexity, etc). Instead, Design Patterns guide you to structure the classes and how they should collaborate. Here, we will understand what Design Patterns are & what different categories of patterns are there.
+comments: true
 ---
 
 Design Patterns has nothing to do with algorithms or programming constructs/concepts (like loops, big-o complexity, etc). Instead, Design Patterns guide you to structure the classes and how they should collaborate.

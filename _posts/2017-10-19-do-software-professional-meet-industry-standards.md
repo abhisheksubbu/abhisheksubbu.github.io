@@ -3,6 +3,7 @@ title: Do Software Professional Meet Industry Standards?
 layout: blog
 category: [General]
 excerpt: Are you a Software Developer who feels stagnant? OR Are you a Technical Recruiter not getting quality candidates in Software Development? Then, I believe this blog is for you to read. Many a times you will come across people (whom we call as a Techie) in life. The fact is there are many such characters...
+comments: true
 ---
 
 Are you a Software Developer who feels stagnant? OR Are you a Technical Recruiter not getting quality candidates in Software Development? Then, I believe this blog is for you to read.

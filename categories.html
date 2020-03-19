@@ -3,28 +3,14 @@ layout: default
 title: Categories
 ---
 
-<h2>Categories</h2>
-<ul class="list-group">
-  {% assign categories_list = site.categories %} {% if categories_list.first[0]
-  == null %} {% for category in categories_list %}
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <a
-      href="#{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}"
-      >{{ category | camelcase }}></a
-      <span class="badge badge-primary badge-pill">{{ site.tags[category].size }}</span>
-  </li>
-  {% endfor %} {% else %} {% for category in categories_list %}
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <a
-      href="#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}"
-      >{{ category[0] | camelcase }}</a
-      >
-      <span class="badge badge-primary badge-pill">{{ category[1].size }}</span
-      >
-  </li>
-  {% endfor %} {% endif %} {% assign categories_list = nil %}
-</ul>
-<hr/>
+<div style="margin-bottom:2rem;">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+    </ol>
+  </nav>
+</div>
 {% for category in site.categories %}
 <h4 id="{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">
   {{ category[0] | camelcase }}

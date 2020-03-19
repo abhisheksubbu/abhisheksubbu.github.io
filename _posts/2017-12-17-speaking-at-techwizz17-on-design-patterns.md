@@ -3,6 +3,7 @@ title: Speaking at TechWizz’17 on Design Patterns
 layout: blog
 category: [General]
 excerpt: Today, I had the honour of speaking at the TechWizz 2017 – a technical event on Design Patterns in Object Oriented Programming organized by Bridge Global at PGS Vedanta Business Hotel in Kochi, Kerala, The event started with an official inauguration where Mr.Krishna, CEO of Bridge Global India addressed the gathering with his thoughts on how...
+comments: false
 ---
 
 Today, I had the honour of speaking at the [TechWizz 2017](http://bridge-global.com/TechWhizz/) – a technical event on Design Patterns in Object Oriented Programming organized by [Bridge Global](http://bridge-global.com/) at PGS Vedanta Business Hotel in Kochi, Kerala,

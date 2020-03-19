@@ -3,6 +3,7 @@ title: My Experience as an IEEE Jury
 layout: blog
 category: [General]
 excerpt: On 3rd May 2019, I had a wonderful opportunity to have been invited as an IEEE SA (Institute of Electrical & Electronics Engineers Standards Association) Jury to evaluate an IEEE innovation competition named “Prayojaka” that was organized by the IEEE Student Branch of ASIET (Adi Shankara Institute of Engineering & Technology). The event started at...
+comments: false
 ---
 
 On 3rd May 2019, I had a wonderful opportunity to have been invited as an IEEE SA (Institute of Electrical & Electronics Engineers Standards Association) Jury to evaluate an IEEE innovation competition named **“Prayojaka”** that was organized by the IEEE Student Branch of ASIET (Adi Shankara Institute of Engineering & Technology).

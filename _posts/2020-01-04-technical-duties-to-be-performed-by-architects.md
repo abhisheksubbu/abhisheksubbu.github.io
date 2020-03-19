@@ -3,6 +3,7 @@ title: Technical Duties to be performed by Architects
 layout: blog
 category: [General]
 excerpt: Not every architect in every organization will perform every one of these duties on every project. But a competent architect should not surprised to find himself or herself engaged in the activities described in this blog.
+comments: true
 ---
 
 Not every architect in every organization will perform every one of these duties on every project. But a competent architect should not surprised to find himself or herself engaged in any of the activities listed below.

@@ -3,6 +3,7 @@ title: Understanding Microservices Architecture Part 1
 layout: blog
 category: [Architecture]
 excerpt: Development Community around the world is pushing the software development approach to shift from Monolithic to Microservices architecture. Most of us accept this shift without understanding the WHY, WHAT, WHEN and HOW of Microservices. In this blog, we will try to understand What is essential for an organization to shift from Monolithic to Microservices Architecture...
+comments: true
 ---
 
 Development Community around the world is pushing the software development approach to shift from Monolithic to Microservices architecture. Most of us accept this shift without understanding the WHY, WHAT, WHEN and HOW of Microservices. In this blog, we will try to understand

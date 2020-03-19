@@ -3,6 +3,7 @@ title: The State of Salesforce Developers
 layout: blog
 category: [Salesforce, General]
 excerpt: It is a fact that any Salesforce developer that you meet will have the following strengths and weakness. This is a consistent trend everywhere. I am writing this blog to basically put my thoughts on the state of salesforce developers. This is not to defame or criticize anyone or any company. I am just trying to share what I see, hear and feel about developers in salesforce ecosystem.
+comments: true
 ---
 
 I am writing this blog to basically put my thoughts on the state of salesforce developers. This is not to defame or criticize anyone or any company. I am just trying to share what I see, hear and feel about developers in salesforce ecosystem.

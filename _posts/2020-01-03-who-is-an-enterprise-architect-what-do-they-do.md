@@ -3,6 +3,7 @@ title: Who is an Enterprise Architect & What do they do
 layout: blog
 category: [General]
 excerpt: Enterprise Architect focusses on working the chief executives of an organization in deciding the high-level direction that an organization/enterprise needs to take from a technology standpoint. In this blog, we will see the traits of Enterprise Architects.
+comments: true
 ---
 
 **Enterprise Architect** focusses on working the chief executives of an organization in deciding the high-level direction that an organization/enterprise needs to take from a technology standpoint.

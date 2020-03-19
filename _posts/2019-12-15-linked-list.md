@@ -3,6 +3,7 @@ title: Linked List
 layout: blog
 category: [Fundamentals]
 excerpt: Linked Lists are one of the most commonly used Linear Data Structures after arrays. They solve many problems of arrays and are used for building complex data structures. Unlike arrays, Linked Lists can grow and shrink automatically. A Linked List has a sequence of nodes. Every node has a value & address to next node...
+comments: true
 ---
 
 **Linked Lists** are one of the most commonly used **Linear Data Structures** after arrays. They solve many problems of arrays and are used for building complex data structures. Unlike arrays, Linked Lists can grow and shrink automatically.

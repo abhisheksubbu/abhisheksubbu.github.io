@@ -3,6 +3,7 @@ title: Non Technical Duties to be performed by Architects
 layout: blog
 category: [General]
 excerpt: An obvious implication, for those of you who wish to be architects, is that you must pay adequate attention to the non-technical aspects of your education and your professional activities. In this blog, we will learn what are the non-technical duties of Software Architects.
+comments: true
 ---
 
 An obvious implication, for those of you who wish to be architects, is that you must pay adequate attention to the non-technical aspects of your education and your professional activities.Generally, the non-technical duties to be performed by an architect includes:

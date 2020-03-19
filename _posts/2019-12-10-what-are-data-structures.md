@@ -3,6 +3,7 @@ title: What are Data Structures
 layout: blog
 category: [Fundamentals]
 excerpt: In this blog, we will learn what data structures are, why are they important and the various types of data structures.
+comments: true
 ---
 
 Data Structure is a way of organizing data so that it can be used effectively.

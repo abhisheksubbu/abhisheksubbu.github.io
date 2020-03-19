@@ -3,6 +3,7 @@ title: Skills needed by Architects
 layout: blog
 category: [General]
 excerpt: Architects usually play special LEADERSHIP role in a project. Ideally, a competent architect is an Effective Communicator, a Manager, a Team Builder, a Visionary and a Mentor. In this blog, we will learn what skills does a Software Architect needs.
+comments: true
 ---
 
 Architects usually play special LEADERSHIP role in a project. Ideally, a competent architect is

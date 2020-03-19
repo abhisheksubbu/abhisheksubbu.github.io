@@ -24,23 +24,55 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <script src="https://use.fontawesome.com/186ff9b997.js"></script>
     <title>Queue | AbhishekSubbu</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-51070250-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-51070250-1");
+</script>
+
   </head>
   <body>
-    <div
-  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
->
-  <h3 class="my-0 mr-md-auto font-weight-normal">
-    <a class="p-2 text-dark" href="/">AbhishekSubbu</a>
-  </h3>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="/blog">Blog</a>
-    <a class="p-2 text-dark" href="/learn">Learn & Upskill</a>
-    <a class="p-2 text-dark" href="/about">About</a>
-  </nav>
-</div>
-
     <div class="container">
-      <div style="margin-bottom:2rem;">
+      <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+  <h1><a class="navbar-brand" href="/">AbhishekSubbu</a></h1>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto">
+      <li>
+        <a class="nav-item nav-link" href="/blog">Blog</a>
+      </li>
+      <li>
+        <a class="nav-item nav-link" href="/learn"
+          >Learn & Upskill</a
+        >
+      </li>
+      <li>
+        <a class="nav-item nav-link" href="/about">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      <div style="margin-top:20px; margin-bottom:20px;"><div style="margin-bottom:2rem;">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -88,7 +120,39 @@
 
 <p>The time complexity of all these 5 operations is O(1) because all operations act on the back or front of the queue and not in the middle.</p>
 
- <footer class="pt-4 my-md-5 pt-md-5 border-top">
+
+<hr />
+
+<div id="disqus_thread"></div>
+<script>
+  /**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+  (function() {
+    // DON'T EDIT BELOW THIS LINE
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-abhisheksubbu-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+</div>
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
   <div class="row">
     <div class="col-12 col-md">
       <p class="mv0 lh-copy">

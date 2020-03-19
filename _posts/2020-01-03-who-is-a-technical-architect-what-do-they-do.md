@@ -3,6 +3,7 @@ title: Who is a Technical Architect & What do they do
 layout: blog
 category: [General]
 excerpt: Technical Architect (also known as Application Architects) is usually the leader of the engineering team that develops a project/product. In this blog, we will see the traits of Technical Architects.
+comments: true
 ---
 
 **Technical Architect** (also known as **Application Architects**) is usually the leader of the engineering team that develops a project/product.

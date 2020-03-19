@@ -3,6 +3,7 @@ title: Memento Pattern
 layout: blog
 category: [Design Patterns]
 excerpt: In this blog, we will learn the design pattern named “Memento” with a real life use-case and how to use this pattern to solve that problem.
+comments: true
 ---
 
 ## Problem Statement

@@ -3,6 +3,7 @@ title: Big O Analysis
 layout: blog
 category: [Fundamentals]
 excerpt: When it comes to Data Structures & Algorithms, there are 2 main factors that need to be analyzed every time. Time taken by the algorithm to finish [Time Complexity] Space needed by the algorithm for running the computation [Space Complexity] If your algorithm takes infinite amount of time to complete running, then your algorithm is...
+comments: true
 ---
 
 When it comes to Data Structures & Algorithms, there are 2 main factors that need to be analyzed every time.

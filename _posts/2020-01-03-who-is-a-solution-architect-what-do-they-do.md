@@ -3,6 +3,7 @@ title: Who is a Solution Architect & What do they do
 layout: blog
 category: [General]
 excerpt: Solution Architect focusses on defining the system & its interactions from a problem domain level. In this blog, we will see the traits of Solution Architects.
+comments: true
 ---
 
 **Solution Architect** focusses on defining the system & its interactions from a problem domain level. Notice that Solution Architecture is more abstracted than Technical Architecture.

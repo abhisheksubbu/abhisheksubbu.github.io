@@ -3,7 +3,6 @@ title: Learn & Upskill
 layout: default
 ---
 
-<h1>{{page.title}}</h1>
   <div style="margin-bottom:2rem;">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">

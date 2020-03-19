@@ -3,6 +3,7 @@ title: Customizing Registration Handler Apex Code in Salesforce Open ID Connect 
 layout: blog
 category: [Salesforce]
 excerpt: When you play with Salesforce Single Sign-On, it is most probable that you will come across something called the “Registration Handler” class. In this blog, we will take a deep dive into understanding what a RegistrationHandler class is, how to create it, how to customize it and finally use it for production.
+comments: true
 ---
 
 When you play with Salesforce Single Sign-On, it is most probable that you will come across something called the “Registration Handler” class. In this blog, we will take a deep dive into understanding what a RegistrationHandler class is, how to create it, how to customize it and finally use it for production.

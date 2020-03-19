@@ -3,6 +3,7 @@ title: Things to know about API Security
 layout: blog
 category: [Security]
 excerpt: Enterprises having greatly embraced SOA (Service Oriented Architecture) which helps to decouple different subsystems in such a way that we can expose & reuse these without having to break & build existing systems. In this context, securing an API is an absolute must for enterprises. In this blog, I would like to share few things...
+comments: true
 ---
 
 Enterprises having greatly embraced SOA (Service Oriented Architecture) which helps to decouple different subsystems in such a way that we can expose & reuse these without having to break & build existing systems. In this context, securing an API is an absolute must for enterprises.

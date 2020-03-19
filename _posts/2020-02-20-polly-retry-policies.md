@@ -3,6 +3,7 @@ title: Polly Retry Policies
 layout: blog
 category: [.NET]
 excerpt: If you have followed my blog on implementing “Retries using Polly in .NET Core”, then this blog will make more sense to you. In this blog, we will understand how many different techniques of Retry policies can be used in Polly.
+comments: true
 ---
 
 If you have followed my blog on implementing “Retries using Polly in .NET Core”, then this blog will make more sense to you. In this blog, we will understand how many different techniques of Retry policies can be used in Polly.

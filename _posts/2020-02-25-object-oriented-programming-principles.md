@@ -3,6 +3,7 @@ title: Object Oriented Programming Principles
 layout: blog
 category: [Fundamentals]
 excerpt: In this post, we will learn the history, advent and features/principles of Object Oriented Programming Principles (OOPS). As an aspiring developer/senior developer/architect, you need to very well understand these principles and apply it to real world problems.
+comments: true
 ---
 
 ## History

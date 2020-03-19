@@ -3,6 +3,7 @@ title: Knowledge needed by Architects
 layout: blog
 category: [General]
 excerpt: A competent architect always has an intimate familiarity with the architectural body of knowledge. The software architect should Be comfortable with all branches of software engineering from requirements definition to implementation, development, verification, validation & deployment Be familiar with supporting disciplines such as configuration management and project management Understand current design and implementation tools...
+comments: true
 ---
 
 A competent architect always has an intimate familiarity with the architectural body of knowledge. The software architect should

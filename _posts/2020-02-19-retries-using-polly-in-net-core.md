@@ -3,6 +3,7 @@ title: Retries using Polly in .NET Core
 layout: blog
 category: [.NET]
 excerpt: In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.
+comments: true
 ---
 
 In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.

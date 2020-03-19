@@ -3,6 +3,7 @@ title: ASP.NET Core Web API with Swagger
 layout: blog
 category: [.NET]
 excerpt: In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich...
+comments: true
 ---
 
 In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich interactivity interface for users, provides better understandable API documentation, makes it easy to discover the API and helps the developers build API’s that confirm to OpenAPI standards.

@@ -3,6 +3,7 @@ title: Understanding Microservices Architecture Part 2
 layout: blog
 category: [Architecture]
 excerpt: In the previous blog of “Understanding Microservices Architecture – Part 1“, we did a detailed study about monolithic v/s microservices architecture, the benefits and drawbacks of each architecture and the solution approaches to it. I highly recommend you to read the “Understanding Microservices Architecture – Part 1” blog before diving into this blog as it...
+comments: true
 ---
 
 In the previous blog of “[Understanding Microservices Architecture – Part 1](/understanding-microservices-architecture/)“, we did a detailed study about monolithic v/s microservices architecture, the benefits and drawbacks of each architecture and the solution approaches to it. I highly recommend you to read the “[Understanding Microservices Architecture – Part 1](/understanding-microservices-architecture/)” blog before diving into this blog as it would help you connect to the context of what we are going to learn here. Well, we understood that Microservices Architecture is the way forward. Now, here comes a lots of questions in our mind.

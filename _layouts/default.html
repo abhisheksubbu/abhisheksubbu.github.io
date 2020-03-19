@@ -24,11 +24,13 @@
     <link rel="icon" href="{{site.baseurl}}/favicon.ico" type="image/x-icon" />
     <script src="https://use.fontawesome.com/186ff9b997.js"></script>
     <title>{{ page.title }} | {{ site.title }}</title>
+    {% include analytics.html %}
   </head>
   <body>
-    {% include header.html %}
     <div class="container">
-      {{ content }} {% include footer.html %}
+      {% include header.html %}
+      <div style="margin-top:20px; margin-bottom:20px;">{{ content }}</div>
+      {% include footer.html %}
     </div>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
