@@ -42,3 +42,10 @@ I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in Sa
 ### Research Work
 
 - **Trigger Optimization Framework in Salesforce** – A comprehensive architectural framework that has been devised to optimize trigger execution in Force.com Platform. This architecture has been designed to increase performance, enhance scalability and bring forth developer-less configurations to control trigger execution in the Cloud.
+
+<br/>
+<hr/>
+<p>Follow me on social media 
+    <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
