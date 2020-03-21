@@ -1,0 +1,2 @@
+I"<p>Serilog is a logging implementation that can be plugged into ASP.NET Core. It supports structured logging API’s and receives log events from the ASP.NET Core framework class libraries. In this blog we will see how to configure Serilog in ASP.Net Core project.</p>
+:ET

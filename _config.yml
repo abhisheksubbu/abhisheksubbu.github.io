@@ -1,6 +1,23 @@
 title: AbhishekSubbu
+tagline: Sharing my thoughts on the Cloud
 url: https://abhisheksubbu.github.io/
 description: Sharing my thoughts on the Cloud
+author: Abhishek Sivasubramanian
+
+twitter:
+  username: abhisheksubbu
+  card: summary
+
+social:
+  name: Abhishek Subbu
+  links:
+    - https://twitter.com/abhisheksubbu
+    - https://www.facebook.com/abhishek.sivasubramanian
+    - https://www.linkedin.com/in/abhisheksivasubramanian
+    - https://github.com/abhisheksubbu
+
+google_site_verification: 6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs
+
 paginate: 6
 paginate_path: "/blog/page:num/"
 
@@ -17,4 +34,6 @@ highlighter: rouge
 permalink: /:title/
 disqus_shortname: abhisheksubbu-github-io
 
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
