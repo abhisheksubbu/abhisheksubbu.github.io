@@ -1,16 +1,9 @@
 ---
 title: Learn & Upskill
-layout: default
+layout: page
 ---
 
-  <div style="margin-bottom:2rem;">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
-      </ol>
-    </nav>
-  </div>
+<p>In this page, I write loads of content for every Technical Architect and Software Developer to know and be valuable in the industry.</p>
 <div class="row">
   <div class="col-sm-6">
     <div class="card">

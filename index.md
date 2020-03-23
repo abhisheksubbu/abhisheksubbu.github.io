@@ -17,18 +17,18 @@ layout: default
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Architect Corner</h5>
-        <p class="card-text">Learning Materials for Technical Architects</p>
-        <a href="{{site.baseurl}}/learn/architect" class="btn btn-primary">Explore Architect Corner</a>
+        <h5 class="card-title">Blogs & Tutorials</h5>
+        <p class="card-text">Sharing my thoughts out wildly</p>
+        <a href="{{site.baseurl}}/blog" class="btn btn-primary">Read My Blogs</a>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Developer Corner</h5>
-        <p class="card-text">Learning Materials for Developers</p>
-        <a href="{{site.baseurl}}/learn/developer" class="btn btn-primary">Explore Developer Corner</a>
+        <h5 class="card-title">Learning Materials</h5>
+        <p class="card-text">Sharing the content that every Techy needs to know</p>
+        <a href="{{site.baseurl}}/learn" class="btn btn-primary">Explore Learn & Upskill</a>
       </div>
     </div>
   </div>

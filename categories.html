@@ -1,16 +1,8 @@
 ---
-layout: default
-title: Categories
+layout: page
+title: Blog Categories
 ---
 
-<div style="margin-bottom:2rem;">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
-    </ol>
-  </nav>
-</div>
 {% for category in site.categories %}
 <h4 id="{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">
   {{ category[0] | camelcase }}
