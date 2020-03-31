@@ -15,7 +15,7 @@ layout: default
   
 </div>
 <div>
-{% include upcoming-trainings.html %}
+{% include upcoming-courses.html %}
 <!--
 You can use HTML elements in Markdown, such as the comment element, and they won't
 be affected by a markdown parser. However, if you create an HTML element in your

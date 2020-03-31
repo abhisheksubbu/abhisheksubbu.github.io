@@ -1,0 +1,64 @@
+I"-	<p>In this page, you will find loads of content that are usefull for Technical Architects and Software Developers. I write and organize the content so that it is easy for people to learn and upskill themselves.</p>
+<div class="text-center">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Architect Corner</h5>
+          <p class="card-text">Learning Materials for Technical Architects</p>
+          <a href="/learn/architect" class="btn btn-primary">Explore Architect Corner</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Developer Corner</h5>
+          <p class="card-text">Learning Materials for Developers</p>
+          <a href="/learn/developer" class="btn btn-primary">Explore Developer Corner</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Technical Courses</h5>
+          <p class="card-text">Courses on various hot technologies</p>
+          <a href="/learn/courses" class="btn btn-primary">Access Course Library</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p><br /></p>
+<h4>Upcoming Courses</h4>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card border-primary mb-3">
+      <div class="card-header"><strong>NodeJS</strong></div>
+      <div class="card-body text-primary">
+        <h5 class="card-title">Backend with NodeJS</h5>
+        <p class="card-text">
+          In this course, you will learn how to create backend for your
+          application using NodeJS.
+        </p>
+        <a href="/learn/courses/node-backend" class="btn btn-info">Access Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-primary mb-3">
+      <div class="card-header"><strong>NodeJS</strong></div>
+      <div class="card-body text-primary">
+        <h5 class="card-title">Frontend with React + NodeJS</h5>
+        <p class="card-text">
+          In this course, you will learn how to create frontend in React and
+          connect it to NodeJS backend.
+        </p>
+        <a href="#" class="btn btn-secondary">Upcoming ...</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+:ET

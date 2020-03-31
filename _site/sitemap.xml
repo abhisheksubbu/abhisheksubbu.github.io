@@ -73,7 +73,7 @@
     </url>
     
     <url>
-        <loc>/learn/trainings/</loc>
+        <loc>/learn/courses/</loc>
         <lastmod>2020-03-31</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
@@ -87,7 +87,7 @@
     </url>
     
     <url>
-        <loc>/learn/trainings/node-backend/</loc>
+        <loc>/learn/courses/node-backend/</loc>
         <lastmod>2020-03-31</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
