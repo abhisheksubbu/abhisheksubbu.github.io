@@ -1,8 +1,8 @@
 ---
 title: Best NPM Packages for Developers in 2020
 layout: blog
-category: [Productivity, Node]
-excerpt: In this post, I will list out the top 10 best npm packages that you should use in your Node Projects
+category: [Productivity, NodeJS]
+excerpt: In this post, I will list out the best NPM packages that you should use in your NodeJS Projects
 comments: true
 ---
 

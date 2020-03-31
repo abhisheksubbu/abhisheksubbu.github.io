@@ -16,15 +16,25 @@ In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with 
 ## Steps
 
 1. Firstly, open Visual Studio 2019
+
    ![VS2019](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/vs2019.png)
+
 2. Choose “**ASP.NET Core Web Application**” from project templates and click Next
+
    ![New Project](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/new-project.png)
+
 3. Provide a Project Name and click “Create” button. In my case, the project name is “TestAPI”.
+
    ![Project Name](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/project-name.png)
+
 4. Choose the application type as “Web Application (Model-View-Controller)“. Make sure that the .NET Core version selected is “ASP.NET Core 2.2“. Also make sure to click the “Change” link next to Authentication [on the right] and select “Individual User Accounts“. As a best practice, Web API’s needs to have authentication. We will not select Docker because it’s not in the scope of this blog. Now click the “Create” button and wait for Visual Studio to set up your project.
+
    ![Select Template](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/select-template.png)
+
 5. Once Visual Studio has done setting up the project, you will see the project structure in Solution Explorer as shown below.
+
    ![Project Structure](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/project-structure.png)
+
 6. Now delete the following things from the project in the Solution Explorer.
 
    - wwwroot (delete the entire folder)

@@ -1,0 +1,20 @@
+I"I<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div class="card border-primary mb-3"&gt;
+    &lt;div class="card-header"&gt;&lt;strong&gt;NodeJS&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="card-body text-primary"&gt;
+    &lt;h5 class="card-title"&gt;Backend with NodeJS&lt;/h5&gt;
+    &lt;p class="card-text"&gt;In this training, you will learn how to create backend for your application using NodeJS.&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Lecture 1 - Setting up the environment&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="card border-primary mb-3"&gt;
+    &lt;div class="card-header"&gt;&lt;strong&gt;NodeJS&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="card-body text-primary"&gt;
+    &lt;h5 class="card-title"&gt;Frontend with React + NodeJS&lt;/h5&gt;
+    &lt;p class="card-text"&gt;In this training, you will learn how to create frontend in React and connect it to NodeJS backend.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-secondary"&gt;Upcoming ...&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div></div>
+:ET

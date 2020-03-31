@@ -6,7 +6,7 @@ layout: page
 | Date        | Topic                                                                                               | Venue                                                   |
 | ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | 14 Apr 2020 | Trigger Dispatcher Framework [**upcoming**]                                                         | Kochi, India                                            |
-| 09 Aug 2019 | .NET Core API with Swagger                                                                          | Kochi, India                                            |
+| 09 Aug 2019 | [.NET Core API with Swagger](/asp-net-core-web-api-with-swagger/)                                   | Kochi, India                                            |
 | 29 May 2019 | Creating Better Software Designs with StarUML - For Engineering Professors                          | Adi Shankara Engineering College, Kalady, Kerala, India |
 | 04 May 2019 | Career on the Cloud for Engineering Students                                                        | Adi Shankara Engineering College, Kalady, Kerala, India |
 | 08 Nov 2017 | Apex Code Audit Analyzers                                                                           | San Francisco, USA                                      |
@@ -18,4 +18,3 @@ layout: page
 | 06 Nov 2014 | [Social Sign On with OpenID Connect](https://www.youtube.com/watch?v=TfIFdkk-ZDk)                   | Youtube                                                 |
 | 15 Oct 2014 | [OpenID Connect and Single Sign-On for Beginners](https://www.youtube.com/watch?v=T1fpulzHYcs)      | San Francisco, USA                                      |
 | 07 Feb 2014 | [Seamless Integration of .NET and Force.com Canvas](https://www.youtube.com/watch?v=asx2zfOcsPM)    | Youtube                                                 |
-| 23 Jan 2014 | Seamless Integration of .NET & Force.com with Force.com Canvas                                      | Kochi, India                                            |

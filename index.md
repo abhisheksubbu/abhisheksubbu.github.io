@@ -3,36 +3,19 @@ title: Home
 layout: default
 ---
 
-<div class="jumbotron">
-<h1>Hi, I am Abhishek Subbu</h1>
-<p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
-<hr/>
-<p>Follow me on social media 
-    <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+<div class="jumbotron text-center">
+  <h1>Hi, I am Abhishek Subbu</h1>
+  <p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
+  <a href="{{site.baseurl}}/blog"><button class="btn btn-primary btn-lg">Read My Blogs</button></a>
+  <hr/>
+  <p>Follow me on social media 
+      <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+      <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
+      <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+  
 </div>
-
-<div class="row text-center">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Blogs & Tutorials</h5>
-        <p class="card-text">Sharing my thoughts out wildly</p>
-        <a href="{{site.baseurl}}/blog" class="btn btn-primary">Read My Blogs</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Learning Materials</h5>
-        <p class="card-text">Sharing the content that every Techy needs to know</p>
-        <a href="{{site.baseurl}}/learn" class="btn btn-primary">Explore Learn & Upskill</a>
-      </div>
-    </div>
-  </div>
-</div>
+<div>
+{% include upcoming-trainings.html %}
 <!--
 You can use HTML elements in Markdown, such as the comment element, and they won't
 be affected by a markdown parser. However, if you create an HTML element in your

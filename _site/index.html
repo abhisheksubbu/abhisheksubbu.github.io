@@ -46,8 +46,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Sharing my thoughts on the Cloud" />
 <meta property="og:description" content="Sharing my thoughts on the Cloud" />
-<link rel="canonical" href="https://abhisheksubbu.github.io//" />
-<meta property="og:url" content="https://abhisheksubbu.github.io//" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="AbhishekSubbu" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Home" />
@@ -55,12 +55,12 @@
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
-{"@type":"WebSite","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"https://abhisheksubbu.github.io//","name":"Abhishek Subbu","headline":"Home","sameAs":["https://twitter.com/abhisheksubbu","https://www.facebook.com/abhishek.sivasubramanian","https://www.linkedin.com/in/abhisheksivasubramanian","https://github.com/abhisheksubbu"],"description":"Sharing my thoughts on the Cloud","@context":"https://schema.org"}</script>
+{"@type":"WebSite","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"http://localhost:4000/","name":"Abhishek Subbu","headline":"Home","sameAs":["https://twitter.com/abhisheksubbu","https://www.facebook.com/abhishek.sivasubramanian","https://www.linkedin.com/in/abhisheksivasubramanian","https://github.com/abhisheksubbu"],"description":"Sharing my thoughts on the Cloud","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid container-app">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom">
   <a class="navbar-brand" href="/"
     ><img
@@ -100,41 +100,54 @@
   </div>
 </nav>
 
-      <div style="margin-top:20px; margin-bottom:20px;"><div class="jumbotron">
-<h1>Hi, I am Abhishek Subbu</h1>
-<p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
-<hr />
-<p>Follow me on social media 
-    <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+      <div style="margin-top:20px; margin-bottom:20px;"><div class="jumbotron text-center">
+  <h1>Hi, I am Abhishek Subbu</h1>
+  <p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
+  <a href="/blog"><button class="btn btn-primary btn-lg">Read My Blogs</button></a>
+  <hr />
+  <p>Follow me on social media 
+      <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+      <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
+      <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+  
+</div>
+<div>
+<h4>Upcoming Trainings</h4>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card border-primary mb-3">
+      <div class="card-header"><strong>NodeJS</strong></div>
+      <div class="card-body text-primary">
+        <h5 class="card-title">Backend with NodeJS</h5>
+        <p class="card-text">
+          In this training, you will learn how to create backend for your
+          application using NodeJS.
+        </p>
+        <a href="/learn/trainings/node-backend" class="btn btn-info">Access Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-primary mb-3">
+      <div class="card-header"><strong>NodeJS</strong></div>
+      <div class="card-body text-primary">
+        <h5 class="card-title">Frontend with React + NodeJS</h5>
+        <p class="card-text">
+          In this training, you will learn how to create frontend in React and
+          connect it to NodeJS backend.
+        </p>
+        <a href="#" class="btn btn-secondary">Upcoming ...</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="row text-center">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Blogs &amp; Tutorials</h5>
-        <p class="card-text">Sharing my thoughts out wildly</p>
-        <a href="/blog" class="btn btn-primary">Read My Blogs</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Learning Materials</h5>
-        <p class="card-text">Sharing the content that every Techy needs to know</p>
-        <a href="/learn" class="btn btn-primary">Explore Learn &amp; Upskill</a>
-      </div>
-    </div>
-  </div>
-</div>
 <!--
 You can use HTML elements in Markdown, such as the comment element, and they won't
 be affected by a markdown parser. However, if you create an HTML element in your
 markdown file, you cannot use markdown syntax within that element's contents.
 -->
+</div>
 </div>
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
   <div class="row">
@@ -171,7 +184,7 @@ markdown file, you cannot use markdown syntax within that element's contents.
         >Copyright 2020 © AbhishekSubbu
         <p>
           This is a personal blog. Opinions expressed are solely my own and do
-          not express the views of opinions of my employer.
+          not express the views or opinions of my employer.
         </p></small
       >
     </div>
@@ -206,6 +219,11 @@ markdown file, you cannot use markdown syntax within that element's contents.
         <li>
           <a class="text-muted" href="/learn"
             >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/learn/trainings"
+            >Trainings</a
           >
         </li>
         <li>

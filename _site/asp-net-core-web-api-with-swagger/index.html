@@ -46,8 +46,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich…" />
 <meta property="og:description" content="In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich…" />
-<link rel="canonical" href="https://abhisheksubbu.github.io//asp-net-core-web-api-with-swagger/" />
-<meta property="og:url" content="https://abhisheksubbu.github.io//asp-net-core-web-api-with-swagger/" />
+<link rel="canonical" href="http://localhost:4000/asp-net-core-web-api-with-swagger/" />
+<meta property="og:url" content="http://localhost:4000/asp-net-core-web-api-with-swagger/" />
 <meta property="og:site_name" content="AbhishekSubbu" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-12-12T00:00:00+05:30" />
@@ -57,12 +57,12 @@
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"https://abhisheksubbu.github.io//asp-net-core-web-api-with-swagger/","headline":"ASP.NET Core Web API with Swagger","dateModified":"2019-12-12T00:00:00+05:30","datePublished":"2019-12-12T00:00:00+05:30","description":"In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich…","mainEntityOfPage":{"@type":"WebPage","@id":"https://abhisheksubbu.github.io//asp-net-core-web-api-with-swagger/"},"@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"http://localhost:4000/asp-net-core-web-api-with-swagger/","headline":"ASP.NET Core Web API with Swagger","dateModified":"2019-12-12T00:00:00+05:30","datePublished":"2019-12-12T00:00:00+05:30","description":"In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich…","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/asp-net-core-web-api-with-swagger/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid container-app">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom">
   <a class="navbar-brand" href="/"
     ><img
@@ -139,16 +139,31 @@
 <h2 id="steps">Steps</h2>
 
 <ol>
-  <li>Firstly, open Visual Studio 2019
-<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/vs2019.png" alt="VS2019" /></li>
-  <li>Choose “<strong>ASP.NET Core Web Application</strong>” from project templates and click Next
-<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/new-project.png" alt="New Project" /></li>
-  <li>Provide a Project Name and click “Create” button. In my case, the project name is “TestAPI”.
-<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/project-name.png" alt="Project Name" /></li>
-  <li>Choose the application type as “Web Application (Model-View-Controller)“. Make sure that the .NET Core version selected is “ASP.NET Core 2.2“. Also make sure to click the “Change” link next to Authentication [on the right] and select “Individual User Accounts“. As a best practice, Web API’s needs to have authentication. We will not select Docker because it’s not in the scope of this blog. Now click the “Create” button and wait for Visual Studio to set up your project.
-<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/select-template.png" alt="Select Template" /></li>
-  <li>Once Visual Studio has done setting up the project, you will see the project structure in Solution Explorer as shown below.
-<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/project-structure.png" alt="Project Structure" /></li>
+  <li>
+    <p>Firstly, open Visual Studio 2019</p>
+
+    <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/vs2019.png" alt="VS2019" /></p>
+  </li>
+  <li>
+    <p>Choose “<strong>ASP.NET Core Web Application</strong>” from project templates and click Next</p>
+
+    <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/new-project.png" alt="New Project" /></p>
+  </li>
+  <li>
+    <p>Provide a Project Name and click “Create” button. In my case, the project name is “TestAPI”.</p>
+
+    <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/project-name.png" alt="Project Name" /></p>
+  </li>
+  <li>
+    <p>Choose the application type as “Web Application (Model-View-Controller)“. Make sure that the .NET Core version selected is “ASP.NET Core 2.2“. Also make sure to click the “Change” link next to Authentication [on the right] and select “Individual User Accounts“. As a best practice, Web API’s needs to have authentication. We will not select Docker because it’s not in the scope of this blog. Now click the “Create” button and wait for Visual Studio to set up your project.</p>
+
+    <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/select-template.png" alt="Select Template" /></p>
+  </li>
+  <li>
+    <p>Once Visual Studio has done setting up the project, you will see the project structure in Solution Explorer as shown below.</p>
+
+    <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/project-structure.png" alt="Project Structure" /></p>
+  </li>
   <li>
     <p>Now delete the following things from the project in the Solution Explorer.</p>
 
@@ -478,7 +493,7 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
         >Copyright 2020 © AbhishekSubbu
         <p>
           This is a personal blog. Opinions expressed are solely my own and do
-          not express the views of opinions of my employer.
+          not express the views or opinions of my employer.
         </p></small
       >
     </div>
@@ -513,6 +528,11 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
         <li>
           <a class="text-muted" href="/learn"
             >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/learn/trainings"
+            >Trainings</a
           >
         </li>
         <li>
