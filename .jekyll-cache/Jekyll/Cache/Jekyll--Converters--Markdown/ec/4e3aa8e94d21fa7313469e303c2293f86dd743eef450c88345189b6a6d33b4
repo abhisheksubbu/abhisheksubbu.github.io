@@ -1,4 +1,4 @@
-I"â<div class="jumbotron text-center">
+I"æ<div class="jumbotron text-center">
   <h1>Hi, I am Abhishek Subbu</h1>
   <p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
   <a href="/blog"><button class="btn btn-primary btn-lg">Read My Blogs</button></a>
@@ -18,10 +18,10 @@
       <div class="card-body text-primary">
         <h5 class="card-title">Backend with NodeJS</h5>
         <p class="card-text">
-          In this course, you will learn how to create backend for your
+          In this short course, you will learn how to create backend for your
           application using NodeJS.
         </p>
-        <a href="/learn/trainings/node-backend" class="btn btn-info">Access Now</a>
+        <a href="/learn/courses/node-backend" class="btn btn-info">Access Now</a>
       </div>
     </div>
   </div>
