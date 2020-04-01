@@ -66,6 +66,13 @@
     </url>
     
     <url>
+        <loc>/learn/deepdives/</loc>
+        <lastmod>2020-04-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
         <loc>/</loc>
         <lastmod>2020-04-01</lastmod>
         <changefreq>daily</changefreq>
@@ -73,21 +80,7 @@
     </url>
     
     <url>
-        <loc>/learn/courses/</loc>
-        <lastmod>2020-04-01</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5</priority>
-    </url>
-    
-    <url>
         <loc>/learn/</loc>
-        <lastmod>2020-04-01</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5</priority>
-    </url>
-    
-    <url>
-        <loc>/learn/courses/node-backend/</loc>
         <lastmod>2020-04-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
@@ -143,6 +136,13 @@
     </url>
     
 
+    
+    <url>
+        <loc>/node-backend/</loc>
+        <lastmod>2020-04-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
     
     <url>
         <loc>/object-oriented-programming-principles/</loc>

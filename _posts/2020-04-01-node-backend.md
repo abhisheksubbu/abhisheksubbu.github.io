@@ -1,22 +1,13 @@
 ---
 title: Backend with NodeJS
-layout: default
+layout: blog
+category: [NodeJS, Deep Dive]
+excerpt: In this blog, you will learn how to create backend for your application using NodeJS.
+comments: true
 ---
 
-<h3>{{page.title}}</h3>
-<div style="margin-bottom:2rem;">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item"><a href="/learn">Learn & Upskill</a></li>
-      <li class="breadcrumb-item"><a href="/learn/courses">Courses</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
-    </ol>
-  </nav>
-</div>
-
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>INFORMATION: </strong> This short course is under development. Feel free to read and understand the content available so far. I will keep adding more content for you guys.
+  <strong>INFORMATION: </strong> This blog post is under development. Feel free to read and understand the content available so far. I will keep adding more content for you guys.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

@@ -27,13 +27,13 @@ layout: page
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Technical Courses</h5>
-          <p class="card-text">Courses on various hot technologies</p>
-          <a href="{{site.baseurl}}/learn/courses" class="btn btn-primary">Access Course Library</a>
+          <h5 class="card-title">Technical Deep Dives</h5>
+          <p class="card-text">Deep Dives on various hot technologies</p>
+          <a href="{{site.baseurl}}/learn/deepdives" class="btn btn-primary">Access Deep Dive Library</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 <br/>
-{% include upcoming-courses.html %}
+{% include upcoming-deep-dive.html %}

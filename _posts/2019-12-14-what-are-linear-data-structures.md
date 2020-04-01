@@ -17,4 +17,4 @@ comments: true
 - Every Data Element can be accessed in one run/iteration
 - Simple to Implement
 - Memory Utilization is Ineffective because of linear placement
-- Examples are [Array](/Array/), [Queue](/Queue/), [Stack](/Stack/), [Linked List](/linked-list/)
+- Examples are [Array]({{site.baseurl}}/Array/), [Queue]({{site.baseurl}}/Queue/), [Stack]({{site.baseurl}}/Stack/), [Linked List]({{site.baseurl}}/linked-list/)
