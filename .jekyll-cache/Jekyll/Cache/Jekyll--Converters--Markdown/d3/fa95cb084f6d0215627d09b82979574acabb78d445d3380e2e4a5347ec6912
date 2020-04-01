@@ -1,0 +1,15 @@
+I"W<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/linear-data-structures.png" alt="Linear Data Structures" /></p>
+
+<p><strong><em>Linear Data Structures</em></strong> are a classification of Non-Primitive Data Structures that organizes data in a <strong>sequential, single-level manner</strong>.</p>
+
+<h2 id="features-of-linear-data-structures">Features of Linear Data Structures</h2>
+
+<ul>
+  <li>Data Elements are arranged in an orderly manner</li>
+  <li>Data Elements are attached adjacently</li>
+  <li>Every Data Element can be accessed in one run/iteration</li>
+  <li>Simple to Implement</li>
+  <li>Memory Utilization is Ineffective because of linear placement</li>
+  <li>Examples are <a href="/array/">Array</a>, <a href="/queue/">Queue</a>, <a href="/atack/">Stack</a>, <a href="/linked-list/">Linked List</a></li>
+</ul>
+:ET
