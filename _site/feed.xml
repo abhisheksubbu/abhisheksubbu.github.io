@@ -3,14 +3,14 @@
 
     <channel>
         <title>AbhishekSubbu</title>
-        <link>http://localhost:4000</link>
+        <link>https://abhisheksubbu.github.io/</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Wed, 01 Apr 2020 19:02:36 +0530</lastBuildDate>
+        <lastBuildDate>Thu, 02 Apr 2020 12:14:53 +0530</lastBuildDate>
         
         <item>
             <title>Backend with NodeJS</title>
             <link>
-                http://localhost:4000/node-backend/
+                https://abhisheksubbu.github.io//node-backend/
             </link>
             <description>
                 &lt;div class=&quot;alert alert-warning alert-dismissible fade show&quot; role=&quot;alert&quot;&gt;
@@ -19,14 +19,14 @@
             </description>
             <pubDate>Wed, 01 Apr 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/node-backend/
+                https://abhisheksubbu.github.io//node-backend/
             </guid>
         </item>
         
         <item>
             <title>Object Oriented Programming Principles</title>
             <link>
-                http://localhost:4000/object-oriented-programming-principles/
+                https://abhisheksubbu.github.io//object-oriented-programming-principles/
             </link>
             <description>
                 &lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
@@ -41,14 +41,14 @@
             </description>
             <pubDate>Tue, 25 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/object-oriented-programming-principles/
+                https://abhisheksubbu.github.io//object-oriented-programming-principles/
             </guid>
         </item>
         
         <item>
             <title>Polly Retry Policies</title>
             <link>
-                http://localhost:4000/polly-retry-policies/
+                https://abhisheksubbu.github.io//polly-retry-policies/
             </link>
             <description>
                 &lt;p&gt;If you have followed my blog on implementing “Retries using Polly in .NET Core”, then this blog will make more sense to you. In this blog, we will understand how many different techniques of Retry policies can be used in Polly.&lt;/p&gt;
@@ -61,14 +61,14 @@
             </description>
             <pubDate>Thu, 20 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/polly-retry-policies/
+                https://abhisheksubbu.github.io//polly-retry-policies/
             </guid>
         </item>
         
         <item>
             <title>Retries using Polly in .NET Core</title>
             <link>
-                http://localhost:4000/retries-using-polly-in-net-core/
+                https://abhisheksubbu.github.io//retries-using-polly-in-net-core/
             </link>
             <description>
                 &lt;p&gt;In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.&lt;/p&gt;
@@ -77,14 +77,14 @@
             </description>
             <pubDate>Wed, 19 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/retries-using-polly-in-net-core/
+                https://abhisheksubbu.github.io//retries-using-polly-in-net-core/
             </guid>
         </item>
         
         <item>
             <title>The State of Salesforce Developers</title>
             <link>
-                http://localhost:4000/the-state-of-salesforce-developers/
+                https://abhisheksubbu.github.io//the-state-of-salesforce-developers/
             </link>
             <description>
                 &lt;p&gt;I am writing this blog to basically put my thoughts on the state of salesforce developers. This is not to defame or criticize anyone or any company. I am just trying to share what I see, hear and feel about developers in salesforce ecosystem.&lt;/p&gt;
@@ -93,14 +93,14 @@
             </description>
             <pubDate>Tue, 18 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/the-state-of-salesforce-developers/
+                https://abhisheksubbu.github.io//the-state-of-salesforce-developers/
             </guid>
         </item>
         
         <item>
             <title>What are Design Patterns</title>
             <link>
-                http://localhost:4000/what-are-design-patterns/
+                https://abhisheksubbu.github.io//what-are-design-patterns/
             </link>
             <description>
                 &lt;p&gt;Design Patterns has nothing to do with algorithms or programming constructs/concepts (like loops, big-o complexity, etc). Instead, Design Patterns guide you to structure the classes and how they should collaborate.&lt;/p&gt;
@@ -111,14 +111,14 @@
             </description>
             <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/what-are-design-patterns/
+                https://abhisheksubbu.github.io//what-are-design-patterns/
             </guid>
         </item>
         
         <item>
             <title>Using Serilog in ASP.NET Core</title>
             <link>
-                http://localhost:4000/using-serilog-in-asp-net-core/
+                https://abhisheksubbu.github.io//using-serilog-in-asp-net-core/
             </link>
             <description>
                 &lt;p&gt;&lt;a href=&quot;https://serilog.net/&quot;&gt;Serilog&lt;/a&gt; is a logging implementation that can be plugged into ASP.NET Core. It supports structured logging API’s and receives log events from the ASP.NET Core framework class libraries. In this blog we will see how to configure Serilog in ASP.Net Core project.&lt;/p&gt;
@@ -128,14 +128,14 @@
             </description>
             <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/using-serilog-in-asp-net-core/
+                https://abhisheksubbu.github.io//using-serilog-in-asp-net-core/
             </guid>
         </item>
         
         <item>
             <title>Memento Pattern</title>
             <link>
-                http://localhost:4000/memento-pattern/
+                https://abhisheksubbu.github.io//memento-pattern/
             </link>
             <description>
                 &lt;h2 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h2&gt;
@@ -146,14 +146,14 @@
             </description>
             <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/memento-pattern/
+                https://abhisheksubbu.github.io//memento-pattern/
             </guid>
         </item>
         
         <item>
             <title>Technical Duties to be performed by Architects</title>
             <link>
-                http://localhost:4000/technical-duties-to-be-performed-by-architects/
+                https://abhisheksubbu.github.io//technical-duties-to-be-performed-by-architects/
             </link>
             <description>
                 &lt;p&gt;Not every architect in every organization will perform every one of these duties on every project. But a competent architect should not surprised to find himself or herself engaged in any of the activities listed below.
@@ -168,14 +168,14 @@ Broadly, there are 2 categories of duties.&lt;/p&gt;
             </description>
             <pubDate>Sat, 04 Jan 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/technical-duties-to-be-performed-by-architects/
+                https://abhisheksubbu.github.io//technical-duties-to-be-performed-by-architects/
             </guid>
         </item>
         
         <item>
             <title>Skills needed by Architects</title>
             <link>
-                http://localhost:4000/skills-needed-by-architects/
+                https://abhisheksubbu.github.io//skills-needed-by-architects/
             </link>
             <description>
                 &lt;p&gt;Architects usually play special LEADERSHIP role in a project. Ideally, a competent architect is&lt;/p&gt;
@@ -192,14 +192,14 @@ Broadly, there are 2 categories of duties.&lt;/p&gt;
             </description>
             <pubDate>Sat, 04 Jan 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/skills-needed-by-architects/
+                https://abhisheksubbu.github.io//skills-needed-by-architects/
             </guid>
         </item>
         
         <item>
             <title>Non Technical Duties to be performed by Architects</title>
             <link>
-                http://localhost:4000/non-technical-duties-to-be-performed-by-architects/
+                https://abhisheksubbu.github.io//non-technical-duties-to-be-performed-by-architects/
             </link>
             <description>
                 &lt;p&gt;An obvious implication, for those of you who wish to be architects, is that you must pay adequate attention to the non-technical aspects of your education and your professional activities.Generally, the non-technical duties to be performed by an architect includes:&lt;/p&gt;
@@ -210,14 +210,14 @@ Broadly, there are 2 categories of duties.&lt;/p&gt;
             </description>
             <pubDate>Sat, 04 Jan 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/non-technical-duties-to-be-performed-by-architects/
+                https://abhisheksubbu.github.io//non-technical-duties-to-be-performed-by-architects/
             </guid>
         </item>
         
         <item>
             <title>Knowledge needed by Architects</title>
             <link>
-                http://localhost:4000/knowledge-needed-by-architects/
+                https://abhisheksubbu.github.io//knowledge-needed-by-architects/
             </link>
             <description>
                 &lt;p&gt;A competent architect always has an intimate familiarity with the architectural body of knowledge. The software architect should&lt;/p&gt;
@@ -228,14 +228,14 @@ Broadly, there are 2 categories of duties.&lt;/p&gt;
             </description>
             <pubDate>Sat, 04 Jan 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/knowledge-needed-by-architects/
+                https://abhisheksubbu.github.io//knowledge-needed-by-architects/
             </guid>
         </item>
         
         <item>
             <title>Who is an Enterprise Architect & What do they do</title>
             <link>
-                http://localhost:4000/who-is-an-enterprise-architect-what-do-they-do/
+                https://abhisheksubbu.github.io//who-is-an-enterprise-architect-what-do-they-do/
             </link>
             <description>
                 &lt;p&gt;&lt;strong&gt;Enterprise Architect&lt;/strong&gt; focusses on working the chief executives of an organization in deciding the high-level direction that an organization/enterprise needs to take from a technology standpoint.&lt;/p&gt;
@@ -247,14 +247,14 @@ Broadly, there are 2 categories of duties.&lt;/p&gt;
             </description>
             <pubDate>Fri, 03 Jan 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/who-is-an-enterprise-architect-what-do-they-do/
+                https://abhisheksubbu.github.io//who-is-an-enterprise-architect-what-do-they-do/
             </guid>
         </item>
         
         <item>
             <title>Who is a Technical Architect & What do they do</title>
             <link>
-                http://localhost:4000/who-is-a-technical-architect-what-do-they-do/
+                https://abhisheksubbu.github.io//who-is-a-technical-architect-what-do-they-do/
             </link>
             <description>
                 &lt;p&gt;&lt;strong&gt;Technical Architect&lt;/strong&gt; (also known as &lt;strong&gt;Application Architects&lt;/strong&gt;) is usually the leader of the engineering team that develops a project/product.&lt;/p&gt;
@@ -266,14 +266,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Fri, 03 Jan 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/who-is-a-technical-architect-what-do-they-do/
+                https://abhisheksubbu.github.io//who-is-a-technical-architect-what-do-they-do/
             </guid>
         </item>
         
         <item>
             <title>Who is a Solution Architect & What do they do</title>
             <link>
-                http://localhost:4000/who-is-a-solution-architect-what-do-they-do/
+                https://abhisheksubbu.github.io//who-is-a-solution-architect-what-do-they-do/
             </link>
             <description>
                 &lt;p&gt;&lt;strong&gt;Solution Architect&lt;/strong&gt; focusses on defining the system &amp;amp; its interactions from a problem domain level. Notice that Solution Architecture is more abstracted than Technical Architecture.&lt;/p&gt;
@@ -284,14 +284,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Fri, 03 Jan 2020 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/who-is-a-solution-architect-what-do-they-do/
+                https://abhisheksubbu.github.io//who-is-a-solution-architect-what-do-they-do/
             </guid>
         </item>
         
         <item>
             <title>Customizing Registration Handler Apex Code in Salesforce Open ID Connect Auth Provider</title>
             <link>
-                http://localhost:4000/customizing-registration-handler-apex-code-in-salesforce-open-id-connect-auth-provider/
+                https://abhisheksubbu.github.io//customizing-registration-handler-apex-code-in-salesforce-open-id-connect-auth-provider/
             </link>
             <description>
                 &lt;p&gt;When you play with Salesforce Single Sign-On, it is most probable that you will come across something called the “Registration Handler” class. In this blog, we will take a deep dive into understanding what a RegistrationHandler class is, how to create it, how to customize it and finally use it for production.&lt;/p&gt;
@@ -300,14 +300,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Mon, 30 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/customizing-registration-handler-apex-code-in-salesforce-open-id-connect-auth-provider/
+                https://abhisheksubbu.github.io//customizing-registration-handler-apex-code-in-salesforce-open-id-connect-auth-provider/
             </guid>
         </item>
         
         <item>
             <title>Social Sign On with Google Enterprise in Salesforce Org</title>
             <link>
-                http://localhost:4000/social-sign-on-with-google-enterprise-in-salesforce-org/
+                https://abhisheksubbu.github.io//social-sign-on-with-google-enterprise-in-salesforce-org/
             </link>
             <description>
                 &lt;p&gt;In this blog, we will explain the steps of enabling social sign on into salesforce enterprise org using your corporate Gmail account.&lt;/p&gt;
@@ -318,14 +318,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Fri, 27 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/social-sign-on-with-google-enterprise-in-salesforce-org/
+                https://abhisheksubbu.github.io//social-sign-on-with-google-enterprise-in-salesforce-org/
             </guid>
         </item>
         
         <item>
             <title>What are Non Linear Data Structures</title>
             <link>
-                http://localhost:4000/what-are-non-linear-data-structures/
+                https://abhisheksubbu.github.io//what-are-non-linear-data-structures/
             </link>
             <description>
                 &lt;p&gt;&lt;img src=&quot;https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/non-linear-data-structures.png&quot; alt=&quot;Non Linear Data Structures&quot; /&gt;&lt;/p&gt;
@@ -336,14 +336,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sun, 22 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/what-are-non-linear-data-structures/
+                https://abhisheksubbu.github.io//what-are-non-linear-data-structures/
             </guid>
         </item>
         
         <item>
             <title>Queue</title>
             <link>
-                http://localhost:4000/queue/
+                https://abhisheksubbu.github.io//queue/
             </link>
             <description>
                 &lt;p&gt;&lt;strong&gt;Queues&lt;/strong&gt; are the most widely used data structures in the real world.&lt;/p&gt;
@@ -357,14 +357,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sun, 22 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/queue/
+                https://abhisheksubbu.github.io//queue/
             </guid>
         </item>
         
         <item>
             <title>Stack</title>
             <link>
-                http://localhost:4000/stack/
+                https://abhisheksubbu.github.io//stack/
             </link>
             <description>
                 &lt;p&gt;&lt;strong&gt;Stacks&lt;/strong&gt; are powerful data structures that can help us solve many complex programming problems. Stacks can be used in some use-cases like:&lt;/p&gt;
@@ -377,14 +377,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sat, 21 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/stack/
+                https://abhisheksubbu.github.io//stack/
             </guid>
         </item>
         
         <item>
             <title>Linked List</title>
             <link>
-                http://localhost:4000/linked-list/
+                https://abhisheksubbu.github.io//linked-list/
             </link>
             <description>
                 &lt;p&gt;&lt;strong&gt;Linked Lists&lt;/strong&gt; are one of the most commonly used &lt;strong&gt;Linear Data Structures&lt;/strong&gt; after arrays. They solve many problems of arrays and are used for building complex data structures. Unlike arrays, Linked Lists can grow and shrink automatically.&lt;/p&gt;
@@ -394,14 +394,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sun, 15 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/linked-list/
+                https://abhisheksubbu.github.io//linked-list/
             </guid>
         </item>
         
         <item>
             <title>What are Linear Data Structures</title>
             <link>
-                http://localhost:4000/what-are-linear-data-structures/
+                https://abhisheksubbu.github.io//what-are-linear-data-structures/
             </link>
             <description>
                 &lt;p&gt;&lt;img src=&quot;https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/linear-data-structures.png&quot; alt=&quot;Linear Data Structures&quot; /&gt;&lt;/p&gt;
@@ -410,14 +410,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sat, 14 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/what-are-linear-data-structures/
+                https://abhisheksubbu.github.io//what-are-linear-data-structures/
             </guid>
         </item>
         
         <item>
             <title>Array</title>
             <link>
-                http://localhost:4000/array/
+                https://abhisheksubbu.github.io//array/
             </link>
             <description>
                 &lt;p&gt;&lt;strong&gt;Arrays&lt;/strong&gt; are built into most programming languages and we use them to SORT a list of items sequentially. Since Arrays are a type of Linear Data Structures, they store data in the memory sequentially.&lt;/p&gt;
@@ -426,28 +426,28 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sat, 14 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/array/
+                https://abhisheksubbu.github.io//array/
             </guid>
         </item>
         
         <item>
             <title>ASP.NET Core Web API with Swagger</title>
             <link>
-                http://localhost:4000/asp-net-core-web-api-with-swagger/
+                https://abhisheksubbu.github.io//asp-net-core-2-2-web-api-with-swagger/
             </link>
             <description>
                 &lt;p&gt;In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich interactivity interface for users, provides better understandable...
             </description>
             <pubDate>Thu, 12 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/asp-net-core-web-api-with-swagger/
+                https://abhisheksubbu.github.io//asp-net-core-2-2-web-api-with-swagger/
             </guid>
         </item>
         
         <item>
             <title>Understanding Microservices Architecture Part 1</title>
             <link>
-                http://localhost:4000/understanding-microservices-architecture/
+                https://abhisheksubbu.github.io//understanding-microservices-architecture/
             </link>
             <description>
                 &lt;p&gt;Development Community around the world is pushing the software development approach to shift from Monolithic to Microservices architecture. Most of us accept this shift without understanding the WHY, WHAT, WHEN and HOW of Microservices. In this blog, we will try to understand&lt;/p&gt;
@@ -457,28 +457,28 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Wed, 11 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/understanding-microservices-architecture/
+                https://abhisheksubbu.github.io//understanding-microservices-architecture/
             </guid>
         </item>
         
         <item>
             <title>Understanding Microservices Architecture Part 2</title>
             <link>
-                http://localhost:4000/understanding-microservices-architecture-part-2/
+                https://abhisheksubbu.github.io//understanding-microservices-architecture-part-2/
             </link>
             <description>
                 &lt;p&gt;In the previous blog of “&lt;a href=&quot;/understanding-microservices-architecture/&quot;&gt;Understanding Microservices Architecture – Part 1&lt;/a&gt;“, we did a detailed study about monolithic v/s microservices architecture, the benefits and drawbacks of each architecture and the solution approaches to it. I highly recommend you to read the “&lt;a href=&quot;/understanding-microser...
             </description>
             <pubDate>Wed, 11 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/understanding-microservices-architecture-part-2/
+                https://abhisheksubbu.github.io//understanding-microservices-architecture-part-2/
             </guid>
         </item>
         
         <item>
             <title>What are Data Structures</title>
             <link>
-                http://localhost:4000/what-are-data-structures/
+                https://abhisheksubbu.github.io//what-are-data-structures/
             </link>
             <description>
                 &lt;p&gt;Data Structure is a way of organizing data so that it can be used effectively.&lt;/p&gt;
@@ -492,14 +492,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Tue, 10 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/what-are-data-structures/
+                https://abhisheksubbu.github.io//what-are-data-structures/
             </guid>
         </item>
         
         <item>
             <title>Big O Analysis</title>
             <link>
-                http://localhost:4000/big-o-analysis/
+                https://abhisheksubbu.github.io//big-o-analysis/
             </link>
             <description>
                 &lt;p&gt;When it comes to Data Structures &amp;amp; Algorithms, there are 2 main factors that need to be analyzed every time.&lt;/p&gt;
@@ -512,14 +512,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Tue, 10 Dec 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/big-o-analysis/
+                https://abhisheksubbu.github.io//big-o-analysis/
             </guid>
         </item>
         
         <item>
             <title>My Experience as an IEEE Jury</title>
             <link>
-                http://localhost:4000/my-experience-as-an-ieee-jury/
+                https://abhisheksubbu.github.io//my-experience-as-an-ieee-jury/
             </link>
             <description>
                 &lt;p&gt;On 3rd May 2019, I had a wonderful opportunity to have been invited as an IEEE SA (Institute of Electrical &amp;amp; Electronics Engineers Standards Association) Jury to evaluate an IEEE innovation competition named &lt;strong&gt;“Prayojaka”&lt;/strong&gt; that was organized by the IEEE Student Branch of ASIET (Adi Shankara Institute of Engineering &amp;amp; Technology).&lt;/p&gt;
@@ -528,14 +528,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sat, 04 May 2019 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/my-experience-as-an-ieee-jury/
+                https://abhisheksubbu.github.io//my-experience-as-an-ieee-jury/
             </guid>
         </item>
         
         <item>
             <title>Effective Techniques to change boredom at workplace</title>
             <link>
-                http://localhost:4000/effective-techniques-to-change-boredom-at-workplace/
+                https://abhisheksubbu.github.io//effective-techniques-change-boredom-at-workplace/
             </link>
             <description>
                 &lt;p&gt;Ever felt bored at workplace? I bet YES. So, what did we do to change boredom? Hmmm….. Most people would have gone through the boredom without realizing what to do next.&lt;/p&gt;
@@ -544,14 +544,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Tue, 12 Jun 2018 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/effective-techniques-to-change-boredom-at-workplace/
+                https://abhisheksubbu.github.io//effective-techniques-change-boredom-at-workplace/
             </guid>
         </item>
         
         <item>
             <title>Things to know about API Security</title>
             <link>
-                http://localhost:4000/things-to-know-about-api-security/
+                https://abhisheksubbu.github.io//things-to-know-about-api-security/
             </link>
             <description>
                 &lt;p&gt;Enterprises having greatly embraced SOA (Service Oriented Architecture) which helps to decouple different subsystems in such a way that we can expose &amp;amp; reuse these without having to break &amp;amp; build existing systems. In this context, securing an API is an absolute must for enterprises.&lt;/p&gt;
@@ -560,14 +560,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sun, 20 May 2018 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/things-to-know-about-api-security/
+                https://abhisheksubbu.github.io//things-to-know-about-api-security/
             </guid>
         </item>
         
         <item>
             <title>Speaking at TechWizz’17 on Design Patterns</title>
             <link>
-                http://localhost:4000/speaking-at-techwizz17-on-design-patterns/
+                https://abhisheksubbu.github.io//speaking-techwizz17-design-patterns/
             </link>
             <description>
                 &lt;p&gt;Today, I had the honour of speaking at the &lt;a href=&quot;http://bridge-global.com/TechWhizz/&quot;&gt;TechWizz 2017&lt;/a&gt; – a technical event on Design Patterns in Object Oriented Programming organized by &lt;a href=&quot;http://bridge-global.com/&quot;&gt;Bridge Global&lt;/a&gt; at PGS Vedanta Business Hotel in Kochi, Kerala,&lt;/p&gt;
@@ -576,14 +576,14 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Sun, 17 Dec 2017 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/speaking-at-techwizz17-on-design-patterns/
+                https://abhisheksubbu.github.io//speaking-techwizz17-design-patterns/
             </guid>
         </item>
         
         <item>
             <title>Do Software Professional Meet Industry Standards?</title>
             <link>
-                http://localhost:4000/do-software-professional-meet-industry-standards/
+                https://abhisheksubbu.github.io//do-software-professionals-meet-industry-standards/
             </link>
             <description>
                 &lt;p&gt;Are you a Software Developer who feels stagnant? OR Are you a Technical Recruiter not getting quality candidates in Software Development? Then, I believe this blog is for you to read.&lt;/p&gt;
@@ -592,7 +592,7 @@ Focussed on a &lt;strong&gt;single projec...
             </description>
             <pubDate>Thu, 19 Oct 2017 00:00:00 +0530</pubDate>
             <guid>
-                http://localhost:4000/do-software-professional-meet-industry-standards/
+                https://abhisheksubbu.github.io//do-software-professionals-meet-industry-standards/
             </guid>
         </item>
         
