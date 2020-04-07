@@ -6,11 +6,11 @@ layout: page
 | Date        | Topic                                                                                               | Venue                                                   |
 | ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | 14 Apr 2020 | Trigger Dispatcher Framework [**upcoming**]                                                         | Kochi, India                                            |
-| 09 Aug 2019 | [.NET Core API with Swagger](/asp-net-core-web-api-with-swagger/)                                   | Kochi, India                                            |
+| 09 Aug 2019 | [.NET Core API with Swagger](/asp-net-core-2-2-web-api-with-swagger/)                               | Kochi, India                                            |
 | 29 May 2019 | Creating Better Software Designs with StarUML - For Engineering Professors                          | Adi Shankara Engineering College, Kalady, Kerala, India |
 | 04 May 2019 | Career on the Cloud for Engineering Students                                                        | Adi Shankara Engineering College, Kalady, Kerala, India |
 | 08 Nov 2017 | Apex Code Audit Analyzers                                                                           | San Francisco, USA                                      |
-| 17 Dec 2017 | [1 Day Workshop on Design Patterns](/speaking-at-techwizz17-on-design-patterns/)                    | PGS Vedanta Business Hotel, Kochi, India India          |
+| 17 Dec 2017 | [1 Day Workshop on Design Patterns](/speaking-techwizz17-design-patterns/)                          | PGS Vedanta Business Hotel, Kochi, India India          |
 | 23 Jun 2016 | Social Media and Developer Evangelism                                                               | Kochi, India                                            |
 | 08 Oct 2016 | SOQL Performance Tuning and the Multi-Tenant Query Optimizer                                        | San Francisco, USA                                      |
 | 12 Oct 2015 | [Scheduler Dispatcher Framework in Force.com Platform](https://www.youtube.com/watch?v=p94nNPIf1JA) | Youtube                                                 |

@@ -6,14 +6,14 @@ excerpt: In this blog, you will learn how to create backend for your application
 comments: true
 ---
 
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>INFORMATION: </strong> This blog post is under development. Feel free to read and understand the content available so far. I will keep adding more content for you guys.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>
+</div>-->
 
-In this short course, you will learn how to create backend for your application using NodeJS.
+In this short deep dive, you will learn how to create backend for your application using NodeJS.
 
 #### 1. Introducing Node & its Architecture
 
@@ -25,26 +25,18 @@ Node is ideal choice for developing **highly scalable**, **data intensive** and 
 
 1. It is a great choice for prototyping and agile development.
 2. Ideal for fast and highly scalable services. Companies like Uber, Netflix, Paypal use Node a lot.
-
 - You can build a Node app twice as fast with fewer people.
 - You just need few lines of code in Node.
 - A Node app would have few files compared to other frameworks.
 - Node apps can serve 2x requests per second.
 - Node apps mostly have faster response time.
-
 3. Node uses Javascript everywhere.
-
-- If you are a javacript frontend developer, you can add NodeJS to your resume and transition into a fullstack developer in no time without learning anything new.
-
+  - If you are a javacript frontend developer, you can add NodeJS to your resume and transition into a fullstack developer in no time without learning anything new.
 4. Consistent codebase.
-
-- Using javascript on your backend and frontend makes the tech stack more consistent from a source code perspective [same naming conventions, same tools, same best practices].
-
+  - Using javascript on your backend and frontend makes the tech stack more consistent from a source code perspective [same naming conventions, same tools, same best practices].
 5. Node has the largest ecosystem of open source libraries.
-
 - NPM (Node Package Manager) has tons of libraries that the developer community contributes and maintains.
 - For any feature that we want in our application, mostly there is going to be an NPM package which we can import into our application and configure [instead of developing things from scratch].
-
 6. Node is high scalable because of its non-blocking asynchronous nature. It works on single thread but with asynchrony, it uses that thread very efficiently.
 
 ##### Remember This
@@ -74,8 +66,24 @@ The javascript engine that resides inside the browser is the runtime environment
 
 #### 2. Preparing the Node environment in your machine
 
+**On Windows Operating System**
 - Navigate to [NodeJS](https://nodejs.org/en/) website and download the LTS version of node
 - Install the downloaded node executable
+
+**On Ubuntu Linux**
+- Run the commands one by one in the Terminal
+```console
+sudo apt-get install curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install nodejs
+```
+- Finally check the installed versions by executing the following commands
+```console
+node -v
+npm -v
+```
+
+**General softwares to install**
 - Install [Visual Studio Code](https://code.visualstudio.com) [if not available in your machine]
 - Install [PostMan](https://www.postman.com/) for troubleshooting API endpoints
 

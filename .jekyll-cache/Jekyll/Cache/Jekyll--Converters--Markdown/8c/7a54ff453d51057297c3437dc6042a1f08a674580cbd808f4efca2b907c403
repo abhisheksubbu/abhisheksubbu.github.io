@@ -1,11 +1,11 @@
-I"H<div class="alert alert-warning alert-dismissible fade show" role="alert">
+I",K<!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>INFORMATION: </strong> This blog post is under development. Feel free to read and understand the content available so far. I will keep adding more content for you guys.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>
+</div>-->
 
-<p>In this short course, you will learn how to create backend for your application using NodeJS.</p>
+<p>In this short deep dive, you will learn how to create backend for your application using NodeJS.</p>
 
 <h4 id="1-introducing-node--its-architecture">1. Introducing Node &amp; its Architecture</h4>
 
@@ -17,43 +17,31 @@
 
 <ol>
   <li>It is a great choice for prototyping and agile development.</li>
-  <li>Ideal for fast and highly scalable services. Companies like Uber, Netflix, Paypal use Node a lot.</li>
-</ol>
-
-<ul>
-  <li>You can build a Node app twice as fast with fewer people.</li>
-  <li>You just need few lines of code in Node.</li>
-  <li>A Node app would have few files compared to other frameworks.</li>
-  <li>Node apps can serve 2x requests per second.</li>
-  <li>Node apps mostly have faster response time.</li>
-</ul>
-
-<ol>
-  <li>Node uses Javascript everywhere.</li>
-</ol>
-
-<ul>
-  <li>If you are a javacript frontend developer, you can add NodeJS to your resume and transition into a fullstack developer in no time without learning anything new.</li>
-</ul>
-
-<ol>
-  <li>Consistent codebase.</li>
-</ol>
-
-<ul>
-  <li>Using javascript on your backend and frontend makes the tech stack more consistent from a source code perspective [same naming conventions, same tools, same best practices].</li>
-</ul>
-
-<ol>
-  <li>Node has the largest ecosystem of open source libraries.</li>
-</ol>
-
-<ul>
-  <li>NPM (Node Package Manager) has tons of libraries that the developer community contributes and maintains.</li>
-  <li>For any feature that we want in our application, mostly there is going to be an NPM package which we can import into our application and configure [instead of developing things from scratch].</li>
-</ul>
-
-<ol>
+  <li>Ideal for fast and highly scalable services. Companies like Uber, Netflix, Paypal use Node a lot.
+    <ul>
+      <li>You can build a Node app twice as fast with fewer people.</li>
+      <li>You just need few lines of code in Node.</li>
+      <li>A Node app would have few files compared to other frameworks.</li>
+      <li>Node apps can serve 2x requests per second.</li>
+      <li>Node apps mostly have faster response time.</li>
+    </ul>
+  </li>
+  <li>Node uses Javascript everywhere.
+    <ul>
+      <li>If you are a javacript frontend developer, you can add NodeJS to your resume and transition into a fullstack developer in no time without learning anything new.</li>
+    </ul>
+  </li>
+  <li>Consistent codebase.
+    <ul>
+      <li>Using javascript on your backend and frontend makes the tech stack more consistent from a source code perspective [same naming conventions, same tools, same best practices].</li>
+    </ul>
+  </li>
+  <li>Node has the largest ecosystem of open source libraries.
+    <ul>
+      <li>NPM (Node Package Manager) has tons of libraries that the developer community contributes and maintains.</li>
+      <li>For any feature that we want in our application, mostly there is going to be an NPM package which we can import into our application and configure [instead of developing things from scratch].</li>
+    </ul>
+  </li>
   <li>Node is high scalable because of its non-blocking asynchronous nature. It works on single thread but with asynchrony, it uses that thread very efficiently.</li>
 </ol>
 
@@ -90,9 +78,29 @@
 
 <h4 id="2-preparing-the-node-environment-in-your-machine">2. Preparing the Node environment in your machine</h4>
 
+<p><strong>On Windows Operating System</strong></p>
 <ul>
   <li>Navigate to <a href="https://nodejs.org/en/">NodeJS</a> website and download the LTS version of node</li>
   <li>Install the downloaded node executable</li>
+</ul>
+
+<p><strong>On Ubuntu Linux</strong></p>
+<ul>
+  <li>Run the commands one by one in the Terminal
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo apt-get install curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install nodejs
+</span></code></pre></div>    </div>
+  </li>
+  <li>Finally check the installed versions by executing the following commands
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">node -v
+npm -v
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>General softwares to install</strong></p>
+<ul>
   <li>Install <a href="https://code.visualstudio.com">Visual Studio Code</a> [if not available in your machine]</li>
   <li>Install <a href="https://www.postman.com/">PostMan</a> for troubleshooting API endpoints</li>
 </ul>
