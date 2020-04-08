@@ -3,6 +3,8 @@ title: Home
 layout: default
 ---
 
+{% include news.html %}
+
 <div class="jumbotron text-center">
   <h1>Hi, I am Abhishek Subbu</h1>
   <p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
@@ -16,8 +18,3 @@ layout: default
 </div>
 <div>
 {% include upcoming-deep-dive.html %}
-<!--
-You can use HTML elements in Markdown, such as the comment element, and they won't
-be affected by a markdown parser. However, if you create an HTML element in your
-markdown file, you cannot use markdown syntax within that element's contents.
--->

@@ -46,8 +46,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Sharing my thoughts on the Cloud" />
 <meta property="og:description" content="Sharing my thoughts on the Cloud" />
-<link rel="canonical" href="https://abhisheksubbu.github.io//" />
-<meta property="og:url" content="https://abhisheksubbu.github.io//" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="AbhishekSubbu" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Home" />
@@ -55,7 +55,7 @@
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
-{"@type":"WebSite","headline":"Home","sameAs":["https://twitter.com/abhisheksubbu","https://www.facebook.com/abhishek.sivasubramanian","https://www.linkedin.com/in/abhisheksivasubramanian","https://github.com/abhisheksubbu"],"url":"https://abhisheksubbu.github.io//","name":"Abhishek Subbu","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"description":"Sharing my thoughts on the Cloud","@context":"https://schema.org"}</script>
+{"@type":"WebSite","headline":"Home","sameAs":["https://twitter.com/abhisheksubbu","https://www.facebook.com/abhishek.sivasubramanian","https://www.linkedin.com/in/abhisheksivasubramanian","https://github.com/abhisheksubbu"],"url":"http://localhost:4000/","name":"Abhishek Subbu","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"description":"Sharing my thoughts on the Cloud","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -100,7 +100,23 @@
   </div>
 </nav>
 
-      <div style="margin-top:20px; margin-bottom:20px;"><div class="jumbotron text-center">
+      <div style="margin-top:20px; margin-bottom:20px;"><div class="row">
+  <div class="col-md-2 text-center">
+    <b>LATEST NEWS: </b>
+  </div>
+  <div class="col-md-10">
+    <marquee direction="left" scrollamount="10" onmouseover="this.scrollAmount = 0" onmouseout="this.scrollAmount = 10">
+      <a href="https://ubuntu.com/download/desktop" target="_blank">Ubuntu 20.04 LTS</a>
+      version to be released on 23 April 2020 | Deep Dive article on
+      <a href="/node-backend/">creating API's with NodeJS</a>
+      has been published | Deep Dive article on
+      <a href="//learn/deepdives/dot-net-core-rest-api/">.NET Core RESTful API</a>
+      is currently under progress
+    </marquee>
+  </div>
+</div>
+
+<div class="jumbotron text-center">
   <h1>Hi, I am Abhishek Subbu</h1>
   <p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
   <a href="/blog"><button class="btn btn-primary btn-lg">Read My Blogs</button></a>
@@ -142,11 +158,6 @@
   </div>
 </div>
 
-<!--
-You can use HTML elements in Markdown, such as the comment element, and they won't
-be affected by a markdown parser. However, if you create an HTML element in your
-markdown file, you cannot use markdown syntax within that element's contents.
--->
 </div>
 </div>
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
