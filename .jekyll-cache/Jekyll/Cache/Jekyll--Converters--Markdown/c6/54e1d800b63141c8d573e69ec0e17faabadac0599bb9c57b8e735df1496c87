@@ -1,4 +1,4 @@
-I"Ý<div class="jumbotron text-center">
+I"÷<div class="jumbotron text-center">
   <h1>Hi, I am Abhishek Subbu</h1>
   <p>My love for technology and teaching is beyond words. I learn and share my knowledge to the world in my blog.</p>
   <a href="/blog"><button class="btn btn-primary btn-lg">Read My Blogs</button></a>
@@ -26,15 +26,15 @@
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card border-secondary mb-3">
-      <div class="card-header"><strong>NodeJS</strong></div>
-      <div class="card-body text-secondary">
-        <h5 class="card-title">Frontend with React + NodeJS</h5>
+    <div class="card border-success mb-3">
+      <div class="card-header"><strong>.NET Core</strong></div>
+      <div class="card-body text-success">
+        <h5 class="card-title">REST API</h5>
         <p class="card-text">
-          In this deep dive, you will learn how to create frontend in React and
-          connect it to NodeJS backend.
+          In this deep dive, you will learn everything about .NET Core Web API
+          setup, persistence, security and many more.
         </p>
-        <a href="#" class="btn btn-secondary">Upcoming ...</a>
+        <a href="/learn/deepdives/dot-net-core-rest-api/" class="btn btn-success">Access Now</a>
       </div>
     </div>
   </div>

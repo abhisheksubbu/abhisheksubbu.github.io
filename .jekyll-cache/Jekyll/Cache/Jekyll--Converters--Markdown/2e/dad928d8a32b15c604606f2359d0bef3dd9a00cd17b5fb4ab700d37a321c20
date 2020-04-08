@@ -1,0 +1,52 @@
+I")<p><strong>REST</strong> stands for Representational State Transfer.</p>
+
+<h4 id="features">Features</h4>
+
+<ul>
+  <li><strong>It is stateless by nature</strong> - It means that every request-response handshake is not aware of what happened in the previous request-response cycle.</li>
+  <li><strong>Works with HTTP protocol</strong> - It means that REST API’s interact with HTTP requests with all HTTP verbs and generate an HTTP response.</li>
+</ul>
+
+<h4 id="http-verbs">HTTP Verbs</h4>
+
+<ol>
+  <li><strong>GET</strong> - A request with GET verb does not modify any resources on the server. It simply fetches/queries the resource from the server and sends it back as a response. The response can simply object or a complex record(s).</li>
+  <li><strong>POST</strong> - A request with POST verb creates an object(s) on the server. It is used for INSERT operations. The response is the object that was created on the server.</li>
+  <li><strong>PUT</strong> - A request with PUT verb updates the object as a whole (all properties) on the server. It is used for UPDATE operations. The response is the object that was updated on the server.</li>
+  <li><strong>PATCH</strong> - A request with PUT verb updates certain properties of the object on the server. It is used for UPDATE operations on specific properties of the object and not the whole object need not be touched. The response is the object that was updated on the server.</li>
+  <li><strong>DELETE</strong> - A request with DELETE verb deletes the object from the server. It is used for DELETE operations. The response of the object that was deleted from the server.</li>
+</ol>
+
+<h4 id="expectations-for-restful-http-responses">Expectations for RESTful HTTP Responses</h4>
+
+<ul>
+  <li>If the response was generated without any errors, then the object should be sent back in the HTTP response with 200 [OK] status code.</li>
+  <li>If the request contained any invalid data due to which the API could not generate a valid response, then the HTTP response should have 400 [Bad Request] status code.</li>
+  <li>If the request was valid but the resources that should exist in server does not exist due to which the response couldn’t be generated, then an HTTP response with the error message with 404 [Not Found] status code should be sent back.</li>
+</ul>
+
+<p>Read more about <a href="https://www.restapitutorial.com/httpstatuscodes.html" target="\_blank">HTTP Status Codes</a></p>
+
+<blockquote>
+  <p>Just because something returns a JSON response, it cannot be called RESTful</p>
+</blockquote>
+
+<h4 id="api-best-practices">API Best Practices</h4>
+
+<ul>
+  <li>Every API endpoint should be readable and the URL should express it’s intent very clearly.</li>
+  <li>API endpoints should only work on the necessary data from the request body. Remember that an attacker can send more data in the request body.</li>
+  <li>API should always validate the access permissions, completeness of the incoming data and then process the response. Any validation error should be thrown back to the client with appropriate status codes.</li>
+  <li>API endpoints should be asynchronous in nature so that it does not block the threads.</li>
+  <li>API endpoints should be protected by <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a>.</li>
+  <li>API endpoints should be obey transactions. It should not put the data into an inconsistent state for any reason.</li>
+  <li>Any sensitive data (like username, password, tokens, salt, etc) should not be stored in API codebase or configuration files. This makes the API vulnerable to be hacked/ get compromised.</li>
+  <li>Every API endpoint should be load tested for performance benchmarking.</li>
+  <li>Un-necessary data that the client doesn’t need should not be there in the response.</li>
+  <li>API implementations should be exception handled properly and logged appropriately.</li>
+  <li>There has to be a mechanism in API implementation to switch ON/OFF critical logging areas for quicker troubleshooting without having to deploy code/configuration files for starting the debugging process.</li>
+  <li>Every API endpoint should be UNIT &amp; INTEGRATION tested.</li>
+  <li>Every API endpoint should be versioned. This enables us to rollout changes to API without affecting consumers who are using the old version. It also enables old consumers or new consumers to on-board into new API version without impacting their environment.</li>
+  <li>API documentation has to be available for every version that the API exists [like <a href="/asp-net-core-2-2-web-api-with-swagger/" target="\_blank">Swagger documentation</a>].</li>
+</ul>
+:ET

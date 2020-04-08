@@ -252,9 +252,11 @@ In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with 
     ```
 
 24. Now, build the project. It should build without any errors. Click “F5” and run the project. In the newly opened browser, change the URL to “https://localhost:5001/swagger” and hit Enter. You should now see the Swagger UI with our “/api/user” api endpoint configured.
+
     ![Swagger Endpoint](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/swagger-endpoint-1024x358.png)
 
 25. You can now test the API in Swagger UI by clicking on the “/api/user” and hit the “Try it out” button and “Execute” button. This will invoke the “/api/user” endpoint and return the response with “name” property and “Test Name” value.
+
     ![Execute API in Swagger](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/execute-api-in-swagger-1024x497.png)
 
 Hope this blog was helpful to you in understanding Swagger and its configurations from scratch. Happy Coding 🙂
