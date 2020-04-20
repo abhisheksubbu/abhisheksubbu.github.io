@@ -11,7 +11,7 @@ layout: default
     </ol>
   </nav>
 </div>
-My name is **Abhishek Sivasubramanian**. I am working as the **Associate Director of Technology** at [Suyati Technologies, Kochi](https://suyati.com/). I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
+My name is **Abhishek Sivasubramanian**. I am working as the **Associate Director, Engineering** at [Suyati Technologies, Kochi](https://suyati.com/). I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
 
 ### My Qualification
 
@@ -46,6 +46,6 @@ I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in Sa
 <br/>
 <hr/>
 <p>Follow me on social media 
-    <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+    <a href="https://www.github.com/abhisheksubbu"><i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a>
     <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
     <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>

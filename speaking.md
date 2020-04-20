@@ -5,7 +5,7 @@ layout: page
 
 | Date        | Topic                                                                                               | Venue                                                   |
 | ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| 14 Apr 2020 | Trigger Dispatcher Framework [**upcoming**]                                                         | Kochi, India                                            |
+| 14 Apr 2020 | [Trigger Optimization Framework in Salesforce](/trigger-optimization-framework/)                    | Kochi, India                                            |
 | 09 Aug 2019 | [.NET Core API with Swagger](/asp-net-core-2-2-web-api-with-swagger/)                               | Kochi, India                                            |
 | 29 May 2019 | Creating Better Software Designs with StarUML - For Engineering Professors                          | Adi Shankara Engineering College, Kalady, Kerala, India |
 | 04 May 2019 | Career on the Cloud for Engineering Students                                                        | Adi Shankara Engineering College, Kalady, Kerala, India |

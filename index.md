@@ -11,7 +11,7 @@ layout: default
   <a href="{{site.baseurl}}/blog"><button class="btn btn-primary btn-lg">Read My Blogs</button></a>
   <hr/>
   <p>Follow me on social media 
-      <a href="https://www.facebook.com/abhishek.sivasubramanian"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+      <a href="https://www.github.com/abhisheksubbu"><i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a>
       <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
       <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
   

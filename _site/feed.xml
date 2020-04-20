@@ -5,7 +5,41 @@
         <title>AbhishekSubbu</title>
         <link>http://localhost:4000</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Wed, 08 Apr 2020 18:38:41 +0530</lastBuildDate>
+        <lastBuildDate>Mon, 20 Apr 2020 22:54:13 +0530</lastBuildDate>
+        
+        <item>
+            <title>Trigger Optimization Framework in Salesforce</title>
+            <link>
+                http://localhost:4000/trigger-optimization-framework/
+            </link>
+            <description>
+                &lt;p&gt;Firstly, I need to acknowledge the valuable inputs that &lt;a href=&quot;https://twitter.com/apurkiss&quot; target=&quot;\_blank&quot;&gt;Adam Purkiss&lt;/a&gt; and &lt;a href=&quot;https://krishhari.wordpress.com/about/&quot; target=&quot;\_blank&quot;&gt;Hari Krishnan&lt;/a&gt; have contributed in the Salesforce community on apex trigger frameworks and its management.&lt;/p&gt;
+
+&lt;...
+            </description>
+            <pubDate>Mon, 20 Apr 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/trigger-optimization-framework/
+            </guid>
+        </item>
+        
+        <item>
+            <title>Inversion of Control - Part 1</title>
+            <link>
+                http://localhost:4000/inversion-of-control-part-1/
+            </link>
+            <description>
+                &lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Inversion of Control&lt;/strong&gt; is a &lt;strong&gt;principle&lt;/strong&gt; in software engineering by which the &lt;strong&gt;control of objects&lt;/strong&gt; or portions of a program is &lt;strong&gt;transferred&lt;/strong&gt; to a &lt;strong&gt;container or framework&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s disect the defi...
+            </description>
+            <pubDate>Mon, 20 Apr 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/inversion-of-control-part-1/
+            </guid>
+        </item>
         
         <item>
             <title>REST API Standards</title>

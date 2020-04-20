@@ -1,0 +1,116 @@
+I"�/<p>Firstly, I need to acknowledge the valuable inputs that <a href="https://twitter.com/apurkiss" target="\_blank">Adam Purkiss</a> and <a href="https://krishhari.wordpress.com/about/" target="\_blank">Hari Krishnan</a> have contributed in the Salesforce community on apex trigger frameworks and its management.</p>
+
+<blockquote>
+  <p><strong>Disclaimer</strong>: Many organizations and people in the community have their own version of Trigger Framework. That is totally fine and this blog is not to prove them wrong.</p>
+</blockquote>
+
+<p>In this blog, I have tried to extend the trigger framework to be more configurable in nature. If you have any suggestions/concerns, please feel free to comment on this blog post.</p>
+
+<h4 id="what-you-need-to-know-before-you-read-this-blog">What you need to know before you read this blog</h4>
+
+<ol>
+  <li><a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers.htm" target="\_blank">Basic understanding on Salesforce Apex Triggers</a></li>
+  <li><a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_context_variables.htm" target="\_blank">Understanding of various Trigger Context Variables</a></li>
+  <li><a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_order_of_execution.htm" target="\_blank">Order of Execution in Salesforce</a></li>
+</ol>
+
+<h4 id="current-problems-with-apex-triggers">Current Problems with Apex Triggers</h4>
+
+<ol>
+  <li><strong>Many triggers for one object</strong> – Having more than 1 triggger per object causes the prediction of Execution Order to be difficult.</li>
+  <li><strong>Business Logic scattered in triggers &amp; classes</strong> – Business Logic gets scattered in some triggers, handler classes and helper classes. Thus, it causes maintenance problems.</li>
+  <li><strong>Re-entry of trigger logic</strong> – Difficult to manage &amp; maintain these as many developers have their own approach of managing re-entries.</li>
+  <li><strong>Number of SOQL and DML statements executed</strong> in a trigger context somtimes goes out of control</li>
+  <li><strong>Difficult to de-couple logic</strong> – There needs to be lot of impact analysis due to scattered code before you remove or pull some logic out.</li>
+  <li><strong>Not enough logs generated</strong> – Logging is not consistent from triggers to classes. Usually, developers have to write logging statements here and there.</li>
+</ol>
+
+<h4 id="benefits-of-a-trigger-framework">Benefits of a Trigger Framework</h4>
+
+<ol>
+  <li>Makes the <strong>Triggers more streamlined</strong> and provides a precise predictability in order of execution</li>
+  <li>It provides <strong>separate code paths for new &amp; re-entrant logic</strong>. Thus making the management of logic simpler and impact-free.</li>
+  <li>Provides a <strong>Centralized SOQL and DML management</strong> by which SOQL and DML statements can be managed in a central location rather than making changes everywhere.</li>
+  <li>Facilitates <strong>Logging at the framework level</strong>. Thus, making the developers focus on writing the logic efficiently and not worry about exception handling around each line they write.</li>
+  <li>Provides <strong>ability to switch ON/OFF triggers based on configurations</strong>. This helps us when issues occur in production and we have to troubleshoot it without deploying code.</li>
+</ol>
+
+<p>The trigger framework orchestrates its execution as shown below.
+<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/trigger-execution-pipeline.png" alt="Trigger Execution Pipeline" /></p>
+
+<h5 id="explanation-of-the-methods-in-the-trigger-pipeline">Explanation of the methods in the trigger pipeline</h5>
+
+<ol>
+  <li><code class="highlighter-rouge">bulkBefore</code>- This point is an ideal location where we can do anything before the actual before trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the before trigger handlers can get/set properties of the already queried records.</li>
+  <li><code class="highlighter-rouge">applyDefault</code> - Particularly for beforeInsert, it’s best to ensure that the default values of the incoming record be set based on any business expectation. This will ensure that the values of the record is always consistent in terms of business expectation. Note that this only applies to the beforeInsert pipeline.</li>
+  <li><code class="highlighter-rouge">beforeInsert</code> - This is the point where the actual beforeInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">beforeUpdate</code> - This is the point where the actual beforeUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">beforeDelete</code> - This is the point where the actual beforeDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">bulkAfter</code> - This point is an ideal location where we can do anything just before the actual after trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the after trigger handlers can get/set properties of the already queried records.</li>
+  <li><code class="highlighter-rouge">onValidate</code> - Typically, on any after triggers, it is always good to validate the consistency of the records and ensure that errors are thrown back if validation fails. This <code class="highlighter-rouge">onValidate()</code> saves from any potential after triggers throwing an exception just because a record is not consistent.</li>
+  <li><code class="highlighter-rouge">afterInsert</code> - This is the point where the actual afterInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">afterUpdate</code> - This is the point where the actual afterUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">afterDelete</code> - This is the point where the actual afterDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">afterUnDelete</code> - This is the point where the actual afterUnDelete logic needs to be plugged in [with the correct order of operations that business expects]. UnDelete happens when a record lying in the Recycle Bin is restored back to the object.</li>
+</ol>
+
+<p>In a nutshell, what did we try to streamline using this trigger pipeline?</p>
+
+<ul>
+  <li>Before Trigger Execution (4th point in the order of execution)</li>
+  <li>
+    <p>After Trigger Execution (8th point in the order of execution)</p>
+
+    <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/order-of-execution.png" alt="Order of Execution" /></p>
+  </li>
+</ul>
+
+<p>Every trigger execution context can now be separated from the pipeline by having its own handlers. For example, <code class="highlighter-rouge">beforeInsert</code> for Lead can be separated into a class called <strong>LeadBeforeInsertHandler</strong>.
+Why we need to separate it? It ensures <strong>separation of concerns</strong> and that we are not mixing handler responsibilities in trigger pipeline orchestration.</p>
+
+<p>Let’s now look at how Handler execution can be generalized.
+<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/handler-execution-pipeline.png" alt="Handler Pipeline" /></p>
+
+<h5 id="explanation-of-steps-in-the-handler-pipeline">Explanation of steps in the Handler pipeline</h5>
+
+<ol>
+  <li><strong>Picking the Handler Instance</strong> - Based on the incoming object type, we need to pick and instantiate the correct handler class</li>
+  <li><strong>mainEntry</strong> - This is the method that needs to execute if the trigger control flow is being invoked freshly in a context and it is not as a result of any re-entry.</li>
+  <li><strong>inProgressEntry</strong> - This is the method that needs to execute in case the trigger control re-enters due to any DML’s executed within the trigger lifetime.</li>
+  <li><strong>Centralized DML</strong> - After a trigger handler is executed, it would have set some properties of the records and this is the point where we can centrally execute DML statements on the collection of records.</li>
+</ol>
+
+<h4 id="itriggerdispatcher">ITriggerDispatcher</h4>
+
+<p>Interface that contains the contracts of the trigger pipeline</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ITriggerDispatcher</span>
+    <span class="o">{</span>
+        <span class="kt">void</span> <span class="nf">applyDefaults</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">bulkBefore</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">beforeInsert</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">beforeUpdate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">beforeDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+
+        <span class="kt">void</span> <span class="nf">bulkAfter</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">onValidate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">afterInsert</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">afterUpdate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">afterDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">afterUnDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+
+        <span class="kt">void</span> <span class="nf">andFinally</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ITriggerHandler</span>
+    <span class="o">{</span>
+        <span class="kt">void</span> <span class="nf">mainEntry</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+        <span class="kt">void</span> <span class="nf">inProgressEntry</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
+
+        <span class="kt">void</span> <span class="nf">insertObjects</span><span class="o">();</span>
+        <span class="kt">void</span> <span class="nf">updateObjects</span><span class="o">();</span>
+        <span class="kt">void</span> <span class="nf">deleteObjects</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+:ET

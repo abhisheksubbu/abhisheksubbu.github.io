@@ -1,0 +1,67 @@
+I"2<p>Firstly, I need to acknowledge the valuable inputs that <a href="https://twitter.com/apurkiss" target="\_blank">Adam Purkiss</a> and <a href="https://krishhari.wordpress.com/about/" target="\_blank">Hari Krishnan</a> have contributed in the Salesforce community on apex trigger frameworks and its management.</p>
+
+<blockquote>
+  <p><strong>Disclaimer</strong>: Many organizations and people in the community have their own version of Trigger Framework. That is totally fine and this blog is not to prove them wrong.</p>
+</blockquote>
+
+<p>In this blog, I have tried to extend the trigger framework to be more configurable in nature. If you have any suggestions/concerns, please feel free to comment on this blog post.</p>
+
+<h4 id="what-you-need-to-know-before-you-read-this-blog">What you need to know before you read this blog</h4>
+
+<ol>
+  <li><a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers.htm" target="\_blank">Basic understanding on Salesforce Apex Triggers</a></li>
+  <li><a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_context_variables.htm" target="\_blank">Understanding of various Trigger Context Variables</a></li>
+  <li><a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_order_of_execution.htm" target="\_blank">Order of Execution in Salesforce</a></li>
+</ol>
+
+<h4 id="current-problems-with-apex-triggers">Current Problems with Apex Triggers</h4>
+
+<ol>
+  <li><strong>Many triggers for one object</strong> – Having more than 1 triggger per object causes the prediction of Execution Order to be difficult.</li>
+  <li><strong>Business Logic scattered in triggers &amp; classes</strong> – Business Logic gets scattered in some triggers, handler classes and helper classes. Thus, it causes maintenance problems.</li>
+  <li><strong>Re-entry of trigger logic</strong> – Difficult to manage &amp; maintain these as many developers have their own approach of managing re-entries.</li>
+  <li><strong>Number of SOQL and DML statements executed</strong> in a trigger context somtimes goes out of control</li>
+  <li><strong>Difficult to de-couple logic</strong> – There needs to be lot of impact analysis due to scattered code before you remove or pull some logic out.</li>
+  <li><strong>Not enough logs generated</strong> – Logging is not consistent from triggers to classes. Usually, developers have to write logging statements here and there.</li>
+</ol>
+
+<h4 id="benefits-of-a-trigger-framework">Benefits of a Trigger Framework</h4>
+
+<ol>
+  <li>Makes the <strong>Triggers more streamlined</strong> and provides a precise predictability in order of execution</li>
+  <li>It provides <strong>separate code paths for new &amp; re-entrant logic</strong>. Thus making the management of logic simpler and impact-free.</li>
+  <li>Provides a <strong>Centralized SOQL and DML management</strong> by which SOQL and DML statements can be managed in a central location rather than making changes everywhere.</li>
+  <li>Facilitates <strong>Logging at the framework level</strong>. Thus, making the developers focus on writing the logic efficiently and not worry about exception handling around each line they write.</li>
+  <li>Provides <strong>ability to switch ON/OFF triggers based on configurations</strong>. This helps us when issues occur in production and we have to troubleshoot it without deploying code.</li>
+</ol>
+
+<p>The trigger framework orchestrates its execution as shown below.
+<img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/trigger-execution-pipeline.png" alt="Trigger Execution Pipeline" /></p>
+
+<h5 id="explanation-of-the-methods-in-the-trigger-pipeline">Explanation of the methods in the trigger pipeline</h5>
+
+<ol>
+  <li><strong>bulkBefore</strong> - This point is an ideal location where we can do anything before the actual before trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the before trigger handlers can get/set properties of the already queried records.</li>
+  <li><strong>applyDefault</strong> - Particularly for beforeInsert, it’s best to ensure that the default values of the incoming record be set based on any business expectation. This will ensure that the values of the record is always consistent in terms of business expectation. Note that this only applies to the beforeInsert pipeline.</li>
+  <li><strong>beforeInsert</strong> - This is the point where the actual beforeInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><strong>beforeUpdate</strong> - This is the point where the actual beforeUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><strong>beforeDelete</strong> - This is the point where the actual beforeDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><strong>bulkAfter</strong> - This point is an ideal location where we can do anything just before the actual after trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the after trigger handlers can get/set properties of the already queried records.</li>
+  <li><strong>onValidate</strong> - Typically, on any after triggers, it is always good to validate the consistency of the records and ensure that errors are thrown back if validation fails. This <code class="highlighter-rouge">onValidate()</code> saves from any potential after triggers throwing an exception just because a record is not consistent.</li>
+  <li><strong>afterInsert</strong> - This is the point where the actual afterInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><strong>afterUpdate</strong> - This is the point where the actual afterUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><strong>afterDelete</strong> - This is the point where the actual afterDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><strong>afterUnDelete</strong> - This is the point where the actual afterUnDelete logic needs to be plugged in [with the correct order of operations that business expects]. UnDelete happens when a record lying in the Recycle Bin is restored back to the object.</li>
+</ol>
+
+<p>In a nutshell, what did we try to streamline using this trigger pipeline?</p>
+
+<ul>
+  <li>Before Trigger Execution (4th point in the order of execution)</li>
+  <li>
+    <p>After Trigger Execution (8th point in the order of execution)</p>
+
+    <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/order-of-execution.png" alt="Order of Execution" /></p>
+  </li>
+</ul>
+:ET
