@@ -8,5 +8,5 @@ In this deep dive, you will learn all about REST Standards and how we can create
 
 1. [REST Standards]({{site.baseurl}}/rest-api-standards/){:target="\_blank"}
 1. [ASP.NET Core Web API Setup - Windows]({{site.baseurl}}/asp-net-core-2-2-web-api-with-swagger/){:target="\_blank"} OR [ASP.NET Core Web API Setup - Linux]({{site.baseurl}}/asp-net-core-web-api-with-swagger-linux-edition/){:target="\_blank"}
-1. API Versioning
+1. [API Versioning]({{site.baseurl}}/api-versioning/)
 1. Dependency Inversion

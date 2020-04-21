@@ -1,0 +1,93 @@
+I"e<h2 id="why-should-we-version-our-apis">Why should we version our API’s?</h2>
+
+<p>The first time we publish an API for clients to consume, then the users expect that the API’s do not change suddenly and break their integrations. But the fact is that new requirements will come to the developers maintaining the API and they have to somehow evolve the API’s without breaking the client integrations at any cost.</p>
+
+<p>So, the only way around this is to version the API’s as new changes are rolled out. This gives clients the flexibility to use the previous versions of API and continue their business. They can parallely test the new API version on their sandbox and once tested successfully, roll over to the new API version.</p>
+
+<h2 id="typical-scenarios-where-api-versioning-can-cause-problems">Typical scenarios where API versioning can cause problems</h2>
+
+<ul>
+  <li>If the previous version of the API targets a set of assemblies &amp; the newer version of the same API targets a different/upgraded version of the assemblies, then it becomes difficult to deploy both sets of assemblies side by side in the same API codebase.</li>
+</ul>
+
+<h2 id="approaches-to-api-versioning">Approaches to API versioning</h2>
+
+<blockquote>
+  <p>Note that there is no one right way to achieve this. The approach typically depends on your requirements, the way you anticipate changes to occur in your API and the way your clients find it easy to incorporate API verioning changes. So, don’t complicate API versioning with a single best practice. The fact is that there is no single solution to versioning.</p>
+</blockquote>
+
+<h3 id="approach-1--uri-versioning">Approach 1 : URI Versioning</h3>
+
+<p>This approach versions API endpoints based on the URI. For example, <code class="highlighter-rouge">https://abc.org/api/v2/customers</code>. Personally, I don’t like this approach as the root URI itself changes and everytime clients consuming the API have to change the API URI’s.</p>
+
+<h3 id="approach-2--query-string-versioning">Approach 2 : Query String Versioning</h3>
+
+<p>This approach versions API endpoints based on the query string parameter. For example, <code class="highlighter-rouge">https://abc.org/api/customers?v=2.0</code>. This is slightly better than the URI approach since the root API URI doesn’t change but query string parameter still kind of pollutes the URI.</p>
+
+<h3 id="approach-3--request-header-versioning">Approach 3 : Request Header Versioning</h3>
+
+<p>This approach versions API endpoints based on the <code class="highlighter-rouge">X-Version</code> header. For example,</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
+Host: localhost:4000
+Content-Type: application/json
+X-Version: 2.0
+</code></pre></div></div>
+
+<p>In this approach, the good thing is that the API URI is consistent throughout and looks beautiful. But your clients need to know how to generate requests by setting the <code class="highlighter-rouge">X-Version</code> header value to the version that they want to integrate into. This is better than the Approach 1 and 2.</p>
+
+<h3 id="approach-4--accept-header-versioning">Approach 4 : Accept Header Versioning</h3>
+
+<p>This approach versions API endpoints based on the <code class="highlighter-rouge">Accept</code> header. For example,</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
+Host: localhost:4000
+Content-Type: application/json
+Accept: application/json;version=2.0
+</code></pre></div></div>
+
+<p>In this approach, the good thing is that the API URI is consistent throughout and looks beautiful. Another advantage of this approach is that we can set the Accept header value when we are setting the data type to be passed into the API endpoint. This is more convenient but slightly more complicated than Approach 3. Remember that the structure of the content that a version accepts may be different from the structure that the later version accepts.</p>
+
+<h3 id="approach-5--content-type-versioning">Approach 5 : Content Type Versioning</h3>
+
+<p>This approach versions API endpoints based on the <code class="highlighter-rouge">Content-Type</code> header. For example,</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
+Host: localhost:4000
+Content-Type: application/vnd.yourapp.customer.v2+json
+Accept: application/vnd.yourapp.customer.v2+json
+</code></pre></div></div>
+
+<p>This approach gets a little more complex but it allows you to specify what version of the content is being send and what version of the content can be received. It is typically useful in scenarios where you are sending data to an API that got some granular changes. So, you can specify the version of the content that you are sending in <code class="highlighter-rouge">Accept</code> header and you can talk to the specific version of the API using the <code class="highlighter-rouge">Content-Type</code> header. This approach is more bullet proof as it lets you play with <code class="highlighter-rouge">Content-Type</code> and <code class="highlighter-rouge">Accept</code> value combinations. But understand that this is comparitively harder to accomplish.</p>
+
+<blockquote>
+  <p>Personally, I would stick to Approach 3 or Approach 2 as it is more easier for clients to consume it. Unless your API versioning needs are too stringent, you could definitely go for Approach 4 or 5 considering that the challenges &amp; complexities that come along with it.</p>
+</blockquote>
+
+<p>Let’s see now dive into an ASP.Net Core Web API setup and configure the API versions</p>
+
+<ol>
+  <li>Create a folder named ‘asp-net-core-version’</li>
+  <li>
+    <p>Inside this folder, create a webapi project using .NET CLI command</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">    dotnet new webapi
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the AspNet Core Versioning Nuget Package</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">    dotnet add package Microsoft.AspNetCore.Mvc.Versioning
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Configure the ApiVersioning middleware as follows</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">services</span><span class="p">.</span><span class="nf">AddApiVersioning</span><span class="p">(</span><span class="n">config</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">DefaultApiVersion</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApiVersion</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">);</span> <span class="c1">//we are telling the middleware to assume 1.0 as the default API version</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">AssumeDefaultApiVersionWhenUnspecified</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">//if the consumer doesn't specify API version, we are instructing the use the default api version</span>
+        <span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

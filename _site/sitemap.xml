@@ -131,6 +131,13 @@
 
     
     <url>
+        <loc>/api-versioning/</loc>
+        <lastmod>2020-04-21</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
         <loc>/trigger-optimization-framework/</loc>
         <lastmod>2020-04-21</lastmod>
         <changefreq>daily</changefreq>

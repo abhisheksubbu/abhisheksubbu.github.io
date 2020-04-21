@@ -1,0 +1,6 @@
+I"@<h2 id="why-should-we-version-our-apis">Why should we version our API’s?</h2>
+
+<p>The first time we publish an API for clients to consume, then the users expect not the API’s to change and break their integrations. But the fact is that new requirements will come and we have to somehow evolve the API’s without breaking the client integrations at any cost.</p>
+
+<p>So, the only way we get this is to version the API’s as new changes are rolled out. This gives the flexibility to clients to use the previous versions until they test the new versions and roll over.</p>
+:ET

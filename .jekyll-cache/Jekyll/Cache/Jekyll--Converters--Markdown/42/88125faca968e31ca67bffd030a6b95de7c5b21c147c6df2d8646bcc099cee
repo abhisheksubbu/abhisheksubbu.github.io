@@ -1,0 +1,18 @@
+I"U<h2 id="why-should-we-version-our-apis">Why should we version our API’s?</h2>
+
+<p>The first time we publish an API for clients to consume, then the users expect that the API’s do not change suddenly and break their integrations. But the fact is that new requirements will come to the developers maintaining the API and they have to somehow evolve the API’s without breaking the client integrations at any cost.</p>
+
+<p>So, the only way around this is to version the API’s as new changes are rolled out. This gives clients the flexibility to use the previous versions of API and continue their business. They can parallely test the new API version on their sandbox and once tested successfully, roll over to the new API version.</p>
+
+<h2 id="typical-scenarios-where-api-versioning-can-cause-problems">Typical scenarios where API versioning can cause problems</h2>
+
+<ul>
+  <li>If the previous version of the API targets a set of assemblies &amp; the newer version of the same API targets a different/upgraded version of the assemblies, then it becomes difficult to deploy both sets of assemblies side by side in the same API codebase.</li>
+</ul>
+
+<h2 id="solutions-to-api-versioning">Solutions to API versioning</h2>
+
+<blockquote>
+  <p>Note that there is no one right way to achieve this. The approach typically depends on your requirements, the way you anticipate changes to occur in your API and the way your clients find it easy to incorporate API verioning changes. So, don’t complicate API versioning with a single best practice. The fact is that there is no single solution to versioning.</p>
+</blockquote>
+:ET
