@@ -15,10 +15,10 @@ comments: false
 
 #### HTTP Verbs
 
-1. **GET** - A request with GET verb does not modify any resources on the server. It simply fetches/queries the resource from the server and sends it back as a response. The response can simply object or a complex record(s).
+1. **GET** - A request with GET verb does not modify any resources on the server. It simply fetches/queries the resource from the server and sends it back as a response. The response can simply be an object or a complex record(s).
 2. **POST** - A request with POST verb creates an object(s) on the server. It is used for INSERT operations. The response is the object that was created on the server.
 3. **PUT** - A request with PUT verb updates the object as a whole (all properties) on the server. It is used for UPDATE operations. The response is the object that was updated on the server.
-4. **PATCH** - A request with PUT verb updates certain properties of the object on the server. It is used for UPDATE operations on specific properties of the object and not the whole object need not be touched. The response is the object that was updated on the server.
+4. **PATCH** - A request with PATCH verb updates certain properties of the object on the server. It is used for UPDATE operations on specific properties of the object and at situations where the whole object need not be touched. The response is the object that was updated on the server.
 5. **DELETE** - A request with DELETE verb deletes the object from the server. It is used for DELETE operations. The response of the object that was deleted from the server.
 
 #### Expectations for RESTful HTTP Responses
