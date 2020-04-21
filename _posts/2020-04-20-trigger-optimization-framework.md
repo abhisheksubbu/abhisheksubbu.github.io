@@ -2,17 +2,25 @@
 title: Trigger Optimization Framework in Salesforce
 layout: blog
 category: [Salesforce]
-excerpt: In this blog post, we will do a deep dive into a comprehensive Trigger Framework that we can adopt in Salesforce Apex programming.
+excerpt: In this blog post, we will do a deep dive into improving existing Apex Trigger Frameworks into a comprehensive, configurable Trigger Framework that we can adopt in Salesforce.
 comments: true
 ---
 
-Firstly, I need to acknowledge the valuable inputs that [Adam Purkiss](https://twitter.com/apurkiss){:target="\_blank"} and [Hari Krishnan](https://krishhari.wordpress.com/about/){:target="\_blank"} have contributed in the Salesforce community on apex trigger frameworks and its management.
+#### Acknowledgments
 
-> **Disclaimer**: Many organizations and people in the community have their own version of Trigger Framework. That is totally fine and this blog is not to prove them wrong.
+Firstly, I need to acknowledge the valuable inputs that [Adam Purkiss](https://twitter.com/apurkiss){:target="\_blank"} and [Hari Krishnan](https://krishhari.wordpress.com/about/){:target="\_blank"} have contributed in the Salesforce community on initial ideas and concept of apex trigger frameworks and its management. Secondly, many thanks to [Bheemanapalli Srinivas](https://www.linkedin.com/in/srinivas-bheemanapalli/){:target="\_blank"}, [Simiraj Sundaran Prakasi](https://www.linkedin.com/in/simirajsp/){:target="\_blank"} and [Adam Chang](https://www.linkedin.com/in/adamchangprofile/){:target="\_blank"} for supervising and reviewing the proposed architectural improvement on Apex Trigger Framework. Last but not least, I would like to extend my thanks to [Vincent N P](https://www.linkedin.com/in/vincentnp/){:target="\_blank"} and [Sarath Babu](https://www.linkedin.com/in/sarath-babu-303432190/){:target="\_blank"} for encouraging me and for providing all the support throughout this effort.
 
-In this blog, I have tried to extend the trigger framework to be more configurable in nature. If you have any suggestions/concerns, please feel free to comment on this blog post.
+Thank you all once again for being instrumental in this architectural improvement.
 
-#### What you need to know before you read this blog
+#### Context
+
+The architectural improvement on Apex Trigger Framework was showcased at BITS, Pilani as a research work when I was doing my Masters of Technology post graduation back in the year 2017.
+
+#### Appreciations
+
+> Dr. Ramprasad Joshi (Ph.D - Computer Science, BITS Pilani, Goa) - Ramprasad sir grilled me for 1 hour on the proposed improvement on trigger framework and was truly impressed with the research work. He provided **EXCELLENT** grade for improving the existing architecture and scientifically measuring the improvements in the research work. Following are his remarks: **Good Work on the Design and Software Architecture part**.
+
+#### What you need to know before you read this summarized version of the research work
 
 1. [Basic understanding on Salesforce Apex Triggers](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers.htm){:target="\_blank"}
 2. [Understanding of various Trigger Context Variables](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_context_variables.htm){:target="\_blank"}
@@ -20,7 +28,7 @@ In this blog, I have tried to extend the trigger framework to be more configurab
 
 #### Current Problems with Apex Triggers
 
-1. **Many triggers for one object** – Having more than 1 triggger per object causes the prediction of Execution Order to be difficult.
+1. **Many triggers for one object** – Having more than 1 trigger per object causes the prediction of Execution Order to be difficult.
 2. **Business Logic scattered in triggers & classes** – Business Logic gets scattered in some triggers, handler classes and helper classes. Thus, it causes maintenance problems.
 3. **Re-entry of trigger logic** – Difficult to manage & maintain these as many developers have their own approach of managing re-entries.
 4. **Number of SOQL and DML statements executed** in a trigger context somtimes goes out of control
@@ -709,12 +717,36 @@ Implementation of the apex trigger that a developer needs to write
 | Lead              | LeadAfterDelete      | afterDelete     | false    |
 | Lead              | LeadAfterUnDelete    | afterUndelete   | false    |
 
-#### TEST
+#### DEPLOYMENT
 
-- Open the developer console
+Deploy the following items to your salesforce org
+
+1. Create the following Custom Metadata Types and populate with respective values
+   - Salesforce_Object\_\_mdt
+   - Trigger_Handler\_\_mdt
+2. Deploy the following classes
+   - ITriggerDispatcher
+   - ITriggerHandler
+   - TriggerParameter
+   - UtilityClass
+   - TriggerException
+   - EmptyHandler
+   - TriggerDispatcherBase
+   - TriggerHandlerBase
+   - LeadTriggerDispatcher
+   - LeadBeforeInsert
+   - TriggerAgent
+3. Deploy the following triggers
+   - LeadTrigger
+
+#### MANUAL TESTING
+
+- Login into your Salesforce org
+- Open the Developer Console
+- Clear all Logs
 - Create a Lead record from the Sales app in Salesforce
-- Inspect the debug log
+- Inspect the Debug Log
 
-![Debug Log](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/trigger-execution-debug.png)
+![Debug Log](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/beforeInsert-debug.png)
 
-> I will be improving this blog with more data on Trigger Exception Handling & Test Class Approach. Stay tuned....
+> I will be adding more data on Exception Handling at the Framework Level, Test Class Approach, Scientific Evaluation of the Time Compexity of the Framework from my research documentations. Stay tuned....

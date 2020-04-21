@@ -1,4 +1,8 @@
-I" »<p>Firstly, I need to acknowledge the valuable inputs that <a href="https://twitter.com/apurkiss" target="\_blank">Adam Purkiss</a> and <a href="https://krishhari.wordpress.com/about/" target="\_blank">Hari Krishnan</a> have contributed in the Salesforce community on apex trigger frameworks and its management.</p>
+I"/Á<p>Firstly, I need to acknowledge the valuable inputs that <a href="https://twitter.com/apurkiss" target="\_blank">Adam Purkiss</a> and <a href="https://krishhari.wordpress.com/about/" target="\_blank">Hari Krishnan</a> have contributed in the Salesforce community on apex trigger frameworks and its management.</p>
+
+<p>Secondly, many thanks to <a href="https://www.linkedin.com/in/srinivas-bheemanapalli/" target="\_blank">Bheemanapalli Srinivas</a>, <a href="https://www.linkedin.com/in/simirajsp/" target="\_blank">Simiraj Prakasi</a> and <a href="https://www.linkedin.com/in/adamchangprofile/" target="\_blank">Adam Chang</a> for supervising and reviewing the proposed architectural improvement on Apex Trigger Framework.</p>
+
+<p>Last but not least, I would like to extend my thanks to <a href="https://www.linkedin.com/in/vincentnp/" target="\_blank">Vincent N P</a> and <a href="https://www.linkedin.com/in/sarath-babu-303432190/" target="\_blank">Sarath Babu</a> for encouraging me and providing support throughout this effort.</p>
 
 <blockquote>
   <p><strong>Disclaimer</strong>: Many organizations and people in the community have their own version of Trigger Framework. That is totally fine and this blog is not to prove them wrong.</p>
@@ -793,7 +797,40 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
   </tbody>
 </table>
 
-<h4 id="test">TEST</h4>
+<h4 id="deployment">DEPLOYMENT</h4>
+
+<p>Deploy the following items to your salesforce org</p>
+
+<ol>
+  <li>Create the following Custom Metadata Types and populate with respective values
+    <ul>
+      <li>Salesforce_Object__mdt</li>
+      <li>Trigger_Handler__mdt</li>
+    </ul>
+  </li>
+  <li>Deploy the following classes
+    <ul>
+      <li>ITriggerDispatcher</li>
+      <li>ITriggerHandler</li>
+      <li>TriggerParameter</li>
+      <li>UtilityClass</li>
+      <li>TriggerException</li>
+      <li>EmptyHandler</li>
+      <li>TriggerDispatcherBase</li>
+      <li>TriggerHandlerBase</li>
+      <li>LeadTriggerDispatcher</li>
+      <li>LeadBeforeInsert</li>
+      <li>TriggerAgent</li>
+    </ul>
+  </li>
+  <li>Deploy the following triggers
+    <ul>
+      <li>LeadTrigger</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="manual-testing">MANUAL TESTING</h4>
 
 <ul>
   <li>Open the developer console</li>
@@ -801,9 +838,9 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
   <li>Inspect the debug log</li>
 </ul>
 
-<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/trigger-execution-debug.png" alt="Debug Log" /></p>
+<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/beforeInsert-debug.png" alt="Debug Log" /></p>
 
 <blockquote>
-  <p>I will be improving this blog with more data on Trigger Exception Handling &amp; Test Class Approach. Stay tunedâ€¦.</p>
+  <p>I will be improving this blog with more data on Exception Handling at the Framework level &amp; Test Class Approach. Stay tunedâ€¦.</p>
 </blockquote>
 :ET

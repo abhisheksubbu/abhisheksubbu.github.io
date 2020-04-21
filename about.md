@@ -41,7 +41,7 @@ I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in Sa
 
 ### Research Work
 
-- **Trigger Optimization Framework in Salesforce** – A comprehensive architectural framework that has been devised to optimize trigger execution in Force.com Platform. This architecture has been designed to increase performance, enhance scalability and bring forth developer-less configurations to control trigger execution in the Cloud.
+- [**Trigger Optimization Framework in Salesforce**](/trigger-optimization-framework/) – A comprehensive architectural framework that has been devised to optimize trigger execution in Force.com Platform with enhanced configurability in mind. This architecture has been designed to increase performance, enhance scalability and bring forth developer-less configurations to control trigger execution in the Cloud.
 
 <br/>
 <hr/>
