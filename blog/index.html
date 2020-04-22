@@ -3,7 +3,7 @@ title: Blog Posts
 layout: default
 ---
 
-<div style="margin-bottom:2rem;">
+<div style="margin-bottom: 2rem;">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -28,7 +28,7 @@ layout: default
         <p>
           {% for category in post.categories%}
           <a
-            href="/categories/#{{category | downcase }}"
+            href="/categories/#{{category | slugify | downcase }}"
             class="badge badge-secondary"
             >{{category}}</a
           >

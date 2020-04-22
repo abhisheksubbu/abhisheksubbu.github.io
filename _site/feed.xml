@@ -5,7 +5,25 @@
         <title>AbhishekSubbu</title>
         <link>http://localhost:4000</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Wed, 22 Apr 2020 01:32:17 +0530</lastBuildDate>
+        <lastBuildDate>Wed, 22 Apr 2020 15:35:42 +0530</lastBuildDate>
+        
+        <item>
+            <title>Backend with NodeJS - Part 2</title>
+            <link>
+                http://localhost:4000/node-backend-part2/
+            </link>
+            <description>
+                &lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Before you start reading this blog, I strongly urge you to read the &lt;a href=&quot;/node-backend/&quot;&gt;Backend with NodeJS - Part 1&lt;/a&gt; blog so that you will better understand the context.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As you are aware, the criminal information is currently stored in-memory within the co...
+            </description>
+            <pubDate>Wed, 22 Apr 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/node-backend-part2/
+            </guid>
+        </item>
         
         <item>
             <title>API Versioning</title>
@@ -92,7 +110,7 @@
         </item>
         
         <item>
-            <title>Backend with NodeJS</title>
+            <title>Backend with NodeJS - Part 1</title>
             <link>
                 http://localhost:4000/node-backend/
             </link>

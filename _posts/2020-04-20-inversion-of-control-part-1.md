@@ -1,7 +1,7 @@
 ---
 title: Inversion of Control - Part 1
 layout: blog
-category: [Architecture]
+category: [Architecture, Deep Dive]
 excerpt: In this blog post, we will understand the basic principles of Inversion of Control and Dependency Injection. Also, we will see how it is very important for developers to adopt IOC.
 comments: true
 ---

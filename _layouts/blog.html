@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div style="margin-bottom:2rem;">
+<div style="margin-bottom: 2rem;">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -22,7 +22,9 @@ layout: default
 </p>
 <p>
   {% for category in page.categories%}
-  <a href="/categories/#{{category | downcase }}" class="badge badge-secondary"
+  <a
+    href="/categories/#{{category | slugify | downcase }}"
+    class="badge badge-secondary"
     >{{category}}</a
   >
   {% endfor %}

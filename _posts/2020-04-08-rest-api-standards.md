@@ -1,7 +1,7 @@
 ---
 title: REST API Standards
 layout: blog
-category: [Best Practices]
+category: [Best Practices, Deep Dive]
 excerpt: In this blog post, I will explain what REST standards are. Additionally, we will list out what API's need to have for it to be RESTful.
 comments: false
 ---

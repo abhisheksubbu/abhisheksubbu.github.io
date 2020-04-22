@@ -1,0 +1,22 @@
+I".<blockquote>
+  <p><strong>Important:</strong> Before you start reading this blog, I strongly urge you to read the <a href="/node-backend/">Backend with NodeJS - Part 1</a> blog so that you will better understand the context.</p>
+</blockquote>
+
+<p>As you are aware, the criminal information is currently stored in-memory within the codebase. This is not desired from a real-world perspective. In this blog, we will persist the criminal information in MongoDB rather than managing it in-memory.</p>
+
+<ol>
+  <li>Open the NodeJS project</li>
+  <li>Install the <code class="highlighter-rouge">mongoose</code> package
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">  npm i mongoose
+</span></code></pre></div>    </div>
+  </li>
+  <li>Reference the mongoose package in the app.js and connect to the mongodb locally
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> const mongoose = require('mongoose');</span><span class="w">
+</span><span class="go"> mongoose
+  .connect('mongodb://localhost/criminals')
+</span><span class="gp">  .then(() =&gt;</span><span class="w"> </span>console.log<span class="o">(</span><span class="s1">'Connected to database...'</span><span class="o">))</span>
+<span class="gp">  .catch((err) =&gt;</span><span class="w"> </span>console.log<span class="o">(</span><span class="s1">'Connection to database failed.'</span>, err<span class="o">))</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

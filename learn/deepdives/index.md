@@ -20,7 +20,7 @@ layout: default
             <div class="card-body text-success">
             <h5 class="card-title">Backend with NodeJS</h5>
             <p class="card-text">In this deep dive, you will learn how to create backend for your application using NodeJS.</p>
-            <a href="{{site.baseurl}}/node-backend" class="btn btn-success">Access Now</a>
+            <a href="{{site.baseurl}}/learn/deepdives/backend-with-nodejs/" class="btn btn-success">Access Now</a>
             </div>
         </div>
     </div>

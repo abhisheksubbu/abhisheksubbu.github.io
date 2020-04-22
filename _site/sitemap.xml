@@ -24,6 +24,13 @@
     </url>
     
     <url>
+        <loc>/learn/deepdives/backend-with-nodejs/</loc>
+        <lastmod>2020-04-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
         <loc>/categories/</loc>
         <lastmod>2020-04-22</lastmod>
         <changefreq>daily</changefreq>
@@ -129,6 +136,13 @@
     </url>
     
 
+    
+    <url>
+        <loc>/node-backend-part2/</loc>
+        <lastmod>2020-04-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
     
     <url>
         <loc>/api-versioning/</loc>

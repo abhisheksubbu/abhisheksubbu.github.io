@@ -1,7 +1,7 @@
 ---
 title: ASP.NET Core Web API with Swagger [Linux Edition]
 layout: blog
-category: [.NET]
+category: [.NET, Deep Dive]
 excerpt: In this blog post, we will learn how to create an ASP.NET Core Web API with Swagger feature in a Linux environment. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich...
 comments: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: API Versioning
 layout: blog
-category: [.NET]
+category: [.NET, Deep Dive]
 excerpt: In this blog post, we will closely look at different strategies to versioning API's
 comments: true
 ---
