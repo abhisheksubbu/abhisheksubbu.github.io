@@ -8,3 +8,4 @@ In this deep dive, you will learn everything about how to create backend service
 
 1. [Part 1 - Introduction to NodeJS and creating an Express API with in-memory data management]({{site.baseurl}}/node-backend/){:target="\_blank"}
 2. [Part 2 - NodeJS Express API with MongoDB data management]({{site.baseurl}}/node-backend-part2/){:target="\_blank"}
+3. [Node Project Structure for API projects](#)

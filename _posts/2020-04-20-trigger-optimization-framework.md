@@ -6,6 +6,8 @@ excerpt: In this blog post, we will do a deep dive into improving existing Apex 
 comments: true
 ---
 
+**Last Updated on 24 April 2020**
+
 #### Acknowledgments
 
 Firstly, I need to acknowledge the valuable inputs that [Adam Purkiss](https://twitter.com/apurkiss){:target="\_blank"} and [Hari Krishnan](https://krishhari.wordpress.com/about/){:target="\_blank"} have contributed in the Salesforce community on initial ideas and concept of apex trigger frameworks and its management. Secondly, many thanks to [Bheemanapalli Srinivas](https://www.linkedin.com/in/srinivas-bheemanapalli/){:target="\_blank"}, [Simiraj Sundaran Prakasi](https://www.linkedin.com/in/simirajsp/){:target="\_blank"} and [Adam Chang](https://www.linkedin.com/in/adamchangprofile/){:target="\_blank"} for supervising and reviewing the proposed architectural improvement on Apex Trigger Framework. Last but not least, I would like to extend my thanks to [Vincent N P](https://www.linkedin.com/in/vincentnp/){:target="\_blank"} and [Sarath Babu](https://www.linkedin.com/in/sarath-babu-303432190/){:target="\_blank"} for encouraging me and for providing all the support throughout this effort.
@@ -137,7 +139,8 @@ Encapsulated form of the trigger context variables
         public String triggerObject { get; private set; }
         public Boolean isExecuting { get; private set; }
 
-        public TriggerParameter(List<SObject> olist, List<SObject> nlist, Map<Id, SObject> omap, Map<Id, SObject> nmap, Boolean ib, Boolean ia, Boolean id, Boolean ii, Boolean iu, Boolean iud, Boolean ie) {
+        public TriggerParameter(List<SObject> olist, List<SObject> nlist, Map<Id, SObject> omap, Map<Id, SObject> nmap, Boolean ib, Boolean ia, Boolean id, Boolean ii, Boolean iu, Boolean iud, Boolean ie) 
+        {
             this.oldList = olist;
             this.newList = nlist;
             this.oldMap = omap;
@@ -162,58 +165,60 @@ Helper Class that contains methods commonly used in the framework
 - Note that we are using a Custom Metadata Type named `Salesforce_Object__mdt` that contains the dispatcher class name registered for the object
 - Similarly, we are using another Custom Metadata Type named `Trigger_Handler__mdt` that contains the handler class name registered for the object and its active state
 - Observe that we are using `Type` system in Apex language to instantiate the dispatcher and handler instances of the incoming object type that is picked from configurations
-- If a specific handler is set as Inactive in the configuration, all other handlers would work except for the disabled one. The way we do it is by invoking an EmptyHandler when the main handler is set as Inactive.
+- If a specific handler is set as Inactive in the configuration, all other handlers would work except for the disabled one. The way we do it is by passing null to the calling point (Dispatcher) which would simply exit out the handler without throwing any errors.
 
 ```java
-    public with sharing class UtilityClass {
-        public static String getSObjectTypeName(SObject so) {
-            return so.getSObjectType().getDescribe().getName();
+    public with sharing class UtilityClass 
+    {
+        public static String getSObjectTypeName(SObject sObject) 
+        {
+            return sObject.getSObjectType().getDescribe().getName();
         }
 
-        public static ITriggerHandler getHandler(TriggerParameter tp) {
+        public static ITriggerHandler getHandler(TriggerParameter tp) 
+        {
             List<Trigger_Handler__mdt> handlerConfig = [select DeveloperName, IsActive__c from Trigger_Handler__mdt where Salesforce_Object__r.DeveloperName=:tp.triggerObject and Trigger_Context__c=:tp.tEvent.name() LIMIT 1];
-            if(handlerConfig.size()==0)
+            if(handlerConfig.size()==0 || !handlerConfig[0].IsActive__c)
             {
-                throw new TriggerException('Handler Configuration for '+tp.triggerObject+ ' - '+ tp.tEvent.name() +' is not defined');
+                return null;
             }
             else
             {
-                try
+                try 
                 {
-                    string handlerName = 'EmptyHandler';
-                    if(handlerConfig[0].IsActive__c)
-                        handlerName = handlerConfig[0].DeveloperName;
+                    string handlerName = handlerConfig[0].DeveloperName;
                     Type classType = Type.forName(handlerName);
                     ITriggerHandler handlerInstance = (ITriggerHandler)classType.newInstance();
                     system.debug('# Handler in charge is: '+ handlerName);
                     return handlerInstance;
-                }
-                catch (Exception e)
+                } 
+                catch (Exception e) 
                 {
-                    throw new TriggerException(handlerConfig[0].DeveloperName+' class doesnt seem to exist. Please check with development team.');
+                    return null;
                 }
             }
         }
 
-        public static ITriggerDispatcher getDispatcherObject(string sObjectName){
-            List<Salesforce_Object__mdt> dispatcherConfig = [select Dispatcher_Class_Name__c from Salesforce_Object__mdt where DeveloperName=:sObjectName LIMIT 1];
-            if(dispatcherConfig.size()==0)
+        public static ITriggerDispatcher getDispatcherObject(string sObjectName)
+        {
+            List<Salesforce_Object__mdt> dispatcherConfig = [select Dispatcher_Class_Name__c, IsActive__c from Salesforce_Object__mdt where DeveloperName=:sObjectName LIMIT 1];
+            if(dispatcherConfig.size()==0 || !dispatcherConfig[0].IsActive__c)
             {
-                throw new TriggerException('Dispatcher Configuration for '+sObjectName+' is not defined');
+                return null;
             }
             else
             {
-                try
+                try 
                 {
                     Type classType = Type.forName(dispatcherConfig[0].Dispatcher_Class_Name__c);
                     ITriggerDispatcher dispatcherInstance = (ITriggerDispatcher)classType.newInstance();
                     return dispatcherInstance;
-                }
-                catch (Exception e)
+                } 
+                catch (Exception e) 
                 {
-                    throw new TriggerException(dispatcherConfig[0].Dispatcher_Class_Name__c+' class doesnt seem to exist. Please check with development team.');
+                    return null;
                 }
-
+                
             }
         }
     }
@@ -257,107 +262,134 @@ Implements the ITriggerDispatcher and houses the default implementations of how 
         public abstract void bulkAfter(TriggerParameter tp);
         public abstract void onValidate(TriggerParameter tp);
 
-        public void beforeInsert(TriggerParameter tp) {
+        public void beforeInsert(TriggerParameter tp) 
+        {
             system.debug('# Finding the Before Insert Trigger Handler');
             ITriggerHandler handler = UtilityClass.getHandler(tp);
-            if(handler!=null){
-                if(!isBeforeInsertProcessing){
+            if(handler!=null)
+            {
+                if(!isBeforeInsertProcessing)
+                {
                     isBeforeInsertProcessing = true;
                     system.debug('# Running Before Insert Trigger Handler - Main Entry');
                     execute(handler, tp, TriggerParameter.TriggerEvent.beforeInsert);
                     isBeforeInsertProcessing = false;
                 }
-                else {
+                else 
+                {
                     system.debug('# Running Before Insert Trigger Handler - In Progress Entry');
                     execute(null, tp, TriggerParameter.TriggerEvent.beforeInsert);
                 }
             }
         }
-        public void beforeUpdate(TriggerParameter tp) {
+        public void beforeUpdate(TriggerParameter tp) 
+        {
             system.debug('# Finding the Before Update Trigger Handler');
             ITriggerHandler handler = UtilityClass.getHandler(tp);
-            if(handler!=null){
-                if(!isBeforeUpdateProcessing){
+            if(handler!=null)
+            {
+                if(!isBeforeUpdateProcessing)
+                {
                     isBeforeUpdateProcessing = true;
                     system.debug('# Running Before Update Trigger Handler - Main Entry');
                     execute(handler, tp, TriggerParameter.TriggerEvent.beforeUpdate);
                     isBeforeUpdateProcessing = false;
                 }
-                else {
+                else 
+                {
                     system.debug('# Running Before Update Trigger Handler - In Progress Entry');
                     execute(null, tp, TriggerParameter.TriggerEvent.beforeUpdate);
                 }
             }
         }
-        public void beforeDelete(TriggerParameter tp) {
+        public void beforeDelete(TriggerParameter tp) 
+        {
             system.debug('# Finding the Before Delete Trigger Handler');
             ITriggerHandler handler = UtilityClass.getHandler(tp);
-            if(handler!=null){
-                if(!isBeforeDeleteProcessing){
+            if(handler!=null)
+            {
+                if(!isBeforeDeleteProcessing)
+                {
                     isBeforeDeleteProcessing = true;
                     system.debug('# Running Before Delete Trigger Handler - Main Entry');
                     execute(handler, tp, TriggerParameter.TriggerEvent.beforeDelete);
                     isBeforeDeleteProcessing = false;
                 }
-                else {
+                else 
+                {
                     system.debug('# Running Before Delete Trigger Handler - In Progress Entry');
                     execute(null, tp, TriggerParameter.TriggerEvent.beforeDelete);
                 }
             }
         }
-        public void afterInsert(TriggerParameter tp) {
+        public void afterInsert(TriggerParameter tp) 
+        {
             system.debug('# Finding the After Insert Trigger Handler');
             ITriggerHandler handler = UtilityClass.getHandler(tp);
-            if(handler!=null){
-                if(!isAfterInsertProcessing){
+            if(handler!=null)
+            {
+                if(!isAfterInsertProcessing)
+                {
                     isAfterInsertProcessing = true;
                     system.debug('# Running After Insert Trigger Handler - Main Entry');
                     execute(handler, tp, TriggerParameter.TriggerEvent.afterInsert);
                     isAfterInsertProcessing = false;
                 }
-                else {
+                else 
+                {
                     system.debug('# Running After Insert Trigger Handler - In Progress Entry');
                     execute(null, tp, TriggerParameter.TriggerEvent.afterInsert);
                 }
             }
         }
-        public void afterUpdate(TriggerParameter tp) {
+        public void afterUpdate(TriggerParameter tp) 
+        {
             system.debug('# Finding the After Update Trigger Handler');
             ITriggerHandler handler = UtilityClass.getHandler(tp);
-            if(handler!=null){
-                if(!isAfterUpdateProcessing){
+            if(handler!=null)
+            {
+                if(!isAfterUpdateProcessing)
+                {
                     isAfterUpdateProcessing = true;
                     system.debug('# Running After Update Trigger Handler - Main Entry');
                     execute(handler, tp, TriggerParameter.TriggerEvent.afterUpdate);
                     isAfterUpdateProcessing = false;
                 }
-                else {
+                else 
+                {
                     system.debug('# Running After Update Trigger Handler - In Progress Entry');
                     execute(null, tp, TriggerParameter.TriggerEvent.afterUpdate);
                 }
             }
         }
-        public void afterDelete(TriggerParameter tp) {
+        public void afterDelete(TriggerParameter tp) 
+        {
             system.debug('# Finding the After Delete Trigger Handler');
             ITriggerHandler handler = UtilityClass.getHandler(tp);
-            if(handler!=null){
-                if(!isAfterDeleteProcessing){
+            if(handler!=null)
+            {
+                if(!isAfterDeleteProcessing)
+                {
                     isAfterDeleteProcessing = true;
                     system.debug('# Running After Delete Trigger Handler - Main Entry');
                     execute(handler, tp, TriggerParameter.TriggerEvent.afterDelete);
                     isAfterDeleteProcessing = false;
                 }
-                else {
+                else 
+                {
                     system.debug('# Running After Delete Trigger Handler - In Progress Entry');
                     execute(null, tp, TriggerParameter.TriggerEvent.afterDelete);
                 }
             }
         }
-        public void afterUnDelete(TriggerParameter tp) {
+        public void afterUnDelete(TriggerParameter tp) 
+        {
             system.debug('# Finding the After UnDelete Trigger Handler');
             ITriggerHandler handler = UtilityClass.getHandler(tp);
-            if(handler!=null){
-                if(!isAfterUnDeleteProcessing){
+            if(handler!=null)
+            {
+                if(!isAfterUnDeleteProcessing)
+                {
                     isAfterUnDeleteProcessing = true;
                     system.debug('# Running After UnDelete Trigger Handler - Main Entry');
                     execute(handler, tp, TriggerParameter.TriggerEvent.afterUnDelete);
@@ -371,8 +403,10 @@ Implements the ITriggerDispatcher and houses the default implementations of how 
         }
         public virtual void andFinally() {}
 
-        public void execute(ITriggerHandler handlerInstance, TriggerParameter tp, TriggerParameter.TriggerEvent tEvent) {
-            if(handlerInstance != null) {
+        public void execute(ITriggerHandler handlerInstance, TriggerParameter tp, TriggerParameter.TriggerEvent tEvent) 
+        {
+            if(handlerInstance != null) 
+            {
                 if(tEvent == TriggerParameter.TriggerEvent.beforeInsert)
                     beforeInsertHandler = handlerInstance;
                 if(tEvent == TriggerParameter.TriggerEvent.beforeUpdate)
@@ -397,7 +431,8 @@ Implements the ITriggerDispatcher and houses the default implementations of how 
                 system.debug('# DML Delete - Main Entry');
                 handlerInstance.deleteObjects();
             }
-            else {
+            else 
+            {
                 if(tEvent == TriggerParameter.TriggerEvent.beforeInsert)
                     beforeInsertHandler.inProgressEntry(tp);
                 if(tEvent == TriggerParameter.TriggerEvent.beforeUpdate)
@@ -442,9 +477,12 @@ Implements the ITriggerHandler interface and houses the default implementations 
         public abstract void mainEntry(TriggerParameter tp);
         public virtual void inProgressEntry(TriggerParameter tp){}
 
-        public virtual void insertObjects(){
-            if(sObjectsToInsert.size() > 0){
-                try {
+        public virtual void insertObjects()
+        {
+            if(sObjectsToInsert.size() > 0)
+            {
+                try 
+                {
                     Database.SaveResult[] results = Database.insert(sObjectsToInsert, false);
                     if(results != null)
                     {
@@ -469,15 +507,19 @@ Implements the ITriggerHandler interface and houses the default implementations 
                             }
                         }
                     }
-                } catch (Exception e) {
+                } catch (Exception e) 
+                {
                     throw e;
                 }
             }
         }
 
-        public virtual void updateObjects(){
-            if(sObjectsToUpdate.size() > 0){
-                try {
+        public virtual void updateObjects()
+        {
+            if(sObjectsToUpdate.size() > 0)
+            {
+                try 
+                {
                     Database.SaveResult[] results = Database.update(sObjectsToUpdate, false);
                     if(results != null)
                     {
@@ -508,9 +550,12 @@ Implements the ITriggerHandler interface and houses the default implementations 
             }
         }
 
-        public virtual void deleteObjects(){
-            if(sObjectsToDelete.size() > 0){
-                try {
+        public virtual void deleteObjects()
+        {
+            if(sObjectsToDelete.size() > 0)
+            {
+                try 
+                {
                     Database.DeleteResult[] results = Database.delete(sObjectsToDelete, false);
                     if(results != null)
                     {
@@ -541,7 +586,8 @@ Implements the ITriggerHandler interface and houses the default implementations 
             }
         }
 
-        private string GetObjectNameFromRecordID(Id objectId){
+        private string GetObjectNameFromRecordID(Id objectId)
+        {
             return objectId.getSObjectType().getDescribe().getName();
         }
     }
@@ -554,59 +600,71 @@ This class acts like an intermediary between the actual trigger and the trigger 
 ```java
     public class TriggerAgent
     {
-        public static void RunTrigger(Schema.SObjectType sObjectType){
+        public static void RunTrigger(Schema.SObjectType sObjectType)
+        {
             system.debug('# Entering TriggerAgent');
             string sObjectName = sObjectType.getDescribe().getName();
             system.debug('# Finding the Trigger Dispatcher');
             ITriggerDispatcher dispatcher = UtilityClass.getDispatcherObject(sObjectName);
-            if (dispatcher == null)
-                throw new TriggerException('No Trigger dispatcher registered for Object Type: ' + sObjectName);
-            system.debug('# Starting the Trigger Execution Order');
-            executeTriggerFlow(dispatcher);
+            if (dispatcher != null)
+            {
+                system.debug('# Starting the Trigger Execution Order');
+                executeTriggerFlow(dispatcher);   
+            }
         }
 
-        private static void executeTriggerFlow(ITriggerDispatcher dispatcher){
+        private static void executeTriggerFlow(ITriggerDispatcher dispatcher)
+        {
             system.debug('# Preparing the TriggerParameter object');
             TriggerParameter tp = new TriggerParameter(Trigger.old, Trigger.new, Trigger.oldMap, Trigger.newMap, Trigger.isBefore, Trigger.isAfter, Trigger.isDelete, Trigger.isInsert, Trigger.isUpdate, Trigger.isUnDelete, Trigger.isExecuting);
 
-            if(Trigger.isBefore){
+            if(Trigger.isBefore)
+            {
                 system.debug('# BulkBefore');
                 dispatcher.bulkBefore(tp);
-                if(Trigger.isDelete){
+                if(Trigger.isDelete)
+                {
                     system.debug('# BeforeDelete');
                     dispatcher.beforeDelete(tp);
                 }
-                else if (Trigger.isInsert){
+                else if (Trigger.isInsert)
+                {
                     system.debug('# ApplyDefaults');
                     dispatcher.applyDefaults(tp);
                     system.debug('# BeforeInsert');
                     dispatcher.beforeInsert(tp);
                 }
-                else if (Trigger.isUpdate){
+                else if (Trigger.isUpdate)
+                {
                     system.debug('# BeforeUpdate');
                     dispatcher.beforeUpdate(tp);
                 }
             }
-            else {
+            else 
+            {
                 system.debug('# BulkAfter');
                 dispatcher.bulkAfter(tp);
-                if(Trigger.isDelete){
+                if(Trigger.isDelete)
+                {
                     system.debug('# AfterDelete');
                     dispatcher.afterDelete(tp);
                 }
-                else if (Trigger.isInsert){
+                else if (Trigger.isInsert)
+                {
                     system.debug('# AfterInsert - OnValidate');
                     dispatcher.onValidate(tp);
                     system.debug('# AfterInsert');
                     dispatcher.afterInsert(tp);
                 }
-                else if (Trigger.isUpdate){
+                else if (Trigger.isUpdate)
+                {
                     system.debug('# AfterUpdate - OnValidate');
                     dispatcher.onValidate(tp);
                     system.debug('# AfterUpdate');
                     dispatcher.afterUpdate(tp);
                 }
-                else if (Trigger.isUnDelete){
+                else if (Trigger.isUnDelete)
+                {
                     system.debug('# AfterUnDelete');
                     dispatcher.afterUnDelete(tp);
                 }
@@ -656,20 +714,6 @@ The actual beforeInsert handler implementation that a developer needs to write
     }
 ```
 
-#### Concrete implementation of Empty Handler
-
-One time implementation of the Empty Handler which is used to bypass an inactive handler
-
-```java
-    public class EmptyHandler extends TriggerHandlerBase
-    {
-        public override void mainEntry(TriggerParameter tp)
-        {
-            // DO NOT WRITE LOGIC. THIS IS MEANT TO BE EMPTY.
-        }
-    }
-```
-
 #### Lead Trigger [single trigger]
 
 Implementation of the apex trigger that a developer needs to write
@@ -688,12 +732,13 @@ Implementation of the apex trigger that a developer needs to write
 | Field Name                 | Type     |
 | -------------------------- | -------- |
 | Dispatcher_Class_Name\_\_c | Text(40) |
+| IsActive__c                | Checkbox |
 
 ##### Values in Salesforce_Object\_\_mdt custom metadata type
 
-| Salesforce Object Name | Dispatcher Class Name |
-| ---------------------- | --------------------- |
-| Lead                   | LeadTriggerDispatcher |
+| Salesforce Object Name | Dispatcher Class Name | Is Active |
+| ---------------------- | --------------------- | --------- |
+| Lead                   | LeadTriggerDispatcher | true      |
 
 #### Trigger_Handler\_\_mdt
 
@@ -703,7 +748,7 @@ Implementation of the apex trigger that a developer needs to write
 | ----------------- | ----------------------------------------- |
 | IsActive          | Checkbox                                  |
 | Salesforce Object | Metadata Relationship (Salesforce Object) |
-| Trigger Contect   | Picklist                                  |
+| Trigger Context   | Picklist                                  |
 
 ##### Values in Trigger_Handler\_\_mdt custom metadata type
 
@@ -730,7 +775,6 @@ Deploy the following items to your salesforce org
    - TriggerParameter
    - UtilityClass
    - TriggerException
-   - EmptyHandler
    - TriggerDispatcherBase
    - TriggerHandlerBase
    - LeadTriggerDispatcher
@@ -749,4 +793,18 @@ Deploy the following items to your salesforce org
 
 ![Debug Log](https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/beforeInsert-debug.png)
 
-> I will be adding more data on Exception Handling at the Framework Level, Test Class Approach, Scientific Evaluation of the Time Compexity of the Framework from my research documentations. Stay tuned....
+#### EXCEPTION HANDLING
+The possibilities of exceptions in and around the framework are:
+- when finding dispatchers [framework owns this responsibility]
+    - **Exception Handling Technique:** if the dispatcher configuration is missing the `Salesforce_Object__mdt` metadata type OR dispatcher class doesn't exist OR dispatcher config's IsActive__c is false, then we ensure to pass back `null` to the TriggerAgent. Here, if null is detected, the dispatcher pipeline simply exits without starting the trigger pipeline. 
+- when finding handlers [framework owns this responsibility]
+    - **Exception Handling Technique:** if the handler configuration is missing the `Trigger_Handler_mdt` metadata type OR handler class doesn't exist OR handler config's IsActive__c is false, then we ensure to pass back `null` to the TriggerDispatcherBase method where handler instance is found. Here, if null is detected, the TriggerDispatcherBase simply exits that particular handler execution without impacting any other handlers.
+- when the handler `mainEntry()` logic executes [developer owns this responsibility]
+    - we know that the implementation of `mainEntry()` is done by a developer for a specific handler. Here, the developer has the option to use `try-catch` block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside `mainEntry()` is not part of the framework, the framework is not concerned about this.
+- when the handler `inProgress()` logic executes [developer owns this responsibility]
+    - similarly, we know that the implementation of `inProgressEntry()` is done by a developer for a specific handler. Here, the developer has the option to use `try-catch` block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside `inProgressEntry()` is not part of the framework, the framework is not concerned about this.
+- when the handler's `insertObjects()`/`updateObjects()`/`deleteObjects()` execute [framework owns this responsibility]
+    - since centralization of DML is the promise of the framework, the logic inside each of these methods ensures to use the `AllOrNone` flag using the Database.[insert/update/delete] that gives us the SaveResult. The framework has the data in the SaveResult array to detect the failed records and log it in Apex_Debug_Log__c. So, the framework takes care of centralized DML operations. The framework will not guarantee debug logs if a developer executes a DML elsewhere and it breaks.
+
+
+> I will be adding more data on Test Class Approach, Scientific Evaluation of the Time Compexity of the Framework from my research documentations. Stay tuned....

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/vs.css" />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <title>Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS | AbhishekSubbu</title>
+    <script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-51070250-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-51070250-1');
+</script>
+ <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS | AbhishekSubbu</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS" />
+<meta name="author" content="Abhishek Sivasubramanian" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="As of the release of Ubuntu 20.04 LTS, installation of dotnet core sdk has been a bit of pain. This blog shares the installation instructions clearly for dotnet-sdk-3.1 in Ubuntu 20.04 LTS" />
+<meta property="og:description" content="As of the release of Ubuntu 20.04 LTS, installation of dotnet core sdk has been a bit of pain. This blog shares the installation instructions clearly for dotnet-sdk-3.1 in Ubuntu 20.04 LTS" />
+<link rel="canonical" href="http://localhost:4000/dotnet-core-install-ubuntu-20-04-lts/" />
+<meta property="og:url" content="http://localhost:4000/dotnet-core-install-ubuntu-20-04-lts/" />
+<meta property="og:site_name" content="AbhishekSubbu" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-24T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS" />
+<meta name="twitter:site" content="@abhisheksubbu" />
+<meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
+<meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/dotnet-core-install-ubuntu-20-04-lts/","headline":"Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS","dateModified":"2020-04-24T00:00:00+05:30","datePublished":"2020-04-24T00:00:00+05:30","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dotnet-core-install-ubuntu-20-04-lts/"},"description":"As of the release of Ubuntu 20.04 LTS, installation of dotnet core sdk has been a bit of pain. This blog shares the installation instructions clearly for dotnet-sdk-3.1 in Ubuntu 20.04 LTS","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <div class="container-fluid container-app">
+      <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+  <a class="navbar-brand" href="/"
+    ><img
+      src="/abhisheksubbu_siteicon.png"
+      alt=""
+      style="width:64px;"
+    />AbhishekSubbu</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto">
+      <li>
+        <a class="nav-item nav-link" href="/blog">Blog</a>
+      </li>
+      <li>
+        <a class="nav-item nav-link" href="/learn"
+          >Learn & Upskill</a
+        >
+      </li>
+      <li>
+        <a class="nav-item nav-link" href="/about">About</a>
+      </li>
+      <li>
+        <a class="nav-item nav-link" href="/contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      <div style="margin-top: 20px; margin-bottom: 20px;"><div style="margin-bottom: 2rem;">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/blog/index.html">Blog</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS
+      </li>
+    </ol>
+  </nav>
+</div>
+<h1>Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS</h1>
+<p>
+  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+  <span class="date">
+    April 24, 2020
+  </span>
+</p>
+<p>
+  
+  <a
+    href="/categories/#net"
+    class="badge badge-secondary"
+    >.NET</a
+  >
+  
+</p>
+<p>This blog specifically describes the steps involved in installing .NET Core SDK 3.1 in Ubuntu 20.04 LTS Developer Machine.</p>
+
+<ol>
+  <li>
+    <p>Open a terminal and run the following commands to setup the 20.04 repositories</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb <span class="nt">-O</span> packages-microsoft-prod.deb
+ <span class="nb">sudo </span>dpkg <span class="nt">-i</span> packages-microsoft-prod.deb
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Install the .NET Core SDK</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>add-apt-repository universe
+ <span class="nb">sudo </span>apt-get update
+ <span class="nb">sudo </span>apt-get <span class="nb">install </span>apt-transport-https
+ <span class="nb">sudo </span>apt-get update
+ <span class="nb">sudo </span>apt-get <span class="nb">install </span>dotnet-sdk-3.1
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<blockquote>
+  <p>I would not recommend you to use the 19.04 repositories since the distribution has officially reached its <a href="https://wiki.ubuntu.com/Releases" target="\_blank">end of life</a>.</p>
+</blockquote>
+
+<h4 id="issues--workarounds">Issues &amp; Workarounds</h4>
+<ul>
+  <li>While executing the command <code class="highlighter-rouge">sudo apt-get install dotnet-sdk-3.1</code>, you may get dependency errors related to <code class="highlighter-rouge">libicu</code> not found in Ubuntu 20.04 LTS. If this is the case, then execute the following commands in terminal [courtesy: <a href="https://github.com/phillip-haydon" target="\_blank">Phillip Haydon</a>]. Now try the <code class="highlighter-rouge">sudo apt-get install dotnet-sdk-3.1</code>, it should work.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>wget http://mirrors.edge.kernel.org/ubuntu/pool/main/i/icu/libicu63_63.2-2_amd64.deb
+  <span class="nb">sudo </span>dpkg <span class="nt">-i</span> libicu63_63.2-2_amd64.deb
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/dotnet-31-list.png" alt="dotnet-core-list" /></p>
+
+<p>You should see the <a href="https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-ubuntu-1804" target="\_blank">microsoft docs</a> get updated in a day or two on linux package manager instructions specifically for Ubuntu 20.04 LTS.</p>
+
+<br />
+<strong>Thanks for reading this post. Enjoy !!</strong>
+<hr />
+<span style="color: black;">Share on: </span>
+<!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+  <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+  <a class="a2a_button_facebook"></a>
+  <a class="a2a_button_twitter"></a>
+  <a class="a2a_button_email"></a>
+  <a class="a2a_button_linkedin"></a>
+  <a class="a2a_button_telegram"></a>
+  <a class="a2a_button_whatsapp"></a>
+  <a class="a2a_button_reddit"></a>
+  <a class="a2a_button_pinterest"></a>
+  <a class="a2a_button_tumblr"></a>
+  <a class="a2a_button_pocket"></a>
+  <a class="a2a_button_skype"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+<hr />
+
+<div id="disqus_thread"></div>
+<script>
+  /**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+  (function() {
+    // DON'T EDIT BELOW THIS LINE
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://abhisheksubbu.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+</div>
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <p class="mv0 lh-copy">
+        Made with
+        <svg
+          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
+          data-prefix="fas"
+          data-icon="heart"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-heart fa-w-16"
+        >
+          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
+            Markdown and Bootstrap
+          </title>
+          <path
+            fill="currentColor"
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            class=""
+          ></path>
+        </svg>
+        in
+        <a
+          href="https://www.google.com/maps/place/Kochi, Kerala"
+          target="_blank"
+          class="link color-inherit hover-white"
+          >Kochi</a
+        >.
+      </p>
+      <small class="d-block mb-3 text-muted"
+        >Copyright 2020 © AbhishekSubbu
+        <p>
+          This is a personal blog. Opinions expressed are solely my own and do
+          not express the views or opinions of my employer.
+        </p></small
+      >
+    </div>
+    <div class="col-6 col-md">
+      <h5>Blog</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/archives"
+            >Blog Archives</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/categories"
+            >Categories</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Activities</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/speaking"
+            >Speaking Engagements</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li>
+          <a class="text-muted" href="/learn"
+            >Learn & Upskill</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/learn/deepdives"
+            >Deep Dives</a
+          >
+        </li>
+        <li>
+          <a class="text-muted" href="/downloads"
+            >Downloadables</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

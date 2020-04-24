@@ -1,0 +1,13 @@
+I"É<h3 id="pre-requisites">Pre-Requisites</h3>
+<ol>
+  <li>Visual Studio Code - install it from the default Ubuntu Software Center</li>
+</ol>
+
+<h3 id="steps-to-configure-sfdx">Steps to configure SFDX</h3>
+<ol>
+  <li>Install OpenJDK 11
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>apt <span class="nb">install </span>openjdk-11-jdk
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

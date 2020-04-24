@@ -128,6 +128,8 @@
   >
   
 </p>
+<p><strong>Last Updated on 24 April 2020</strong></p>
+
 <h4 id="acknowledgments">Acknowledgments</h4>
 
 <p>Firstly, I need to acknowledge the valuable inputs that <a href="https://twitter.com/apurkiss" target="\_blank">Adam Purkiss</a> and <a href="https://krishhari.wordpress.com/about/" target="\_blank">Hari Krishnan</a> have contributed in the Salesforce community on initial ideas and concept of apex trigger frameworks and its management. Secondly, many thanks to <a href="https://www.linkedin.com/in/srinivas-bheemanapalli/" target="\_blank">Bheemanapalli Srinivas</a>, <a href="https://www.linkedin.com/in/simirajsp/" target="\_blank">Simiraj Sundaran Prakasi</a> and <a href="https://www.linkedin.com/in/adamchangprofile/" target="\_blank">Adam Chang</a> for supervising and reviewing the proposed architectural improvement on Apex Trigger Framework. Last but not least, I would like to extend my thanks to <a href="https://www.linkedin.com/in/vincentnp/" target="\_blank">Vincent N P</a> and <a href="https://www.linkedin.com/in/sarath-babu-303432190/" target="\_blank">Sarath Babu</a> for encouraging me and for providing all the support throughout this effort.</p>
@@ -272,7 +274,8 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
         <span class="kd">public</span> <span class="nc">String</span> <span class="n">triggerObject</span> <span class="o">{</span> <span class="n">get</span><span class="o">;</span> <span class="kd">private</span> <span class="n">set</span><span class="o">;</span> <span class="o">}</span>
         <span class="kd">public</span> <span class="nc">Boolean</span> <span class="n">isExecuting</span> <span class="o">{</span> <span class="n">get</span><span class="o">;</span> <span class="kd">private</span> <span class="n">set</span><span class="o">;</span> <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="nf">TriggerParameter</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">olist</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Id</span><span class="o">,</span> <span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">omap</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Id</span><span class="o">,</span> <span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">nmap</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ib</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ia</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">id</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ii</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">iu</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">iud</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ie</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="nf">TriggerParameter</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">olist</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Id</span><span class="o">,</span> <span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">omap</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Id</span><span class="o">,</span> <span class="nc">SObject</span><span class="o">&gt;</span> <span class="n">nmap</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ib</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ia</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">id</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ii</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">iu</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">iud</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">ie</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="k">this</span><span class="o">.</span><span class="na">oldList</span> <span class="o">=</span> <span class="n">olist</span><span class="o">;</span>
             <span class="k">this</span><span class="o">.</span><span class="na">newList</span> <span class="o">=</span> <span class="n">nlist</span><span class="o">;</span>
             <span class="k">this</span><span class="o">.</span><span class="na">oldMap</span> <span class="o">=</span> <span class="n">omap</span><span class="o">;</span>
@@ -298,58 +301,60 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
   <li>Note that we are using a Custom Metadata Type named <code class="highlighter-rouge">Salesforce_Object__mdt</code> that contains the dispatcher class name registered for the object</li>
   <li>Similarly, we are using another Custom Metadata Type named <code class="highlighter-rouge">Trigger_Handler__mdt</code> that contains the handler class name registered for the object and its active state</li>
   <li>Observe that we are using <code class="highlighter-rouge">Type</code> system in Apex language to instantiate the dispatcher and handler instances of the incoming object type that is picked from configurations</li>
-  <li>If a specific handler is set as Inactive in the configuration, all other handlers would work except for the disabled one. The way we do it is by invoking an EmptyHandler when the main handler is set as Inactive.</li>
+  <li>If a specific handler is set as Inactive in the configuration, all other handlers would work except for the disabled one. The way we do it is by passing null to the calling point (Dispatcher) which would simply exit out the handler without throwing any errors.</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="n">with</span> <span class="n">sharing</span> <span class="kd">class</span> <span class="nc">UtilityClass</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">getSObjectTypeName</span><span class="o">(</span><span class="nc">SObject</span> <span class="n">so</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="n">so</span><span class="o">.</span><span class="na">getSObjectType</span><span class="o">().</span><span class="na">getDescribe</span><span class="o">().</span><span class="na">getName</span><span class="o">();</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="n">with</span> <span class="n">sharing</span> <span class="kd">class</span> <span class="nc">UtilityClass</span> 
+    <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">getSObjectTypeName</span><span class="o">(</span><span class="nc">SObject</span> <span class="n">sObject</span><span class="o">)</span> 
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">sObject</span><span class="o">.</span><span class="na">getSObjectType</span><span class="o">().</span><span class="na">getDescribe</span><span class="o">().</span><span class="na">getName</span><span class="o">();</span>
         <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ITriggerHandler</span> <span class="nf">getHandler</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ITriggerHandler</span> <span class="nf">getHandler</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="nc">List</span><span class="o">&lt;</span><span class="n">Trigger_Handler__mdt</span><span class="o">&gt;</span> <span class="n">handlerConfig</span> <span class="o">=</span> <span class="o">[</span><span class="n">select</span> <span class="nc">DeveloperName</span><span class="o">,</span> <span class="n">IsActive__c</span> <span class="n">from</span> <span class="n">Trigger_Handler__mdt</span> <span class="n">where</span> <span class="n">Salesforce_Object__r</span><span class="o">.</span><span class="na">DeveloperName</span><span class="o">=:</span><span class="n">tp</span><span class="o">.</span><span class="na">triggerObject</span> <span class="n">and</span> <span class="n">Trigger_Context__c</span><span class="o">=:</span><span class="n">tp</span><span class="o">.</span><span class="na">tEvent</span><span class="o">.</span><span class="na">name</span><span class="o">()</span> <span class="no">LIMIT</span> <span class="mi">1</span><span class="o">];</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handlerConfig</span><span class="o">.</span><span class="na">size</span><span class="o">()==</span><span class="mi">0</span><span class="o">)</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handlerConfig</span><span class="o">.</span><span class="na">size</span><span class="o">()==</span><span class="mi">0</span> <span class="o">||</span> <span class="o">!</span><span class="n">handlerConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">IsActive__c</span><span class="o">)</span>
             <span class="o">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nf">TriggerException</span><span class="o">(</span><span class="err">'</span><span class="nc">Handler</span> <span class="nc">Configuration</span> <span class="k">for</span> <span class="err">'</span><span class="o">+</span><span class="n">tp</span><span class="o">.</span><span class="na">triggerObject</span><span class="o">+</span> <span class="err">'</span> <span class="o">-</span> <span class="err">'</span><span class="o">+</span> <span class="n">tp</span><span class="o">.</span><span class="na">tEvent</span><span class="o">.</span><span class="na">name</span><span class="o">()</span> <span class="o">+</span><span class="err">'</span> <span class="n">is</span> <span class="n">not</span> <span class="n">defined</span><span class="err">'</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
             <span class="o">}</span>
             <span class="k">else</span>
             <span class="o">{</span>
-                <span class="k">try</span>
+                <span class="k">try</span> 
                 <span class="o">{</span>
-                    <span class="n">string</span> <span class="n">handlerName</span> <span class="o">=</span> <span class="err">'</span><span class="nc">EmptyHandler</span><span class="err">'</span><span class="o">;</span>
-                    <span class="k">if</span><span class="o">(</span><span class="n">handlerConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">IsActive__c</span><span class="o">)</span>
-                        <span class="n">handlerName</span> <span class="o">=</span> <span class="n">handlerConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">DeveloperName</span><span class="o">;</span>
+                    <span class="n">string</span> <span class="n">handlerName</span> <span class="o">=</span> <span class="n">handlerConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">DeveloperName</span><span class="o">;</span>
                     <span class="nc">Type</span> <span class="n">classType</span> <span class="o">=</span> <span class="nc">Type</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">handlerName</span><span class="o">);</span>
                     <span class="nc">ITriggerHandler</span> <span class="n">handlerInstance</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ITriggerHandler</span><span class="o">)</span><span class="n">classType</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Handler</span> <span class="n">in</span> <span class="n">charge</span> <span class="nl">is:</span> <span class="err">'</span><span class="o">+</span> <span class="n">handlerName</span><span class="o">);</span>
                     <span class="k">return</span> <span class="n">handlerInstance</span><span class="o">;</span>
-                <span class="o">}</span>
-                <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span>
+                <span class="o">}</span> 
+                <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
                 <span class="o">{</span>
-                    <span class="k">throw</span> <span class="k">new</span> <span class="nf">TriggerException</span><span class="o">(</span><span class="n">handlerConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">DeveloperName</span><span class="o">+</span><span class="err">'</span> <span class="kd">class</span> <span class="nc">doesnt</span> <span class="n">seem</span> <span class="n">to</span> <span class="n">exist</span><span class="o">.</span> <span class="nc">Please</span> <span class="n">check</span> <span class="n">with</span> <span class="n">development</span> <span class="n">team</span><span class="o">.</span><span class="err">'</span><span class="o">);</span>
+                    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ITriggerDispatcher</span> <span class="nf">getDispatcherObject</span><span class="o">(</span><span class="n">string</span> <span class="n">sObjectName</span><span class="o">){</span>
-            <span class="nc">List</span><span class="o">&lt;</span><span class="n">Salesforce_Object__mdt</span><span class="o">&gt;</span> <span class="n">dispatcherConfig</span> <span class="o">=</span> <span class="o">[</span><span class="n">select</span> <span class="n">Dispatcher_Class_Name__c</span> <span class="n">from</span> <span class="n">Salesforce_Object__mdt</span> <span class="n">where</span> <span class="nc">DeveloperName</span><span class="o">=:</span><span class="n">sObjectName</span> <span class="no">LIMIT</span> <span class="mi">1</span><span class="o">];</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">dispatcherConfig</span><span class="o">.</span><span class="na">size</span><span class="o">()==</span><span class="mi">0</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ITriggerDispatcher</span> <span class="nf">getDispatcherObject</span><span class="o">(</span><span class="n">string</span> <span class="n">sObjectName</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="n">Salesforce_Object__mdt</span><span class="o">&gt;</span> <span class="n">dispatcherConfig</span> <span class="o">=</span> <span class="o">[</span><span class="n">select</span> <span class="n">Dispatcher_Class_Name__c</span><span class="o">,</span> <span class="n">IsActive__c</span> <span class="n">from</span> <span class="n">Salesforce_Object__mdt</span> <span class="n">where</span> <span class="nc">DeveloperName</span><span class="o">=:</span><span class="n">sObjectName</span> <span class="no">LIMIT</span> <span class="mi">1</span><span class="o">];</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">dispatcherConfig</span><span class="o">.</span><span class="na">size</span><span class="o">()==</span><span class="mi">0</span> <span class="o">||</span> <span class="o">!</span><span class="n">dispatcherConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">IsActive__c</span><span class="o">)</span>
             <span class="o">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nf">TriggerException</span><span class="o">(</span><span class="err">'</span><span class="nc">Dispatcher</span> <span class="nc">Configuration</span> <span class="k">for</span> <span class="err">'</span><span class="o">+</span><span class="n">sObjectName</span><span class="o">+</span><span class="err">'</span> <span class="n">is</span> <span class="n">not</span> <span class="n">defined</span><span class="err">'</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
             <span class="o">}</span>
             <span class="k">else</span>
             <span class="o">{</span>
-                <span class="k">try</span>
+                <span class="k">try</span> 
                 <span class="o">{</span>
                     <span class="nc">Type</span> <span class="n">classType</span> <span class="o">=</span> <span class="nc">Type</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">dispatcherConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">Dispatcher_Class_Name__c</span><span class="o">);</span>
                     <span class="nc">ITriggerDispatcher</span> <span class="n">dispatcherInstance</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ITriggerDispatcher</span><span class="o">)</span><span class="n">classType</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
                     <span class="k">return</span> <span class="n">dispatcherInstance</span><span class="o">;</span>
-                <span class="o">}</span>
-                <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span>
+                <span class="o">}</span> 
+                <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
                 <span class="o">{</span>
-                    <span class="k">throw</span> <span class="k">new</span> <span class="nf">TriggerException</span><span class="o">(</span><span class="n">dispatcherConfig</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">Dispatcher_Class_Name__c</span><span class="o">+</span><span class="err">'</span> <span class="kd">class</span> <span class="nc">doesnt</span> <span class="n">seem</span> <span class="n">to</span> <span class="n">exist</span><span class="o">.</span> <span class="nc">Please</span> <span class="n">check</span> <span class="n">with</span> <span class="n">development</span> <span class="n">team</span><span class="o">.</span><span class="err">'</span><span class="o">);</span>
+                    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
                 <span class="o">}</span>
-
+                
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
@@ -391,107 +396,134 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
         <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">bulkAfter</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
         <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">onValidate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
 
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beforeInsert</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beforeInsert</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">Before</span> <span class="nc">Insert</span> <span class="nc">Trigger</span> <span class="nc">Handler</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">isBeforeInsertProcessing</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isBeforeInsertProcessing</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">isBeforeInsertProcessing</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">Before</span> <span class="nc">Insert</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="n">handler</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeInsert</span><span class="o">);</span>
                     <span class="n">isBeforeInsertProcessing</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
+                <span class="k">else</span> 
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">Before</span> <span class="nc">Insert</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">In</span> <span class="nc">Progress</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeInsert</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beforeUpdate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beforeUpdate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">Before</span> <span class="nc">Update</span> <span class="nc">Trigger</span> <span class="nc">Handler</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">isBeforeUpdateProcessing</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isBeforeUpdateProcessing</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">isBeforeUpdateProcessing</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">Before</span> <span class="nc">Update</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="n">handler</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeUpdate</span><span class="o">);</span>
                     <span class="n">isBeforeUpdateProcessing</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
+                <span class="k">else</span> 
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">Before</span> <span class="nc">Update</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">In</span> <span class="nc">Progress</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeUpdate</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beforeDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beforeDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">Before</span> <span class="nc">Delete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">isBeforeDeleteProcessing</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isBeforeDeleteProcessing</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">isBeforeDeleteProcessing</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">Before</span> <span class="nc">Delete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="n">handler</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeDelete</span><span class="o">);</span>
                     <span class="n">isBeforeDeleteProcessing</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
+                <span class="k">else</span> 
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">Before</span> <span class="nc">Delete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">In</span> <span class="nc">Progress</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeDelete</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterInsert</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterInsert</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">After</span> <span class="nc">Insert</span> <span class="nc">Trigger</span> <span class="nc">Handler</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterInsertProcessing</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterInsertProcessing</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">isAfterInsertProcessing</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">After</span> <span class="nc">Insert</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="n">handler</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">afterInsert</span><span class="o">);</span>
                     <span class="n">isAfterInsertProcessing</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
+                <span class="k">else</span> 
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">After</span> <span class="nc">Insert</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">In</span> <span class="nc">Progress</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">afterInsert</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterUpdate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterUpdate</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">After</span> <span class="nc">Update</span> <span class="nc">Trigger</span> <span class="nc">Handler</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterUpdateProcessing</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterUpdateProcessing</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">isAfterUpdateProcessing</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">After</span> <span class="nc">Update</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="n">handler</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">afterUpdate</span><span class="o">);</span>
                     <span class="n">isAfterUpdateProcessing</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
+                <span class="k">else</span> 
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">After</span> <span class="nc">Update</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">In</span> <span class="nc">Progress</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">afterUpdate</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">After</span> <span class="nc">Delete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterDeleteProcessing</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterDeleteProcessing</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">isAfterDeleteProcessing</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">After</span> <span class="nc">Delete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="n">handler</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">afterDelete</span><span class="o">);</span>
                     <span class="n">isAfterDeleteProcessing</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
+                <span class="k">else</span> 
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">After</span> <span class="nc">Delete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">In</span> <span class="nc">Progress</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">afterDelete</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterUnDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterUnDelete</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span> 
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">After</span> <span class="nc">UnDelete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterUnDeleteProcessing</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handler</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isAfterUnDeleteProcessing</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">isAfterUnDeleteProcessing</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Running</span> <span class="nc">After</span> <span class="nc">UnDelete</span> <span class="nc">Trigger</span> <span class="nc">Handler</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">execute</span><span class="o">(</span><span class="n">handler</span><span class="o">,</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">afterUnDelete</span><span class="o">);</span>
@@ -505,8 +537,10 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
         <span class="o">}</span>
         <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">andFinally</span><span class="o">()</span> <span class="o">{}</span>
 
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">ITriggerHandler</span> <span class="n">handlerInstance</span><span class="o">,</span> <span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span> <span class="n">tEvent</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">handlerInstance</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">ITriggerHandler</span> <span class="n">handlerInstance</span><span class="o">,</span> <span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">,</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span> <span class="n">tEvent</span><span class="o">)</span> 
+        <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">handlerInstance</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> 
+            <span class="o">{</span>
                 <span class="k">if</span><span class="o">(</span><span class="n">tEvent</span> <span class="o">==</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeInsert</span><span class="o">)</span>
                     <span class="n">beforeInsertHandler</span> <span class="o">=</span> <span class="n">handlerInstance</span><span class="o">;</span>
                 <span class="k">if</span><span class="o">(</span><span class="n">tEvent</span> <span class="o">==</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeUpdate</span><span class="o">)</span>
@@ -531,7 +565,8 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
                 <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="no">DML</span> <span class="nc">Delete</span> <span class="o">-</span> <span class="nc">Main</span> <span class="nc">Entry</span><span class="err">'</span><span class="o">);</span>
                 <span class="n">handlerInstance</span><span class="o">.</span><span class="na">deleteObjects</span><span class="o">();</span>
             <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
                 <span class="k">if</span><span class="o">(</span><span class="n">tEvent</span> <span class="o">==</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeInsert</span><span class="o">)</span>
                     <span class="n">beforeInsertHandler</span><span class="o">.</span><span class="na">inProgressEntry</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="k">if</span><span class="o">(</span><span class="n">tEvent</span> <span class="o">==</span> <span class="nc">TriggerParameter</span><span class="o">.</span><span class="na">TriggerEvent</span><span class="o">.</span><span class="na">beforeUpdate</span><span class="o">)</span>
@@ -577,9 +612,12 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
         <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">mainEntry</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">);</span>
         <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">inProgressEntry</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">){}</span>
 
-        <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">insertObjects</span><span class="o">(){</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">sObjectsToInsert</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
-                <span class="k">try</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">insertObjects</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">sObjectsToInsert</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">try</span> 
+                <span class="o">{</span>
                     <span class="nc">Database</span><span class="o">.</span><span class="na">SaveResult</span><span class="o">[]</span> <span class="n">results</span> <span class="o">=</span> <span class="nc">Database</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">sObjectsToInsert</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
                     <span class="k">if</span><span class="o">(</span><span class="n">results</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
                     <span class="o">{</span>
@@ -604,15 +642,19 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
                             <span class="o">}</span>
                         <span class="o">}</span>
                     <span class="o">}</span>
-                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> 
+                <span class="o">{</span>
                     <span class="k">throw</span> <span class="n">e</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">updateObjects</span><span class="o">(){</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">sObjectsToUpdate</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
-                <span class="k">try</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">updateObjects</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">sObjectsToUpdate</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">try</span> 
+                <span class="o">{</span>
                     <span class="nc">Database</span><span class="o">.</span><span class="na">SaveResult</span><span class="o">[]</span> <span class="n">results</span> <span class="o">=</span> <span class="nc">Database</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">sObjectsToUpdate</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
                     <span class="k">if</span><span class="o">(</span><span class="n">results</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
                     <span class="o">{</span>
@@ -643,9 +685,12 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
             <span class="o">}</span>
         <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">deleteObjects</span><span class="o">(){</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">sObjectsToDelete</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
-                <span class="k">try</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">virtual</span> <span class="kt">void</span> <span class="nf">deleteObjects</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">sObjectsToDelete</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">try</span> 
+                <span class="o">{</span>
                     <span class="nc">Database</span><span class="o">.</span><span class="na">DeleteResult</span><span class="o">[]</span> <span class="n">results</span> <span class="o">=</span> <span class="nc">Database</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">sObjectsToDelete</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
                     <span class="k">if</span><span class="o">(</span><span class="n">results</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
                     <span class="o">{</span>
@@ -676,7 +721,8 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
             <span class="o">}</span>
         <span class="o">}</span>
 
-        <span class="kd">private</span> <span class="n">string</span> <span class="nf">GetObjectNameFromRecordID</span><span class="o">(</span><span class="nc">Id</span> <span class="n">objectId</span><span class="o">){</span>
+        <span class="kd">private</span> <span class="n">string</span> <span class="nf">GetObjectNameFromRecordID</span><span class="o">(</span><span class="nc">Id</span> <span class="n">objectId</span><span class="o">)</span>
+        <span class="o">{</span>
             <span class="k">return</span> <span class="n">objectId</span><span class="o">.</span><span class="na">getSObjectType</span><span class="o">().</span><span class="na">getDescribe</span><span class="o">().</span><span class="na">getName</span><span class="o">();</span>
         <span class="o">}</span>
     <span class="o">}</span>
@@ -688,59 +734,71 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">TriggerAgent</span>
     <span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">RunTrigger</span><span class="o">(</span><span class="nc">Schema</span><span class="o">.</span><span class="na">SObjectType</span> <span class="n">sObjectType</span><span class="o">){</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">RunTrigger</span><span class="o">(</span><span class="nc">Schema</span><span class="o">.</span><span class="na">SObjectType</span> <span class="n">sObjectType</span><span class="o">)</span>
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Entering</span> <span class="nc">TriggerAgent</span><span class="err">'</span><span class="o">);</span>
             <span class="n">string</span> <span class="n">sObjectName</span> <span class="o">=</span> <span class="n">sObjectType</span><span class="o">.</span><span class="na">getDescribe</span><span class="o">().</span><span class="na">getName</span><span class="o">();</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Finding</span> <span class="n">the</span> <span class="nc">Trigger</span> <span class="nc">Dispatcher</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">ITriggerDispatcher</span> <span class="n">dispatcher</span> <span class="o">=</span> <span class="nc">UtilityClass</span><span class="o">.</span><span class="na">getDispatcherObject</span><span class="o">(</span><span class="n">sObjectName</span><span class="o">);</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">dispatcher</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nf">TriggerException</span><span class="o">(</span><span class="err">'</span><span class="nc">No</span> <span class="nc">Trigger</span> <span class="n">dispatcher</span> <span class="n">registered</span> <span class="k">for</span> <span class="nc">Object</span> <span class="nl">Type:</span> <span class="err">'</span> <span class="o">+</span> <span class="n">sObjectName</span><span class="o">);</span>
-            <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Starting</span> <span class="n">the</span> <span class="nc">Trigger</span> <span class="nc">Execution</span> <span class="nc">Order</span><span class="err">'</span><span class="o">);</span>
-            <span class="n">executeTriggerFlow</span><span class="o">(</span><span class="n">dispatcher</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dispatcher</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Starting</span> <span class="n">the</span> <span class="nc">Trigger</span> <span class="nc">Execution</span> <span class="nc">Order</span><span class="err">'</span><span class="o">);</span>
+                <span class="n">executeTriggerFlow</span><span class="o">(</span><span class="n">dispatcher</span><span class="o">);</span>   
+            <span class="o">}</span>
         <span class="o">}</span>
 
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">executeTriggerFlow</span><span class="o">(</span><span class="nc">ITriggerDispatcher</span> <span class="n">dispatcher</span><span class="o">){</span>
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">executeTriggerFlow</span><span class="o">(</span><span class="nc">ITriggerDispatcher</span> <span class="n">dispatcher</span><span class="o">)</span>
+        <span class="o">{</span>
             <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">Preparing</span> <span class="n">the</span> <span class="nc">TriggerParameter</span> <span class="n">object</span><span class="err">'</span><span class="o">);</span>
             <span class="nc">TriggerParameter</span> <span class="n">tp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TriggerParameter</span><span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">old</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">new</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">oldMap</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">newMap</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">isBefore</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">isAfter</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">isDelete</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">isInsert</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">isUpdate</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">isUnDelete</span><span class="o">,</span> <span class="nc">Trigger</span><span class="o">.</span><span class="na">isExecuting</span><span class="o">);</span>
 
-            <span class="k">if</span><span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isBefore</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isBefore</span><span class="o">)</span>
+            <span class="o">{</span>
                 <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">BulkBefore</span><span class="err">'</span><span class="o">);</span>
                 <span class="n">dispatcher</span><span class="o">.</span><span class="na">bulkBefore</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-                <span class="k">if</span><span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isDelete</span><span class="o">){</span>
+                <span class="k">if</span><span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isDelete</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">BeforeDelete</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">beforeDelete</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isInsert</span><span class="o">){</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isInsert</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">ApplyDefaults</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">applyDefaults</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">BeforeInsert</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">beforeInsert</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isUpdate</span><span class="o">){</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isUpdate</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">BeforeUpdate</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">beforeUpdate</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
+            <span class="k">else</span> 
+            <span class="o">{</span>
                 <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">BulkAfter</span><span class="err">'</span><span class="o">);</span>
                 <span class="n">dispatcher</span><span class="o">.</span><span class="na">bulkAfter</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-                <span class="k">if</span><span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isDelete</span><span class="o">){</span>
+                <span class="k">if</span><span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isDelete</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">AfterDelete</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">afterDelete</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isInsert</span><span class="o">){</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isInsert</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">AfterInsert</span> <span class="o">-</span> <span class="nc">OnValidate</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">onValidate</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">AfterInsert</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">afterInsert</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isUpdate</span><span class="o">){</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isUpdate</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">AfterUpdate</span> <span class="o">-</span> <span class="nc">OnValidate</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">onValidate</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">AfterUpdate</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">afterUpdate</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="o">}</span>
-                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isUnDelete</span><span class="o">){</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="nc">Trigger</span><span class="o">.</span><span class="na">isUnDelete</span><span class="o">)</span>
+                <span class="o">{</span>
                     <span class="n">system</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="err">'#</span> <span class="nc">AfterUnDelete</span><span class="err">'</span><span class="o">);</span>
                     <span class="n">dispatcher</span><span class="o">.</span><span class="na">afterUnDelete</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
                 <span class="o">}</span>
@@ -788,19 +846,6 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
     <span class="o">}</span>
 </code></pre></div></div>
 
-<h4 id="concrete-implementation-of-empty-handler">Concrete implementation of Empty Handler</h4>
-
-<p>One time implementation of the Empty Handler which is used to bypass an inactive handler</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmptyHandler</span> <span class="kd">extends</span> <span class="nc">TriggerHandlerBase</span>
-    <span class="o">{</span>
-        <span class="kd">public</span> <span class="n">override</span> <span class="kt">void</span> <span class="nf">mainEntry</span><span class="o">(</span><span class="nc">TriggerParameter</span> <span class="n">tp</span><span class="o">)</span>
-        <span class="o">{</span>
-            <span class="c1">// DO NOT WRITE LOGIC. THIS IS MEANT TO BE EMPTY.</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-</code></pre></div></div>
-
 <h4 id="lead-trigger-single-trigger">Lead Trigger [single trigger]</h4>
 
 <p>Implementation of the apex trigger that a developer needs to write</p>
@@ -827,6 +872,10 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
       <td>Dispatcher_Class_Name__c</td>
       <td>Text(40)</td>
     </tr>
+    <tr>
+      <td>IsActive__c</td>
+      <td>Checkbox</td>
+    </tr>
   </tbody>
 </table>
 
@@ -837,12 +886,14 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
     <tr>
       <th>Salesforce Object Name</th>
       <th>Dispatcher Class Name</th>
+      <th>Is Active</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Lead</td>
       <td>LeadTriggerDispatcher</td>
+      <td>true</td>
     </tr>
   </tbody>
 </table>
@@ -868,7 +919,7 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
       <td>Metadata Relationship (Salesforce Object)</td>
     </tr>
     <tr>
-      <td>Trigger Contect</td>
+      <td>Trigger Context</td>
       <td>Picklist</td>
     </tr>
   </tbody>
@@ -949,7 +1000,6 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
       <li>TriggerParameter</li>
       <li>UtilityClass</li>
       <li>TriggerException</li>
-      <li>EmptyHandler</li>
       <li>TriggerDispatcherBase</li>
       <li>TriggerHandlerBase</li>
       <li>LeadTriggerDispatcher</li>
@@ -976,8 +1026,38 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
 
 <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/beforeInsert-debug.png" alt="Debug Log" /></p>
 
+<h4 id="exception-handling">EXCEPTION HANDLING</h4>
+<p>The possibilities of exceptions in and around the framework are:</p>
+<ul>
+  <li>when finding dispatchers [framework owns this responsibility]
+    <ul>
+      <li><strong>Exception Handling Technique:</strong> if the dispatcher configuration is missing the <code class="highlighter-rouge">Salesforce_Object__mdt</code> metadata type OR dispatcher class doesn’t exist OR dispatcher config’s IsActive__c is false, then we ensure to pass back <code class="highlighter-rouge">null</code> to the TriggerAgent. Here, if null is detected, the dispatcher pipeline simply exits without starting the trigger pipeline.</li>
+    </ul>
+  </li>
+  <li>when finding handlers [framework owns this responsibility]
+    <ul>
+      <li><strong>Exception Handling Technique:</strong> if the handler configuration is missing the <code class="highlighter-rouge">Trigger_Handler_mdt</code> metadata type OR handler class doesn’t exist OR handler config’s IsActive__c is false, then we ensure to pass back <code class="highlighter-rouge">null</code> to the TriggerDispatcherBase method where handler instance is found. Here, if null is detected, the TriggerDispatcherBase simply exits that particular handler execution without impacting any other handlers.</li>
+    </ul>
+  </li>
+  <li>when the handler <code class="highlighter-rouge">mainEntry()</code> logic executes [developer owns this responsibility]
+    <ul>
+      <li>we know that the implementation of <code class="highlighter-rouge">mainEntry()</code> is done by a developer for a specific handler. Here, the developer has the option to use <code class="highlighter-rouge">try-catch</code> block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside <code class="highlighter-rouge">mainEntry()</code> is not part of the framework, the framework is not concerned about this.</li>
+    </ul>
+  </li>
+  <li>when the handler <code class="highlighter-rouge">inProgress()</code> logic executes [developer owns this responsibility]
+    <ul>
+      <li>similarly, we know that the implementation of <code class="highlighter-rouge">inProgressEntry()</code> is done by a developer for a specific handler. Here, the developer has the option to use <code class="highlighter-rouge">try-catch</code> block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside <code class="highlighter-rouge">inProgressEntry()</code> is not part of the framework, the framework is not concerned about this.</li>
+    </ul>
+  </li>
+  <li>when the handler’s <code class="highlighter-rouge">insertObjects()</code>/<code class="highlighter-rouge">updateObjects()</code>/<code class="highlighter-rouge">deleteObjects()</code> execute [framework owns this responsibility]
+    <ul>
+      <li>since centralization of DML is the promise of the framework, the logic inside each of these methods ensures to use the <code class="highlighter-rouge">AllOrNone</code> flag using the Database.[insert/update/delete] that gives us the SaveResult. The framework has the data in the SaveResult array to detect the failed records and log it in Apex_Debug_Log__c. So, the framework takes care of centralized DML operations. The framework will not guarantee debug logs if a developer executes a DML elsewhere and it breaks.</li>
+    </ul>
+  </li>
+</ul>
+
 <blockquote>
-  <p>I will be adding more data on Exception Handling at the Framework Level, Test Class Approach, Scientific Evaluation of the Time Compexity of the Framework from my research documentations. Stay tuned….</p>
+  <p>I will be adding more data on Test Class Approach, Scientific Evaluation of the Time Compexity of the Framework from my research documentations. Stay tuned….</p>
 </blockquote>
 
 <br />

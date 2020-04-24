@@ -1,0 +1,9 @@
+I"G<h2>Backend with NodeJS</h2>
+<p>In this deep dive, you will learn everything about how to create backend services using NodeJS. We will also understand in-memory data management, persistence, routers, security, etc</p>
+
+<ol>
+  <li><a href="/node-backend/" target="\_blank">Part 1 - Introduction to NodeJS and creating an Express API with in-memory data management</a></li>
+  <li><a href="/node-backend-part2/" target="\_blank">Part 2 - NodeJS Express API with MongoDB data management</a></li>
+  <li><a href="#" target="\_blank">Node Project Structure for API projects</a></li>
+</ol>
+:ET

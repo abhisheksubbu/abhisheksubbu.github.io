@@ -135,7 +135,28 @@
         <priority>0.5</priority>
     </url>
     
+    <url>
+        <loc>/blog/page5/</loc>
+        <lastmod>2020-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
 
+    
+    <url>
+        <loc>/sfdx-env-prep-ubuntu/</loc>
+        <lastmod>2020-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>/dotnet-core-install-ubuntu-20-04-lts/</loc>
+        <lastmod>2020-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
     
     <url>
         <loc>/node-backend-part2/</loc>

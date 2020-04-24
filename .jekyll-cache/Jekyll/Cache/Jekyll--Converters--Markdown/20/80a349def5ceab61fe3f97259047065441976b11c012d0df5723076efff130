@@ -1,0 +1,24 @@
+I"‹<h3 id="pre-requisites">Pre-Requisites</h3>
+<ol>
+  <li>Visual Studio Code - install it from the default Ubuntu Software Center</li>
+</ol>
+
+<h3 id="steps-to-configure-sfdx">Steps to configure SFDX</h3>
+<ol>
+  <li>Install OpenJDK 11 using the following terminal command
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>apt <span class="nb">install </span>openjdk-11-jdk
+</code></pre></div>    </div>
+  </li>
+  <li>Set the environment variables using the following terminal commands
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-11-openjdk-amd64
+ <span class="nb">echo</span> <span class="nv">$JAVA_HOME</span>
+ <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin
+ <span class="nb">echo</span> <span class="nv">$PATH</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Check the java version in terminal. It should show <code class="highlighter-rouge">openjdk version "11.0.7" 2020-04-14</code>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> java <span class="nt">-version</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET
