@@ -5,7 +5,7 @@
         <title>AbhishekSubbu</title>
         <link>http://localhost:4000</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Fri, 24 Apr 2020 20:05:00 +0530</lastBuildDate>
+        <lastBuildDate>Sun, 03 May 2020 16:16:52 +0530</lastBuildDate>
         
         <item>
             <title>SFDX Environment Preparation in Ubuntu 20.04 LTS</title>
@@ -14,14 +14,16 @@
             </link>
             <description>
                 &lt;h3 id=&quot;pre-requisites&quot;&gt;Pre-Requisites&lt;/h3&gt;
+
 &lt;ol&gt;
   &lt;li&gt;Visual Studio Code - install it from the default Ubuntu Software Center&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;steps-to-configure-sfdx&quot;&gt;Steps to configure SFDX&lt;/h3&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;Install OpenJDK 11 using the following terminal command. Be patient since it takes some time.
-    &lt;div...
+  &lt;li&gt;
+    &lt;p&gt;Install OpenJDK 11 using the following terminal command. Be patient since it takes some t...
             </description>
             <pubDate>Fri, 24 Apr 2020 00:00:00 +0530</pubDate>
             <guid>
