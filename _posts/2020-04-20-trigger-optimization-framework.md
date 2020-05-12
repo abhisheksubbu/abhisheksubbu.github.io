@@ -762,6 +762,20 @@ Implementation of the apex trigger that a developer needs to write
 | Lead              | LeadAfterDelete      | afterDelete     | false    |
 | Lead              | LeadAfterUnDelete    | afterUndelete   | false    |
 
+##### Custom Object Definition
+Custom Object API Name: Apex_Debug_Log__c
+
+| Field Name | Field API Name | Type of Field |
+|------------|----------------|---------------|
+|Apex Debug Log ID|Name|	Auto Number|
+|Class|Class__c|Text(255)|
+|Debug Message|Debug_Message__c|	Long Text Area(32768)|
+|Debug Stack Trace|Debug_Stack_Trace__c|Long Text Area(32768)|
+|Log Level|	Log_Level__c|Picklist|
+|Method|	Method__c|Text(255)|
+|Object Type|	Object_Type__c|Text(255)|
+|Record ID|Record_ID__c|Text(255)|
+
 #### DEPLOYMENT
 
 Deploy the following items to your salesforce org

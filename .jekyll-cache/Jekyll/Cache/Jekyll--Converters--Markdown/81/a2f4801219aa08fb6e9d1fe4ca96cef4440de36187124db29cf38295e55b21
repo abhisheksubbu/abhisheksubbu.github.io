@@ -1,4 +1,4 @@
-I"ºÉ<p><strong>Last Updated on 24 April 2020</strong></p>
+I"ÿÍ<p><strong>Last Updated on 24 April 2020</strong></p>
 
 <h4 id="acknowledgments">Acknowledgments</h4>
 
@@ -848,6 +848,61 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
       <td>LeadAfterUnDelete</td>
       <td>afterUndelete</td>
       <td>false</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="custom-object-definition">Custom Object Definition</h5>
+<p>Custom Object API Name: Apex_Debug_Log__c</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field Name</th>
+      <th>Field API Name</th>
+      <th>Type of Field</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apex Debug Log ID</td>
+      <td>Name</td>
+      <td>Auto Number</td>
+    </tr>
+    <tr>
+      <td>Class</td>
+      <td>Class__c</td>
+      <td>Text(255)</td>
+    </tr>
+    <tr>
+      <td>Debug Message</td>
+      <td>Debug_Message__c</td>
+      <td>Long Text Area(32768)</td>
+    </tr>
+    <tr>
+      <td>Debug Stack Trace</td>
+      <td>Debug_Stack_Trace__c</td>
+      <td>Long Text Area(32768)</td>
+    </tr>
+    <tr>
+      <td>Log Level</td>
+      <td>Log_Level__c</td>
+      <td>Picklist</td>
+    </tr>
+    <tr>
+      <td>Method</td>
+      <td>Method__c</td>
+      <td>Text(255)</td>
+    </tr>
+    <tr>
+      <td>Object Type</td>
+      <td>Object_Type__c</td>
+      <td>Text(255)</td>
+    </tr>
+    <tr>
+      <td>Record ID</td>
+      <td>Record_ID__c</td>
+      <td>Text(255)</td>
     </tr>
   </tbody>
 </table>
