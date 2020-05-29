@@ -1,0 +1,21 @@
+I"÷<p>There are many approaches to logging. Right from the simplest to most complex ones. In this blog, I will introduce a framework for logging in APEX language that uses Dependency Inversion principle.</p>
+
+<h2 id="need-for-such-a-framework">Need for such a framework</h2>
+<ul>
+  <li>I wanted to propose a consistent way for developers to log errors in Apex</li>
+  <li>Simple Logger class with a LogMessage method used in various parts of apex increases coupling</li>
+  <li>I should be able to deploy enhancements to the Logger without having the logger classes locked by runtime</li>
+  <li>I also should be able to switch/swap logger implementations like changing <strong>Custom Object Logger</strong> to <strong>API Logger</strong>, etc</li>
+</ul>
+
+<h2 id="improvements-that-i-aimed-in-this-framework">Improvements that I aimed in this Framework</h2>
+<ul>
+  <li>Interface based coding is good but there would always be a class (like in Factory Design Pattern) which will have a factor of coupling. I wanted to avoid this coupling.</li>
+  <li>My focus was to use the Dependency Inversion principle in Apex and ensure that I create a framework with highest levels of Cohesion and lowest levels of Coupling.</li>
+</ul>
+
+<h2 id="uml-diagram">UML Diagram</h2>
+<p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/LoggerFramework.png" alt="UML Diagram" /></p>
+
+<p>This project is licensed under the Creative Commons License. The source code of this project is present in <a href="#">my GitHub page</a>.</p>
+:ET
