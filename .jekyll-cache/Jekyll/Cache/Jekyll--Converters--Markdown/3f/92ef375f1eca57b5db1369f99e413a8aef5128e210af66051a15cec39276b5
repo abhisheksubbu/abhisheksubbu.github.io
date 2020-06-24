@@ -1,4 +1,4 @@
-I"<p>When it comes to Data Structures &amp; Algorithms, there are 2 main factors that need to be analyzed every time.</p>
+I"}<p>When it comes to Data Structures &amp; Algorithms, there are 2 main factors that need to be analyzed every time.</p>
 
 <ol>
   <li>Time taken by the algorithm to finish <strong>[Time Complexity]</strong></li>
@@ -46,7 +46,7 @@
 
 <p>Suppose we have an algorithm as shown below:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 1
 b = 2
 c = a + 4*b
 </code></pre></div></div>
@@ -57,7 +57,7 @@ c = a + 4*b
 
 <p>Suppose we have an algorithm as shown below:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i = 0
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i = 0
 while i &lt; n
     i = i + 1
 </code></pre></div></div>
@@ -68,7 +68,7 @@ while i &lt; n
 
 <p>Suppose we have an algorithm as shown below:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for (i = 0; i &lt; n; i = i + 1)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for (i = 0; i &lt; n; i = i + 1)
     for (j = 0; j &lt; n; j = j + 1)
 </code></pre></div></div>
 
@@ -76,7 +76,7 @@ while i &lt; n
 
 <p>Let’s make a small twist to the previous algorithm as shown below: <strong>[we replaced j = 0 in the inner loop to j = 1]</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for (i = 0; i &lt; n; i = i + 1)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for (i = 0; i &lt; n; i = i + 1)
     for (j = i; j &lt; n; j = j + 1)
 </code></pre></div></div>
 
@@ -145,7 +145,7 @@ So, the time complexity of this algorithm is O(n(n+1)/2) = O(n<sup>2</sup>/2 + n
   <li>“value” represents a value that we want to find in this array</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>low = 0
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>low = 0
 high = n-1
 while low &lt;= high
     mid = (low + high) / 2

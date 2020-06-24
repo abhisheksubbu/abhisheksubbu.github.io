@@ -1,0 +1,24 @@
+I"Å<div class="alert alert-info" role="alert">
+  <h4 class="alert-heading">Want to get in touch with me?</h4>
+  <p>
+    Just fill out the form below and submit your message. I will reach back to
+    you at the earliest.
+  </p>
+</div>
+<form action="https://formspree.io/xvoqbone" method="POST">
+  <div class="form-group">
+    <label for="inputName">Full Name</label>
+    <input type="text" name="fullName" class="form-control" id="inputName" placeholder="Enter your full name" autocomplete="off" required="" />
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1">Email address</label>
+    <input type="email" name="_replyto" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off" required="" />
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="inputMessage">Message</label>
+    <textarea name="message" class="form-control" id="inputMessage" rows="5" autocomplete="off" required=""></textarea>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Send" />
+</form>
+:ET

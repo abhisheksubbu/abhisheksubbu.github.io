@@ -39,7 +39,7 @@
 </script>
  <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Retries using Polly in .NET Core | AbhishekSubbu</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Retries using Polly in .NET Core" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
@@ -234,7 +234,7 @@
 <p>Technically, Transient Errors are one of the following.</p>
 
 <ul>
-  <li>Network failures (<code class="highlighter-rouge">System.Net.Http.HttpRequestException</code>)</li>
+  <li>Network failures (<code class="language-plaintext highlighter-rouge">System.Net.Http.HttpRequestException</code>)</li>
   <li>HTTP 5XX status codes (server errors)</li>
   <li>HTTP 408 status code (request timeout)
 In our case, if a transient error occurred, this call would fail naturally because there is no retry mechanism built/coded.</li>

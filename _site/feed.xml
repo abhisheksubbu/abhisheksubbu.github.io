@@ -5,7 +5,24 @@
         <title>AbhishekSubbu</title>
         <link>http://localhost:4000</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Fri, 29 May 2020 18:40:51 +0530</lastBuildDate>
+        <lastBuildDate>Wed, 24 Jun 2020 21:00:05 +0530</lastBuildDate>
+        
+        <item>
+            <title>Salesforce CI/CD using Azure DevOps Services</title>
+            <link>
+                http://localhost:4000/salesforce-azure-devops/
+            </link>
+            <description>
+                &lt;h2 id=&quot;getting-the-fundamentals-right&quot;&gt;Getting the Fundamentals right&lt;/h2&gt;
+&lt;p&gt;Before we dive in to the setup and configurations of the DevOps process, we should have a clear understanding of what Continuos Integration (CI) is and what Continuous Delivery (CD) is.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Continuous Integration (CI)&lt;/strong&gt; is not a tool. It is a prac...
+            </description>
+            <pubDate>Mon, 15 Jun 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/salesforce-azure-devops/
+            </guid>
+        </item>
         
         <item>
             <title>Logger Framework in Salesforce</title>
