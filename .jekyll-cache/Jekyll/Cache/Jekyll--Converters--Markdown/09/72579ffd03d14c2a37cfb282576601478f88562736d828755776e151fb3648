@@ -1,0 +1,284 @@
+I"Ö*<div style="margin-bottom: 2rem;">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Blog Posts
+      </li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
+  <div class="col-sm-9">
+    <div class="blog-posts">
+      
+      <div class="blog-post spacing">
+        <h3><a href="/salesforce-github-devops/">Salesforce CI/CD using Azure DevOps Services</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            June 25, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+          <a href="/categories/#azure" class="badge badge-secondary">Azure</a>
+          
+          <a href="/categories/#devops" class="badge badge-secondary">DevOps</a>
+          
+        </p>
+        The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Azure DevOps services for free.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/salesforce-azure-devops/">Salesforce CI/CD using Azure DevOps Services</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            June 15, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+          <a href="/categories/#azure" class="badge badge-secondary">Azure</a>
+          
+          <a href="/categories/#devops" class="badge badge-secondary">DevOps</a>
+          
+        </p>
+        The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Azure DevOps services for free.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/salesforce-logger-framework/">Logger Framework in Salesforce</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            May 29, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+          <a href="/categories/#architecture" class="badge badge-secondary">Architecture</a>
+          
+        </p>
+        Logging errors in Salesforce environment is a practice that almost every organization and developer follows. In this blog, I will introduce a logging framework that will ensure that logging is done consistently.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/sfdx-env-prep-ubuntu/">SFDX Environment Preparation in Ubuntu 20.04 LTS</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 24, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#net" class="badge badge-secondary">.NET</a>
+          
+        </p>
+        In this blog, I will briefly explain the steps for setting up your SFDX environment in Ubuntu 20.04 LTS Linux machine
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/dotnet-core-install-ubuntu-20-04-lts/">Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 24, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#net" class="badge badge-secondary">.NET</a>
+          
+        </p>
+        As of the release of Ubuntu 20.04 LTS, installation of dotnet core sdk has been a bit of pain. This blog shares the installation instructions clearly for dotnet-sdk-3.1 in Ubuntu 20.04 LTS
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/node-backend-part2/">Backend with NodeJS - Part 2</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 22, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#nodejs" class="badge badge-secondary">NodeJS</a>
+          
+          <a href="/categories/#deep-dive" class="badge badge-secondary">Deep Dive</a>
+          
+        </p>
+        In this blog, we will improve the NodeJS API that we created in the Part 1 from in-memory data storage to persistant storage using MongoDB &amp; Mongoose.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/api-versioning/">API Versioning</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 21, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#net" class="badge badge-secondary">.NET</a>
+          
+          <a href="/categories/#deep-dive" class="badge badge-secondary">Deep Dive</a>
+          
+        </p>
+        In this blog post, we will closely look at different strategies to versioning API's
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/trigger-optimization-framework/">Trigger Optimization Framework in Salesforce</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 20, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+        </p>
+        In this blog post, we will do a deep dive into improving existing Apex Trigger Frameworks into a comprehensive, configurable Trigger Framework that we can adopt in Salesforce.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/inversion-of-control-part-1/">Inversion of Control - Part 1</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 20, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#architecture" class="badge badge-secondary">Architecture</a>
+          
+          <a href="/categories/#deep-dive" class="badge badge-secondary">Deep Dive</a>
+          
+        </p>
+        In this blog post, we will understand the basic principles of Inversion of Control and Dependency Injection. Also, we will see how it is very important for developers to adopt IOC.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/rest-api-standards/">REST API Standards</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 08, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#best-practices" class="badge badge-secondary">Best Practices</a>
+          
+          <a href="/categories/#deep-dive" class="badge badge-secondary">Deep Dive</a>
+          
+        </p>
+        In this blog post, I will explain what REST standards are. Additionally, we will list out what API's need to have for it to be RESTful.
+      </div>
+      <hr />
+      
+    </div>
+  </div>
+  <div class="col-sm-3"><div class="card">
+  <div class="card-header">
+    <h4>Categories</h4>
+  </div>
+  <ul class="list-group">
+      
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#general">General</a>
+        <span class="badge badge-primary badge-pill">12</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#security">Security</a>
+        <span class="badge badge-primary badge-pill">1</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#fundamentals">Fundamentals</a>
+        <span class="badge badge-primary badge-pill">9</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#architecture">Architecture</a>
+        <span class="badge badge-primary badge-pill">5</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#.net">.NET</a>
+        <span class="badge badge-primary badge-pill">8</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#deep-dive">Deep Dive</a>
+        <span class="badge badge-primary badge-pill">7</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#salesforce">Salesforce</a>
+        <span class="badge badge-primary badge-pill">7</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#design-patterns">Design Patterns</a>
+        <span class="badge badge-primary badge-pill">2</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#nodejs">NodeJS</a>
+        <span class="badge badge-primary badge-pill">2</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#best-practices">Best Practices</a>
+        <span class="badge badge-primary badge-pill">1</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#azure">Azure</a>
+        <span class="badge badge-primary badge-pill">2</span>
+    </li>
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/categories/#devops">DevOps</a>
+        <span class="badge badge-primary badge-pill">2</span>
+    </li>
+      
+  </ul>
+</div>
+<br />
+<div class="text-center">
+  <a target="_blank" href="https://www.buymeacoffee.com/CMivEc5">
+  <button class="btn btn-primary btn-lg">
+      <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" />
+    Buy me a coffee
+  </button></a>
+</div>
+<br />
+</div>
+</div>
+:ET

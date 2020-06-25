@@ -5,7 +5,25 @@
         <title>AbhishekSubbu</title>
         <link>http://localhost:4000</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Wed, 24 Jun 2020 21:00:05 +0530</lastBuildDate>
+        <lastBuildDate>Thu, 25 Jun 2020 20:33:13 +0530</lastBuildDate>
+        
+        <item>
+            <title>Salesforce CI/CD using Github</title>
+            <link>
+                http://localhost:4000/salesforce-github-devops/
+            </link>
+            <description>
+                &lt;p&gt;Please do read my blog on &lt;a href=&quot;/salesforce-azure-devops/&quot;&gt;Salesforce CI/CD with Azure DevOps Services&lt;/a&gt; to get upto speed on fundamental knowledge of CI, CD and devops practices to be employed for Salesforce. The same applies here as well. Just few steps change.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s define the problem statement.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p...
+            </description>
+            <pubDate>Thu, 25 Jun 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/salesforce-github-devops/
+            </guid>
+        </item>
         
         <item>
             <title>Salesforce CI/CD using Azure DevOps Services</title>

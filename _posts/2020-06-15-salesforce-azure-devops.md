@@ -39,7 +39,7 @@ In Org Development Model,
 Org Development Model is a common development model that most organizations follow. Every feature developed would be bundled into a changeset and be deployed to an org. Post deployment, QA would do a smoke testing and a regression testing just to ensure nothing in the org is impacted.
 
 Now, let's define the problem statement.
-> ABC Company uses Salesforce CRM for their business. They have a development team that develops functionalities as per business request in a Developer Sandbox. The team lead/team manager/deployment manager collects the list of items developed for each functionality from the developer, prepares changeset and deploys to QA Sandbox when it is ready for QA testing. After QA testing is pass, those functionalities are queued for PROD deployment which happens once every 2 weeks. The team lead/team manager/deployment manager again creates the changeset for PROD deployment and executes them every 2 weeks and initimates the organization stakeholders. For your information, they use Azure repositories for code management for their website development team.
+> ABC Company uses Salesforce CRM for their business. They have a development team that develops functionalities as per business request in a Developer Sandbox. The team lead/team manager/deployment manager collects the list of items developed for each functionality from the developer, prepares changeset and deploys to QA Sandbox when it is ready for QA testing. After QA testing is pass, those functionalities are queued for PROD deployment which happens once every 2 weeks. The team lead/team manager/deployment manager again creates the changeset for PROD deployment and executes them every 2 weeks and initimates the organization stakeholders. For your information, they use **Azure** repositories for code management for their website development team.
 
 ### Key items to consider for deployment strategy
 - It is clear that ABC company uses Org Development Model. So, we need to understand that anything related to package development model (even though it is fancy and attractive) should not be forced.
@@ -51,6 +51,7 @@ Now, let's define the problem statement.
 2. Developer Azure account [just go to dev.azure.com and register with your microsoft personal email address]
 3. Salesforce CLI installed locally
 4. Visual Studio Code installed locally with "Salesforce Extension Pack" installed.
+5. Git (either via npm or as installer)
 
 ## Step 1: Certificates and Key
 The first step is to create a self signed certificate and private key that we need for configuring the DevOps process to authorize with Salesforce org.
@@ -91,6 +92,22 @@ In this step, we will create a new connected app for DevOps process to authorize
     - Permitted Users = Admin approved users are pre-authorized
 5. After saving the permitted users, scroll down to "Profiles" related list and click the "Manage Profiles" button. Add the "System Administrator" profile or equivalent profile that your DevOps user is setup with.
 
+**Test if SFDX authorization to SF org is successfull or not.** On executing the force:auth:jwt:grant command, it should say "Successfully authorized xxx@xxx.com with org ID 00D2x000000aBcDEAM". If this fails, then either the ClientId copied & pasted is not proper or certificate/key file is not generated properly from OpenSSL. Ensure to replace the username, client id with you own values.
+
+``` bash
+sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyzexU2c1VnTmNIkZ5g1IwJ_abcd_menLDWTuYasRhsInZHkA.Jfw.BmI4rbHYmjdzZBeqC --jwtkeyfile server.key --username xxx@xxx.com --instanceurl https://login.salesforce.com
+```
+
+#### Possible Errors
+> ERROR running force:auth:jwt:grant:  We encountered a JSON web token error, which is likely not an issue with Salesforce CLI. Here's the error: invalid assertion
+
+**Solution:** Generate the server.key, csr and crt again using OpenSSL. Update the crt in the Connected App in Salesforce. Then update the key file in the buildfiles folder in the vscode project. Checkin the code and this problem should be resolved.
+
+> ERROR running force:source:deploy: We encountered a JSON web token error, which is likely not an issue with Salesforce CLI. Here's the error: ENOENT: no such file or directory, open '<pathtojob>\DevSFDX\ELDEV@tmp\secretFiles\f5e59c25-44df-4273-ae1f-05d927940543\server.key'
+
+**Solution:** The issue is with the path of the jwtkeyfile that is specified in the command. Ensure that the server.key file exists in the path that you have specified in the command. And more importantly, checkin the code so that Azure pipeline can find the file on the Azure git repo.
+
+
 ## Step 3: Project Setup in Azure
 In this step, we will create a project in Azure account.
 
@@ -101,7 +118,7 @@ In this step, we will create a project in Azure account.
     - Work Item Process can be left with default option (Agile)
 3. Open the project.
 4. Click the "Repos" tab.
-5. Click on "Generate Git Credentials". Copy the username and password somewhere safely. If you refresh this screen, you will not be able to see the password again. We will require this username & password when executing git commands.
+5. Click on "Generate Git Credentials". Copy the username and password somewhere safely. If you refresh this screen, you will not be able to see the password again. We will require this username & password when executing git commands. (I needed this step while configuring the DevOps in Ubuntu Linux machine. While trying out in Windows machine, it didn't even need this generated Git credentials.)
 
 ## Step 4. Getting the SF Org codebase to push to Azure Git repo
 In this step, we will pull the codebase from salesforce and organize it in the way we want to version control it. Then, we will commit this code to the Azure Git repo we created in Step 3.
@@ -148,11 +165,16 @@ In this step, we will pull the codebase from salesforce and organize it in the w
         <version>44.0</version>
     </Package>
     ```
+5. Create a folder named "buildfiles" using the following command
+    ``` bash
+    mkdir buildfiles
+    ```
+5. Paste the **server.key** inside the buildfiles folder
 9. Execute the following command in terminal/command prompt. This will retrieve all the metadata from your SF org to the project folder in metadata format. Please do replace the xxx@xxx.com to your salesforce org username.
     ``` bash
     sfdx force:mdapi:retrieve -r retrieved -k manifest/package.xml -w 10 -u xxx@xxx.com
     ```
-10. Unzip the retrieved metadata zip file into a folder named "retrieved".
+10. Unzip the retrieved metadata zip file into a folder named "retrieved". (**Note** that this unzip command may not work in Windows OS. So manually unzip.)
     ``` bash
     unzip retrieved/unpackaged.zip -d retrieved
     ```
@@ -204,7 +226,7 @@ In this step, we will create the azure pipeline which will build, test and deplo
 3. Choose "Azure Repos Git" for "Where is your code?"
 4. Choose "SF DevOps" project for "Select your repository"
 5. Choose "Starter Pipeline" for "Configure your pipeline"
-6. Overwrite the code shown in "Review your pipeline YAML" and paste the following code.
+6. Overwrite the code shown in "Review your pipeline YAML" and paste the following code. (**Note**: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
     ```
     # Starter pipeline
     # Start with a minimal pipeline that you can customize to build and deploy your code.
@@ -265,6 +287,10 @@ In this step, we will create the azure pipeline which will build, test and deplo
     - **salesforceDevOrgUserName** = type the username of your developer org
 8. Click on "Save & Run". You will see the pipeline starting to run. You can click the build instance and see what the azure pipeline is doing while it is executing the commands. 
 9. After the pipeline is executed, you can open the Salesforce Org in browser and navigate to Setup -> Environments -> Deploy -> Deployment Status. Here, you will see a recent Deployment Validation Success & a Deployment Success.
+10. Run the following command in terminal/command prompt to pull the pipeline yml file to vscode locally.
+    ``` bash
+    git pull origin master
+    ```
 
 This completes the setup of Azure DevOps pipeline for automating Salesforce deployments.
 
