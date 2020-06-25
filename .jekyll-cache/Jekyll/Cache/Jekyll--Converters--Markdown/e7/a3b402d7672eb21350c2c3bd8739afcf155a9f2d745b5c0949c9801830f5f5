@@ -1,146 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/assets/style.css" />
-    <link rel="stylesheet" href="/assets/vs.css" />
-    <link
-      rel="shortcut icon"
-      href="/favicon.ico"
-      type="image/x-icon"
-    />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
-    <title>Salesforce CI/CD using Github | AbhishekSubbu</title>
-    <script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=UA-51070250-1"
-></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-
-  gtag('config', 'UA-51070250-1');
-</script>
- <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Salesforce CI/CD using Github | AbhishekSubbu</title>
-<meta name="generator" content="Jekyll v4.1.0" />
-<meta property="og:title" content="Salesforce CI/CD using Github" />
-<meta name="author" content="Abhishek Sivasubramanian" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Github for free." />
-<meta property="og:description" content="The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Github for free." />
-<link rel="canonical" href="http://localhost:4000/salesforce-github-devops/" />
-<meta property="og:url" content="http://localhost:4000/salesforce-github-devops/" />
-<meta property="og:site_name" content="AbhishekSubbu" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-06-25T00:00:00+05:30" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Salesforce CI/CD using Github" />
-<meta name="twitter:site" content="@abhisheksubbu" />
-<meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
-<meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
-<script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/salesforce-github-devops/","headline":"Salesforce CI/CD using Github","dateModified":"2020-06-25T00:00:00+05:30","datePublished":"2020-06-25T00:00:00+05:30","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/salesforce-github-devops/"},"description":"The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Github for free.","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-
-  </head>
-  <body>
-    <div class="container-fluid container-app">
-      <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-  <a class="navbar-brand" href="/"
-    ><img
-      src="/abhisheksubbu_siteicon.png"
-      alt=""
-      style="width:64px;"
-    />AbhishekSubbu</a
-  >
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <ul class="navbar-nav ml-auto">
-      <li>
-        <a class="nav-item nav-link" href="/blog">Blog</a>
-      </li>
-      <li>
-        <a class="nav-item nav-link" href="/learn"
-          >Learn & Upskill</a
-        >
-      </li>
-      <li>
-        <a class="nav-item nav-link" href="/about">About</a>
-      </li>
-      <li>
-        <a class="nav-item nav-link" href="/contact">Contact</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-      <div style="margin-top: 20px; margin-bottom: 20px;"><div style="margin-bottom: 2rem;">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item"><a href="/blog/index.html">Blog</a></li>
-      <li class="breadcrumb-item active" aria-current="page">
-        Salesforce CI/CD using Github
-      </li>
-    </ol>
-  </nav>
-</div>
-<h1>Salesforce CI/CD using Github</h1>
-<p>
-  Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-  <span class="date">
-    June 25, 2020
-  </span>
-</p>
-<p>
-  
-  <a
-    href="/categories/#salesforce"
-    class="badge badge-secondary"
-    >Salesforce</a
-  >
-  
-  <a
-    href="/categories/#github"
-    class="badge badge-secondary"
-    >Github</a
-  >
-  
-  <a
-    href="/categories/#devops"
-    class="badge badge-secondary"
-    >DevOps</a
-  >
-  
-</p>
-<p>Please do read my blog on <a href="/salesforce-azure-devops/">Salesforce CI/CD with Azure DevOps Services</a> to get upto speed on fundamental knowledge of CI, CD and devops practices to be employed for Salesforce. The same applies here as well. Just few steps change.</p>
+I"�S<p>Please do read my blog on <a href="/salesforce-azure-devops/">Salesforce CI/CD with Azure DevOps Services</a> to get upto speed on fundamental knowledge of CI, CD and devops practices to be employed for Salesforce. The same applies here as well. Just few steps change.</p>
 
 <p>Now, let’s define the problem statement.</p>
 <blockquote>
@@ -358,9 +216,59 @@ git config user.name <span class="s2">"testusername"</span>
   <li>In the Github repo page open in the browser, navigate to “Actions” tab.</li>
   <li>In the “Choose the starter worklfow” page, click on the “Setup this workflow” button in the Simple Workflow box.</li>
   <li>In the editor, rename the pipeline name from blank.yml to pipeline.yml.</li>
-  <li>
-    <p>Clear the code and paste the following code from my github repo. (<strong>Note</strong>: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
- <a href="https://github.com/abhisheksubbu/DevMainAzureGithub/blob/master/.github/workflows/pipelines.yml">Refer the actual pipeline.yml code here</a></p>
+  <li>Clear the code and paste the following code. (<strong>Note</strong>: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # This is a basic workflow to help you get started with Actions
+
+ name: Deploy to Salesforce Pipeline
+
+ # Controls when the action will run. Triggers the workflow on push or pull request
+ # events but only for the master branch
+ on:
+ push:
+     branches: [ master ]
+ pull_request:
+     branches: [ master ]
+
+ # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+ jobs:
+ # This workflow contains a single job called "build"
+ build:
+     # The type of runner that the job will run on
+     runs-on: ubuntu-latest
+
+     # Steps represent a sequence of tasks that will be executed as part of the job
+     steps:
+     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+     - uses: actions/checkout@v2
+
+     # Setup Node
+     - name: Setup Node
+     uses: actions/setup-node@v1
+        
+     # Install SFDX CLI
+     - name: Install SFDX CLI
+     run: npm install sfdx-cli --global
+
+     # Authorize SF Org
+     - name: Authorize SF Org
+     env:
+         CLIENT_ID: **$**
+         USERNAME: **$**
+         INSTANCE_URL: **$**
+     run: sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile ./buildfiles/server.key --username $USERNAME --instanceurl $INSTANCE_URL -a prod
+
+     # Convert to Deploy Source
+     - name: Convert to Deploy Source
+     run: sfdx force:source:convert -r ./force-app -d ./toDeploy
+        
+     # Run Validation of Deploy Source
+     - name: Run Validation on Deploy Source
+     run: sfdx force:mdapi:deploy -l RunLocalTests -c -d ./toDeploy -u prod -w 10
+        
+     # Deploy
+     - name : Deploy to SF Org
+     run: sfdx force:mdapi:deploy -l RunLocalTests -d ./toDeploy -u prod -w 10
+</code></pre></div>    </div>
 
     <p><strong>Explanation of the pipeline code:</strong></p>
 
@@ -414,162 +322,4 @@ git config user.name <span class="s2">"testusername"</span>
   <li>Every code/metadata changes are made locally in VS Code and tracked by Github version control. Version Control is the source of truth.</li>
   <li>Github pipeline ensures that what is in GIT repo is there in the SF Org.</li>
 </ul>
-
-<br />
-<strong>Thanks for reading this post. Enjoy !!</strong>
-<hr />
-<span style="color: black;">Share on: </span>
-<!-- AddToAny BEGIN -->
-<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-  <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-  <a class="a2a_button_facebook"></a>
-  <a class="a2a_button_twitter"></a>
-  <a class="a2a_button_email"></a>
-  <a class="a2a_button_linkedin"></a>
-  <a class="a2a_button_telegram"></a>
-  <a class="a2a_button_whatsapp"></a>
-  <a class="a2a_button_reddit"></a>
-  <a class="a2a_button_pinterest"></a>
-  <a class="a2a_button_tumblr"></a>
-  <a class="a2a_button_pocket"></a>
-  <a class="a2a_button_skype"></a>
-</div>
-<script async src="https://static.addtoany.com/menu/page.js"></script>
-<!-- AddToAny END -->
-
-<hr />
-
-<div id="disqus_thread"></div>
-<script>
-  /**
-   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-  /*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-  (function() {
-    // DON'T EDIT BELOW THIS LINE
-    var d = document,
-      s = d.createElement("script");
-    s.src = "https://abhisheksubbu.disqus.com/embed.js";
-    s.setAttribute("data-timestamp", +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript
-  >Please enable JavaScript to view the
-  <a href="https://disqus.com/?ref_noscript"
-    >comments powered by Disqus.</a
-  ></noscript
->
-
-
-</div>
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-  <div class="row">
-    <div class="col-12 col-md">
-      <p class="mv0 lh-copy">
-        Made with
-        <svg
-          aria-labelledby="svg-inline--fa-title-DnkMAVvZBF4e"
-          data-prefix="fas"
-          data-icon="heart"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
-          class="svg-inline--fa fa-heart fa-w-16"
-        >
-          <title id="svg-inline--fa-title-DnkMAVvZBF4e" class="">
-            Markdown and Bootstrap
-          </title>
-          <path
-            fill="currentColor"
-            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
-            class=""
-          ></path>
-        </svg>
-        in
-        <a
-          href="https://www.google.com/maps/place/Kochi, Kerala"
-          target="_blank"
-          class="link color-inherit hover-white"
-          >Kochi</a
-        >.
-      </p>
-      <small class="d-block mb-3 text-muted"
-        >Copyright 2020 © AbhishekSubbu
-        <p>
-          This is a personal blog. Opinions expressed are solely my own and do
-          not express the views or opinions of my employer.
-        </p></small
-      >
-    </div>
-    <div class="col-6 col-md">
-      <h5>Blog</h5>
-      <ul class="list-unstyled text-small">
-        <li>
-          <a class="text-muted" href="/archives"
-            >Blog Archives</a
-          >
-        </li>
-        <li>
-          <a class="text-muted" href="/categories"
-            >Categories</a
-          >
-        </li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Activities</h5>
-      <ul class="list-unstyled text-small">
-        <li>
-          <a class="text-muted" href="/speaking"
-            >Speaking Engagements</a
-          >
-        </li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Resources</h5>
-      <ul class="list-unstyled text-small">
-        <li>
-          <a class="text-muted" href="/learn"
-            >Learn & Upskill</a
-          >
-        </li>
-        <li>
-          <a class="text-muted" href="/learn/deepdives"
-            >Deep Dives</a
-          >
-        </li>
-        <li>
-          <a class="text-muted" href="/downloads"
-            >Downloadables</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+:ET

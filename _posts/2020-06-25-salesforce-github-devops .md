@@ -190,60 +190,8 @@ In this step, we will create the github pipeline which will build, test and depl
 1. In the Github repo page open in the browser, navigate to "Actions" tab.
 2. In the "Choose the starter worklfow" page, click on the "Setup this workflow" button in the Simple Workflow box.
 4. In the editor, rename the pipeline name from blank.yml to pipeline.yml.
-6. Clear the code and paste the following code. (**Note**: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
-    ```
-    # This is a basic workflow to help you get started with Actions
-
-    name: Deploy to Salesforce Pipeline
-
-    # Controls when the action will run. Triggers the workflow on push or pull request
-    # events but only for the master branch
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-
-    # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-    jobs:
-    # This workflow contains a single job called "build"
-    build:
-        # The type of runner that the job will run on
-        runs-on: ubuntu-latest
-
-        # Steps represent a sequence of tasks that will be executed as part of the job
-        steps:
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v2
-
-        # Setup Node
-        - name: Setup Node
-        uses: actions/setup-node@v1
-        
-        # Install SFDX CLI
-        - name: Install SFDX CLI
-        run: npm install sfdx-cli --global
-
-        # Authorize SF Org
-        - name: Authorize SF Org
-        env:
-            CLIENT_ID: ${{ secrets.SALESFORCEPRODCLIENTID }}
-            USERNAME: ${{ secrets.SALESFORCEPRODUSERNAME }}
-            INSTANCE_URL: ${{ secrets.SALESFORCEPRODINSTANCEURL }}
-        run: sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile ./buildfiles/server.key --username $USERNAME --instanceurl $INSTANCE_URL -a prod
-
-        # Convert to Deploy Source
-        - name: Convert to Deploy Source
-        run: sfdx force:source:convert -r ./force-app -d ./toDeploy
-        
-        # Run Validation of Deploy Source
-        - name: Run Validation on Deploy Source
-        run: sfdx force:mdapi:deploy -l RunLocalTests -c -d ./toDeploy -u prod -w 10
-        
-        # Deploy
-        - name : Deploy to SF Org
-        run: sfdx force:mdapi:deploy -l RunLocalTests -d ./toDeploy -u prod -w 10
-    ```
+6. Clear the code and paste the following code from my github repo. (**Note**: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
+    [Refer the actual pipeline.yml code here](https://github.com/abhisheksubbu/DevMainAzureGithub/blob/master/.github/workflows/pipelines.yml)
     
     **Explanation of the pipeline code:**
 
