@@ -351,6 +351,16 @@ git config user.name <span class="s2">"testusername"</span>
   <li>After the command executes, switch to Github Repo open in browser and refresh the page. You should see the Salesforce Org codebase in the repo.</li>
 </ol>
 
+<h4 id="possible-errors-1">Possible Errors</h4>
+<blockquote>
+  <p>fatal: unable to access ‘https://github.com/XXXX/XXXX.git/’: SSL certificate problem: unable to get local issuer certificate</p>
+</blockquote>
+
+<p><strong>Solution:</strong> This issue typically occurs when using the Git Bash in Windows OS. Run the following commands and then try the <code class="language-plaintext highlighter-rouge">git push</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> http.sslbackend schannel
+git config <span class="nt">--global</span> http.sslcainfo /mingw64/ssl/certs/ca-bundle.crt
+</code></pre></div></div>
+
 <h2 id="step-5-creating-the-github-workflow-for-automated-build--deploy">Step 5. Creating the Github Workflow for automated build &amp; deploy</h2>
 <p>In this step, we will create the github pipeline which will build, test and deploy the committed codebase from github repo to Salesforce Cloud. Here, we will use the latest SFDX CLI techniques to deploy instead of the old school ANT migration scripts.</p>
 

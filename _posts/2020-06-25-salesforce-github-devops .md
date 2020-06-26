@@ -184,6 +184,15 @@ In this step, we will pull the codebase from salesforce and organize it in the w
     ```
 20. After the command executes, switch to Github Repo open in browser and refresh the page. You should see the Salesforce Org codebase in the repo.
 
+#### Possible Errors
+> fatal: unable to access 'https://github.com/XXXX/XXXX.git/': SSL certificate problem: unable to get local issuer certificate
+
+**Solution:** This issue typically occurs when using the Git Bash in Windows OS. Run the following commands and then try the `git push`.
+``` bash
+git config --global http.sslbackend schannel
+git config --global http.sslcainfo /mingw64/ssl/certs/ca-bundle.crt
+```
+
 ## Step 5. Creating the Github Workflow for automated build & deploy
 In this step, we will create the github pipeline which will build, test and deploy the committed codebase from github repo to Salesforce Cloud. Here, we will use the latest SFDX CLI techniques to deploy instead of the old school ANT migration scripts.
 

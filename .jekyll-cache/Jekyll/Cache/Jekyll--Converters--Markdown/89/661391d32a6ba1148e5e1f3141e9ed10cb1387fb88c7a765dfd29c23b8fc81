@@ -1,4 +1,4 @@
-I"�S<p>Please do read my blog on <a href="/salesforce-azure-devops/">Salesforce CI/CD with Azure DevOps Services</a> to get upto speed on fundamental knowledge of CI, CD and devops practices to be employed for Salesforce. The same applies here as well. Just few steps change.</p>
+I"*P<p>Please do read my blog on <a href="/salesforce-azure-devops/">Salesforce CI/CD with Azure DevOps Services</a> to get upto speed on fundamental knowledge of CI, CD and devops practices to be employed for Salesforce. The same applies here as well. Just few steps change.</p>
 
 <p>Now, let’s define the problem statement.</p>
 <blockquote>
@@ -209,66 +209,26 @@ git config user.name <span class="s2">"testusername"</span>
   <li>After the command executes, switch to Github Repo open in browser and refresh the page. You should see the Salesforce Org codebase in the repo.</li>
 </ol>
 
-<h2 id="step-5-creating-the-github-action-pipeline-for-automated-build--deploy">Step 5. Creating the Github Action Pipeline for automated build &amp; deploy</h2>
+<h4 id="possible-errors-1">Possible Errors</h4>
+<blockquote>
+  <p>fatal: unable to access ‘https://github.com/XXXX/XXXX.git/’: SSL certificate problem: unable to get local issuer certificate</p>
+</blockquote>
+
+<p><strong>Solution:</strong> This issue typically occurs when using the Git Bash in Windows OS. Run the following commands and then try the <code class="language-plaintext highlighter-rouge">git push</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> http.sslbackend schannel
+git config <span class="nt">--global</span> http.sslcainfo /mingw64/ssl/certs/ca-bundle.crt
+</code></pre></div></div>
+
+<h2 id="step-5-creating-the-github-workflow-for-automated-build--deploy">Step 5. Creating the Github Workflow for automated build &amp; deploy</h2>
 <p>In this step, we will create the github pipeline which will build, test and deploy the committed codebase from github repo to Salesforce Cloud. Here, we will use the latest SFDX CLI techniques to deploy instead of the old school ANT migration scripts.</p>
 
 <ol>
   <li>In the Github repo page open in the browser, navigate to “Actions” tab.</li>
   <li>In the “Choose the starter worklfow” page, click on the “Setup this workflow” button in the Simple Workflow box.</li>
   <li>In the editor, rename the pipeline name from blank.yml to pipeline.yml.</li>
-  <li>Clear the code and paste the following code. (<strong>Note</strong>: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # This is a basic workflow to help you get started with Actions
-
- name: Deploy to Salesforce Pipeline
-
- # Controls when the action will run. Triggers the workflow on push or pull request
- # events but only for the master branch
- on:
- push:
-     branches: [ master ]
- pull_request:
-     branches: [ master ]
-
- # A workflow run is made up of one or more jobs that can run sequentially or in parallel
- jobs:
- # This workflow contains a single job called "build"
- build:
-     # The type of runner that the job will run on
-     runs-on: ubuntu-latest
-
-     # Steps represent a sequence of tasks that will be executed as part of the job
-     steps:
-     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-     - uses: actions/checkout@v2
-
-     # Setup Node
-     - name: Setup Node
-     uses: actions/setup-node@v1
-        
-     # Install SFDX CLI
-     - name: Install SFDX CLI
-     run: npm install sfdx-cli --global
-
-     # Authorize SF Org
-     - name: Authorize SF Org
-     env:
-         CLIENT_ID: $
-         USERNAME: $
-         INSTANCE_URL: $
-     run: sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile ./buildfiles/server.key --username $USERNAME --instanceurl $INSTANCE_URL -a prod
-
-     # Convert to Deploy Source
-     - name: Convert to Deploy Source
-     run: sfdx force:source:convert -r ./force-app -d ./toDeploy
-        
-     # Run Validation of Deploy Source
-     - name: Run Validation on Deploy Source
-     run: sfdx force:mdapi:deploy -l RunLocalTests -c -d ./toDeploy -u prod -w 10
-        
-     # Deploy
-     - name : Deploy to SF Org
-     run: sfdx force:mdapi:deploy -l RunLocalTests -d ./toDeploy -u prod -w 10
-</code></pre></div>    </div>
+  <li>
+    <p>Clear the code and paste the following code from my github repo. (<strong>Note</strong>: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
+ <a href="https://github.com/abhisheksubbu/DevMainAzureGithub/blob/master/.github/workflows/pipelines.yml">Refer the actual pipeline.yml code here</a></p>
 
     <p><strong>Explanation of the pipeline code:</strong></p>
 
@@ -276,7 +236,7 @@ git config user.name <span class="s2">"testusername"</span>
       <li>We define 1 job called “build” with a set of steps/tasks.
         <ol>
           <li>Instruct the pipeline to provision a VM with “ubuntu-latest” os.</li>
-          <li>Install SF CLI on the azure vm so that we can execute SFDX commands.</li>
+          <li>Install SF CLI on the vm so that we can execute SFDX commands.</li>
           <li>Authorize the Dev Org and ensure that we can login using clientId, server.key and username. Note that here we pick the variables values from environment settings in Github.</li>
           <li>Convert the SFDX code in “force-app” directory to metadata format for deployment</li>
           <li>Run a Validation using the converted code in metadata format using SFDX</li>
@@ -300,13 +260,13 @@ git config user.name <span class="s2">"testusername"</span>
   </li>
 </ol>
 
-<p>This completes the setup of Azure DevOps pipeline for automating Salesforce deployments.</p>
+<p>This completes the setup of Github DevOps pipeline for automating Salesforce deployments.</p>
 
-<p>**From now on, you just need to **</p>
+<p><strong>From now on, you just need to</strong></p>
 <ul>
   <li>open the project code in VS Code</li>
   <li>add/modify the code</li>
-  <li>run the following commands to commit your code changes to azure git repo
+  <li>run the following commands to commit your code changes to github repo
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git add <span class="nb">.</span>
   git commit <span class="nt">-m</span> <span class="s2">"commit message"</span>
   git push origin master
