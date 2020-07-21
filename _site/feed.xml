@@ -5,7 +5,25 @@
         <title>AbhishekSubbu</title>
         <link>http://localhost:4000</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Fri, 26 Jun 2020 15:15:17 +0530</lastBuildDate>
+        <lastBuildDate>Tue, 21 Jul 2020 22:47:01 +0530</lastBuildDate>
+        
+        <item>
+            <title>Recommendations to fixing issues in Apex code</title>
+            <link>
+                http://localhost:4000/recommendations-to-fixing-issues-in-apex-code/
+            </link>
+            <description>
+                &lt;h2 id=&quot;best-practices&quot;&gt;Best Practices&lt;/h2&gt;
+&lt;h5 id=&quot;apex-unit-test-class-should-have-asserts&quot;&gt;Apex Unit Test Class Should Have Asserts&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Ensure that every test method in a test class follows the &lt;strong&gt;Arrange-Act-Assert&lt;/strong&gt; methodology&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Arrange&lt;/strong&gt; refers to pr...
+            </description>
+            <pubDate>Mon, 20 Jul 2020 00:00:00 +0530</pubDate>
+            <guid>
+                http://localhost:4000/recommendations-to-fixing-issues-in-apex-code/
+            </guid>
+        </item>
         
         <item>
             <title>Salesforce CI/CD using Github</title>

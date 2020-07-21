@@ -1,4 +1,4 @@
-I".<div style="margin-bottom: 2rem;">
+I" ,<div style="margin-bottom: 2rem;">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -13,79 +13,144 @@
     <div class="blog-posts">
       
       <div class="blog-post spacing">
-        <h3><a href="/stack/">Stack</a></h3>
+        <h3><a href="/recommendations-to-fixing-issues-in-apex-code/">Recommendations to fixing issues in Apex code</a></h3>
         <p>
           Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
           <span class="date">
-            December 21, 2019
+            July 20, 2020
           </span>
         </p>
         <p>
           
-          <a href="/categories/#fundamentals" class="badge badge-secondary">Fundamentals</a>
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+          <a href="/categories/#best-practices" class="badge badge-secondary">Best Practices</a>
           
         </p>
-        Stacks are powerful data structures that can help us solve many complex programming problems. Stacks can be used in some use-cases like Develop UNDO functionality, Build Compilers Evaluate Arithmetic Expressions, Develop navigation features in our application (moving forward and backward), etc Structure of a Stack Stacks can be visualized as a stack of books.
+        This blog explains the best practices &amp; its recommended fixes that every apex code should follow. By following these recommendations, you will be able to write clean code everytime and will help make you a excellent programmer.
       </div>
       <hr />
       
       <div class="blog-post spacing">
-        <h3><a href="/linked-list/">Linked List</a></h3>
+        <h3><a href="/salesforce-github-devops/">Salesforce CI/CD using Github</a></h3>
         <p>
           Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
           <span class="date">
-            December 15, 2019
+            June 25, 2020
           </span>
         </p>
         <p>
           
-          <a href="/categories/#fundamentals" class="badge badge-secondary">Fundamentals</a>
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+          <a href="/categories/#github" class="badge badge-secondary">Github</a>
+          
+          <a href="/categories/#devops" class="badge badge-secondary">DevOps</a>
           
         </p>
-        Linked Lists are one of the most commonly used Linear Data Structures after arrays. They solve many problems of arrays and are used for building complex data structures. Unlike arrays, Linked Lists can grow and shrink automatically. A Linked List has a sequence of nodes. Every node has a value &amp; address to next node...
+        The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Github for free.
       </div>
       <hr />
       
       <div class="blog-post spacing">
-        <h3><a href="/what-are-linear-data-structures/">What are Linear Data Structures</a></h3>
+        <h3><a href="/salesforce-azure-devops/">Salesforce CI/CD using Azure DevOps Services</a></h3>
         <p>
           Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
           <span class="date">
-            December 14, 2019
+            June 15, 2020
           </span>
         </p>
         <p>
           
-          <a href="/categories/#fundamentals" class="badge badge-secondary">Fundamentals</a>
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+          <a href="/categories/#azure" class="badge badge-secondary">Azure</a>
+          
+          <a href="/categories/#devops" class="badge badge-secondary">DevOps</a>
           
         </p>
-        Linear Data Structures are a classification of Non-Primitive Data Structures that organizes data in a sequential, single-level manner. Features of Linear Data Structures Data Elements are arranged in an orderly manner Data Elements are attached adjacently Every Data Element can be accessed in one run/iteration Simple to Implement Memory Utilization is Ineffective because of linear...
+        The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Azure DevOps services for free.
       </div>
       <hr />
       
       <div class="blog-post spacing">
-        <h3><a href="/array/">Array</a></h3>
+        <h3><a href="/salesforce-logger-framework/">Logger Framework in Salesforce</a></h3>
         <p>
           Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
           <span class="date">
-            December 14, 2019
+            May 29, 2020
           </span>
         </p>
         <p>
           
-          <a href="/categories/#fundamentals" class="badge badge-secondary">Fundamentals</a>
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+          <a href="/categories/#architecture" class="badge badge-secondary">Architecture</a>
           
         </p>
-        Arrays are built into most programming languages and we use them to SORT a list of items sequentially. Since Arrays are a type of Linear Data Structures, they store data in the memory sequentially. For example, if we have a set of 5 integers [10, 20, 30, 40, 50], they would be allocated in the...
+        Logging errors in Salesforce environment is a practice that almost every organization and developer follows. In this blog, I will introduce a logging framework that will ensure that logging is done consistently.
       </div>
       <hr />
       
       <div class="blog-post spacing">
-        <h3><a href="/asp-net-core-2-2-web-api-with-swagger/">ASP.NET Core Web API with Swagger</a></h3>
+        <h3><a href="/sfdx-env-prep-ubuntu/">SFDX Environment Preparation in Ubuntu 20.04 LTS</a></h3>
         <p>
           Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
           <span class="date">
-            December 12, 2019
+            April 24, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#net" class="badge badge-secondary">.NET</a>
+          
+        </p>
+        In this blog, I will briefly explain the steps for setting up your SFDX environment in Ubuntu 20.04 LTS Linux machine
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/dotnet-core-install-ubuntu-20-04-lts/">Install .NET Core SDK 3.1 in Ubuntu 20.04 LTS</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 24, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#net" class="badge badge-secondary">.NET</a>
+          
+        </p>
+        As of the release of Ubuntu 20.04 LTS, installation of dotnet core sdk has been a bit of pain. This blog shares the installation instructions clearly for dotnet-sdk-3.1 in Ubuntu 20.04 LTS
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/node-backend-part2/">Backend with NodeJS - Part 2</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 22, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#nodejs" class="badge badge-secondary">NodeJS</a>
+          
+          <a href="/categories/#deep-dive" class="badge badge-secondary">Deep Dive</a>
+          
+        </p>
+        In this blog, we will improve the NodeJS API that we created in the Part 1 from in-memory data storage to persistant storage using MongoDB &amp; Mongoose.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/api-versioning/">API Versioning</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 21, 2020
           </span>
         </p>
         <p>
@@ -95,92 +160,43 @@
           <a href="/categories/#deep-dive" class="badge badge-secondary">Deep Dive</a>
           
         </p>
-        In this blog post, we will learn how to create an ASP.NET Core 2.2 Web API with Swagger feature. Swashbuckle is an open source project that generates swagger documents for Web API’s. Swagger makes it really easy for people to understand an API and provides a playground to interact with the Web API. Thus it ensures a rich...
+        In this blog post, we will closely look at different strategies to versioning API's
       </div>
       <hr />
       
       <div class="blog-post spacing">
-        <h3><a href="/understanding-microservices-architecture/">Understanding Microservices Architecture Part 1</a></h3>
+        <h3><a href="/trigger-optimization-framework/">Trigger Optimization Framework in Salesforce</a></h3>
         <p>
           Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
           <span class="date">
-            December 11, 2019
+            April 20, 2020
+          </span>
+        </p>
+        <p>
+          
+          <a href="/categories/#salesforce" class="badge badge-secondary">Salesforce</a>
+          
+        </p>
+        In this blog post, we will do a deep dive into improving existing Apex Trigger Frameworks into a comprehensive, configurable Trigger Framework that we can adopt in Salesforce.
+      </div>
+      <hr />
+      
+      <div class="blog-post spacing">
+        <h3><a href="/inversion-of-control-part-1/">Inversion of Control - Part 1</a></h3>
+        <p>
+          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
+          <span class="date">
+            April 20, 2020
           </span>
         </p>
         <p>
           
           <a href="/categories/#architecture" class="badge badge-secondary">Architecture</a>
           
-        </p>
-        Development Community around the world is pushing the software development approach to shift from Monolithic to Microservices architecture. Most of us accept this shift without understanding the WHY, WHAT, WHEN and HOW of Microservices. In this blog, we will try to understand What is essential for an organization to shift from Monolithic to Microservices Architecture...
-      </div>
-      <hr />
-      
-      <div class="blog-post spacing">
-        <h3><a href="/understanding-microservices-architecture-part-2/">Understanding Microservices Architecture Part 2</a></h3>
-        <p>
-          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-          <span class="date">
-            December 11, 2019
-          </span>
-        </p>
-        <p>
-          
-          <a href="/categories/#architecture" class="badge badge-secondary">Architecture</a>
+          <a href="/categories/#deep-dive" class="badge badge-secondary">Deep Dive</a>
           
         </p>
-        In the previous blog of “Understanding Microservices Architecture – Part 1“, we did a detailed study about monolithic v/s microservices architecture, the benefits and drawbacks of each architecture and the solution approaches to it. I highly recommend you to read the “Understanding Microservices Architecture – Part 1” blog before diving into this blog as it...
-      </div>
-      <hr />
-      
-      <div class="blog-post spacing">
-        <h3><a href="/what-are-data-structures/">What are Data Structures</a></h3>
-        <p>
-          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-          <span class="date">
-            December 10, 2019
-          </span>
-        </p>
-        <p>
-          
-          <a href="/categories/#fundamentals" class="badge badge-secondary">Fundamentals</a>
-          
-        </p>
-        In this blog, we will learn what data structures are, why are they important and the various types of data structures.
-      </div>
-      <hr />
-      
-      <div class="blog-post spacing">
-        <h3><a href="/big-o-analysis/">Big O Analysis</a></h3>
-        <p>
-          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-          <span class="date">
-            December 10, 2019
-          </span>
-        </p>
-        <p>
-          
-          <a href="/categories/#fundamentals" class="badge badge-secondary">Fundamentals</a>
-          
-        </p>
-        When it comes to Data Structures &amp; Algorithms, there are 2 main factors that need to be analyzed every time. Time taken by the algorithm to finish [Time Complexity] Space needed by the algorithm for running the computation [Space Complexity] If your algorithm takes infinite amount of time to complete running, then your algorithm is...
-      </div>
-      <hr />
-      
-      <div class="blog-post spacing">
-        <h3><a href="/my-experience-as-an-ieee-jury/">My Experience as an IEEE Jury</a></h3>
-        <p>
-          Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-          <span class="date">
-            May 04, 2019
-          </span>
-        </p>
-        <p>
-          
-          <a href="/categories/#general" class="badge badge-secondary">General</a>
-          
-        </p>
-        On 3rd May 2019, I had a wonderful opportunity to have been invited as an IEEE SA (Institute of Electrical &amp; Electronics Engineers Standards Association) Jury to evaluate an IEEE innovation competition named “Prayojaka” that was organized by the IEEE Student Branch of ASIET (Adi Shankara Institute of Engineering &amp; Technology). The event started at...
+        In this blog post, we will understand the basic principles of Inversion of Control and Dependency Injection. Also, we will see how it is very important for developers to adopt IOC.
       </div>
       <hr />
       
@@ -224,7 +240,7 @@
     
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <a href="/categories/#salesforce">Salesforce</a>
-        <span class="badge badge-primary badge-pill">7</span>
+        <span class="badge badge-primary badge-pill">8</span>
     </li>
     
     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -239,7 +255,7 @@
     
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <a href="/categories/#best-practices">Best Practices</a>
-        <span class="badge badge-primary badge-pill">1</span>
+        <span class="badge badge-primary badge-pill">2</span>
     </li>
     
     <li class="list-group-item d-flex justify-content-between align-items-center">

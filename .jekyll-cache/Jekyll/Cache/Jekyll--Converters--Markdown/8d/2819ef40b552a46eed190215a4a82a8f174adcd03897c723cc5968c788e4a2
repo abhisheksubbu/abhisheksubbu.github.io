@@ -1,0 +1,302 @@
+I"�B<h2 id="best-practices">Best Practices</h2>
+<h5 id="apex-unit-test-class-should-have-asserts">Apex Unit Test Class Should Have Asserts</h5>
+<ul>
+  <li>Ensure that every test method in a test class follows the <strong>Arrange-Act-Assert</strong> methodology</li>
+  <li><strong>Arrange</strong> refers to preparing your test data, <strong>Act</strong> refers to running the code to test with the arranged test data, <strong>Assert</strong> refers to checking the actual values with the expected values</li>
+  <li>Every test method should have a purpose (business expectation to be checked). Writing test code to simply increase code coverage without focus on covering business expectations is not desired.</li>
+  <li>Test Class should follow the following naming convention. <strong>ClassNameTests</strong></li>
+  <li>Test Methods should follow the following naming conventions. These are my personal favorites.
+    <ul>
+      <li><strong>MethodName_StateUnderTest_ExpectedBehavior</strong> (For example: withdrawMoney_InvalidAccount_ExceptionThrown)</li>
+      <li><strong>Should_ExpectedBehavior_When_StateUnderTest</strong> (For example: Should_FailToWithdrawMoney_ForInvalidAccount)</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="apex-unit-test-should-not-use-seealldatatrue">Apex Unit Test Should Not Use SeeAllData=True</h5>
+<ul>
+  <li>Every test class/method should be self-sufficient. This means that the test class/method should prepare its own test data in the Arrange phase and use it for Act and Assert.</li>
+  <li>Never refer any data in the org (assuming that this data will be available). SeeAllData=True can cause the test to fail if the org in which the test class is run doesn’t have that data for any reason.</li>
+  <li>Only use SeeAllData=True if you are 200% sure that the data being referred in the test class/method will be available in the org.</li>
+</ul>
+
+<h5 id="avoid-logic-in-trigger">Avoid Logic In Trigger</h5>
+<ul>
+  <li>Apex Triggers do not allow you to write methods. Therefore, do not stuff your logic in the trigger. Move it to an apex class (like Trigger Handler).</li>
+  <li>This helps better encapsulate the business logic. Ensure to do the encapsulation correctly by following SRP (Single Reponsibility Principle).</li>
+</ul>
+
+<h5 id="unused-local-variable">Unused Local Variable</h5>
+<ul>
+  <li>Do not declare/assign variables which is never used in the logic. Unused variables simply consume memory for no purpose and can affect performance.</li>
+</ul>
+
+<h5 id="avoid-global-modifier">Avoid Global Modifier</h5>
+<ul>
+  <li>Global classes can never be deleted or changes in its signature cannot be made (especially in managed packages). Therefore, do not use Global modifier unless you need it to be exposed as a web service. Use <strong>public</strong> instead.</li>
+</ul>
+
+<h5 id="apex-assertions-should-include-message">Apex Assertions Should Include Message</h5>
+<ul>
+  <li>An assert statement in a test method reporting a <strong>False</strong> means that the test method failed. Getting False in the log is not useful in terms of troubleshooting.</li>
+  <li>It is recommended to use the 3rd override of the System.assert which takes in <strong>expected</strong>, <strong>actual</strong>, <strong>message</strong>.</li>
+  <li>By using this override, the message will be available in logs for troubleshooting and it adds meaningful content into logs.</li>
+  <li>For example:
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nc">System</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="err">'</span><span class="n">abc</span><span class="err">'</span><span class="o">,</span> <span class="n">opportunity</span><span class="o">.</span><span class="na">StageName</span><span class="o">,</span> <span class="err">'</span><span class="nc">Opportunity</span> <span class="n">stageName</span> <span class="n">is</span> <span class="n">wrong</span><span class="o">.</span> <span class="n">abc</span> <span class="n">is</span> <span class="n">expected</span><span class="o">.</span><span class="err">'</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h5 id="debugs-should-use-logging-level">Debugs Should Use Logging Level</h5>
+<ul>
+  <li>The 2 parameter override of System.debug is recommended to be used. The first parameter is LoggingLevel and second parameter is the debug string.</li>
+  <li>For example:
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nc">System</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="nc">LoggingLevel</span><span class="o">.</span><span class="na">WARN</span><span class="o">,</span> <span class="err">'</span><span class="n">my</span> <span class="n">debug</span> <span class="n">string</span><span class="err">'</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Valid log levels are (listed from lowest to highest):
+    <ul>
+      <li>NONE</li>
+      <li>ERROR</li>
+      <li>WARN</li>
+      <li>INFO</li>
+      <li>DEBUG</li>
+      <li>FINE</li>
+      <li>FINER</li>
+      <li>FINEST</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="apex-unit-test-method-should-have-istest-annotation">Apex Unit Test Method Should Have IsTest Annotation</h5>
+<ul>
+  <li>Apex test methods should have <strong>@isTest</strong> annotation. As testMethod keyword is deprecated, Salesforce advices to use @isTest annotation for test class/methods.</li>
+</ul>
+
+<h2 id="code-smell">Code Smell</h2>
+
+<h5 id="avoid-hardcoding-id">Avoid Hardcoding Id</h5>
+<ul>
+  <li>Record Ids change between environments. Therefore, it is recommended not to hardcode any record Id’s (either 15 or 18 digit).</li>
+  <li>Always derive the record Id (either by SOQL or by DML) in code and use it.</li>
+</ul>
+
+<h5 id="method-with-same-name-as-enclosing-class">Method With Same Name As Enclosing Class</h5>
+<ul>
+  <li>Non-constructor methods should not have the same name as the enclosing class. Only constructor method is supposed to be named with the class name.</li>
+</ul>
+
+<h5 id="avoid-direct-access-trigger-map">Avoid Direct Access Trigger Map</h5>
+<ul>
+  <li>Never access any records directly from Trigger.old or Trigger.new (For example: Trigger.new[0] is not recommended).</li>
+  <li>Iterate through the Trigger Map and then handle records separately.</li>
+</ul>
+
+<h5 id="empty-if-statement">Empty If Statement</h5>
+<ul>
+  <li>An empty If statement refers to an existence of If statement that checks a condition but does nothing.</li>
+  <li>Remove such If statements as it adds no value to the code.</li>
+</ul>
+
+<h5 id="empty-statement-block">Empty Statement Block</h5>
+<ul>
+  <li>Any code written inside an enclosing brace is a block. Methods, If-Else, Switch-Case, Try-Catch etc are all blocks.</li>
+  <li>A block with no code serves no purpose and should be removed.</li>
+</ul>
+
+<h5 id="empty-try-or-finally-block">Empty Try Or Finally Block</h5>
+<ul>
+  <li>A try-catch block is used if an exception causing condition needs to be handled gracefully.</li>
+  <li>An empty TRY or an empty CATCH indicates either that no exception is handled in TRY or an exception is caught in TRY but not handled in CATCH at all. This kind of exception handling completely defeats the purpose of why TRY-CATCH blocks were invented.</li>
+</ul>
+
+<h2 id="code-styling">Code Styling</h2>
+
+<h5 id="if-statements-must-use-braces">If Statements Must Use Braces</h5>
+<ul>
+  <li>Avoid using if statements without using braces to surround the code block. If the code formatting or indentation is lost then it becomes difficult to separate the code being controlled from the rest.</li>
+  <li>Recommended to put braces in if blocks even if there is only one line of code.</li>
+</ul>
+
+<h5 id="if-else-statements-must-use-braces">If-Else Statements Must Use Braces</h5>
+<ul>
+  <li>Avoid using if-else statements without using surrounding braces. If the code formatting or indentation is lost then it becomes difficult to separate the code being controlled from the rest.</li>
+  <li>Recommended to put braces in if-else blocks even if there is only one line of code.</li>
+</ul>
+
+<h5 id="field-declarations-should-be-at-start">Field Declarations Should Be At Start</h5>
+<ul>
+  <li>Field declarations should appear before the method declarations within a class rather declaring it at random lines of code.</li>
+  <li>It ensures that code is readable &amp; organized.</li>
+</ul>
+
+<h5 id="method-naming-conventions">Method Naming Conventions</h5>
+<ul>
+  <li>It is recommended to follow “Camel Case” conventions while naming a method.</li>
+  <li>For example: <code class="language-plaintext highlighter-rouge">public void instanceMethod() { }</code></li>
+</ul>
+
+<h5 id="local-variable-naming-conventions">Local Variable Naming Conventions</h5>
+<ul>
+  <li>It is recommended to follow “Camel Case” conventions while naming local variables.</li>
+  <li>For example: ` Integer localVariable;`</li>
+</ul>
+
+<h5 id="formal-parameter-naming-conventions">Formal Parameter Naming Conventions</h5>
+<ul>
+  <li>It is recommended to follow “Camel Case” conventions while specifying parameters in a method.</li>
+  <li>For example: <code class="language-plaintext highlighter-rouge">public bar(Integer methodParameter) { }</code></li>
+</ul>
+
+<h5 id="property-naming-conventions">Property Naming Conventions</h5>
+<ul>
+  <li>It is recommended to follow “Camel Case” conventions while declaring properties.</li>
+  <li>For example: <code class="language-plaintext highlighter-rouge">public Integer instanceProperty { get; set; }</code></li>
+  <li>If your org follows a different convention, you can skip this recommendation.</li>
+</ul>
+
+<h5 id="field-naming-conventions">Field Naming Conventions</h5>
+<ul>
+  <li>It is recommended to follow “Camel Case” conventions while declaring fields.</li>
+  <li>For example: <code class="language-plaintext highlighter-rouge">Integer instanceField;</code></li>
+  <li>Static and Enum fields can have underscores.</li>
+</ul>
+
+<h5 id="class-naming-conventions">Class Naming Conventions</h5>
+<ul>
+  <li>It is recommended to follow “Pascal Case” conventions while naming a class.</li>
+  <li>For example: <code class="language-plaintext highlighter-rouge">public class FooClass { }</code></li>
+</ul>
+
+<h2 id="design">Design</h2>
+
+<h5 id="cyclomatic-complexity-standard-cyclomatic-complexity-cognitive-complexity">Cyclomatic Complexity, Standard Cyclomatic Complexity, Cognitive Complexity</h5>
+<ul>
+  <li>Writing too much decisional logic in a single method makes its behaviour hard to read and change. This in turn increases the Cyclomatic Complexity.</li>
+  <li>Reported methods should be broken down into several smaller methods. Reported classes should probably be broken down into subcomponents.</li>
+  <li>With scientific techniques, following are the ranges of complexities.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Range</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5</td>
+      <td>Change absolutely required. Behavior is critically broken/buggy</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Change highly recommended. Behavior is quite likely to be broken/buggy</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Change recommended. Behavior is confusing, perhaps buggy, and/or against standards/best practices</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Change optional. Behavior is not likely to be buggy, but more just flies in the face of standards/style/good taste</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Change highly-optional. Nice to have</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="avoid-deeply-nested-if-statements">Avoid Deeply Nested If Statements</h5>
+<ul>
+  <li>Deeply nested if-then statements are harder to read and maintain.</li>
+  <li>Recommendation is to optimize the decision statements or break down deeply nested logic into smaller methods.</li>
+</ul>
+
+<h5 id="excessive-public-count">Excessive Public Count</h5>
+<ul>
+  <li>Classes with large numbers of public methods and attributes require disproportionate testing efforts since combinational side effects grow rapidly and increase risk.</li>
+  <li>Refactoring these classes into smaller ones not only increases testability and reliability but also allows new variations to be developed easily.</li>
+</ul>
+
+<h5 id="excessive-parameter-list">Excessive Parameter List</h5>
+<ul>
+  <li>Methods with numerous parameters are a challenge to maintain, especially if most of them share the same datatype.</li>
+  <li>These situations usually denote the need for new objects to wrap the numerous parameters into a Request object/Wrapper object.</li>
+</ul>
+
+<h5 id="non-commenting-source-statements-method-count-ncss-method-count">Non Commenting Source Statements Method Count (NCSS Method Count)</h5>
+<ul>
+  <li>NCSS (Non-Commenting Source Statements) determines the number of lines of code for a given method. NCSS ignores comments, and counts actual statements.</li>
+  <li>Using NCSS, lines of code that are split with spaces are counted as one.</li>
+  <li>With NCSS method count, you can evaluate if the method is long enough or not. Usually 40.0 is the threshold.</li>
+</ul>
+
+<h5 id="non-commenting-source-statements-type-count-ncss-type-count">Non Commenting Source Statements Type Count (NCSS Type Count)</h5>
+<ul>
+  <li>NCSS (Non-Commenting Source Statements) determines the number of lines of code for a given type/sub class. NCSS ignores comments, and counts actual statements.</li>
+  <li>Using NCSS, lines of code that are split are counted as one.</li>
+  <li>With NCSS type count, you can evaluate if the sub-class is long enough or not. Usually 500 is the threshold.</li>
+</ul>
+
+<h5 id="excessive-class-length">Excessive Class Length</h5>
+<ul>
+  <li>Excessive class file lengths are usually indications that the class may be burdened with excessive responsibilities that could be provided by external classes or functions.</li>
+  <li>In breaking these methods apart the code becomes more managable and ripe for reuse. Better not to have class with more than 1 KLOC.</li>
+</ul>
+
+<h5 id="too-many-fields">Too Many Fields</h5>
+<ul>
+  <li>Classes that have too many fields can become unwieldy and could be redesigned to have fewer fields, possibly through grouping related fields in new objects.</li>
+  <li>For example, a class with individual city/state/zip fields be could parked within a single Address field.</li>
+</ul>
+
+<h2 id="performance">Performance</h2>
+
+<h5 id="avoid-dml-statements-in-loops">Avoid Dml Statements In Loops</h5>
+<ul>
+  <li>Avoid DML statements inside loops to avoid hitting the DML governor limit.</li>
+  <li>Instead, try to batch up the data into a list and invoke your DML once on that list of data outside the loop.</li>
+</ul>
+
+<h5 id="avoid-soql-in-loops">Avoid Soql In Loops</h5>
+<ul>
+  <li>Avoid executing SOQL queries inside loops. This can consume your SOQL governor limits faster.</li>
+  <li>Instead, do queries outside the loops and modify the data of the objects in collections.</li>
+</ul>
+
+<h2 id="security">Security</h2>
+
+<h5 id="apex-sharing-violations">Apex Sharing Violations</h5>
+<ul>
+  <li>Classes declared without explicit sharing mode will bypass sharing restrictions when DML statements are executed. This causes the classes to ignore sharing rules specified by administrators.</li>
+  <li>Recommended to have developers check DML permissions before the DML is initiated and comply with sharing rules.</li>
+</ul>
+
+<h5 id="apex-crud-violation">Apex CRUD Violation</h5>
+<ul>
+  <li>Avoid executing SOQL/SOSL/DML assuming that the user context in which the class executes has permissions to do this operation.</li>
+  <li>Always check for access permissions before executing CRUD.</li>
+</ul>
+
+<h5 id="apex-open-redirect">Apex Open Redirect</h5>
+<ul>
+  <li>Any redirects to user-controlled locations are potentially dangerous.</li>
+  <li>For example: getting a url path from query string &amp; redirecting the user to that path is an Apex Open Redirect issue. This can cause attackers to send different paths in query string and our code blindly redirects users to phishing sites.</li>
+</ul>
+
+<h5 id="apex-xss-from-url-param">Apex XSS From URL Param</h5>
+<ul>
+  <li>Reading data from URL parameters and using it directly in code is dangerous.</li>
+  <li>Always escape/sanitize the data read from URL parameters to avoid XSS attacks.</li>
+</ul>
+
+<h5 id="apex-soql-injection">Apex SOQL Injection</h5>
+<ul>
+  <li>When reading values as arguments and supplying it to generate dynamic SOQL can be dangerous.</li>
+  <li>Always escape the data from arguments/variables before generating dynamic SOQL/DML statements.</li>
+  <li>For example: <code class="language-plaintext highlighter-rouge">Database.query('SELECT Id from Account'+ whereCondition);</code>. If the attacker supplies a different value for whereCondition, they can obtain data from the system.</li>
+</ul>
+
+:ET

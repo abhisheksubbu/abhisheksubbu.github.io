@@ -5,6 +5,8 @@ layout: page
 
 | Date        | Topic                                                                                               | Venue                                                   |
 | ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| 28 May 2020 | [Logger Framework in Salesforce](/salesforce-logger-framework/)                    | Kochi, India                                            |
+| 27 May 2020 | [Inversion of Control](/inversion-of-control-part-1/)                    | Kochi, India                                            |
 | 14 Apr 2020 | [Trigger Optimization Framework in Salesforce](/trigger-optimization-framework/)                    | Kochi, India                                            |
 | 09 Aug 2019 | [.NET Core API with Swagger](/asp-net-core-2-2-web-api-with-swagger/)                               | Kochi, India                                            |
 | 29 May 2019 | Creating Better Software Designs with StarUML - For Engineering Professors                          | Adi Shankara Engineering College, Kalady, Kerala, India |
