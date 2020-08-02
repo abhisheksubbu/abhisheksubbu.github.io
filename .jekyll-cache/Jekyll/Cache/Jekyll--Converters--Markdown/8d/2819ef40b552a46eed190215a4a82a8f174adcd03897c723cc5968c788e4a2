@@ -1,4 +1,4 @@
-I"�B<h2 id="best-practices">Best Practices</h2>
+I"+B<h2 id="best-practices">Best Practices</h2>
 <h5 id="apex-unit-test-class-should-have-asserts">Apex Unit Test Class Should Have Asserts</h5>
 <ul>
   <li>Ensure that every test method in a test class follows the <strong>Arrange-Act-Assert</strong> methodology</li>
@@ -133,7 +133,7 @@
 <h5 id="method-naming-conventions">Method Naming Conventions</h5>
 <ul>
   <li>It is recommended to follow “Camel Case” conventions while naming a method.</li>
-  <li>For example: <code class="language-plaintext highlighter-rouge">public void instanceMethod() { }</code></li>
+  <li>For example: <code class="highlighter-rouge">public void instanceMethod() { }</code></li>
 </ul>
 
 <h5 id="local-variable-naming-conventions">Local Variable Naming Conventions</h5>
@@ -145,27 +145,27 @@
 <h5 id="formal-parameter-naming-conventions">Formal Parameter Naming Conventions</h5>
 <ul>
   <li>It is recommended to follow “Camel Case” conventions while specifying parameters in a method.</li>
-  <li>For example: <code class="language-plaintext highlighter-rouge">public bar(Integer methodParameter) { }</code></li>
+  <li>For example: <code class="highlighter-rouge">public bar(Integer methodParameter) { }</code></li>
 </ul>
 
 <h5 id="property-naming-conventions">Property Naming Conventions</h5>
 <ul>
   <li>It is recommended to follow “Camel Case” conventions while declaring properties.</li>
-  <li>For example: <code class="language-plaintext highlighter-rouge">public Integer instanceProperty { get; set; }</code></li>
+  <li>For example: <code class="highlighter-rouge">public Integer instanceProperty { get; set; }</code></li>
   <li>If your org follows a different convention, you can skip this recommendation.</li>
 </ul>
 
 <h5 id="field-naming-conventions">Field Naming Conventions</h5>
 <ul>
   <li>It is recommended to follow “Camel Case” conventions while declaring fields.</li>
-  <li>For example: <code class="language-plaintext highlighter-rouge">Integer instanceField;</code></li>
+  <li>For example: <code class="highlighter-rouge">Integer instanceField;</code></li>
   <li>Static and Enum fields can have underscores.</li>
 </ul>
 
 <h5 id="class-naming-conventions">Class Naming Conventions</h5>
 <ul>
   <li>It is recommended to follow “Pascal Case” conventions while naming a class.</li>
-  <li>For example: <code class="language-plaintext highlighter-rouge">public class FooClass { }</code></li>
+  <li>For example: <code class="highlighter-rouge">public class FooClass { }</code></li>
 </ul>
 
 <h2 id="design">Design</h2>
@@ -296,7 +296,7 @@
 <ul>
   <li>When reading values as arguments and supplying it to generate dynamic SOQL can be dangerous.</li>
   <li>Always escape the data from arguments/variables before generating dynamic SOQL/DML statements.</li>
-  <li>For example: <code class="language-plaintext highlighter-rouge">Database.query('SELECT Id from Account'+ whereCondition);</code>. If the attacker supplies a different value for whereCondition, they can obtain data from the system.</li>
+  <li>For example: <code class="highlighter-rouge">Database.query('SELECT Id from Account'+ whereCondition);</code>. If the attacker supplies a different value for whereCondition, they can obtain data from the system.</li>
 </ul>
 
 :ET

@@ -1,4 +1,4 @@
-I"¸<blockquote>
+I"¥<blockquote>
   <p><strong>Inversion of Control</strong> is a <strong>principle</strong> in software engineering by which the <strong>control of objects</strong> or portions of a program is <strong>transferred</strong> to a <strong>container or framework</strong>.</p>
 </blockquote>
 
@@ -15,7 +15,7 @@
     <p><strong>What does the principle state?</strong> - it says anything related to <strong>controlling of objects</strong> should be handled by a <strong>container</strong>/<strong>framework</strong></p>
   </li>
   <li>
-    <p>What does <strong>controlling of objects</strong> mean? - creating objects by writing <code class="language-plaintext highlighter-rouge">new Class()</code> gives life to the objects and is the point where you start controlling it.</p>
+    <p>What does <strong>controlling of objects</strong> mean? - creating objects by writing <code class="highlighter-rouge">new Class()</code> gives life to the objects and is the point where you start controlling it.</p>
   </li>
   <li>
     <p>Why should <strong>controlling of objects</strong> be transferred to a <strong>container</strong> and not have it managed in the main program? - If you manage the creation of objects without a container, then you are coupling the responsibility of object creation in various parts of the program and it becomes a maintainance headache.</p>

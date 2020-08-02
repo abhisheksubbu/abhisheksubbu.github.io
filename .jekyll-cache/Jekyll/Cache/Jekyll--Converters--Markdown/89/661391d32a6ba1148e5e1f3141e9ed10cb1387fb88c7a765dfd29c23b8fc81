@@ -1,4 +1,4 @@
-I"*P<p>Please do read my blog on <a href="/salesforce-azure-devops/">Salesforce CI/CD with Azure DevOps Services</a> to get upto speed on fundamental knowledge of CI, CD and devops practices to be employed for Salesforce. The same applies here as well. Just few steps change.</p>
+I"�O<p>Please do read my blog on <a href="/salesforce-azure-devops/">Salesforce CI/CD with Azure DevOps Services</a> to get upto speed on fundamental knowledge of CI, CD and devops practices to be employed for Salesforce. The same applies here as well. Just few steps change.</p>
 
 <p>Now, let’s define the problem statement.</p>
 <blockquote>
@@ -30,15 +30,15 @@
 
 <ol>
   <li>In your terminal/command prompt, type the following command. This creates the private key named ‘<strong>server.key</strong>’.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
 </code></pre></div>    </div>
   </li>
   <li>Next, type the following command in terminal/command prompt to generate the ‘<strong>server.cs</strong>r’ file.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
 </code></pre></div>    </div>
   </li>
   <li>Now, type the following command in terminal/command prompt for generate the ‘<strong>server.crt</strong>’ certificate.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
 </code></pre></div>    </div>
   </li>
 </ol>
@@ -124,7 +124,7 @@
 </code></pre></div>    </div>
   </li>
   <li>Create a folder named “manifest”
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir manifest
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir manifest
 </code></pre></div>    </div>
   </li>
   <li>Type the following command to open the project in VS Code.
@@ -181,7 +181,7 @@
 </code></pre></div>    </div>
   </li>
   <li>Switch to VS Code. In .gitignore file, add the following lines to the last of the file. We are telling git that do not track “retrieved” and “toDeploy” folders as they are working directories.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>retrieved/
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>retrieved/
 toDeploy/
 </code></pre></div>    </div>
   </li>
@@ -214,7 +214,7 @@ git config user.name <span class="s2">"testusername"</span>
   <p>fatal: unable to access ‘https://github.com/XXXX/XXXX.git/’: SSL certificate problem: unable to get local issuer certificate</p>
 </blockquote>
 
-<p><strong>Solution:</strong> This issue typically occurs when using the Git Bash in Windows OS. Run the following commands and then try the <code class="language-plaintext highlighter-rouge">git push</code>.</p>
+<p><strong>Solution:</strong> This issue typically occurs when using the Git Bash in Windows OS. Run the following commands and then try the <code class="highlighter-rouge">git push</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> http.sslbackend schannel
 git config <span class="nt">--global</span> http.sslcainfo /mingw64/ssl/certs/ca-bundle.crt
 </code></pre></div></div>

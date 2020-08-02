@@ -1,4 +1,4 @@
-I";<p>In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.</p>
+I";<p>In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.</p>
 
 <p>Polly is a library that allows developers to express resilience and transient fault handling policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback in a fluent and thread-safe manner.</p>
 
@@ -104,7 +104,7 @@
 <p>Technically, Transient Errors are one of the following.</p>
 
 <ul>
-  <li>Network failures (<code class="language-plaintext highlighter-rouge">System.Net.Http.HttpRequestException</code>)</li>
+  <li>Network failures (<code class="highlighter-rouge">System.Net.Http.HttpRequestException</code>)</li>
   <li>HTTP 5XX status codes (server errors)</li>
   <li>HTTP 408 status code (request timeout)
 In our case, if a transient error occurred, this call would fail naturally because there is no retry mechanism built/coded.</li>

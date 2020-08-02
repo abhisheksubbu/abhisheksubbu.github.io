@@ -39,7 +39,7 @@
 </script>
  <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Inversion of Control - Part 1 | AbhishekSubbu</title>
-<meta name="generator" content="Jekyll v4.1.0" />
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Inversion of Control - Part 1" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
@@ -56,7 +56,7 @@
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/inversion-of-control-part-1/","headline":"Inversion of Control - Part 1","dateModified":"2020-04-20T00:00:00+05:30","datePublished":"2020-04-20T00:00:00+05:30","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/inversion-of-control-part-1/"},"description":"In this blog post, we will understand the basic principles of Inversion of Control and Dependency Injection. Also, we will see how it is very important for developers to adopt IOC.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"http://localhost:4000/inversion-of-control-part-1/","headline":"Inversion of Control - Part 1","dateModified":"2020-04-20T00:00:00+05:30","datePublished":"2020-04-20T00:00:00+05:30","description":"In this blog post, we will understand the basic principles of Inversion of Control and Dependency Injection. Also, we will see how it is very important for developers to adopt IOC.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/inversion-of-control-part-1/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -151,7 +151,7 @@
     <p><strong>What does the principle state?</strong> - it says anything related to <strong>controlling of objects</strong> should be handled by a <strong>container</strong>/<strong>framework</strong></p>
   </li>
   <li>
-    <p>What does <strong>controlling of objects</strong> mean? - creating objects by writing <code class="language-plaintext highlighter-rouge">new Class()</code> gives life to the objects and is the point where you start controlling it.</p>
+    <p>What does <strong>controlling of objects</strong> mean? - creating objects by writing <code class="highlighter-rouge">new Class()</code> gives life to the objects and is the point where you start controlling it.</p>
   </li>
   <li>
     <p>Why should <strong>controlling of objects</strong> be transferred to a <strong>container</strong> and not have it managed in the main program? - If you manage the creation of objects without a container, then you are coupling the responsibility of object creation in various parts of the program and it becomes a maintainance headache.</p>
