@@ -1,4 +1,4 @@
-I" 
+I"g
 <p>This blog specifically describes the steps involved in installing .NET Core SDK 3.1 in Ubuntu 20.04 LTS Developer Machine.</p>
 
 <ol>
@@ -26,7 +26,7 @@
 
 <h4 id="issues--workarounds">Issues &amp; Workarounds</h4>
 <ul>
-  <li>While executing the command <code class="language-plaintext highlighter-rouge">sudo apt-get install dotnet-sdk-3.1</code>, you may get dependency errors related to <code class="language-plaintext highlighter-rouge">libicu</code> not found in Ubuntu 20.04 LTS. If this is the case, then execute the following commands in terminal [courtesy: <a href="https://github.com/phillip-haydon" target="\_blank">Phillip Haydon</a>]. Now try the <code class="language-plaintext highlighter-rouge">sudo apt-get install dotnet-sdk-3.1</code>, it should work.
+  <li>While executing the command <code class="highlighter-rouge">sudo apt-get install dotnet-sdk-3.1</code>, you may get dependency errors related to <code class="highlighter-rouge">libicu</code> not found in Ubuntu 20.04 LTS. If this is the case, then execute the following commands in terminal [courtesy: <a href="https://github.com/phillip-haydon" target="\_blank">Phillip Haydon</a>]. Now try the <code class="highlighter-rouge">sudo apt-get install dotnet-sdk-3.1</code>, it should work.
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>wget http://mirrors.edge.kernel.org/ubuntu/pool/main/i/icu/libicu63_63.2-2_amd64.deb
   <span class="nb">sudo </span>dpkg <span class="nt">-i</span> libicu63_63.2-2_amd64.deb
 </code></pre></div>    </div>

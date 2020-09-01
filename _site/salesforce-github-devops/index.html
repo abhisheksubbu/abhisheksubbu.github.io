@@ -39,7 +39,11 @@
 </script>
  <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Salesforce CI/CD using Github | AbhishekSubbu</title>
+<<<<<<< HEAD
 <meta name="generator" content="Jekyll v4.1.1" />
+=======
+<meta name="generator" content="Jekyll v4.0.0" />
+>>>>>>> eadcbe671c9a15a26f7bab70a8911488da5b2184
 <meta property="og:title" content="Salesforce CI/CD using Github" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
@@ -56,7 +60,11 @@
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
+<<<<<<< HEAD
 {"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/salesforce-github-devops/"},"@type":"BlogPosting","url":"http://localhost:4000/salesforce-github-devops/","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"headline":"Salesforce CI/CD using Github","dateModified":"2020-06-25T00:00:00+05:30","datePublished":"2020-06-25T00:00:00+05:30","description":"The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Github for free.","@context":"https://schema.org"}</script>
+=======
+{"@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"http://localhost:4000/salesforce-github-devops/","headline":"Salesforce CI/CD using Github","dateModified":"2020-06-25T00:00:00+05:30","datePublished":"2020-06-25T00:00:00+05:30","description":"The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Github for free.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/salesforce-github-devops/"},"@context":"https://schema.org"}</script>
+>>>>>>> eadcbe671c9a15a26f7bab70a8911488da5b2184
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -172,15 +180,15 @@
 
 <ol>
   <li>In your terminal/command prompt, type the following command. This creates the private key named ‘<strong>server.key</strong>’.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
 </code></pre></div>    </div>
   </li>
   <li>Next, type the following command in terminal/command prompt to generate the ‘<strong>server.cs</strong>r’ file.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
 </code></pre></div>    </div>
   </li>
   <li>Now, type the following command in terminal/command prompt for generate the ‘<strong>server.crt</strong>’ certificate.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
 </code></pre></div>    </div>
   </li>
 </ol>
@@ -266,7 +274,7 @@
 </code></pre></div>    </div>
   </li>
   <li>Create a folder named “manifest”
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir manifest
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir manifest
 </code></pre></div>    </div>
   </li>
   <li>Type the following command to open the project in VS Code.
@@ -323,7 +331,7 @@
 </code></pre></div>    </div>
   </li>
   <li>Switch to VS Code. In .gitignore file, add the following lines to the last of the file. We are telling git that do not track “retrieved” and “toDeploy” folders as they are working directories.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>retrieved/
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>retrieved/
 toDeploy/
 </code></pre></div>    </div>
   </li>
@@ -356,7 +364,7 @@ git config user.name <span class="s2">"testusername"</span>
   <p>fatal: unable to access ‘https://github.com/XXXX/XXXX.git/’: SSL certificate problem: unable to get local issuer certificate</p>
 </blockquote>
 
-<p><strong>Solution:</strong> This issue typically occurs when using the Git Bash in Windows OS. Run the following commands and then try the <code class="language-plaintext highlighter-rouge">git push</code>.</p>
+<p><strong>Solution:</strong> This issue typically occurs when using the Git Bash in Windows OS. Run the following commands and then try the <code class="highlighter-rouge">git push</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> http.sslbackend schannel
 git config <span class="nt">--global</span> http.sslcainfo /mingw64/ssl/certs/ca-bundle.crt
 </code></pre></div></div>

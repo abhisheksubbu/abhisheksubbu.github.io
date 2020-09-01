@@ -39,7 +39,11 @@
 </script>
  <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Trigger Optimization Framework in Salesforce | AbhishekSubbu</title>
+<<<<<<< HEAD
 <meta name="generator" content="Jekyll v4.1.1" />
+=======
+<meta name="generator" content="Jekyll v4.0.0" />
+>>>>>>> eadcbe671c9a15a26f7bab70a8911488da5b2184
 <meta property="og:title" content="Trigger Optimization Framework in Salesforce" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
@@ -56,7 +60,11 @@
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
+<<<<<<< HEAD
 {"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/trigger-optimization-framework/"},"@type":"BlogPosting","url":"http://localhost:4000/trigger-optimization-framework/","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"headline":"Trigger Optimization Framework in Salesforce","dateModified":"2020-04-20T00:00:00+05:30","datePublished":"2020-04-20T00:00:00+05:30","description":"In this blog post, we will do a deep dive into improving existing Apex Trigger Frameworks into a comprehensive, configurable Trigger Framework that we can adopt in Salesforce.","@context":"https://schema.org"}</script>
+=======
+{"@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"http://localhost:4000/trigger-optimization-framework/","headline":"Trigger Optimization Framework in Salesforce","dateModified":"2020-04-20T00:00:00+05:30","datePublished":"2020-04-20T00:00:00+05:30","description":"In this blog post, we will do a deep dive into improving existing Apex Trigger Frameworks into a comprehensive, configurable Trigger Framework that we can adopt in Salesforce.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/trigger-optimization-framework/"},"@context":"https://schema.org"}</script>
+>>>>>>> eadcbe671c9a15a26f7bab70a8911488da5b2184
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -181,17 +189,17 @@
 <h5 id="explanation-of-the-methods-in-the-trigger-pipeline">Explanation of the methods in the trigger pipeline</h5>
 
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">bulkBefore</code>- This point is an ideal location where we can do anything before the actual before trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the before trigger handlers can get/set properties of the already queried records.</li>
-  <li><code class="language-plaintext highlighter-rouge">applyDefault</code> - Particularly for beforeInsert, it’s best to ensure that the default values of the incoming record be set based on any business expectation. This will ensure that the values of the record is always consistent in terms of business expectation. Note that this only applies to the beforeInsert pipeline.</li>
-  <li><code class="language-plaintext highlighter-rouge">beforeInsert</code> - This is the point where the actual beforeInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
-  <li><code class="language-plaintext highlighter-rouge">beforeUpdate</code> - This is the point where the actual beforeUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
-  <li><code class="language-plaintext highlighter-rouge">beforeDelete</code> - This is the point where the actual beforeDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
-  <li><code class="language-plaintext highlighter-rouge">bulkAfter</code> - This point is an ideal location where we can do anything just before the actual after trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the after trigger handlers can get/set properties of the already queried records.</li>
-  <li><code class="language-plaintext highlighter-rouge">onValidate</code> - Typically, on any after triggers, it is always good to validate the consistency of the records and ensure that errors are thrown back if validation fails. This <code class="language-plaintext highlighter-rouge">onValidate()</code> saves from any potential after triggers throwing an exception just because a record is not consistent.</li>
-  <li><code class="language-plaintext highlighter-rouge">afterInsert</code> - This is the point where the actual afterInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
-  <li><code class="language-plaintext highlighter-rouge">afterUpdate</code> - This is the point where the actual afterUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
-  <li><code class="language-plaintext highlighter-rouge">afterDelete</code> - This is the point where the actual afterDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
-  <li><code class="language-plaintext highlighter-rouge">afterUnDelete</code> - This is the point where the actual afterUnDelete logic needs to be plugged in [with the correct order of operations that business expects]. UnDelete happens when a record lying in the Recycle Bin is restored back to the object.</li>
+  <li><code class="highlighter-rouge">bulkBefore</code>- This point is an ideal location where we can do anything before the actual before trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the before trigger handlers can get/set properties of the already queried records.</li>
+  <li><code class="highlighter-rouge">applyDefault</code> - Particularly for beforeInsert, it’s best to ensure that the default values of the incoming record be set based on any business expectation. This will ensure that the values of the record is always consistent in terms of business expectation. Note that this only applies to the beforeInsert pipeline.</li>
+  <li><code class="highlighter-rouge">beforeInsert</code> - This is the point where the actual beforeInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">beforeUpdate</code> - This is the point where the actual beforeUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">beforeDelete</code> - This is the point where the actual beforeDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">bulkAfter</code> - This point is an ideal location where we can do anything just before the actual after trigger logic starts to work. It is a good choice to centralize all the data using SOQL statements and keep the data ready in a list/map so that the after trigger handlers can get/set properties of the already queried records.</li>
+  <li><code class="highlighter-rouge">onValidate</code> - Typically, on any after triggers, it is always good to validate the consistency of the records and ensure that errors are thrown back if validation fails. This <code class="highlighter-rouge">onValidate()</code> saves from any potential after triggers throwing an exception just because a record is not consistent.</li>
+  <li><code class="highlighter-rouge">afterInsert</code> - This is the point where the actual afterInsert logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">afterUpdate</code> - This is the point where the actual afterUpdate logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">afterDelete</code> - This is the point where the actual afterDelete logic needs to be plugged in [with the correct order of operations that business expects]</li>
+  <li><code class="highlighter-rouge">afterUnDelete</code> - This is the point where the actual afterUnDelete logic needs to be plugged in [with the correct order of operations that business expects]. UnDelete happens when a record lying in the Recycle Bin is restored back to the object.</li>
 </ol>
 
 <p>In a nutshell, what did we try to streamline using this trigger pipeline?</p>
@@ -205,7 +213,7 @@
   </li>
 </ul>
 
-<p>Every trigger execution context can now be separated from the pipeline by having its own handlers. For example, <code class="language-plaintext highlighter-rouge">beforeInsert</code> for Lead can be separated into a class called <strong>LeadBeforeInsertHandler</strong>.
+<p>Every trigger execution context can now be separated from the pipeline by having its own handlers. For example, <code class="highlighter-rouge">beforeInsert</code> for Lead can be separated into a class called <strong>LeadBeforeInsertHandler</strong>.
 Why we need to separate it? It ensures <strong>separation of concerns</strong> and that we are not mixing handler responsibilities in trigger pipeline orchestration.</p>
 
 <p>Let’s now look at how Handler execution can be generalized.
@@ -298,9 +306,9 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
 <p>Helper Class that contains methods commonly used in the framework</p>
 
 <ul>
-  <li>Note that we are using a Custom Metadata Type named <code class="language-plaintext highlighter-rouge">Salesforce_Object__mdt</code> that contains the dispatcher class name registered for the object</li>
-  <li>Similarly, we are using another Custom Metadata Type named <code class="language-plaintext highlighter-rouge">Trigger_Handler__mdt</code> that contains the handler class name registered for the object and its active state</li>
-  <li>Observe that we are using <code class="language-plaintext highlighter-rouge">Type</code> system in Apex language to instantiate the dispatcher and handler instances of the incoming object type that is picked from configurations</li>
+  <li>Note that we are using a Custom Metadata Type named <code class="highlighter-rouge">Salesforce_Object__mdt</code> that contains the dispatcher class name registered for the object</li>
+  <li>Similarly, we are using another Custom Metadata Type named <code class="highlighter-rouge">Trigger_Handler__mdt</code> that contains the handler class name registered for the object and its active state</li>
+  <li>Observe that we are using <code class="highlighter-rouge">Type</code> system in Apex language to instantiate the dispatcher and handler instances of the incoming object type that is picked from configurations</li>
   <li>If a specific handler is set as Inactive in the configuration, all other handlers would work except for the disabled one. The way we do it is by passing null to the calling point (Dispatcher) which would simply exit out the handler without throwing any errors.</li>
 </ul>
 
@@ -598,9 +606,9 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
 <p>Implements the ITriggerHandler interface and houses the default implementations of the handler methods</p>
 
 <ul>
-  <li>Note here that we are using a custom object named <code class="language-plaintext highlighter-rouge">Apex_Debug_Log__c</code> to record the exceptions automatically caught in the handler execution.</li>
-  <li>mainEntry method is <code class="language-plaintext highlighter-rouge">abstract</code>. This means that developers need to write the implementation for this method without any fail.</li>
-  <li>inProgressEntry method is <code class="language-plaintext highlighter-rouge">virtual</code>. This means that developers may choose to override this method in their handler class in case they have a logic to wire up specifically for re-entrant code.</li>
+  <li>Note here that we are using a custom object named <code class="highlighter-rouge">Apex_Debug_Log__c</code> to record the exceptions automatically caught in the handler execution.</li>
+  <li>mainEntry method is <code class="highlighter-rouge">abstract</code>. This means that developers need to write the implementation for this method without any fail.</li>
+  <li>inProgressEntry method is <code class="highlighter-rouge">virtual</code>. This means that developers may choose to override this method in their handler class in case they have a logic to wire up specifically for re-entrant code.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">TriggerHandlerBase</span> <span class="kd">implements</span> <span class="nc">ITriggerHandler</span>
@@ -1086,27 +1094,27 @@ Why we need to separate it? It ensures <strong>separation of concerns</strong> a
 <ul>
   <li>when finding dispatchers [framework owns this responsibility]
     <ul>
-      <li><strong>Exception Handling Technique:</strong> if the dispatcher configuration is missing the <code class="language-plaintext highlighter-rouge">Salesforce_Object__mdt</code> metadata type OR dispatcher class doesn’t exist OR dispatcher config’s IsActive__c is false, then we ensure to pass back <code class="language-plaintext highlighter-rouge">null</code> to the TriggerAgent. Here, if null is detected, the dispatcher pipeline simply exits without starting the trigger pipeline.</li>
+      <li><strong>Exception Handling Technique:</strong> if the dispatcher configuration is missing the <code class="highlighter-rouge">Salesforce_Object__mdt</code> metadata type OR dispatcher class doesn’t exist OR dispatcher config’s IsActive__c is false, then we ensure to pass back <code class="highlighter-rouge">null</code> to the TriggerAgent. Here, if null is detected, the dispatcher pipeline simply exits without starting the trigger pipeline.</li>
     </ul>
   </li>
   <li>when finding handlers [framework owns this responsibility]
     <ul>
-      <li><strong>Exception Handling Technique:</strong> if the handler configuration is missing the <code class="language-plaintext highlighter-rouge">Trigger_Handler_mdt</code> metadata type OR handler class doesn’t exist OR handler config’s IsActive__c is false, then we ensure to pass back <code class="language-plaintext highlighter-rouge">null</code> to the TriggerDispatcherBase method where handler instance is found. Here, if null is detected, the TriggerDispatcherBase simply exits that particular handler execution without impacting any other handlers.</li>
+      <li><strong>Exception Handling Technique:</strong> if the handler configuration is missing the <code class="highlighter-rouge">Trigger_Handler_mdt</code> metadata type OR handler class doesn’t exist OR handler config’s IsActive__c is false, then we ensure to pass back <code class="highlighter-rouge">null</code> to the TriggerDispatcherBase method where handler instance is found. Here, if null is detected, the TriggerDispatcherBase simply exits that particular handler execution without impacting any other handlers.</li>
     </ul>
   </li>
-  <li>when the handler <code class="language-plaintext highlighter-rouge">mainEntry()</code> logic executes [developer owns this responsibility]
+  <li>when the handler <code class="highlighter-rouge">mainEntry()</code> logic executes [developer owns this responsibility]
     <ul>
-      <li>we know that the implementation of <code class="language-plaintext highlighter-rouge">mainEntry()</code> is done by a developer for a specific handler. Here, the developer has the option to use <code class="language-plaintext highlighter-rouge">try-catch</code> block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside <code class="language-plaintext highlighter-rouge">mainEntry()</code> is not part of the framework, the framework is not concerned about this.</li>
+      <li>we know that the implementation of <code class="highlighter-rouge">mainEntry()</code> is done by a developer for a specific handler. Here, the developer has the option to use <code class="highlighter-rouge">try-catch</code> block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside <code class="highlighter-rouge">mainEntry()</code> is not part of the framework, the framework is not concerned about this.</li>
     </ul>
   </li>
-  <li>when the handler <code class="language-plaintext highlighter-rouge">inProgress()</code> logic executes [developer owns this responsibility]
+  <li>when the handler <code class="highlighter-rouge">inProgress()</code> logic executes [developer owns this responsibility]
     <ul>
-      <li>similarly, we know that the implementation of <code class="language-plaintext highlighter-rouge">inProgressEntry()</code> is done by a developer for a specific handler. Here, the developer has the option to use <code class="language-plaintext highlighter-rouge">try-catch</code> block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside <code class="language-plaintext highlighter-rouge">inProgressEntry()</code> is not part of the framework, the framework is not concerned about this.</li>
+      <li>similarly, we know that the implementation of <code class="highlighter-rouge">inProgressEntry()</code> is done by a developer for a specific handler. Here, the developer has the option to use <code class="highlighter-rouge">try-catch</code> block and handle the exceptions. If exceptions are not handled, then it will throw that exception back and rollback the operations [as the Force.com platform would do naturally]. Since the implementation inside <code class="highlighter-rouge">inProgressEntry()</code> is not part of the framework, the framework is not concerned about this.</li>
     </ul>
   </li>
-  <li>when the handler’s <code class="language-plaintext highlighter-rouge">insertObjects()</code>/<code class="language-plaintext highlighter-rouge">updateObjects()</code>/<code class="language-plaintext highlighter-rouge">deleteObjects()</code> execute [framework owns this responsibility]
+  <li>when the handler’s <code class="highlighter-rouge">insertObjects()</code>/<code class="highlighter-rouge">updateObjects()</code>/<code class="highlighter-rouge">deleteObjects()</code> execute [framework owns this responsibility]
     <ul>
-      <li>since centralization of DML is the promise of the framework, the logic inside each of these methods ensures to use the <code class="language-plaintext highlighter-rouge">AllOrNone</code> flag using the Database.[insert/update/delete] that gives us the SaveResult. The framework has the data in the SaveResult array to detect the failed records and log it in Apex_Debug_Log__c. So, the framework takes care of centralized DML operations. The framework will not guarantee debug logs if a developer executes a DML elsewhere and it breaks.</li>
+      <li>since centralization of DML is the promise of the framework, the logic inside each of these methods ensures to use the <code class="highlighter-rouge">AllOrNone</code> flag using the Database.[insert/update/delete] that gives us the SaveResult. The framework has the data in the SaveResult array to detect the failed records and log it in Apex_Debug_Log__c. So, the framework takes care of centralized DML operations. The framework will not guarantee debug logs if a developer executes a DML elsewhere and it breaks.</li>
     </ul>
   </li>
 </ul>
