@@ -1,0 +1,69 @@
+I"�<p>Every organization that is newly on-boarding into / using Salesforce needs a skilled Salesforce Administrator to succeed. In this blog, we will discuss what are the needs that a Salesforce Administrator should fulfill in an organization day in &amp; day out.</p>
+
+<h2 id="who-qualifies-to-be-selected-as-a-salesforce-administrator">Who qualifies to be selected as a Salesforce Administrator?</h2>
+
+<ul>
+  <li>A candidate having a Salesforce Administrator Certification (honestly is useless) because it doesn’t prove that the candidate knows to administer the complexities of an enterprise. This certification is just the first level.</li>
+  <li>A candidate having Advanced Administrator Certification OR Platform App Builder + Platform Developer 1 can be preferred.</li>
+  <li>Certifications alone are not enough. 3-5 years of experience in Salesforce is definitely required.</li>
+</ul>
+
+<p>Most organizations say what is there so much for a Salesforce Administrator to do everyday. The reason why organizations have this perception is because of 2 reasons.</p>
+
+<ol>
+  <li>The decision makers in the organization do not understand various administrative elements in Salesforce.</li>
+  <li>They don’t value the role of a salesforce administrator much and think it is a cost overhead for them to appoint a person fulltime.</li>
+</ol>
+
+<h2 id="why-should-you-invest-in-a-salesforce-administrator-for-your-organization">Why should you invest in a Salesforce Administrator for your organization?</h2>
+
+<ol>
+  <li>They keep track of licenses, storage, limits if not administered, can become a costly affair.</li>
+  <li>They help optimize various declarative aspects like (Roles, Permissions, Profiles, Custom Permissions) so that the Salesforce implementations are neat &amp; tidy.</li>
+  <li>They are the key personnel for running audits in the Salesforce instance. This helps to understand bottlenecks, scalability concerns, redudancies, violations to best practices.</li>
+  <li>They help strategize Backup &amp; Disaster Recovery plans and processes to keep the organization safe from data loss or even at circumstances when you migrate away from / into Salesforce CRM.</li>
+</ol>
+
+<p>Next section lists all the activities that a Salesforce Administrator needs to do in every organization.</p>
+
+<h2 id="administrator-tasks">Administrator Tasks</h2>
+
+<ol>
+  <li>Maintain a book-keeping practice that tracks the following
+    <ul>
+      <li>Edition &amp; features available for the org</li>
+      <li>Users (categorize by department)</li>
+      <li>Statistics on User Licenses (Total v/s Assigned v/s Available)</li>
+      <li>Statistics on Feature Licenses</li>
+      <li>Statistics of Community Usage (Logins v/s Members)</li>
+      <li>Role Hierarchy (focus on optimizing the roles)</li>
+      <li>List of Profiles (keep an active check on duplication)</li>
+      <li>List of Permission Sets (keep an active check on duplication &amp; granularity)</li>
+      <li>Page Layouts &amp; Assignments</li>
+      <li>Entity Limits - Objects - Custom Fields per Object - Custom App - Custom Reports - Sandbox Availability &amp; Usage</li>
+      <li>Data Storage Limits</li>
+      <li>File Storage Limits</li>
+      <li>3rd Party Integrations to Salesforce [its license constraints &amp; limits]</li>
+      <li>AppExchange Apps &amp; its use</li>
+    </ul>
+  </li>
+  <li>Tasks to pursue
+    <ul>
+      <li>Frequent assessment of Audit Trails</li>
+      <li>Run Salesforce Health Checks per quarter &amp; work with dev team to resolve issues</li>
+      <li>Generate Salesforce Optimizer Reports per quarter &amp; taking actions to fix critical issues</li>
+      <li>Review of Workflows &amp; Process Builders</li>
+      <li>Review of API users, API usage limits, issues logged in SF system from API’s</li>
+      <li>Setting a Backup &amp; Disaster Recovery Strategy</li>
+      <li>Serving User Lockout requests</li>
+      <li>Assisting User record data corrections during Sandbox Refresh</li>
+      <li>Setup a Test Strategy for Sandbox Refresh &amp; plan for signoff</li>
+      <li>Maintain &amp; Follow the Sandbox Refresh Schedules without any fail</li>
+      <li>Run code audits with DEV team on (best practices, code smell, design, coding conventions, performance, security)</li>
+      <li>Document the Business Processes implemented in Salesforce using BPMN diagrams - Identify gaps, discuss with business &amp; resolve - Identify possible issues around licenses, data usage, scalability &amp; suggest alternatives</li>
+      <li>Have visibility over Project Roadmaps that involves Salesforce &amp; help management plan for licenses, data, limits, rollout strategies, etc</li>
+      <li>Review AppExchange Apps, its usage, licenses, renewal schedules &amp; keep appropriate stakeholders informed</li>
+    </ul>
+  </li>
+</ol>
+:ET

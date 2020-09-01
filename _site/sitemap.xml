@@ -4,140 +4,140 @@
     
     <url>
         <loc>/about/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/learn/architect/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/archives/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/learn/deepdives/backend-with-nodejs/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/categories/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/contact/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/learn/developer/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/learn/deepdives/dot-net-core-rest-api/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/downloads/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/feed.xml</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/blog/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/learn/deepdives/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/learn/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/sitemap.xml</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/speaking/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/blog/page2/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/blog/page3/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/blog/page4/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/blog/page5/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
@@ -145,316 +145,323 @@
 
     
     <url>
+        <loc>/salesforce-administrator-tasks/</loc>
+        <lastmod>2020-08-27</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
         <loc>/recommendations-to-fixing-issues-in-apex-code/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/salesforce-github-devops/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/salesforce-azure-devops/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/salesforce-logger-framework/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/sfdx-env-prep-ubuntu/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/dotnet-core-install-ubuntu-20-04-lts/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/node-backend-part2/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/api-versioning/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/trigger-optimization-framework/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/inversion-of-control-part-1/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/rest-api-standards/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/asp-net-core-web-api-with-swagger-linux-edition/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/node-backend/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/object-oriented-programming-principles/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/polly-retry-policies/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/retries-using-polly-in-net-core/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/the-state-of-salesforce-developers/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/what-are-design-patterns/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/using-serilog-in-asp-net-core/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/memento-pattern/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/technical-duties-to-be-performed-by-architects/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/skills-needed-by-architects/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/non-technical-duties-to-be-performed-by-architects/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/knowledge-needed-by-architects/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/who-is-an-enterprise-architect-what-do-they-do/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/who-is-a-technical-architect-what-do-they-do/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/who-is-a-solution-architect-what-do-they-do/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/customizing-registration-handler-apex-code-in-salesforce-open-id-connect-auth-provider/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/social-sign-on-with-google-enterprise-in-salesforce-org/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/what-are-non-linear-data-structures/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/queue/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/stack/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/linked-list/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/what-are-linear-data-structures/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/array/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/asp-net-core-2-2-web-api-with-swagger/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/understanding-microservices-architecture/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/understanding-microservices-architecture-part-2/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/what-are-data-structures/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/big-o-analysis/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/my-experience-as-an-ieee-jury/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/effective-techniques-change-boredom-at-workplace/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/things-to-know-about-api-security/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/speaking-techwizz17-design-patterns/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
         <loc>/do-software-professionals-meet-industry-standards/</loc>
-        <lastmod>2020-07-21</lastmod>
+        <lastmod>2020-08-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
