@@ -1,0 +1,18 @@
+I"<p>PMD Source Code Analysis CLI is most preferred choice when it comes to doing statis code analysis on Salesforce Apex Code Assets. In fact, it is recommended by Salesforce themselves.</p>
+
+<h2 id="pre-requisites">Pre-Requisites</h2>
+<ol>
+  <li>
+    <p>Navigate to <a href="https://pmd.github.io/" target="\_blank">PMD Website</a> and follow the installation procedure for your Operating System of choice.</p>
+  </li>
+  <li>
+    <p>In order to do code analysis, you definitely need the codebase on your developer machine. For this, you can use <a href="https://developer.salesforce.com/docs/atlas.en-us.daas.meta/daas/forcemigrationtool.htm" target="\_blank">ANT migration tool</a> OR you can use <a href="/salesforce-github-devops/">Step 4 of CI/CD blog using VS Code + SFDX</a>.</p>
+  </li>
+  <li>
+    <p>Download all the PMD rulesets for Apex</p>
+    <ul>
+      <li><a href="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/docs/bestpractices.xml" target="\_blank">Best Practices</a></li>
+    </ul>
+  </li>
+</ol>
+:ET

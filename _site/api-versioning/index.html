@@ -37,20 +37,16 @@
 
   gtag('config', 'UA-51070250-1');
 </script>
- <!-- Begin Jekyll SEO tag v2.6.1 -->
+ <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>API Versioning | AbhishekSubbu</title>
-<<<<<<< HEAD
-<meta name="generator" content="Jekyll v4.1.1" />
-=======
-<meta name="generator" content="Jekyll v4.0.0" />
->>>>>>> eadcbe671c9a15a26f7bab70a8911488da5b2184
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="API Versioning" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="In this blog post, we will closely look at different strategies to versioning API’s" />
 <meta property="og:description" content="In this blog post, we will closely look at different strategies to versioning API’s" />
-<link rel="canonical" href="http://localhost:4000/api-versioning/" />
-<meta property="og:url" content="http://localhost:4000/api-versioning/" />
+<link rel="canonical" href="https://abhisheksubbu.github.io//api-versioning/" />
+<meta property="og:url" content="https://abhisheksubbu.github.io//api-versioning/" />
 <meta property="og:site_name" content="AbhishekSubbu" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-21T00:00:00+05:30" />
@@ -60,11 +56,7 @@
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
-<<<<<<< HEAD
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/api-versioning/"},"@type":"BlogPosting","url":"http://localhost:4000/api-versioning/","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"headline":"API Versioning","dateModified":"2020-04-21T00:00:00+05:30","datePublished":"2020-04-21T00:00:00+05:30","description":"In this blog post, we will closely look at different strategies to versioning API’s","@context":"https://schema.org"}</script>
-=======
-{"@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"url":"http://localhost:4000/api-versioning/","headline":"API Versioning","dateModified":"2020-04-21T00:00:00+05:30","datePublished":"2020-04-21T00:00:00+05:30","description":"In this blog post, we will closely look at different strategies to versioning API’s","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/api-versioning/"},"@context":"https://schema.org"}</script>
->>>>>>> eadcbe671c9a15a26f7bab70a8911488da5b2184
+{"@type":"BlogPosting","url":"https://abhisheksubbu.github.io//api-versioning/","headline":"API Versioning","dateModified":"2020-04-21T00:00:00+05:30","datePublished":"2020-04-21T00:00:00+05:30","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://abhisheksubbu.github.io//api-versioning/"},"description":"In this blog post, we will closely look at different strategies to versioning API’s","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -162,29 +154,29 @@
 
 <h3 id="approach-1--uri-versioning">Approach 1 : URI Versioning</h3>
 
-<p>This approach versions API endpoints based on the URI. For example, <code class="highlighter-rouge">https://abc.org/api/v2/customers</code>. Personally, I don’t like this approach as the root URI itself changes and everytime clients consuming the API have to change the API URI’s.</p>
+<p>This approach versions API endpoints based on the URI. For example, <code class="language-plaintext highlighter-rouge">https://abc.org/api/v2/customers</code>. Personally, I don’t like this approach as the root URI itself changes and everytime clients consuming the API have to change the API URI’s.</p>
 
 <h3 id="approach-2--query-string-versioning">Approach 2 : Query String Versioning</h3>
 
-<p>This approach versions API endpoints based on the query string parameter. For example, <code class="highlighter-rouge">https://abc.org/api/customers?v=2.0</code>. This is slightly better than the URI approach since the root API URI doesn’t change but query string parameter still kind of pollutes the URI.</p>
+<p>This approach versions API endpoints based on the query string parameter. For example, <code class="language-plaintext highlighter-rouge">https://abc.org/api/customers?v=2.0</code>. This is slightly better than the URI approach since the root API URI doesn’t change but query string parameter still kind of pollutes the URI.</p>
 
 <h3 id="approach-3--request-header-versioning">Approach 3 : Request Header Versioning</h3>
 
-<p>This approach versions API endpoints based on the <code class="highlighter-rouge">X-Version</code> header. For example,</p>
+<p>This approach versions API endpoints based on the <code class="language-plaintext highlighter-rouge">X-Version</code> header. For example,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
 Host: localhost:4000
 Content-Type: application/json
 X-Version: 2.0
 </code></pre></div></div>
 
-<p>In this approach, the good thing is that the API URI is consistent throughout and looks beautiful. But your clients need to know how to generate requests by setting the <code class="highlighter-rouge">X-Version</code> header value to the version that they want to integrate into. This is better than the Approach 1 and 2.</p>
+<p>In this approach, the good thing is that the API URI is consistent throughout and looks beautiful. But your clients need to know how to generate requests by setting the <code class="language-plaintext highlighter-rouge">X-Version</code> header value to the version that they want to integrate into. This is better than the Approach 1 and 2.</p>
 
 <h3 id="approach-4--accept-header-versioning">Approach 4 : Accept Header Versioning</h3>
 
-<p>This approach versions API endpoints based on the <code class="highlighter-rouge">Accept</code> header. For example,</p>
+<p>This approach versions API endpoints based on the <code class="language-plaintext highlighter-rouge">Accept</code> header. For example,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
 Host: localhost:4000
 Content-Type: application/json
 Accept: application/json;version=2.0
@@ -194,15 +186,15 @@ Accept: application/json;version=2.0
 
 <h3 id="approach-5--content-type-versioning">Approach 5 : Content Type Versioning</h3>
 
-<p>This approach versions API endpoints based on the <code class="highlighter-rouge">Content-Type</code> header. For example,</p>
+<p>This approach versions API endpoints based on the <code class="language-plaintext highlighter-rouge">Content-Type</code> header. For example,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/customers HTTP/1.1
 Host: localhost:4000
 Content-Type: application/vnd.yourapp.customer.v2+json
 Accept: application/vnd.yourapp.customer.v2+json
 </code></pre></div></div>
 
-<p>This approach gets a little more complex but it allows you to specify what version of the content is being send and what version of the content can be received. It is typically useful in scenarios where you are sending data to an API that got some granular changes. So, you can specify the version of the content that you are sending in <code class="highlighter-rouge">Accept</code> header and you can talk to the specific version of the API using the <code class="highlighter-rouge">Content-Type</code> header. This approach is more bullet proof as it lets you play with <code class="highlighter-rouge">Content-Type</code> and <code class="highlighter-rouge">Accept</code> value combinations. But understand that this is comparitively harder to accomplish.</p>
+<p>This approach gets a little more complex but it allows you to specify what version of the content is being send and what version of the content can be received. It is typically useful in scenarios where you are sending data to an API that got some granular changes. So, you can specify the version of the content that you are sending in <code class="language-plaintext highlighter-rouge">Accept</code> header and you can talk to the specific version of the API using the <code class="language-plaintext highlighter-rouge">Content-Type</code> header. This approach is more bullet proof as it lets you play with <code class="language-plaintext highlighter-rouge">Content-Type</code> and <code class="language-plaintext highlighter-rouge">Accept</code> value combinations. But understand that this is comparitively harder to accomplish.</p>
 
 <blockquote>
   <p>Personally, I would stick to Approach 3 or Approach 2 as it is more easier for clients to consume it. Unless your API versioning needs are too stringent, you could definitely go for Approach 4 or 5 considering that the challenges &amp; complexities that come along with it.</p>
@@ -235,12 +227,12 @@ Accept: application/vnd.yourapp.customer.v2+json
         <span class="p">});</span>
 </code></pre></div>    </div>
   </li>
-  <li>In <code class="highlighter-rouge">Configure()</code> of the Startup.cs, use the ApiVersioning middleware
+  <li>In <code class="language-plaintext highlighter-rouge">Configure()</code> of the Startup.cs, use the ApiVersioning middleware
     <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">app</span><span class="p">.</span><span class="nf">UseApiVersioning</span><span class="p">();</span>
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>I created 2 versions of CustomerController and wrote the <code class="highlighter-rouge">GET()</code>. Notice the MapTpApiVerion attribute tells the versioning middleware to which controller should it route to.</p>
+    <p>I created 2 versions of CustomerController and wrote the <code class="language-plaintext highlighter-rouge">GET()</code>. Notice the MapTpApiVerion attribute tells the versioning middleware to which controller should it route to.</p>
 
     <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
  <span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
@@ -307,7 +299,7 @@ Accept: application/vnd.yourapp.customer.v2+json
 </code></pre></div>    </div>
   </li>
   <li>Now, build and run the API project.</li>
-  <li>Open PostMan and test the <code class="highlighter-rouge">/api/customers</code> endpoint without any header value. You should get the following response.
+  <li>Open PostMan and test the <code class="language-plaintext highlighter-rouge">/api/customers</code> endpoint without any header value. You should get the following response.
     <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abhishek"</span><span class="w">
@@ -318,7 +310,7 @@ Accept: application/vnd.yourapp.customer.v2+json
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-  <li>Open PostMan and test the <code class="highlighter-rouge">/api/customers</code> endpoint with header key as <strong>X-Version</strong> and value set as <strong>1.1</strong>. You should get the following response.
+  <li>Open PostMan and test the <code class="language-plaintext highlighter-rouge">/api/customers</code> endpoint with header key as <strong>X-Version</strong> and value set as <strong>1.1</strong>. You should get the following response.
     <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abhishek"</span><span class="p">,</span><span class="w">
@@ -333,7 +325,7 @@ Accept: application/vnd.yourapp.customer.v2+json
   </li>
 </ol>
 
-<p>Also notice that every API response contains a header key called as “<strong>api-supported-versions</strong>” with values “<strong>1.0, 1.1</strong>”. This tells the consumer of the API that you can set the <code class="highlighter-rouge">X-Version</code> to either 1.0 or 1.1 since the API allows these versions.</p>
+<p>Also notice that every API response contains a header key called as “<strong>api-supported-versions</strong>” with values “<strong>1.0, 1.1</strong>”. This tells the consumer of the API that you can set the <code class="language-plaintext highlighter-rouge">X-Version</code> to either 1.0 or 1.1 since the API allows these versions.</p>
 
 <p><img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/api-versions-response.png" alt="Api Version Response" /></p>
 

@@ -1,4 +1,4 @@
-I"`F<p>In this blog, we will explain the steps of enabling social sign on into salesforce enterprise org using your corporate Gmail account.</p>
+I"CO<p>In this blog, we will explain the steps of enabling social sign on into salesforce enterprise org using your corporate Gmail account.</p>
 
 <h2 id="scenario">Scenario:</h2>
 
@@ -30,9 +30,9 @@
   <li>Copy the “Callback URL” from the Auth Provider and paste it in the “Authorized redirect URIs” box of the Google app that you created in Step no. 3. Finally hit the “Save” button.</li>
   <li>Now, open up the “GoogleEnterpriseSignOn” apex class and paste the following code here. The default code by default won’t work.</li>
   <li>Feel free to change the code in line no.28 that checks for a username ending with “xyz.com”. These are some enterprise code checks that you can do to ensure that only your company employees are able to access Salesforce CRM and not anyone who has a Gmail account.
-    <div class="language-apex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">global</span> <span class="kt">boolean</span> <span class="kn">canCreateUser(Auth.UserData</span> <span class="k">data</span><span class="p">)</span>
+    <div class="language-apex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">global</span> <span class="kt">boolean</span> <span class="nf">canCreateUser</span><span class="p">(</span><span class="n">Auth</span><span class="o">.</span><span class="py">UserData</span> <span class="k">data</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kn">if(</span><span class="k">data</span><span class="kn">.email</span><span class="o">!=</span><span class="kc">null</span><span class="p">)</span>
+    <span class="nf">if</span><span class="p">(</span><span class="k">data</span><span class="o">.</span><span class="py">email</span><span class="o">!=</span><span class="kc">null</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
@@ -41,38 +41,38 @@
         <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">global</span> <span class="kn">User</span> <span class="kn">createUser(Id</span> <span class="kn">portalId</span><span class="p">,</span> <span class="kn">Auth.UserData</span> <span class="k">data</span><span class="p">)</span>
+<span class="kd">global</span> <span class="n">User</span> <span class="nf">createUser</span><span class="p">(</span><span class="n">Id</span> <span class="n">portalId</span><span class="p">,</span> <span class="n">Auth</span><span class="o">.</span><span class="py">UserData</span> <span class="k">data</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kn">if(canCreateUser(</span><span class="k">data</span><span class="p">))</span>
+    <span class="nf">if</span><span class="p">(</span><span class="nf">canCreateUser</span><span class="p">(</span><span class="k">data</span><span class="p">))</span>
     <span class="p">{</span>
-        <span class="kn">List</span> <span class="kn">users</span> <span class="o">=</span> <span class="p">[</span><span class="k">select</span> <span class="kn">Id</span> <span class="k">from</span> <span class="kn">User</span> <span class="k">where</span> <span class="kn">Google_ID__c</span><span class="o">=</span><span class="p">:</span><span class="k">data</span><span class="kn">.identifier</span><span class="p">];</span>
-        <span class="kn">if(users.size(</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">List</span> <span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="k">select</span> <span class="n">Id</span> <span class="k">from</span> <span class="n">User</span> <span class="k">where</span> <span class="n">Google_ID__c</span><span class="o">=</span><span class="p">:</span><span class="k">data</span><span class="o">.</span><span class="py">identifier</span><span class="p">];</span>
+        <span class="nf">if</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="nf">size</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kn">debug(</span><span class="s1">'</span><span class="s2">#1##'</span><span class="o">+</span><span class="kn">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-            <span class="k">return</span> <span class="kn">users</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="nf">debug</span><span class="p">(</span><span class="s1">'</span><span class="s2">#1##'</span><span class="o">+</span><span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+            <span class="k">return</span> <span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
         <span class="p">}</span>
         <span class="k">else</span>
         <span class="p">{</span>
-            <span class="kn">User</span> <span class="kn">u</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">User(</span><span class="p">);</span>
-            <span class="kn">Profile</span> <span class="kn">p</span> <span class="o">=</span> <span class="p">[</span><span class="k">SELECT</span> <span class="kn">Id</span> <span class="k">FROM</span> <span class="kn">profile</span> <span class="k">WHERE</span> <span class="kn">name</span><span class="o">=</span><span class="s1">'</span><span class="s2">System Administrator'</span><span class="p">];</span>
-            <span class="kn">username</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.email.substring(</span><span class="mi">0</span><span class="p">,</span><span class="k">data</span><span class="kn">.email.indexOf(</span><span class="s1">'</span><span class="s2">@'</span><span class="p">))</span><span class="o">+</span> <span class="s1">'</span><span class="s2">@xyz.com'</span><span class="p">;</span>
-            <span class="kn">email</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.email</span><span class="p">;</span>
-            <span class="kn">lastName</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.lastName</span><span class="p">;</span>
-            <span class="kn">firstName</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.firstName</span><span class="p">;</span>
-            <span class="kn">String</span> <span class="kn">alias</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.firstName.substring(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="k">data</span><span class="kn">.lastName.substring(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
-            <span class="kn">if(alias.length(</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">)</span>
+            <span class="n">User</span> <span class="n">u</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">User</span><span class="p">();</span>
+            <span class="n">Profile</span> <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="k">SELECT</span> <span class="n">Id</span> <span class="k">FROM</span> <span class="n">profile</span> <span class="k">WHERE</span> <span class="n">name</span><span class="o">=</span><span class="s1">'</span><span class="s2">System Administrator'</span><span class="p">];</span>
+            <span class="n">username</span> <span class="o">=</span> <span class="k">data</span><span class="o">.</span><span class="py">email</span><span class="o">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="k">data</span><span class="o">.</span><span class="py">email</span><span class="o">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="s1">'</span><span class="s2">@'</span><span class="p">))</span><span class="o">+</span> <span class="s1">'</span><span class="s2">@xyz.com'</span><span class="p">;</span>
+            <span class="n">email</span> <span class="o">=</span> <span class="k">data</span><span class="o">.</span><span class="py">email</span><span class="p">;</span>
+            <span class="n">lastName</span> <span class="o">=</span> <span class="k">data</span><span class="o">.</span><span class="py">lastName</span><span class="p">;</span>
+            <span class="n">firstName</span> <span class="o">=</span> <span class="k">data</span><span class="o">.</span><span class="py">firstName</span><span class="p">;</span>
+            <span class="n">String</span> <span class="n">alias</span> <span class="o">=</span> <span class="k">data</span><span class="o">.</span><span class="py">firstName</span><span class="o">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="k">data</span><span class="o">.</span><span class="py">lastName</span><span class="o">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+            <span class="nf">if</span><span class="p">(</span><span class="n">alias</span><span class="o">.</span><span class="nf">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">)</span>
             <span class="p">{</span>
-                <span class="kn">alias</span> <span class="o">=</span> <span class="kn">alias.substring(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+                <span class="n">alias</span> <span class="o">=</span> <span class="n">alias</span><span class="o">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="kn">alias</span> <span class="o">=</span> <span class="kn">alias</span><span class="p">;</span>
-            <span class="kn">languagelocalekey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">;</span>
-            <span class="kn">localesidkey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">;</span>
-            <span class="kn">emailEncodingKey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">UTF-8'</span><span class="p">;</span>
-            <span class="kn">timeZoneSidKey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">America/Los_Angeles'</span><span class="p">;</span>
-            <span class="kn">profileId</span> <span class="o">=</span> <span class="kn">p.Id</span><span class="p">;</span>
-            <span class="kn">Google_ID__c</span> <span class="o">=</span> <span class="k">data</span><span class="kn">.identifier</span><span class="p">;</span>
-            <span class="k">insert</span> <span class="kn">u</span><span class="p">;</span>
-            <span class="k">return</span> <span class="kn">u</span><span class="p">;</span>
+            <span class="n">alias</span> <span class="o">=</span> <span class="n">alias</span><span class="p">;</span>
+            <span class="n">languagelocalekey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">;</span>
+            <span class="n">localesidkey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">;</span>
+            <span class="n">emailEncodingKey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">UTF-8'</span><span class="p">;</span>
+            <span class="n">timeZoneSidKey</span> <span class="o">=</span> <span class="s1">'</span><span class="s2">America/Los_Angeles'</span><span class="p">;</span>
+            <span class="n">profileId</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="py">Id</span><span class="p">;</span>
+            <span class="n">Google_ID__c</span> <span class="o">=</span> <span class="k">data</span><span class="o">.</span><span class="py">identifier</span><span class="p">;</span>
+            <span class="k">insert</span> <span class="n">u</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">u</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">else</span>
@@ -80,12 +80,12 @@
         <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">global</span> <span class="kt">void</span> <span class="kn">updateUser(Id</span> <span class="kn">userId</span><span class="p">,</span> <span class="kn">Id</span> <span class="kn">portalId</span><span class="p">,</span> <span class="kn">Auth.UserData</span> <span class="k">data</span><span class="p">)</span>
+<span class="kd">global</span> <span class="kt">void</span> <span class="nf">updateUser</span><span class="p">(</span><span class="n">Id</span> <span class="n">userId</span><span class="p">,</span> <span class="n">Id</span> <span class="n">portalId</span><span class="p">,</span> <span class="n">Auth</span><span class="o">.</span><span class="py">UserData</span> <span class="k">data</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kn">User</span> <span class="kn">u</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">User(Id</span><span class="o">=</span><span class="kn">userId</span><span class="p">);</span>
+    <span class="n">User</span> <span class="n">u</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">User</span><span class="p">(</span><span class="n">Id</span><span class="o">=</span><span class="n">userId</span><span class="p">);</span>
     <span class="c1">//u.username = data.email.substring(0,data.email.indexOf('@'))+ '@salesforce.com';</span>
     <span class="c1">//u.Google_ID__c = data.identifier;</span>
-    <span class="k">update</span> <span class="kn">u</span><span class="p">;</span>
+    <span class="k">update</span> <span class="n">u</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
   </li>
@@ -100,28 +100,28 @@
   <li>Logout from Salesforce</li>
   <li>On the main screen, now you will be able to see a “Google Enterprise” option for employees to click. Using this option, employees can log in to Salesforce instead of typing the salesforce username/password.</li>
   <li>To understand how we can write a test class for the AuthProvider, let’s see the test class code written below.
-    <div class="language-apex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">@isTest</span>
+    <div class="language-apex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@isTest</span>
 <span class="kd">private</span> <span class="kd">class</span> <span class="nc">GoogleEnterpriseSignOnTest</span>
 <span class="p">{</span>
-    <span class="kd">static</span> <span class="kd">testMethod</span> <span class="kt">void</span> <span class="kn">testCreateAndUpdateUser(</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="kd">testMethod</span> <span class="kt">void</span> <span class="nf">testCreateAndUpdateUser</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="kn">GoogleEnterpriseSignOn</span> <span class="kn">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">GoogleEnterpriseSignOn(</span><span class="p">);</span>
-        <span class="kn">Auth.UserData</span> <span class="kn">sampleData</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">Auth.UserData(</span><span class="s1">'</span><span class="s2">testId'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testFirst'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testLast'</span><span class="p">,</span>
+        <span class="n">GoogleEnterpriseSignOn</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">GoogleEnterpriseSignOn</span><span class="p">();</span>
+        <span class="n">Auth</span><span class="o">.</span><span class="py">UserData</span> <span class="n">sampleData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Auth</span><span class="o">.</span><span class="nf">UserData</span><span class="p">(</span><span class="s1">'</span><span class="s2">testId'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testFirst'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testLast'</span><span class="p">,</span>
         <span class="s1">'</span><span class="s2">testFirst testLast'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testuser@example.org'</span><span class="p">,</span>
         <span class="kc">null</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testuserlong'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">google'</span><span class="p">,</span>
-        <span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="kn">Map</span><span class="o">&lt;</span><span class="kn">String</span><span class="p">,</span> <span class="kn">String</span><span class="o">&gt;</span><span class="p">{</span><span class="s1">'</span><span class="s2">language'</span> <span class="o">=&gt;</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">});</span>
-        <span class="kn">User</span> <span class="kn">u</span> <span class="o">=</span> <span class="kn">handler.createuser(</span><span class="kc">null</span><span class="p">,</span> <span class="kn">sampleData</span><span class="p">);</span>
-        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testuser@xyz.com'</span><span class="p">,</span> <span class="kn">u.userName</span><span class="p">);</span>
-        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testuser@example.org'</span><span class="p">,</span> <span class="kn">u.email</span><span class="p">);</span>
-        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testLast'</span><span class="p">,</span> <span class="kn">u.lastName</span><span class="p">);</span>
-        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testFirst'</span><span class="p">,</span> <span class="kn">u.firstName</span><span class="p">);</span>
-        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">ttest'</span><span class="p">,</span> <span class="kn">u.alias</span><span class="p">);</span>
-        <span class="kn">System.assertEquals(</span><span class="s1">'</span><span class="s2">testId'</span><span class="p">,</span> <span class="kn">u.Google_ID__c</span><span class="p">);</span>
-        <span class="kn">String</span> <span class="kn">uid</span> <span class="o">=</span> <span class="kn">u.id</span><span class="p">;</span>
-        <span class="kn">sampleData</span> <span class="o">=</span> <span class="k">new</span> <span class="kn">Auth.UserData(</span><span class="s1">'</span><span class="s2">testNewId'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testNewFirst'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testNewLast'</span><span class="p">,</span>
+        <span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">{</span><span class="s1">'</span><span class="s2">language'</span> <span class="o">=&gt;</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">});</span>
+        <span class="n">User</span> <span class="n">u</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="nf">createuser</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="n">sampleData</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="s1">'</span><span class="s2">testuser@xyz.com'</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="py">userName</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="s1">'</span><span class="s2">testuser@example.org'</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="py">email</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="s1">'</span><span class="s2">testLast'</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="py">lastName</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="s1">'</span><span class="s2">testFirst'</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="py">firstName</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="s1">'</span><span class="s2">ttest'</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="py">alias</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="s1">'</span><span class="s2">testId'</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="py">Google_ID__c</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="py">id</span><span class="p">;</span>
+        <span class="n">sampleData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Auth</span><span class="o">.</span><span class="nf">UserData</span><span class="p">(</span><span class="s1">'</span><span class="s2">testNewId'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testNewFirst'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testNewLast'</span><span class="p">,</span>
         <span class="s1">'</span><span class="s2">testNewFirst testNewLast'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testnewuser@example.org'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">'</span><span class="s2">testnewuserlong'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">en_US'</span><span class="p">,</span> <span class="s1">'</span><span class="s2">facebook'</span><span class="p">,</span>
-        <span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="kn">Map</span><span class="o">&lt;</span><span class="kn">String</span><span class="p">,</span> <span class="kn">String</span><span class="o">&gt;</span><span class="p">{});</span>
-        <span class="kn">handler.updateUser(uid</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kn">sampleData</span><span class="p">);</span>
+        <span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">{});</span>
+        <span class="n">handler</span><span class="o">.</span><span class="nf">updateUser</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="n">sampleData</span><span class="p">);</span>
         <span class="c1">//User updatedUser = [SELECT userName, email, firstName, lastName, alias FROM user WHERE id=:uid];</span>
         <span class="c1">//System.assertEquals('testnewuserlong@salesforce.com', updatedUser.userName);</span>
         <span class="c1">//System.assertEquals('testnewuser@example.org', updatedUser.email);</span>

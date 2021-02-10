@@ -1,4 +1,4 @@
-I"d<p><strong>Stacks</strong> are powerful data structures that can help us solve many complex programming problems. Stacks can be used in some use-cases like:</p>
+I"!d<p><strong>Stacks</strong> are powerful data structures that can help us solve many complex programming problems. Stacks can be used in some use-cases like:</p>
 
 <ol>
   <li>Develop UNDO functionality</li>
@@ -42,7 +42,7 @@
 
 <h2 id="coding-exercise-check-if-an-expression-is-balanced">Coding Exercise: Check if an expression is balanced</h2>
 
-<p><code class="highlighter-rouge">An expression is balanced if the sequence of opening brackets matches with sequence of closing brackets. For example: ((1+2)) is balanced ((1+2&gt;) is not balanced</code></p>
+<p><code class="language-plaintext highlighter-rouge">An expression is balanced if the sequence of opening brackets matches with sequence of closing brackets. For example: ((1+2)) is balanced ((1+2&gt;) is not balanced</code></p>
 
 <h4 id="solution">Solution</h4>
 

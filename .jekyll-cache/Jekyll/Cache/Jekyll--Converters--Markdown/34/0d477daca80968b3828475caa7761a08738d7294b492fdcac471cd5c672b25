@@ -1,4 +1,4 @@
-I"�^<h2 id="getting-the-fundamentals-right">Getting the Fundamentals right</h2>
+I"f_<h2 id="getting-the-fundamentals-right">Getting the Fundamentals right</h2>
 <p>Before we dive in to the setup and configurations of the DevOps process, we should have a clear understanding of what Continuos Integration (CI) is and what Continuous Delivery (CD) is.</p>
 
 <p><strong>Continuous Integration (CI)</strong> is not a tool. It is a practice.</p>
@@ -70,15 +70,15 @@
 
 <ol>
   <li>In your terminal/command prompt, type the following command. This creates the private key named ‘<strong>server.key</strong>’.
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
 </code></pre></div>    </div>
   </li>
   <li>Next, type the following command in terminal/command prompt to generate the ‘<strong>server.cs</strong>r’ file.
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
 </code></pre></div>    </div>
   </li>
   <li>Now, type the following command in terminal/command prompt for generate the ‘<strong>server.crt</strong>’ certificate.
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
 </code></pre></div>    </div>
   </li>
 </ol>
@@ -168,7 +168,7 @@
 </code></pre></div>    </div>
   </li>
   <li>Create a folder named “manifest”
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir manifest
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir manifest
 </code></pre></div>    </div>
   </li>
   <li>Type the following command to open the project in VS Code.
@@ -225,7 +225,7 @@
 </code></pre></div>    </div>
   </li>
   <li>Switch to VS Code. In .gitignore file, add the following lines to the last of the file. We are telling git that do not track “retrieved” and “toDeploy” folders as they are working directories.
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>retrieved/
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>retrieved/
 toDeploy/
 </code></pre></div>    </div>
   </li>
@@ -263,7 +263,7 @@ git config user.name <span class="s2">"testusername"</span>
   <li>Choose “SF DevOps” project for “Select your repository”</li>
   <li>Choose “Starter Pipeline” for “Configure your pipeline”</li>
   <li>Overwrite the code shown in “Review your pipeline YAML” and paste the following code. (<strong>Note</strong>: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Starter pipeline
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Starter pipeline
  # Start with a minimal pipeline that you can customize to build and deploy your code.
  # Add steps that build, run tests, deploy, and more:
  # https://aka.ms/yaml

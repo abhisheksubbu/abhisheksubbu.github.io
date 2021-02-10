@@ -1,4 +1,4 @@
-I"…<blockquote>
+I"<blockquote>
   <p><strong>Important:</strong> Before you start reading this blog, I strongly urge you to read the <a href="/node-backend/">Backend with NodeJS - Part 1</a> blog so that you will better understand the context.</p>
 </blockquote>
 
@@ -6,7 +6,7 @@
 
 <ol>
   <li>Open the NodeJS project</li>
-  <li>Install the <code class="highlighter-rouge">mongoose</code> package
+  <li>Install the <code class="language-plaintext highlighter-rouge">mongoose</code> package
     <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">  npm i mongoose
 </span></code></pre></div>    </div>
   </li>
@@ -34,7 +34,7 @@
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Modify the <code class="highlighter-rouge">GET()</code> and <code class="highlighter-rouge">POST()</code> implementations by referencing the <code class="highlighter-rouge">Criminal</code> model class</p>
+    <p>Modify the <code class="language-plaintext highlighter-rouge">GET()</code> and <code class="language-plaintext highlighter-rouge">POST()</code> implementations by referencing the <code class="language-plaintext highlighter-rouge">Criminal</code> model class</p>
 
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/criminals</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">await</span> <span class="nx">Criminal</span><span class="p">.</span><span class="nx">find</span><span class="p">());</span>
@@ -51,10 +51,10 @@
 </code></pre></div>    </div>
   </li>
   <li>Run the app.js using the command â€˜node app.js`</li>
-  <li>Open Postman and do a GET request to <code class="highlighter-rouge">http://localhost:3000/api/criminals</code>, you should get an empty array as response.</li>
-  <li>Now, do a POST request to <code class="highlighter-rouge">http://localhost:3000/api/criminals</code> with the request body as shown below. You should get the response back with the created criminal record that has an <code class="highlighter-rouge">id</code> value. This confirms that POST is working.
+  <li>Open Postman and do a GET request to <code class="language-plaintext highlighter-rouge">http://localhost:3000/api/criminals</code>, you should get an empty array as response.</li>
+  <li>Now, do a POST request to <code class="language-plaintext highlighter-rouge">http://localhost:3000/api/criminals</code> with the request body as shown below. You should get the response back with the created criminal record that has an <code class="language-plaintext highlighter-rouge">id</code> value. This confirms that POST is working.
 <img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/criminals-post.png" alt="criminals-post" /></li>
-  <li>Now, do a GET request to <code class="highlighter-rouge">http://localhost:3000/api/criminals</code> and you should see the newly created criminal record being shown in the response.
+  <li>Now, do a GET request to <code class="language-plaintext highlighter-rouge">http://localhost:3000/api/criminals</code> and you should see the newly created criminal record being shown in the response.
 <img src="https://abhisheksubbusite.s3-ap-southeast-1.amazonaws.com/images/criminals-get.png" alt="criminals-get" /></li>
 </ol>
 

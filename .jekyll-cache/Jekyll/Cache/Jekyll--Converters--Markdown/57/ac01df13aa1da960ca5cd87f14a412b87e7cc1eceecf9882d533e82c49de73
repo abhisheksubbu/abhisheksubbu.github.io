@@ -1,0 +1,83 @@
+I"<div style="margin-bottom:2rem;">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">About Me</li>
+    </ol>
+  </nav>
+</div>
+<p>My name is <strong>Abhishek Sivasubramanian</strong>. I am working as the <strong>Associate Director, Technology</strong> at <a href="https://suyati.com/">Suyati Technologies, Kochi</a>. I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside &amp; outside corporations to learn &amp; share industry knowledge to students &amp; technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach &amp; blog about technology, mathematics &amp; science.</p>
+
+<h3 id="my-qualification">My Qualification</h3>
+
+<ul>
+  <li>Diploma in Computer Applications (DCA)</li>
+  <li>Aptech Certified Hardware Professional (ACHP)</li>
+  <li>B.Tech (Information Technology) – M.G.University</li>
+  <li>M.Tech (Data Analytics &amp; Software Systems) – BITS Pilani</li>
+</ul>
+
+<h3 id="things-that-i-am-proud-of">Things that I am proud of</h3>
+
+<ul>
+  <li>Microsoft Certified Technology Specialist (MCTS) – .NET Framework, Web Services and Data Access</li>
+  <li>Microsoft Certified Professional Developer (MCPD) – Azure</li>
+  <li>Salesforce Cloud Computing Technology Evangelist &amp; Mentor</li>
+  <li>Data Mining Expert</li>
+  <li>Technical Speaker at Dreamforce Cloud Computing Conference, San Francisco, USA</li>
+  <li>Technical Speaker at International Web Services Conference</li>
+  <li>Technical Speaker at Bridge Global Events on “Design Patterns in Object Oriented Programming”</li>
+  <li>Project Evaluation Jury at IEEE Standards Association</li>
+</ul>
+
+<h3 id="international-engagements">International Engagements</h3>
+
+<p>I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in San Francisco, USA and I have spoken about revolutionary topics.</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=T1fpulzHYcs">Single Sign On &amp; Open ID Connect</a></li>
+  <li>SOQL Performance Tuning &amp; MultiTenant Query Optimizer</li>
+  <li>Apex Code Audit Analyzers</li>
+</ul>
+
+<h3 id="research-work">Research Work</h3>
+
+<ul>
+  <li><a href="/trigger-optimization-framework/"><strong>Trigger Optimization Framework in Salesforce</strong></a> – A comprehensive architectural framework that has been devised to optimize trigger execution in Force.com Platform with enhanced configurability in mind. This architecture has been designed to increase performance, enhance scalability and bring forth developer-less configurations to control trigger execution in the Cloud.</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<p>Follow me on social media 
+    <a href="https://www.github.com/abhisheksubbu"><i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+
+<hr />
+
+<div id="disqus_thread"></div>
+<script>
+  /**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+  (function() {
+    // DON'T EDIT BELOW THIS LINE
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://abhisheksubbu.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+:ET

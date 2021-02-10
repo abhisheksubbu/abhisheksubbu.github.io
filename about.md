@@ -1,6 +1,7 @@
 ---
 title: About Me
 layout: default
+comments: true
 ---
 
 <div style="margin-bottom:2rem;">
@@ -11,7 +12,7 @@ layout: default
     </ol>
   </nav>
 </div>
-My name is **Abhishek Sivasubramanian**. I am working as the **Associate Director, Engineering** at [Suyati Technologies, Kochi](https://suyati.com/). I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
+My name is **Abhishek Sivasubramanian**. I am working as the **Associate Director, Technology** at [Suyati Technologies, Kochi](https://suyati.com/). I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
 
 ### My Qualification
 
@@ -25,6 +26,7 @@ My name is **Abhishek Sivasubramanian**. I am working as the **Associate Directo
 - Microsoft Certified Technology Specialist (MCTS) – .NET Framework, Web Services and Data Access
 - Microsoft Certified Professional Developer (MCPD) – Azure
 - Salesforce Cloud Computing Technology Evangelist & Mentor
+- Certified Salesforce Professional
 - Data Mining Expert
 - Technical Speaker at Dreamforce Cloud Computing Conference, San Francisco, USA
 - Technical Speaker at International Web Services Conference
@@ -49,3 +51,12 @@ I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in Sa
     <a href="https://www.github.com/abhisheksubbu"><i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a>
     <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
     <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+
+<div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">Your feedback is cruicial for me to develop more relevant content?</h4>
+    <p>
+      Feel free to drop in your comments here OR on the respective blog and I will try my best to help you guys. It's a great motivator to collaborate and exchange ideas.
+    </p>
+  </div>
+<hr />
+{% include disqus_comments.html %}
