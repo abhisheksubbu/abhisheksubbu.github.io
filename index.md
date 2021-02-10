@@ -18,3 +18,5 @@ layout: default
 </div>
 <div>
 {% include upcoming-deep-dive.html %}
+
+{% include testimonials.html %}
