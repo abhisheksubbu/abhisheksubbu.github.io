@@ -5,7 +5,23 @@
         <title>AbhishekSubbu</title>
         <link>https://abhisheksubbu.github.io/</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Wed, 10 Feb 2021 13:14:22 +0530</lastBuildDate>
+        <lastBuildDate>Thu, 11 Mar 2021 01:12:22 +0530</lastBuildDate>
+        
+        <item>
+            <title>Two Way SSL in Salesforce (Outbound)</title>
+            <link>
+                https://abhisheksubbu.github.io//two-way-ssl-salesforce-inbound/
+            </link>
+            <description>
+                &lt;p&gt;In traditional authentication, any client can connect to a server. The clients know the server which is why they can request the server for some action to be performed. The server doesn’t know which client is connecting to it. This is fine when server is hosting a website and client requests the website.&lt;/p&gt;
+
+&lt;p&gt;But if we have an API hosted on the server and we allow any cl...
+            </description>
+            <pubDate>Wed, 10 Mar 2021 00:00:00 +0530</pubDate>
+            <guid>
+                https://abhisheksubbu.github.io//two-way-ssl-salesforce-inbound/
+            </guid>
+        </item>
         
         <item>
             <title>Apex PMD Code Analysis</title>

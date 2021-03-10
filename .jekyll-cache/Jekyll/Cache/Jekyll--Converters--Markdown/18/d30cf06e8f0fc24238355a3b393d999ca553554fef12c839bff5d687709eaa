@@ -1,0 +1,16 @@
+I"<p>In traditional authentication, any client can connect to a server. The clients know the server which is why they can request the server for some action to be performed. The server doesn’t know which client is connecting to it. This is fine when server is hosting a website and client requests the website.</p>
+
+<p>But if we have an API hosted on the server and we allow any client to access it, there is a hidden vulnerability that can possibly exploit the server since the server doesn’t know how to validate which client is allowed to talk to the server.</p>
+
+<p>Two Way SSL was introduced to solve this security hole. This technique is also popularly known as “Mutual Authentication”. Here, the client has to present a certificate in the request to the server. Server will only allow the request to be processed if the server identifies &amp; validates the certificate presented by the client. Therefore, server knows which clients will approach it and can deny all others who provide incorrect certificate or no certificate.</p>
+
+<h2 id="scenario">Scenario</h2>
+<p>Salesforce wants to call a REST API exposed by an external system. External System imposes 2 way SSL on every request. The External System provides few certificates which has to be used by the client while initiating calls to it.</p>
+
+<h2 id="steps-to-implement">Steps to implement</h2>
+<h3 id="step-1---prepare-the-jks-java-keystore-bundle-using-the-certificates">STEP 1 - Prepare the JKS (Java Keystore) bundle using the certificates.</h3>
+<ol>
+  <li>You should obtain the following certificates from the external system provider namely Application Certificate &amp; any other certs that needs to be added in the certificate chain. These additional certificates are usually platform certs &amp; CA certs.</li>
+  <li></li>
+</ol>
+:ET
