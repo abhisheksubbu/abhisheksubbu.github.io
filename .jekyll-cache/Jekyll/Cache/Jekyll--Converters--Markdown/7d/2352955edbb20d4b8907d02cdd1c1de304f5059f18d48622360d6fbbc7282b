@@ -1,4 +1,4 @@
-I"—<div style="margin-bottom:2rem;">
+I"¬<div style="margin-bottom:2rem;">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -6,7 +6,7 @@
     </ol>
   </nav>
 </div>
-<p>My name is <strong>Abhishek Sivasubramanian</strong>. I am working as the <strong>Associate Director, Technology</strong> at <a href="https://suyati.com/">Suyati Technologies, Kochi</a>. I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside &amp; outside corporations to learn &amp; share industry knowledge to students &amp; technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach &amp; blog about technology, mathematics &amp; science.</p>
+<p>My name is <strong>Abhishek Sivasubramanian</strong>. I am working as the <strong>Associate Director</strong> at <a href="https://suyati.com/">Suyati, Canada</a>. I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside &amp; outside corporations to learn &amp; share industry knowledge to students &amp; technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach &amp; blog about technology, mathematics &amp; science.</p>
 
 <h3 id="my-qualification">My Qualification</h3>
 
@@ -45,6 +45,7 @@
 
 <ul>
   <li><a href="/trigger-optimization-framework/"><strong>Trigger Optimization Framework in Salesforce</strong></a> â€“ A comprehensive architectural framework that has been devised to optimize trigger execution in Force.com Platform with enhanced configurability in mind. This architecture has been designed to increase performance, enhance scalability and bring forth developer-less configurations to control trigger execution in the Cloud.</li>
+  <li><a href="/salesforce-logger-framework/"><strong>Logger Framework in Salesforce</strong></a> â€“ This is a logger framework that can be implemented in Salesforce in a scalable manner. This framework is designed with very low coupling making it independent from anything salesforce specific.</li>
 </ul>
 
 <p><br /></p>

@@ -12,7 +12,7 @@ comments: true
     </ol>
   </nav>
 </div>
-My name is **Abhishek Sivasubramanian**. I am working as the **Associate Director, Technology** at [Suyati Technologies, Kochi](https://suyati.com/). I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
+My name is **Abhishek Sivasubramanian**. I am working as the **Associate Director** at [Suyati, Canada](https://suyati.com/). I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
 
 ### My Qualification
 
@@ -44,6 +44,7 @@ I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in Sa
 ### Research Work
 
 - [**Trigger Optimization Framework in Salesforce**](/trigger-optimization-framework/) – A comprehensive architectural framework that has been devised to optimize trigger execution in Force.com Platform with enhanced configurability in mind. This architecture has been designed to increase performance, enhance scalability and bring forth developer-less configurations to control trigger execution in the Cloud.
+- [**Logger Framework in Salesforce**](/salesforce-logger-framework/) – This is a logger framework that can be implemented in Salesforce in a scalable manner. This framework is designed with very low coupling making it independent from anything salesforce specific.
 
 <br/>
 <hr/>
