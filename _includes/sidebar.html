@@ -9,7 +9,7 @@
       <a
         href="/categories/#{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}"
         >{{ category | camelcase }}></a
-        <span class="badge badge-primary badge-pill">{{ site.tags[category].size }}</span>
+        <span class="badge rounded-pill text-bg-primary">{{ site.tags[category].size }}</span>
     </li>
     {% endfor %} {% else %} {% for category in categories_list %}
     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -17,7 +17,7 @@
         href="/categories/#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}"
         >{{ category[0] | camelcase }}</a
         >
-        <span class="badge badge-primary badge-pill">{{ category[1].size }}</span
+        <span class="badge rounded-pill text-bg-primary">{{ category[1].size }}</span
         >
     </li>
     {% endfor %} {% endif %} {% assign categories_list = nil %}
