@@ -10,12 +10,12 @@ layout: default
     you at the earliest.
   </p>
 </div>
+
 <form action="https://formspree.io/xvoqbone" method="POST">
-  <div class="form-group">
-    <label for="inputName">Full Name</label>
+  <div class="mb-3">
+    <label for="inputName" class="form-label">Full Name</label>
     <input
       type="text"
-      name="fullName"
       class="form-control"
       id="inputName"
       placeholder="Enter your full name"
@@ -23,8 +23,8 @@ layout: default
       required
     />
   </div>
-  <div class="form-group">
-    <label for="inputEmail1">Email address</label>
+  <div class="mb-3">
+    <label for="inputEmail1" class="form-label">Email address</label>
     <input
       type="email"
       name="_replyto"
@@ -35,12 +35,12 @@ layout: default
       autocomplete="off"
       required
     />
-    <small id="emailHelp" class="form-text text-muted"
-      >We'll never share your email with anyone else.</small
-    >
+    <div id="emailHelp" class="form-text">
+      We'll never share your email with anyone else.
+    </div>
   </div>
-  <div class="form-group">
-    <label for="inputMessage">Message</label>
+  <div class="mb-3">
+    <label for="inputMessage" class="form-label">Message</label>
     <textarea
       name="message"
       class="form-control"
@@ -50,5 +50,5 @@ layout: default
       required
     ></textarea>
   </div>
-  <input type="submit" class="btn btn-primary" value="Send" />
+  <button type="submit" class="btn btn-primary">Send</button>
 </form>

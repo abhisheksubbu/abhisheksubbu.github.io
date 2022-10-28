@@ -26,7 +26,7 @@
     />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <script src="https://use.fontawesome.com/186ff9b997.js"></script>
-    <title>Salesforce CI/CD using Azure DevOps Services | AbhishekSubbu</title>
+    <title>Salesforce CI/CD using Azure DevOps Services and Github Source Control | AbhishekSubbu</title>
     <script
   async
   src="https://www.googletagmanager.com/gtag/js?id=UA-51070250-1"
@@ -41,25 +41,25 @@
   gtag('config', 'UA-51070250-1');
 </script>
  <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Salesforce CI/CD using Azure DevOps Services | AbhishekSubbu</title>
+<title>Salesforce CI/CD using Azure DevOps Services and Github Source Control | AbhishekSubbu</title>
 <meta name="generator" content="Jekyll v4.3.1" />
-<meta property="og:title" content="Salesforce CI/CD using Azure DevOps Services" />
+<meta property="og:title" content="Salesforce CI/CD using Azure DevOps Services and Github Source Control" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Azure DevOps services for free." />
-<meta property="og:description" content="The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Azure DevOps services for free." />
-<link rel="canonical" href="https://abhisheksubbu.github.io//salesforce-azure-devops/" />
-<meta property="og:url" content="https://abhisheksubbu.github.io//salesforce-azure-devops/" />
+<meta name="description" content="In this blog, I detail out the nuts and bolts needed to do implement Salesforce DevOps with Github Version Control and Azure Pipelines." />
+<meta property="og:description" content="In this blog, I detail out the nuts and bolts needed to do implement Salesforce DevOps with Github Version Control and Azure Pipelines." />
+<link rel="canonical" href="https://abhisheksubbu.github.io//salesforce-azure-devops-with-github-source-control/" />
+<meta property="og:url" content="https://abhisheksubbu.github.io//salesforce-azure-devops-with-github-source-control/" />
 <meta property="og:site_name" content="AbhishekSubbu" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-06-15T00:00:00-04:00" />
+<meta property="article:published_time" content="2022-07-20T00:00:00-04:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Salesforce CI/CD using Azure DevOps Services" />
+<meta property="twitter:title" content="Salesforce CI/CD using Azure DevOps Services and Github Source Control" />
 <meta name="twitter:site" content="@abhisheksubbu" />
 <meta name="twitter:creator" content="@Abhishek Sivasubramanian" />
 <meta name="google-site-verification" content="6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"dateModified":"2020-06-15T00:00:00-04:00","datePublished":"2020-06-15T00:00:00-04:00","description":"The biggest pain point for most developers and companies doing Salesforce development is to have a robust DevOps process. There are many costly tools and products for implementing DevOps in Salesforce. In this blog, I will elaborate on the DevOps process that you can setup using Azure DevOps services for free.","headline":"Salesforce CI/CD using Azure DevOps Services","mainEntityOfPage":{"@type":"WebPage","@id":"https://abhisheksubbu.github.io//salesforce-azure-devops/"},"url":"https://abhisheksubbu.github.io//salesforce-azure-devops/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abhishek Sivasubramanian"},"dateModified":"2022-07-20T00:00:00-04:00","datePublished":"2022-07-20T00:00:00-04:00","description":"In this blog, I detail out the nuts and bolts needed to do implement Salesforce DevOps with Github Version Control and Azure Pipelines.","headline":"Salesforce CI/CD using Azure DevOps Services and Github Source Control","mainEntityOfPage":{"@type":"WebPage","@id":"https://abhisheksubbu.github.io//salesforce-azure-devops-with-github-source-control/"},"url":"https://abhisheksubbu.github.io//salesforce-azure-devops-with-github-source-control/"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -110,15 +110,15 @@
       <li class="breadcrumb-item"><a href="/">Home</a></li>
       <li class="breadcrumb-item"><a href="/blog/index.html">Blog</a></li>
       <li class="breadcrumb-item active" aria-current="page">
-        Salesforce CI/CD using Azure DevOps Services
+        Salesforce CI/CD using Azure DevOps Services and Github Source Control
       </li>
     </ol>
   </nav>
 </div>
-<h1>Salesforce CI/CD using Azure DevOps Services</h1>
+<h1>Salesforce CI/CD using Azure DevOps Services and Github Source Control</h1>
 <p>
   Posted by <a href="https://twitter.com/abhisheksubbu">Abhishek</a> on
-  <span class="date"> June 15, 2020 </span>
+  <span class="date"> July 20, 2022 </span>
 </p>
 <p>
   
@@ -140,65 +140,18 @@
     >DevOps</a
   >
   
+  <a
+    href="/categories/#github"
+    class="badge text-bg-secondary"
+    >Github</a
+  >
+  
 </p>
-<h2 id="getting-the-fundamentals-right">Getting the Fundamentals right</h2>
-<p>Before we dive in to the setup and configurations of the DevOps process, we should have a clear understanding of what Continuos Integration (CI) is and what Continuous Delivery (CD) is.</p>
-
-<p><strong>Continuous Integration (CI)</strong> is not a tool. It is a practice.</p>
-<ul>
-  <li>It is a practice for integrating the work of all developers into a common codebase.</li>
-  <li>It involves running tests automatically when code is changed.</li>
-  <li>It also involves detecting broken build &amp; tests in few seconds to keep process flowing.</li>
-</ul>
-
-<p><strong>Continuous Delivery (CD)</strong> is not a tool. It is a practice.</p>
-<ul>
-  <li>It involves propagating changes from DEV to PROD.</li>
-  <li>It also involves propagating changes from PROD to DEV to keep orgs in sync.</li>
-</ul>
-
-<h2 id="understanding-the-current-development-model">Understanding the current Development Model</h2>
-<p>As of today, Salesforce recommends two development models.</p>
-<ol>
-  <li>Package Development Model</li>
-  <li>Org Development Model</li>
-</ol>
-
-<p>We need to set the deployment strategy in alignment with the development models.</p>
-
-<p>In Package Development Model,</p>
-<ul>
-  <li>Every artefact is bundled into a package and deployed separately</li>
-  <li>Package should be self-sufficient &amp; isolated</li>
-  <li>Requires the organization to have adherence to architectural principles, existence of frameworks, horizontal &amp; vertically sliced concerns addressed</li>
-</ul>
-
-<p>Even though Package Development Model appears close to what we want to have, do not force yourself into package development if your organizational practices are not package based. Package Development Model would vision to release features as a package which is vertically and horizontally sliced. Any impacts that occur would only happen in that package/app and it would not affect the other packages/apps. Getting to the package development model maturity itself is a huge effort on its own.</p>
-
-<p>In Org Development Model,</p>
-<ul>
-  <li>Artefacts are bundled as functionalities/features for deployment (like a changeset bundle)</li>
-  <li>Deployments are org based and not package based</li>
-</ul>
-
-<p>Org Development Model is a common development model that most organizations follow. Every feature developed would be bundled into a changeset and be deployed to an org. Post deployment, QA would do a smoke testing and a regression testing just to ensure nothing in the org is impacted.</p>
-
-<p>Now, let’s define the problem statement.</p>
-<blockquote>
-  <p>ABC Company uses Salesforce CRM for their business. They have a development team that develops functionalities as per business request in a Developer Sandbox. The team lead/team manager/deployment manager collects the list of items developed for each functionality from the developer, prepares changeset and deploys to QA Sandbox when it is ready for QA testing. After QA testing is pass, those functionalities are queued for PROD deployment which happens once every 2 weeks. The team lead/team manager/deployment manager again creates the changeset for PROD deployment and executes them every 2 weeks and initimates the organization stakeholders. For your information, they use <strong>Azure</strong> repositories for code management for their website development team.</p>
-</blockquote>
-
-<h3 id="key-items-to-consider-for-deployment-strategy">Key items to consider for deployment strategy</h3>
-<ul>
-  <li>It is clear that ABC company uses Org Development Model. So, we need to understand that anything related to package development model (even though it is fancy and attractive) should not be forced.</li>
-  <li>They already use Azure repositories for version control needs. So, it is worth using Azure repo for SF code management.</li>
-  <li>Azure has out of the box features for Devops which is called Azure DevOps services. This can be used as a tool for CI/CD.</li>
-</ul>
-
 <h3 id="things-that-we-need-before-we-start-the-devops-configurations">Things that we need before we start the DevOps configurations</h3>
 <ol>
-  <li>Salesforce Developer Org [if you don’t have one, signup and get a free personal dev org]</li>
+  <li>Salesforce Developer Orgs (to simulate dev, qa, uat and prod) [if you don’t have one, signup and get a free personal dev org]</li>
   <li>Developer Azure account [just go to dev.azure.com and register with your microsoft personal email address]</li>
+  <li>Github Account [just go to github.com and register with your personal email address]</li>
   <li>Salesforce CLI installed locally</li>
   <li>Visual Studio Code installed locally with “Salesforce Extension Pack” installed.</li>
   <li>Git (either via npm or as installer)</li>
@@ -233,7 +186,7 @@
   <li>Navigate to Setup -&gt; Apps -&gt; App Manager</li>
   <li>Create a new Connected App with the following details and save it.
     <ul>
-      <li>Connected App Name = “DevOps App”</li>
+      <li>Connected App Name = “Salesforce DevOps App”</li>
       <li>Contact Email = specify your personal email address</li>
       <li>Enable OAuth Settings = tick mark it to checked state</li>
       <li>Callback URL = http://localhost:1717/OauthRedirect</li>
@@ -280,45 +233,126 @@
 <p><strong>Solution:</strong> The issue is with the path of the jwtkeyfile that is specified in the command. Ensure that the server.key file exists in the path that you have specified in the command. And more importantly, checkin the code so that Azure pipeline can find the file on the Azure git repo.</p>
 
 <h2 id="step-3-project-setup-in-azure">Step 3: Project Setup in Azure</h2>
-<p>In this step, we will create a project in Azure account.</p>
-
+<p>In this step, we will create a project in Azure account just to configure the YAML pipelines. We will not use the Repos in Azure.</p>
 <ol>
   <li>Login to dev.azure.com</li>
-  <li>Create a new project named “SF DevOps” and save it.
+  <li>Create a new project named “Salesforce” and save it.
     <ul>
       <li>Visibility should be Private</li>
       <li>Version Control should be selected as Git</li>
       <li>Work Item Process can be left with default option (Agile)</li>
     </ul>
   </li>
-  <li>Open the project.</li>
-  <li>Click the “Repos” tab.</li>
-  <li>Click on “Generate Git Credentials”. Copy the username and password somewhere safely. If you refresh this screen, you will not be able to see the password again. We will require this username &amp; password when executing git commands. (I needed this step while configuring the DevOps in Ubuntu Linux machine. While trying out in Windows machine, it didn’t even need this generated Git credentials.)</li>
+  <li>Open the Azure Project and navigate to the “Library”
+    <ul>
+      <li>Here, go to “Secure Files” and upload the “server.key” file.</li>
+      <li>In the Variable Groups, create separate variable groups for dev, qa, uat and prod (all environments that apply for your org). - Ensure that you name the variable group in the following format sfdx-org-{env} (example: sfdx-org-dev, sfdx-org-qa, etc)
+        <ul>
+          <li>The variable group needs to have 4 variables namely Clientid, InstanceUrl, OrgAlias, SalesforceUserName and update corresponding values in these variables. We will reference these environment specific variable groups from the pipeline based on the branch a PR or commit is made.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ol>
 
-<h2 id="step-4-getting-the-sf-org-codebase-to-push-to-azure-git-repo">Step 4. Getting the SF Org codebase to push to Azure Git repo</h2>
-<p>In this step, we will pull the codebase from salesforce and organize it in the way we want to version control it. Then, we will commit this code to the Azure Git repo we created in Step 3.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Variable Group</th>
+      <th>Variables &amp; its Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sfdx-org-dev</td>
+      <td>Clientid = {paste the client id from the connected app we created in Step 2}, InstanceUrl=https://test.salesforce.com/, OrgAlias=dev, SalesforceUserName={username of the SF user}</td>
+    </tr>
+    <tr>
+      <td>sfdx-org-qa</td>
+      <td>Clientid = {paste the client id from the connected app we created in Step 2}, InstanceUrl=https://test.salesforce.com/, OrgAlias=qa, SalesforceUserName={username of the SF user}</td>
+    </tr>
+    <tr>
+      <td>sfdx-org-uat</td>
+      <td>Clientid = {paste the client id from the connected app we created in Step 2}, InstanceUrl=https://test.salesforce.com/, OrgAlias=uat, SalesforceUserName={username of the SF user}</td>
+    </tr>
+    <tr>
+      <td>sfdx-org-prod</td>
+      <td>Clientid = {paste the client id from the connected app we created in Step 2}, InstanceUrl=https://login.salesforce.com/, OrgAlias=prod, SalesforceUserName={username of the SF user}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="step-4-project-setup-in-github">Step 4: Project Setup in Github</h2>
+<p>In this step, we will create a project in Github for managing repositories and branches.</p>
+<ol>
+  <li>Login to github.com</li>
+  <li>Create a Project in github named “Salesforce”. This will create “Salesforce” as a Repository with 1 branch named “master”.</li>
+</ol>
+
+<h2 id="step-5-create-an-sfdx-project-and-push-to-github-repo">Step 5. Create an SFDX Project and push to Github repo</h2>
+<p>In this step, we will push a blank SFDX project in VS Code and commit to the master branch in Github.</p>
 
 <ol>
-  <li>Create a folder named “Projects” in your local machine</li>
-  <li>Open the terminal/command prompt from this “Projects” folder.</li>
+  <li>First, clone the Github project locally.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone &lt;URL of the Repo in Github&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Open the terminal/command prompt from this “Salesforce” folder.</li>
   <li>Execute the following command for creating an empty SFDX project locally
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sfdx force:project:create <span class="nt">--projectname</span> MyPersonalDevOrg
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sfdx force:project:create <span class="nt">--projectname</span> Salesforce
 </code></pre></div>    </div>
   </li>
   <li>cd into the newly created project folder
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>MyPersonalDevOrg
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>Salesforce
 </code></pre></div>    </div>
   </li>
-  <li>Create a folder named “manifest”
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir manifest
+  <li>Add the Git user configurations. Execute the following commands in the terminal/command prompt. Replace “xxx@xxx.com” with your dev.azure.com login email address. Replace “testusername” with the username with which you login to Github.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git config user.email <span class="s2">"xxx@xxx.com"</span>
+ git config user.name <span class="s2">"testusername"</span>
 </code></pre></div>    </div>
   </li>
-  <li>Type the following command to open the project in VS Code.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> code <span class="nb">.</span>
+  <li>Add all the project files to git tracking by executing the following command in terminal/command prompt.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git add <span class="nb">.</span>
 </code></pre></div>    </div>
   </li>
-  <li>Create a file named “package.xml” inside the manifest folder.</li>
+  <li>Execute the following command in terminal/command prompt to commit the code.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git commit <span class="nt">-m</span> <span class="s2">"Initial Code"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Copy and execute the git remote command. GIT_REPO_URL should be replaced with your GITHUB repo url.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git remote add origin GIT_REPO_URL
+</code></pre></div>    </div>
+  </li>
+  <li>Execute the following command in terminal/command prompt to push the local project codebase to the Github Repo. This might ask for the password. This password most probably will be your Github Personal Access Token and not the normal github password.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git push <span class="nt">-u</span> origin master
+</code></pre></div>    </div>
+  </li>
+  <li>After the command executes, go to Github Repo in the browser and refresh the page. You should see the blank sfdx project codebase in the “Salesforce” repo on master branch.</li>
+</ol>
+
+<h2 id="step-6-creating-branches-in-github-for-lower-environments">Step 6. Creating branches in Github for lower environments</h2>
+<ol>
+  <li>On the browser, open the “Salesforce” repo in Github</li>
+  <li>Ensure that the branch shows “master”</li>
+  <li>Click on the “master” branch dropdown and type” dev” in the “Find or create a branch” textbox and hit Enter. This will create a dev branch from the master branch</li>
+  <li>Again switch the selection in the branch dropdown to “master” and repeat the Step 3 to create “qa” and “uat” branch from master.</li>
+</ol>
+
+<h2 id="step-7-creating-a-feature-branch-to-pump-yaml-pipeline-capability-upstream">Step 7. Creating a feature branch to pump YAML pipeline capability upstream</h2>
+<ol>
+  <li>In your local machine where you had cloned the “Salesforce” Github repo, open the terminal/CMD from the “Salesforce” project folder and type the following command. This will ensure that your local “Salesforce” codebase is up to date with Github repo.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git pull
+</code></pre></div>    </div>
+  </li>
+  <li>Switch to “dev” branch. This will switch your working branch from master to dev
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git switch dev
+</code></pre></div>    </div>
+  </li>
+  <li>Once switched to “dev” branch, create a new feature branch for YAML changes to be committed. Executing this command will create a feature branch named “yaml-changes” locally from the “dev” branch code.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git checkout -b yaml-changes
+</code></pre></div>    </div>
+  </li>
+  <li>Right click on the “force-app” folder and select the option “SFDX: Generate Manifest File”. Specify the name of the file as “package.xml”. It will create a “package.xml” file inside a new folder named “manifest”.</li>
   <li>Open the “package.xml” file and paste the following contents. Essentially, we are saying that we are interested in Apex Classes, Apex Triggers, Visualforce Pages and Custom Objects only. You can add more metadata to “package,xml” file as per your needs.
     <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
  <span class="nt">&lt;Package</span> <span class="na">xmlns=</span><span class="s">"http://soap.sforce.com/2006/04/metadata"</span><span class="nt">&gt;</span>
@@ -342,39 +376,101 @@
  <span class="nt">&lt;/Package&gt;</span>
 </code></pre></div>    </div>
   </li>
-  <li>Create a folder named “buildfiles” using the following command
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">mkdir </span>buildfiles
+  <li>Use VS Code Command Palette and do an “SFDX Authorize an Org”. Make sure you are authorizing against the right dev or pre-dev sandbox to pull the metadata from.</li>
+  <li>Once package.xml is saved, right click on the file and choose “SFDX: Retrieve Source in Manifest from Org”</li>
+  <li>Create a folder named “pr”
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir pr
 </code></pre></div>    </div>
   </li>
-  <li>Paste the <strong>server.key</strong> inside the buildfiles folder</li>
-  <li>Execute the following command in terminal/command prompt. This will retrieve all the metadata from your SF org to the project folder in metadata format. Please do replace the xxx@xxx.com to your salesforce org username.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sfdx force:mdapi:retrieve <span class="nt">-r</span> retrieved <span class="nt">-k</span> manifest/package.xml <span class="nt">-w</span> 10 <span class="nt">-u</span> xxx@xxx.com
+  <li>From VS Code, add a file named “pr-build-dev.yml” inside the pr folder and paste the following YAML code. This pipeline will be used to do a validation check on DEV Sandbox when anyone raises a PR from feature branch to dev branch.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Salesforce Build Pipeline
+
+ trigger: none
+
+ pr:
+ - dev
+
+ jobs:
+ - job: Validate
+ variables:
+ - group: sfdx-org-dev
+
+ steps:
+     - task: UseNode@1
+     displayName: 'Use Node.js 16.15.0'
+     inputs:
+         version: '16.15.0'
+     - bash: 
+         npm install sfdx-cli --global
+     displayName: Install Salesforce CLI
+     - task: DownloadSecureFile@1
+     name: jwtKey
+     displayName: 'Download Server JWT Key'
+     inputs:
+         secureFile: 'server.key'
+     - bash: 
+         sfdx force:auth:jwt:grant --clientid $(Clientid) --jwtkeyfile $(jwtKey.secureFilePath) --username $(SalesforceUserName) --instanceurl $(InstanceUrl) -a $(OrgAlias)
+     displayName: Authorize salesforce org
+     - bash: 
+         sfdx force:source:deploy -l RunLocalTests -c -x manifest/package.xml -u $(OrgAlias) -w 10
+     displayName: Run Validation on source code
 </code></pre></div>    </div>
   </li>
-  <li>Unzip the retrieved metadata zip file into a folder named “retrieved”. (<strong>Note</strong> that this unzip command may not work in Windows OS. So manually unzip.)
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip retrieved/unpackaged.zip <span class="nt">-d</span> retrieved
-</code></pre></div>    </div>
-  </li>
-  <li>Delete the zip file
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm </span>retrieved/unpackaged.zip
-</code></pre></div>    </div>
-  </li>
-  <li>Convert the unzipped “retrieved” folder contents from metadata format to SFDX format. This will add the metadata into the SFDX project structure under the folder “force-app”
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sfdx force:mdapi:convert <span class="nt">-r</span> retrieved/unpackaged <span class="nt">-d</span> force-app
-</code></pre></div>    </div>
-  </li>
-  <li>Execute the following command in terminal/command prompt to initialize the project folder for git tracking.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
-</code></pre></div>    </div>
-  </li>
-  <li>Switch to VS Code. In .gitignore file, add the following lines to the last of the file. We are telling git that do not track “retrieved” and “toDeploy” folders as they are working directories.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>retrieved/
-toDeploy/
-</code></pre></div>    </div>
-  </li>
-  <li>Add the Git user configurations. Execute the following commands in the terminal/command prompt. Replace “xxx@xxx.com” with your dev.azure.com login email address. Replace “testusername” with the username you had got in STEP 3 -&gt; Point number 5.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config user.email <span class="s2">"xxx@xxx.com"</span>
-git config user.name <span class="s2">"testusername"</span>
+  <li>Similary, you can crate similar YAML files for other environments (qa, uat and prod). Let’s say you want validation check to happen when someone raises a PR to QA Branch. So, in this case, create a file named “pr-build-qa.yml” and use the previous YAML code and change all “dev” words to “qa”.</li>
+  <li>On the project folder level, add a new file named “build.yml”. This pipeline will take the responsibility of deploying the committed code to respective salesforce sandbox or production org dynamically. Add the following yml code in this file.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Salesforce DevOps Pipeline
+
+trigger:
+batch: "true"
+branches:
+    include:
+    - master
+    - dev
+    - qa
+    - uat
+paths:
+    exclude:
+    - README.md
+    - azure-pipelines.yml
+    - pr/pr-build-dev.yml
+    - pr/pr-build-qa.yml
+    - pr/pr-build-uat.yml
+    - pr/pr-build-master.yml
+pr: none
+
+jobs:
+- job: Deploy
+variables:
+- $:
+    - group: sfdx-org-dev
+- $:
+    - group: sfdx-org-qa
+- $:
+    - group: sfdx-org-uat
+- $:
+    - group: sfdx-org-master
+steps:
+    - task: UseNode@1
+    displayName: 'Use Node.js 16.15.0'
+    inputs:
+        version: '16.15.0'
+    - bash: 
+        npm install sfdx-cli --global
+    displayName: Install Salesforce CLI
+    - task: DownloadSecureFile@1
+    name: jwtKey
+    displayName: 'Download Server JWT Key'
+    inputs:
+        secureFile: 'server.key'
+    - bash: 
+        sfdx force:auth:jwt:grant --clientid $(Clientid) --jwtkeyfile $(jwtKey.secureFilePath) --username $(SalesforceUserName) --instanceurl $(InstanceUrl) -a $(OrgAlias)
+    displayName: Authorize salesforce org
+    - bash: 
+        sfdx force:source:deploy -l RunLocalTests -c -x manifest/package.xml -u $(OrgAlias) -w 10
+    displayName: Run Validation on source code
+    - bash: 
+        sfdx force:source:deploy -l RunLocalTests -x manifest/package.xml -u $(OrgAlias) -w 10
+    displayName: Deploy source code to Salesforce Org
 </code></pre></div>    </div>
   </li>
   <li>Add all the project files to git tracking by executing the following command in terminal/command prompt.
@@ -382,124 +478,80 @@ git config user.name <span class="s2">"testusername"</span>
 </code></pre></div>    </div>
   </li>
   <li>Execute the following command in terminal/command prompt to commit the code.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Initial Code"</span>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"YAML and Metadata Added"</span>
 </code></pre></div>    </div>
   </li>
-  <li>Copy and execute the git remote command from the Azure Project’s -&gt; Repos page shown in the “Push an existing repository from command line” section. GIT_REPO_URL should be replaced with your azure git repo url.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin GIT_REPO_URL
+  <li>Execute the following command in terminal/command prompt to push the local project codebase to the github Repo.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin yaml-changes
 </code></pre></div>    </div>
   </li>
-  <li>Execute the following command in terminal/command prompt to push the local project codebase to the Azure Git Repo. This might ask for the password. Provide the password that we had got from STEP 3 -&gt; Point number 5.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin master
-</code></pre></div>    </div>
-  </li>
-  <li>After the command executes, switch to Azure Git Repo open in browser and refresh the page. You should see the Salesforce Org codebase in the repo.</li>
+  <li>After the command executes, go to Github Repo in the browser and refresh the page. You should see the committed codebase in the repo on yaml-changes branch.</li>
 </ol>
 
-<h2 id="step-5-creating-the-azure-pipeline-for-automated-build--deploy">Step 5. Creating the Azure Pipeline for automated build &amp; deploy</h2>
-<p>In this step, we will create the azure pipeline which will build, test and deploy the committed codebase from azure git repo to Salesforce Cloud. Here, we will use the latest SFDX CLI techniques to deploy instead of the old school ANT migration scripts.</p>
-
+<h2 id="step-8-creating-the-azure-pipeline-for-automated-build">Step 8. Creating the Azure Pipeline for automated build</h2>
+<p>In this step, we will create the azure pipeline which will use the PR YAML in Github to do validation to Salesforce.</p>
 <ol>
-  <li>In the Azure Project page open in the browser, navigate to “Pipelines” tab.</li>
-  <li>Click on “Create Pipeline”</li>
-  <li>Choose “Azure Repos Git” for “Where is your code?”</li>
-  <li>Choose “SF DevOps” project for “Select your repository”</li>
-  <li>Choose “Starter Pipeline” for “Configure your pipeline”</li>
-  <li>Overwrite the code shown in “Review your pipeline YAML” and paste the following code. (<strong>Note</strong>: a usual mistake that people do is to copy-paste the pipeline code and mess up the indentation of the yml code. If indentation is not right, you will have a tough time running the pipeline.)
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Starter pipeline
- # Start with a minimal pipeline that you can customize to build and deploy your code.
- # Add steps that build, run tests, deploy, and more:
- # https://aka.ms/yaml
-
- trigger:
- batch: "true"
- branches:
-     include:
-     - master
- paths:
-     exclude:
-     - README.md
-     - azure-pipelines.yml
- pr:
- autoCancel: "true"
- branches:
-     include:
-     - master
- paths:
-     exclude:
-     - README.md
- jobs:
- - job: Deploy
- condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
- steps:
-     - task: UseNode@1
-     - bash: 
-         npm install sfdx-cli --global
-     displayName: Install Salesforce CLI
-     - bash: 
-         sfdx force:auth:jwt:grant --clientid $(salesforceDevOrgClientId) --jwtkeyfile ./buildfiles/server.key --username $(salesforceDevOrgUserName) --instanceurl $(salesforceDevOrgInstanceURL) -a devOrg
-     displayName: Authorize salesforce org
-     - bash: 
-         sfdx force:source:convert -r ./force-app -d ./toDeploy
-     displayName: Convert to deploy source
-     - bash: 
-         sfdx force:mdapi:deploy -l RunLocalTests -c -d ./toDeploy -u devOrg -w 10
-     displayName: Run validation on source code
-     - bash: 
-         sfdx force:mdapi:deploy -l RunLocalTests -d ./toDeploy -u devOrg -w 10
-     displayName: Deploy source code to Dev Org
-</code></pre></div>    </div>
-
-    <p><strong>Explanation of the pipeline code:</strong></p>
-
+  <li>Navigate to Azure DevOps and open the “Salesforce” project</li>
+  <li>Navigate to “Pipelines”</li>
+  <li>Click on “New Pipeline”
     <ul>
-      <li>We define 1 job called “Deploy” with a set of steps/tasks.
-        <ol>
-          <li>Install SF CLI on the azure vm so that we can execute SFDX commands.</li>
-          <li>Authorize the Dev Org and ensure that we can login using clientId, server.key and username</li>
-          <li>Convert the SFDX code in “force-app” directory to metadata format for deployment</li>
-          <li>Run a Validation using the converted code in metadata format using SFDX</li>
-          <li>Deploy the converted code in metadata format using SFDX</li>
-        </ol>
-      </li>
+      <li>Choose “Github” as our code is in Github</li>
+      <li>Choose the “Salesforce” repository</li>
+      <li>Choose “Existing Azure Pipelines YAML File”</li>
+      <li>Choose Branch as “yaml-changes”</li>
+      <li>Choose Path as “/pr/pr-build-dev.yml”</li>
+      <li>Click Continue. This will create the Pipeline in Azure that will fire when a PR is initiated from any Feature Branch to Dev Branch.</li>
     </ul>
   </li>
-  <li>Click on the “Variables” button and create the following variables
-    <ul>
-      <li><strong>salesforceDevOrgClientId</strong> = paste the client id from the connected app we created in Step 2</li>
-      <li><strong>salesforceDevOrgInstanceURL</strong> = https://login.salesforce.com</li>
-      <li><strong>salesforceDevOrgUserName</strong> = type the username of your developer org</li>
-    </ul>
-  </li>
-  <li>Click on “Save &amp; Run”. You will see the pipeline starting to run. You can click the build instance and see what the azure pipeline is doing while it is executing the commands.</li>
-  <li>After the pipeline is executed, you can open the Salesforce Org in browser and navigate to Setup -&gt; Environments -&gt; Deploy -&gt; Deployment Status. Here, you will see a recent Deployment Validation Success &amp; a Deployment Success.</li>
-  <li>Run the following command in terminal/command prompt to pull the pipeline yml file to vscode locally.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin master
-</code></pre></div>    </div>
-  </li>
+  <li>Similarly, repeat Step 3 for adding PR pipeline for QA, UAT and PROD</li>
+  <li>Ensure that the pipeline named are renamed to something that makes sense to you. (For example: PR Validate to DEV, etc)</li>
 </ol>
 
-<p>This completes the setup of Azure DevOps pipeline for automating Salesforce deployments.</p>
-
-<p>**From now on, you just need to **</p>
-<ul>
-  <li>open the project code in VS Code</li>
-  <li>add/modify the code</li>
-  <li>run the following commands to commit your code changes to azure git repo
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git add <span class="nb">.</span>
-  git commit <span class="nt">-m</span> <span class="s2">"commit message"</span>
-  git push origin master
-</code></pre></div>    </div>
+<h2 id="step-9-creating-the-azure-pipeline-for-automated-deploy">Step 9. Creating the Azure Pipeline for automated deploy</h2>
+<p>In this step, we will create the azure pipeline which will use the YAML in Github to do deploy to Salesforce.</p>
+<ol>
+  <li>Navigate to Azure DevOps and open the “Salesforce” project</li>
+  <li>Navigate to “Pipelines”</li>
+  <li>Click on “New Pipeline”
+    <ul>
+      <li>Choose “Github” as our code is in Github</li>
+      <li>Choose the “Salesforce” repository</li>
+      <li>Choose “Existing Azure Pipelines YAML File”</li>
+      <li>Choose Branch as “yaml-changes”</li>
+      <li>Choose Path as “/build.yml”</li>
+      <li>Click Continue. This will create the Pipeline in Azure that will fire when a PR is approved/direct commit is detected to DEV, QA, UAT and MASTER Branch.</li>
+    </ul>
   </li>
-  <li>the azure pipeline will automatically detect that a commit was made and it will automatically run the azure pipeline to deploy the code.</li>
-  <li>even if the pipeline succeeds or fails, you will get an email notification regarding the latest build status.</li>
+  <li>Ensure that the pipeline named are renamed to something that makes sense to you. (For example: Deploy to Salesforce Org)</li>
+</ol>
+
+<p>This completes the setup of Azure DevOps pipeline for automating Salesforce build and deployments with Github Source Control.</p>
+
+<h1 id="best-practice">Best Practice</h1>
+<ul>
+  <li>Always create a feature branch for your new/modified changes from dev</li>
+  <li>Raise PR to DEV</li>
+  <li>Let the PR Validate Pipeline Pass</li>
+  <li>If the Validate checks pass, let the Team Lead do a code review + approve the PR</li>
+  <li>Approving the PR will fire the Deploy Pipeline to deploy the code to DEV sandbox</li>
+  <li>Promote your changes from DEV to QA using a PR
+    <ul>
+      <li>This PR will cause the “PR Validate to QA” pipeline to fire</li>
+      <li>Now, TL reviews and approves the PR</li>
+      <li>Deploy Pipeline deploys code to QA Sandbox</li>
+    </ul>
+  </li>
+  <li>Similarly, promote your changes to UAT and PROD using PR</li>
+  <li>Never do a direct commit on DEV, QA, UAT or PROD. Always promote upstream from the feature branch.</li>
 </ul>
 
 <h2 id="moral-of-the-story">Moral of the Story</h2>
 <ul>
-  <li>You don’t have to open Salesforce Org from now on for making code changes.</li>
-  <li>Every code/metadata changes are made locally in VS Code and tracked by Azure Git version control. Version Control is the source of truth.</li>
-  <li>Azure pipeline ensures that what is in GIT is there in the SF Org.</li>
+  <li>Since Github is acquired by Microsoft, the integration between these 2 systems are smooth.</li>
+  <li>Developers are more comfortable with Github (into which you manage the repo, branch and commits)</li>
+  <li>Azure takes care of all the build and deploy process automatically</li>
+  <li>This setup is dynamic enough to do the validation &amp; deploy on the right salesforce environment</li>
+  <li>Pipelines works based on the package.xml. Hence you have control of what is validated and deployed against an org.</li>
 </ul>
 
 <br />

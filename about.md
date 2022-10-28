@@ -12,7 +12,11 @@ comments: true
     </ol>
   </nav>
 </div>
-My name is **Abhishek Sivasubramanian**. I am working as the **Associate Director** at [Suyati, Canada](https://suyati.com/). I have an experience of more than 10 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
+My name is **Abhishek Sivasubramanian**. I have an experience of more than 12 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
+
+### Skills
+
+{% include skills.html %}
 
 ### My Qualification
 
@@ -46,12 +50,13 @@ I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in Sa
 - [**Trigger Optimization Framework in Salesforce**](/trigger-optimization-framework/) – A comprehensive architectural framework that has been devised to optimize trigger execution in Force.com Platform with enhanced configurability in mind. This architecture has been designed to increase performance, enhance scalability and bring forth developer-less configurations to control trigger execution in the Cloud.
 - [**Logger Framework in Salesforce**](/salesforce-logger-framework/) – This is a logger framework that can be implemented in Salesforce in a scalable manner. This framework is designed with very low coupling making it independent from anything salesforce specific.
 
+### Recommendations
+
+{% include recommendations.html %}
+
 <br/>
 <hr/>
-<p>Follow me on social media 
-    <a href="https://www.github.com/abhisheksubbu"><i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://twitter.com/abhisheksubbu"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/in/abhisheksivasubramanian/"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></p>
+{% include social_media.html %}
 
 <div class="alert alert-info" role="alert">
     <h4 class="alert-heading">Your feedback is cruicial for me to develop more relevant content?</h4>
