@@ -11,18 +11,16 @@ twitter:
 social:
   name: Abhishek Subbu
   links:
-    - https://twitter.com/abhisheksubbu
-    - https://www.linkedin.com/in/abhisheksubbu
     - https://github.com/abhisheksubbu
     - https://www.youtube.com/channel/UCkh6ynIz3HU0eKYDxuCEGyg
 
 google_site_verification: 6nqFBgZdK0gATjDa3ZO3lJ11cpSDhxDmJOhqUs15IFs
 
 paginate: 10
-paginate_path: '/blog/page:num/'
+paginate_path: "/blog/page:num/"
 
 baseurl:
-repository: 'abhisheksubbu/abhisheksubbu.github.io'
+repository: "abhisheksubbu/abhisheksubbu.github.io"
 
 # Build settings
 markdown: kramdown
