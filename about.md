@@ -1,7 +1,6 @@
 ---
 title: About Me
 layout: default
-comments: true
 ---
 
 <div style="margin-bottom:2rem;">
@@ -12,7 +11,7 @@ comments: true
     </ol>
   </nav>
 </div>
-My name is **Abhishek Sivasubramanian**. I have an experience of more than 12 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology, mathematics & science.
+My name is **Abhishek Sivasubramanian**. I have an experience of more than 12 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology especially on Salesforce, Programming and Solution Design.
 
 ### Skills
 
@@ -64,5 +63,3 @@ I am a 3x Technical Speaker for Dreamforce Cloud Computing conference held in Sa
       Feel free to drop in your comments here OR on the respective blog and I will try my best to help you guys. It's a great motivator to collaborate and exchange ideas.
     </p>
   </div>
-<hr />
-{% include disqus_comments.html %}

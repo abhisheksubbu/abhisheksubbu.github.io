@@ -5,7 +5,37 @@
         <title>AbhishekSubbu</title>
         <link>https://abhisheksubbu.github.io/</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Fri, 28 Oct 2022 18:26:01 -0400</lastBuildDate>
+        <lastBuildDate>Thu, 24 Nov 2022 17:58:22 -0500</lastBuildDate>
+        
+        <item>
+            <title>Developer 101</title>
+            <link>
+                https://abhisheksubbu.github.io//developer-101/
+            </link>
+            <description>
+                &lt;p&gt;As a &lt;strong&gt;developer/senior developer&lt;/strong&gt;, it is expected that you are strong in terms of Programming Fundamentals as well as have strong hands-on experience working on the technologies/platforms/languages that are you specializing on.&lt;/p&gt;
+
+&lt;p&gt;You should be allocating at least 2 hours everyday for practicing hands-on programming (be it on your project or ...
+            </description>
+            <pubDate>Thu, 24 Nov 2022 00:00:00 -0500</pubDate>
+            <guid>
+                https://abhisheksubbu.github.io//developer-101/
+            </guid>
+        </item>
+        
+        <item>
+            <title>Architect 101</title>
+            <link>
+                https://abhisheksubbu.github.io//architect-101/
+            </link>
+            <description>
+                &lt;p&gt;&lt;strong&gt;Architects&lt;/strong&gt; are the most respected &amp;amp; senior-most individuals in the Software Industry because of their deep understanding of fundamentals as well as the specific knowledge of products/platforms. In addition to these, architects also perform some project management responsibilities &amp;amp; leadership roles too. This makes them the most valuable peop...
+            </description>
+            <pubDate>Thu, 24 Nov 2022 00:00:00 -0500</pubDate>
+            <guid>
+                https://abhisheksubbu.github.io//architect-101/
+            </guid>
+        </item>
         
         <item>
             <title>Salesforce CI/CD using Azure DevOps Services and Github Source Control</title>
