@@ -5,7 +5,7 @@
         <title>AbhishekSubbu</title>
         <link>https://abhisheksubbu.github.io/</link>
         <description>Sharing my thoughts on the Cloud</description>
-        <lastBuildDate>Thu, 24 Nov 2022 17:58:22 -0500</lastBuildDate>
+        <lastBuildDate>Tue, 13 Feb 2024 18:04:58 -0500</lastBuildDate>
         
         <item>
             <title>Developer 101</title>
@@ -44,9 +44,10 @@
             </link>
             <description>
                 &lt;h3 id=&quot;things-that-we-need-before-we-start-the-devops-configurations&quot;&gt;Things that we need before we start the DevOps configurations&lt;/h3&gt;
+
 &lt;ol&gt;
   &lt;li&gt;Salesforce Developer Orgs (to simulate dev, qa, uat and prod) [if you don’t have one, signup and get a free personal dev org]&lt;/li&gt;
-  &lt;li&gt;Developer Azure account [just go to dev.azure.com and register wi...
+  &lt;li&gt;Developer Azure account [just go to dev.azure.com and register w...
             </description>
             <pubDate>Wed, 20 Jul 2022 00:00:00 -0400</pubDate>
             <guid>

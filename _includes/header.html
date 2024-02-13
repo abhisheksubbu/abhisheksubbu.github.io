@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<!-- <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -17,14 +17,14 @@
         href="{{site.baseurl}}/"
       >
         <img
-          src="{{site.baseurl}}/abhisheksubbu_siteicon.png"
+          src="{{site.baseurl}}/assets/img/abhisheksubbu_siteicon.png"
           alt="Logo"
           width="64px"
           class="d-inline-block align-text-top"
         />
         AbhishekSubbu
       </a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav nav-underline">
         <li class="nav-item">
           <a class="nav-link" href="{{site.baseurl}}/blog">Blog</a>
         </li>
@@ -36,5 +36,39 @@
         </li>
       </ul>
     </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light border-bottom">
+  <a class="navbar-brand" href="{{site.baseurl}}/"
+    ><img
+      src="{{site.baseurl}}/assets/img/abhisheksubbu_siteicon.png"
+      alt=""
+      style="width: 64px"
+    />{{site.title}}</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto nav nav-underline">
+      <li class="nav-item">
+        <a class="nav-link" href="{{site.baseurl}}/blog">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{site.baseurl}}/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{site.baseurl}}/contact">Contact</a>
+      </li>
+    </ul>
   </div>
 </nav>

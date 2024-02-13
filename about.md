@@ -11,7 +11,7 @@ layout: default
     </ol>
   </nav>
 </div>
-My name is **Abhishek Sivasubramanian**. I have an experience of more than 12 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology especially on Salesforce, Programming and Solution Design.
+My name is **Abhishek Sivasubramanian**. I have an experience of more than 14 years in IT Industry. I have worked on many IT initiatives inside & outside corporations to learn & share industry knowledge to students & technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach & blog about technology especially on Salesforce, Programming and Solution Design.
 
 ### Skills
 

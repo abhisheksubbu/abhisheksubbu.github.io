@@ -6,20 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/assets/style.css" />
-    <link rel="stylesheet" href="/assets/vs.css" />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <!-- <link rel="stylesheet" href="/assets/vs.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css"
+    />
     <link
       rel="shortcut icon"
       href="/favicon.ico"
       type="image/x-icon"
     />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1ab2b53191.js"
+      crossorigin="anonymous"
+    ></script>
     <title>About Me | AbhishekSubbu</title>
     <script
   async
@@ -36,7 +44,7 @@
 </script>
  <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>About Me | AbhishekSubbu</title>
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.3" />
 <meta property="og:title" content="About Me" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
@@ -58,7 +66,7 @@
   </head>
   <body>
     <div class="container-fluid container-app">
-      <nav class="navbar navbar-expand-lg">
+      <!-- <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -77,14 +85,14 @@
         href="/"
       >
         <img
-          src="/abhisheksubbu_siteicon.png"
+          src="/assets/img/abhisheksubbu_siteicon.png"
           alt="Logo"
           width="64px"
           class="d-inline-block align-text-top"
         />
         AbhishekSubbu
       </a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav nav-underline">
         <li class="nav-item">
           <a class="nav-link" href="/blog">Blog</a>
         </li>
@@ -97,6 +105,40 @@
       </ul>
     </div>
   </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light border-bottom">
+  <a class="navbar-brand" href="/"
+    ><img
+      src="/assets/img/abhisheksubbu_siteicon.png"
+      alt=""
+      style="width: 64px"
+    />AbhishekSubbu</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto nav nav-underline">
+      <li class="nav-item">
+        <a class="nav-link" href="/blog">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
       <div style="margin-top: 20px; margin-bottom: 20px"><div style="margin-bottom:2rem;">
@@ -107,7 +149,7 @@
     </ol>
   </nav>
 </div>
-<p>My name is <strong>Abhishek Sivasubramanian</strong>. I have an experience of more than 12 years in IT Industry. I have worked on many IT initiatives inside &amp; outside corporations to learn &amp; share industry knowledge to students &amp; technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach &amp; blog about technology especially on Salesforce, Programming and Solution Design.</p>
+<p>My name is <strong>Abhishek Sivasubramanian</strong>. I have an experience of more than 14 years in IT Industry. I have worked on many IT initiatives inside &amp; outside corporations to learn &amp; share industry knowledge to students &amp; technical enthusiasts. I speak, write, teach, learn and code most of my time in a day. I teach &amp; blog about technology especially on Salesforce, Programming and Solution Design.</p>
 
 <h3 id="skills">Skills</h3>
 
@@ -273,7 +315,7 @@
 
 <p>
   Follow me on
-  <a href="https://www.github.com/abhisheksubbu"><i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a>
+  <a href="https://www.github.com/abhisheksubbu"><i class="fa-brands fa-github" style="color: #000000"></i></a>
   <!-- <a href="https://twitter.com/abhisheksubbu"
     ><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i
   ></a>
@@ -321,7 +363,7 @@
         >.
       </p>
       <small class="d-block mb-3 text-muted"
-        >Copyright 2020 © AbhishekSubbu
+        >Copyright <span id="get-current-year"></span> © AbhishekSubbu
         <p>
           This is a personal blog. Opinions expressed are solely my own and do
           not express the views or opinions of my employer.
@@ -368,19 +410,34 @@
 
     </div>
     <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script>
+      /* Funtion for getting the current year in the footer */
+      (function () {
+        if (document.getElementById("get-current-year")) {
+          document.getElementById("get-current-year").innerHTML =
+            new Date().getFullYear();
+        }
+      })();
+    </script>
   </body>
 </html>

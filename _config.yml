@@ -23,11 +23,11 @@ baseurl:
 repository: "abhisheksubbu/abhisheksubbu.github.io"
 
 # Build settings
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-highlighter: rouge
+# markdown: kramdown
+# kramdown:
+#   input: GFM
+#   syntax_highlighter: rouge
+# highlighter: rouge
 
 permalink: /:title/
 disqus_shortname: abhisheksubbu-github-io

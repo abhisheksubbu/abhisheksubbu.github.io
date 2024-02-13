@@ -6,20 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/assets/style.css" />
-    <link rel="stylesheet" href="/assets/vs.css" />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <!-- <link rel="stylesheet" href="/assets/vs.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css"
+    />
     <link
       rel="shortcut icon"
       href="/favicon.ico"
       type="image/x-icon"
     />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script src="https://use.fontawesome.com/186ff9b997.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1ab2b53191.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Salesforce CI/CD using Azure DevOps Services and Github Source Control | AbhishekSubbu</title>
     <script
   async
@@ -36,7 +44,7 @@
 </script>
  <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Salesforce CI/CD using Azure DevOps Services and Github Source Control | AbhishekSubbu</title>
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.3" />
 <meta property="og:title" content="Salesforce CI/CD using Azure DevOps Services and Github Source Control" />
 <meta name="author" content="Abhishek Sivasubramanian" />
 <meta property="og:locale" content="en_US" />
@@ -59,7 +67,7 @@
   </head>
   <body>
     <div class="container-fluid container-app">
-      <nav class="navbar navbar-expand-lg">
+      <!-- <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -78,14 +86,14 @@
         href="/"
       >
         <img
-          src="/abhisheksubbu_siteicon.png"
+          src="/assets/img/abhisheksubbu_siteicon.png"
           alt="Logo"
           width="64px"
           class="d-inline-block align-text-top"
         />
         AbhishekSubbu
       </a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav nav-underline">
         <li class="nav-item">
           <a class="nav-link" href="/blog">Blog</a>
         </li>
@@ -97,6 +105,40 @@
         </li>
       </ul>
     </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light border-bottom">
+  <a class="navbar-brand" href="/"
+    ><img
+      src="/assets/img/abhisheksubbu_siteicon.png"
+      alt=""
+      style="width: 64px"
+    />AbhishekSubbu</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto nav nav-underline">
+      <li class="nav-item">
+        <a class="nav-link" href="/blog">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+    </ul>
   </div>
 </nav>
 
@@ -144,6 +186,7 @@
   
 </p>
 <h3 id="things-that-we-need-before-we-start-the-devops-configurations">Things that we need before we start the DevOps configurations</h3>
+
 <ol>
   <li>Salesforce Developer Orgs (to simulate dev, qa, uat and prod) [if you don’t have one, signup and get a free personal dev org]</li>
   <li>Developer Azure account [just go to dev.azure.com and register with your microsoft personal email address]</li>
@@ -154,6 +197,7 @@
 </ol>
 
 <h2 id="step-1-certificates-and-key">Step 1: Certificates and Key</h2>
+
 <p>The first step is to create a self signed certificate and private key that we need for configuring the DevOps process to authorize with Salesforce org.</p>
 
 <blockquote>
@@ -161,22 +205,30 @@
 </blockquote>
 
 <ol>
-  <li>In your terminal/command prompt, type the following command. This creates the private key named ‘<strong>server.key</strong>’.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
-</code></pre></div>    </div>
-  </li>
-  <li>Next, type the following command in terminal/command prompt to generate the ‘<strong>server.cs</strong>r’ file.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
-</code></pre></div>    </div>
-  </li>
-  <li>Now, type the following command in terminal/command prompt for generate the ‘<strong>server.crt</strong>’ certificate.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
-</code></pre></div>    </div>
-  </li>
+  <li>In your terminal/command prompt, type the following command. This creates the private key named ‘<strong>server.key</strong>’.</li>
 </ol>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genpkey <span class="nt">-algorithm</span> RSA <span class="nt">-pkeyopt</span> rsa_keygen_bits:2048 <span class="nt">-out</span> server.key
+</code></pre></div></div>
+
+<ol>
+  <li>Next, type the following command in terminal/command prompt to generate the ‘<strong>server.cs</strong>r’ file.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -key server.key -out server.csr
+</code></pre></div></div>
+
+<ol>
+  <li>Now, type the following command in terminal/command prompt for generate the ‘<strong>server.crt</strong>’ certificate.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
+</code></pre></div></div>
+
 <h2 id="step-2-connected-app-setup-in-salesforce-for-devops-process">Step 2: Connected App Setup in Salesforce for Devops Process</h2>
+
 <p>In this step, we will create a new connected app for DevOps process to authorize using the certificate that we created earlier.</p>
+
 <ol>
   <li>Login in to Salesforce Developer Org</li>
   <li>Navigate to Setup -&gt; Apps -&gt; App Manager</li>
@@ -216,8 +268,9 @@
 </code></pre></div></div>
 
 <h4 id="possible-errors">Possible Errors</h4>
+
 <blockquote>
-  <p>ERROR running force:auth:jwt:grant:  We encountered a JSON web token error, which is likely not an issue with Salesforce CLI. Here’s the error: invalid assertion</p>
+  <p>ERROR running force:auth:jwt:grant: We encountered a JSON web token error, which is likely not an issue with Salesforce CLI. Here’s the error: invalid assertion</p>
 </blockquote>
 
 <p><strong>Solution:</strong> Generate the server.key, csr and crt again using OpenSSL. Update the crt in the Connected App in Salesforce. Then update the key file in the buildfiles folder in the vscode project. Checkin the code and this problem should be resolved.</p>
@@ -229,7 +282,9 @@
 <p><strong>Solution:</strong> The issue is with the path of the jwtkeyfile that is specified in the command. Ensure that the server.key file exists in the path that you have specified in the command. And more importantly, checkin the code so that Azure pipeline can find the file on the Azure git repo.</p>
 
 <h2 id="step-3-project-setup-in-azure">Step 3: Project Setup in Azure</h2>
+
 <p>In this step, we will create a project in Azure account just to configure the YAML pipelines. We will not use the Repos in Azure.</p>
+
 <ol>
   <li>Login to dev.azure.com</li>
   <li>Create a new project named “Salesforce” and save it.
@@ -279,54 +334,58 @@
 </table>
 
 <h2 id="step-4-project-setup-in-github">Step 4: Project Setup in Github</h2>
+
 <p>In this step, we will create a project in Github for managing repositories and branches.</p>
+
 <ol>
   <li>Login to github.com</li>
   <li>Create a Project in github named “Salesforce”. This will create “Salesforce” as a Repository with 1 branch named “master”.</li>
 </ol>
 
 <h2 id="step-5-create-an-sfdx-project-and-push-to-github-repo">Step 5. Create an SFDX Project and push to Github repo</h2>
+
 <p>In this step, we will push a blank SFDX project in VS Code and commit to the master branch in Github.</p>
 
 <ol>
   <li>First, clone the Github project locally.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone &lt;URL of the Repo in Github&gt;
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;URL of the Repo in Github&gt;
 </code></pre></div>    </div>
   </li>
   <li>Open the terminal/command prompt from this “Salesforce” folder.</li>
   <li>Execute the following command for creating an empty SFDX project locally
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sfdx force:project:create <span class="nt">--projectname</span> Salesforce
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sfdx force:project:create <span class="nt">--projectname</span> Salesforce
 </code></pre></div>    </div>
   </li>
   <li>cd into the newly created project folder
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>Salesforce
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>Salesforce
 </code></pre></div>    </div>
   </li>
   <li>Add the Git user configurations. Execute the following commands in the terminal/command prompt. Replace “xxx@xxx.com” with your dev.azure.com login email address. Replace “testusername” with the username with which you login to Github.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git config user.email <span class="s2">"xxx@xxx.com"</span>
- git config user.name <span class="s2">"testusername"</span>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config user.email <span class="s2">"xxx@xxx.com"</span>
+git config user.name <span class="s2">"testusername"</span>
 </code></pre></div>    </div>
   </li>
   <li>Add all the project files to git tracking by executing the following command in terminal/command prompt.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git add <span class="nb">.</span>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
 </code></pre></div>    </div>
   </li>
   <li>Execute the following command in terminal/command prompt to commit the code.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git commit <span class="nt">-m</span> <span class="s2">"Initial Code"</span>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Initial Code"</span>
 </code></pre></div>    </div>
   </li>
   <li>Copy and execute the git remote command. GIT_REPO_URL should be replaced with your GITHUB repo url.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git remote add origin GIT_REPO_URL
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin GIT_REPO_URL
 </code></pre></div>    </div>
   </li>
   <li>Execute the following command in terminal/command prompt to push the local project codebase to the Github Repo. This might ask for the password. This password most probably will be your Github Personal Access Token and not the normal github password.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git push <span class="nt">-u</span> origin master
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin master
 </code></pre></div>    </div>
   </li>
   <li>After the command executes, go to Github Repo in the browser and refresh the page. You should see the blank sfdx project codebase in the “Salesforce” repo on master branch.</li>
 </ol>
 
 <h2 id="step-6-creating-branches-in-github-for-lower-environments">Step 6. Creating branches in Github for lower environments</h2>
+
 <ol>
   <li>On the browser, open the “Salesforce” repo in Github</li>
   <li>Ensure that the branch shows “master”</li>
@@ -335,85 +394,90 @@
 </ol>
 
 <h2 id="step-7-creating-a-feature-branch-to-pump-yaml-pipeline-capability-upstream">Step 7. Creating a feature branch to pump YAML pipeline capability upstream</h2>
+
 <ol>
   <li>In your local machine where you had cloned the “Salesforce” Github repo, open the terminal/CMD from the “Salesforce” project folder and type the following command. This will ensure that your local “Salesforce” codebase is up to date with Github repo.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git pull
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
 </code></pre></div>    </div>
   </li>
   <li>Switch to “dev” branch. This will switch your working branch from master to dev
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git switch dev
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch dev
 </code></pre></div>    </div>
   </li>
   <li>Once switched to “dev” branch, create a new feature branch for YAML changes to be committed. Executing this command will create a feature branch named “yaml-changes” locally from the “dev” branch code.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git checkout -b yaml-changes
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b yaml-changes
 </code></pre></div>    </div>
   </li>
   <li>Right click on the “force-app” folder and select the option “SFDX: Generate Manifest File”. Specify the name of the file as “package.xml”. It will create a “package.xml” file inside a new folder named “manifest”.</li>
   <li>Open the “package.xml” file and paste the following contents. Essentially, we are saying that we are interested in Apex Classes, Apex Triggers, Visualforce Pages and Custom Objects only. You can add more metadata to “package,xml” file as per your needs.
-    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
- <span class="nt">&lt;Package</span> <span class="na">xmlns=</span><span class="s">"http://soap.sforce.com/2006/04/metadata"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;types&gt;</span>
-         <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
-         <span class="nt">&lt;name&gt;</span>ApexClass<span class="nt">&lt;/name&gt;</span>
-     <span class="nt">&lt;/types&gt;</span>
-     <span class="nt">&lt;types&gt;</span>
-         <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
-         <span class="nt">&lt;name&gt;</span>ApexTrigger<span class="nt">&lt;/name&gt;</span>
-     <span class="nt">&lt;/types&gt;</span>
-     <span class="nt">&lt;types&gt;</span>
-         <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
-         <span class="nt">&lt;name&gt;</span>ApexPage<span class="nt">&lt;/name&gt;</span>
-     <span class="nt">&lt;/types&gt;</span>
-     <span class="nt">&lt;types&gt;</span>
-         <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
-         <span class="nt">&lt;name&gt;</span>CustomObject<span class="nt">&lt;/name&gt;</span>
-     <span class="nt">&lt;/types&gt;</span>
-     <span class="nt">&lt;version&gt;</span>44.0<span class="nt">&lt;/version&gt;</span>
- <span class="nt">&lt;/Package&gt;</span>
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;Package</span> <span class="na">xmlns=</span><span class="s">"http://soap.sforce.com/2006/04/metadata"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;types&gt;</span>
+        <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
+        <span class="nt">&lt;name&gt;</span>ApexClass<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/types&gt;</span>
+    <span class="nt">&lt;types&gt;</span>
+        <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
+        <span class="nt">&lt;name&gt;</span>ApexTrigger<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/types&gt;</span>
+    <span class="nt">&lt;types&gt;</span>
+        <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
+        <span class="nt">&lt;name&gt;</span>ApexPage<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/types&gt;</span>
+    <span class="nt">&lt;types&gt;</span>
+        <span class="nt">&lt;members&gt;</span>*<span class="nt">&lt;/members&gt;</span>
+        <span class="nt">&lt;name&gt;</span>CustomObject<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/types&gt;</span>
+    <span class="nt">&lt;version&gt;</span>44.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/Package&gt;</span>
 </code></pre></div>    </div>
   </li>
   <li>Use VS Code Command Palette and do an “SFDX Authorize an Org”. Make sure you are authorizing against the right dev or pre-dev sandbox to pull the metadata from.</li>
   <li>Once package.xml is saved, right click on the file and choose “SFDX: Retrieve Source in Manifest from Org”</li>
   <li>Create a folder named “pr”
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir pr
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir pr
 </code></pre></div>    </div>
   </li>
-  <li>From VS Code, add a file named “pr-build-dev.yml” inside the pr folder and paste the following YAML code. This pipeline will be used to do a validation check on DEV Sandbox when anyone raises a PR from feature branch to dev branch.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Salesforce Build Pipeline
+  <li>
+    <p>From VS Code, add a file named “pr-build-dev.yml” inside the pr folder and paste the following YAML code. This pipeline will be used to do a validation check on DEV Sandbox when anyone raises a PR from feature branch to dev branch.</p>
 
- trigger: none
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Salesforce Build Pipeline
 
- pr:
- - dev
+trigger: none
 
- jobs:
- - job: Validate
- variables:
- - group: sfdx-org-dev
+pr:
+- dev
 
- steps:
-     - task: UseNode@1
-     displayName: 'Use Node.js 16.15.0'
-     inputs:
-         version: '16.15.0'
-     - bash: 
-         npm install sfdx-cli --global
-     displayName: Install Salesforce CLI
-     - task: DownloadSecureFile@1
-     name: jwtKey
-     displayName: 'Download Server JWT Key'
-     inputs:
-         secureFile: 'server.key'
-     - bash: 
-         sfdx force:auth:jwt:grant --clientid $(Clientid) --jwtkeyfile $(jwtKey.secureFilePath) --username $(SalesforceUserName) --instanceurl $(InstanceUrl) -a $(OrgAlias)
-     displayName: Authorize salesforce org
-     - bash: 
-         sfdx force:source:deploy -l RunLocalTests -c -x manifest/package.xml -u $(OrgAlias) -w 10
-     displayName: Run Validation on source code
+jobs:
+- job: Validate
+variables:
+- group: sfdx-org-dev
+
+steps:
+    - task: UseNode@1
+    displayName: 'Use Node.js 16.15.0'
+    inputs:
+        version: '16.15.0'
+    - bash:
+        npm install sfdx-cli --global
+    displayName: Install Salesforce CLI
+    - task: DownloadSecureFile@1
+    name: jwtKey
+    displayName: 'Download Server JWT Key'
+    inputs:
+        secureFile: 'server.key'
+    - bash:
+        sfdx force:auth:jwt:grant --clientid $(Clientid) --jwtkeyfile $(jwtKey.secureFilePath) --username $(SalesforceUserName) --instanceurl $(InstanceUrl) -a $(OrgAlias)
+    displayName: Authorize salesforce org
+    - bash:
+        sfdx force:source:deploy -l RunLocalTests -c -x manifest/package.xml -u $(OrgAlias) -w 10
+    displayName: Run Validation on source code
 </code></pre></div>    </div>
   </li>
   <li>Similary, you can crate similar YAML files for other environments (qa, uat and prod). Let’s say you want validation check to happen when someone raises a PR to QA Branch. So, in this case, create a file named “pr-build-qa.yml” and use the previous YAML code and change all “dev” words to “qa”.</li>
-  <li>On the project folder level, add a new file named “build.yml”. This pipeline will take the responsibility of deploying the committed code to respective salesforce sandbox or production org dynamically. Add the following yml code in this file.
+  <li>
+    <p>On the project folder level, add a new file named “build.yml”. This pipeline will take the responsibility of deploying the committed code to respective salesforce sandbox or production org dynamically. Add the following yml code in this file.</p>
+
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Salesforce DevOps Pipeline
 
 trigger:
@@ -450,7 +514,7 @@ steps:
     displayName: 'Use Node.js 16.15.0'
     inputs:
         version: '16.15.0'
-    - bash: 
+    - bash:
         npm install sfdx-cli --global
     displayName: Install Salesforce CLI
     - task: DownloadSecureFile@1
@@ -458,13 +522,13 @@ steps:
     displayName: 'Download Server JWT Key'
     inputs:
         secureFile: 'server.key'
-    - bash: 
+    - bash:
         sfdx force:auth:jwt:grant --clientid $(Clientid) --jwtkeyfile $(jwtKey.secureFilePath) --username $(SalesforceUserName) --instanceurl $(InstanceUrl) -a $(OrgAlias)
     displayName: Authorize salesforce org
-    - bash: 
+    - bash:
         sfdx force:source:deploy -l RunLocalTests -c -x manifest/package.xml -u $(OrgAlias) -w 10
     displayName: Run Validation on source code
-    - bash: 
+    - bash:
         sfdx force:source:deploy -l RunLocalTests -x manifest/package.xml -u $(OrgAlias) -w 10
     displayName: Deploy source code to Salesforce Org
 </code></pre></div>    </div>
@@ -485,7 +549,9 @@ steps:
 </ol>
 
 <h2 id="step-8-creating-the-azure-pipeline-for-automated-build">Step 8. Creating the Azure Pipeline for automated build</h2>
+
 <p>In this step, we will create the azure pipeline which will use the PR YAML in Github to do validation to Salesforce.</p>
+
 <ol>
   <li>Navigate to Azure DevOps and open the “Salesforce” project</li>
   <li>Navigate to “Pipelines”</li>
@@ -504,7 +570,9 @@ steps:
 </ol>
 
 <h2 id="step-9-creating-the-azure-pipeline-for-automated-deploy">Step 9. Creating the Azure Pipeline for automated deploy</h2>
+
 <p>In this step, we will create the azure pipeline which will use the YAML in Github to do deploy to Salesforce.</p>
+
 <ol>
   <li>Navigate to Azure DevOps and open the “Salesforce” project</li>
   <li>Navigate to “Pipelines”</li>
@@ -524,6 +592,7 @@ steps:
 <p>This completes the setup of Azure DevOps pipeline for automating Salesforce build and deployments with Github Source Control.</p>
 
 <h1 id="best-practice">Best Practice</h1>
+
 <ul>
   <li>Always create a feature branch for your new/modified changes from dev</li>
   <li>Raise PR to DEV</li>
@@ -542,6 +611,7 @@ steps:
 </ul>
 
 <h2 id="moral-of-the-story">Moral of the Story</h2>
+
 <ul>
   <li>Since Github is acquired by Microsoft, the integration between these 2 systems are smooth.</li>
   <li>Developers are more comfortable with Github (into which you manage the repo, branch and commits)</li>
@@ -635,7 +705,7 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
         >.
       </p>
       <small class="d-block mb-3 text-muted"
-        >Copyright 2020 © AbhishekSubbu
+        >Copyright <span id="get-current-year"></span> © AbhishekSubbu
         <p>
           This is a personal blog. Opinions expressed are solely my own and do
           not express the views or opinions of my employer.
@@ -682,19 +752,34 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 
     </div>
     <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script>
+      /* Funtion for getting the current year in the footer */
+      (function () {
+        if (document.getElementById("get-current-year")) {
+          document.getElementById("get-current-year").innerHTML =
+            new Date().getFullYear();
+        }
+      })();
+    </script>
   </body>
 </html>

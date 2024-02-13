@@ -11,17 +11,17 @@
 </span></code></pre></div>    </div>
   </li>
   <li>Reference the mongoose package in the app.js and connect to the mongodb locally
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongoose</span><span class="dl">'</span><span class="p">);</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongoose</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">mongoose</span>
-  <span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb://localhost/criminals</span><span class="dl">'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connected to database...</span><span class="dl">'</span><span class="p">))</span>
-  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection to database failed.</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">));</span>
+  <span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb://localhost/criminals</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connected to database...</span><span class="dl">'</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection to database failed.</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">));</span>
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Create the schema of the Criminal object [this is like the table/document definition] and register the schema to the model class</p>
 
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">criminalSchema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">criminalSchema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nc">Schema</span><span class="p">({</span>
   <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
   <span class="p">},</span>
@@ -30,23 +30,23 @@
   <span class="p">},</span>
 <span class="p">});</span>
 
-<span class="kd">const</span> <span class="nx">Criminal</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="dl">'</span><span class="s1">Criminal</span><span class="dl">'</span><span class="p">,</span> <span class="nx">criminalSchema</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">Criminal</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nf">model</span><span class="p">(</span><span class="dl">'</span><span class="s1">Criminal</span><span class="dl">'</span><span class="p">,</span> <span class="nx">criminalSchema</span><span class="p">);</span>
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Modify the <code class="language-plaintext highlighter-rouge">GET()</code> and <code class="language-plaintext highlighter-rouge">POST()</code> implementations by referencing the <code class="language-plaintext highlighter-rouge">Criminal</code> model class</p>
 
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/criminals</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">await</span> <span class="nx">Criminal</span><span class="p">.</span><span class="nx">find</span><span class="p">());</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/criminals</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="k">await</span> <span class="nx">Criminal</span><span class="p">.</span><span class="nf">find</span><span class="p">());</span>
 <span class="p">});</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/criminals</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">newCriminal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Criminal</span><span class="p">({</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/criminals</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">newCriminal</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Criminal</span><span class="p">({</span>
     <span class="na">name</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
     <span class="na">type</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span>
   <span class="p">});</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">newCriminal</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">newCriminal</span><span class="p">.</span><span class="nf">save</span><span class="p">();</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>    </div>
   </li>

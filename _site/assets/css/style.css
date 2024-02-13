@@ -73,3 +73,17 @@ img {
 .container-app {
   width: 90%;
 }
+
+pre {
+  padding: 0;
+  color: #1f2933;
+  background-color: #f3f3f3;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  background-color: #f3f3f3;
+  color: #dd1144;
+  font-weight: 400;
+  border-radius: 0.25rem;
+}
