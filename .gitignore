@@ -1,0 +1,28 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+node_modules/
+vendor/
+
+# Bundler config
+.bundle
+
+# Jekyll specific files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+
+# System files
+.idea/
+*.swp
+*~

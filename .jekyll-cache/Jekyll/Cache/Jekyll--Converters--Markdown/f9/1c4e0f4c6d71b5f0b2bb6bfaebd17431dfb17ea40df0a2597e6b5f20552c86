@@ -1,2 +1,0 @@
-I"�<p>In this blog, we will look at a common scenario where we have to call an API endpoint and handle retries efficiently in .NET Core. For this purpose, we will be using a library called as “Polly“.</p>
-:ET
