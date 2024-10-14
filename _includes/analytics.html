@@ -5,5 +5,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-X560PCBL7G');
+  gtag('config', 'G-X560PCBL7G', {
+    'cookie_domain': 'auto', // or '.yourdomain.com' for subdomains
+    'cookie_flags': 'SameSite=None; Secure', // for secure cookie handling
+  });
 </script>
