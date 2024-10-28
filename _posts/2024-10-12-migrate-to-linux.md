@@ -32,7 +32,7 @@ Yes. You needed to know the terminal, basic commands and so on. They were mandat
 7. **[Debian](https://www.debian.org/)** (Debian based)
 
 ### Which distro do I recommend?
-I recommend **[Pop OS](https://pop.system76.com/)**. 
+I have more love towards **[Pop OS](https://pop.system76.com/)**. But let me say that any of the linux distros mentioned above are a good choice.
 - It is Debian based and has lots of community support. 
 - It is built on the Ubuntu which is proven and tested. 
 - **[Pop OS](https://pop.system76.com/)** has an intuitive desktop manager called the "**Cosmic**" which is so easy to navigate around.
@@ -74,11 +74,6 @@ I personally use the following applications and these are too good from a produc
 **Task Planning & TODO**
 - Planify
 
-**Video & Audio**
-- OBS Studio (for video & audio recording & streaming)
-- Kdenlive (for video editing)
-- VLC Player (for supporting wide variety of audio file formats)
-
 **Image Editing & Rendering**
 - GIMP
 
@@ -91,7 +86,7 @@ I personally use the following applications and these are too good from a produc
 
 If you have specific needs or looking for an app/software to be used in Linux or any alternative for the same, check [Flathub Repo](https://flathub.org/). My favorite Linux advocate [Derek Taylor](https://www.patreon.com/distrotube/about) (creator of the Youtube Channel [DistroTube](https://www.youtube.com/@DistroTube)) said **if you cannot find a software supported in Linux, then don't use it, find an open source alternative.** I love this statement and its truly empowering. Why should we switch to Windows or Mac because that app was only built for that OS? Why can't organizations and product companies build for Linux too? If their justification is the market cap for Windows and Mac is higher than Linux, then better not to use that product.
 
-I have used Linux as my daily driver for the last 8 years and I truly believe you just need this for everything. Give Linux a try and I assure you, you will love it.
+I have used Linux as my daily driver for the last 8 years. Give Linux a try and I assure you, you will love it.
 
 ---------------------------
 
