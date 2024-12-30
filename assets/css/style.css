@@ -58,9 +58,10 @@ table th {
 }
 
 blockquote {
-  font-style: italic;
+  font-weight: 600;
+  font-size: small;
   color: #555;
-  border-left: 5px solid #f39c12;
+  border-left: 5px solid #0096ff;
   margin: 20px 0;
   padding: 10px 20px;
   background-color: #f9f9f9;
@@ -71,8 +72,6 @@ blockquote p {
   margin: 0;
   font-size: 1.1em;
 }
-
-
 
 a {
   text-decoration: none;
