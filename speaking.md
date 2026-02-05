@@ -5,6 +5,7 @@ layout: page
 
 | Date         | Topic                                                                                               | Venue                                                   |
 | ------------ | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| 04 Feb 2026 | [Go Beyond ITSM with Agentforce IT Service](https://www.salesforce.com/plus/experience/go_beyond_itsm_with_agentforce_it_service) | Salesforce+ (Global Event)
 | 19 July 2022 | [Salesforce Dataloader in Linux](https://www.youtube.com/watch?v=gwIAHp-VaXs)                       | Youtube                                                 |
 | 28 May 2020  | [Logger Framework in Salesforce](/salesforce-logger-framework/)                                     | Kochi, India                                            |
 | 27 May 2020  | [Inversion of Control](/inversion-of-control-part-1/)                                               | Kochi, India                                            |
